@@ -1,0 +1,88 @@
+﻿@model InapCertAuditory.Models.Configuration
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1> Adicionar Registro </h1>
+
+ 
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Rnc" class="control-label"></label>
+                <input asp-for="Rnc" class="form-control" />
+                <span asp-validation-for="Rnc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Header1" class="control-label"></label>
+                <input asp-for="Header1" class="form-control" />
+                <span asp-validation-for="Header1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Header2" class="control-label"></label>
+                <input asp-for="Header2" class="form-control" />
+                <span asp-validation-for="Header2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Header3" class="control-label"></label>
+                <input asp-for="Header3" class="form-control" />
+                <span asp-validation-for="Header3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Footer1" class="control-label"></label>
+                <input asp-for="Footer1" class="form-control" />
+                <span asp-validation-for="Footer1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Footer2" class="control-label"></label>
+                <input asp-for="Footer2" class="form-control" />
+                <span asp-validation-for="Footer2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Footer3" class="control-label"></label>
+                <input asp-for="Footer3" class="form-control" />
+                <span asp-validation-for="Footer3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Director" class="control-label"></label>
+                <input asp-for="Director" class="form-control" />
+                <span asp-validation-for="Director" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HeaderImage" class="control-label"></label>
+                <input asp-for="HeaderImage" class="form-control" />
+                <span asp-validation-for="HeaderImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FooterImage" class="control-label"></label>
+                <input asp-for="FooterImage" class="form-control" />
+                <span asp-validation-for="FooterImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LateralImage" class="control-label"></label>
+                <input asp-for="LateralImage" class="form-control" />
+                <span asp-validation-for="LateralImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar y Procesar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-secondary" asp-action="Index"><= Cancelar y Volver al Listado</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

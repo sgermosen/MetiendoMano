@@ -1,0 +1,27 @@
+Para crear uan aplicacion con signal R, 
+1. crear un proyecto, podemos quitar el https
+2. click derecho en añadir luego cliente desde libreria, cambiamos el provider a unpkg, cambiamos el combo a escoger archivos especificos 
+y en la libreria tipamos 
+@aspnet/signal@1.1.2
+
+seleccionamos solo el signalr.js y el signalr.min.js
+
+cambiamos la ruta al lib/signalr
+
+o buscamos las librerias por ahi y las agregamos a la carpeta libs
+
+3.agregamos un HUB de comunicaciones
+  una clase con cualquier nombre que herede de Hub
+4. ir al starup y despues de configurar el servicio de mvc decirle que deseamos usar signalR
+services.AddSignalR();
+y rooteamos en la configuracion
+	    app.UseSignalR(routes => {
+                routes.MapHub<MyViewHub>("/moveHub");
+            });
+intenta correr y si ves un mensaje de error al intentar llamar el metodo que diga que la conneccion id es requerida signofica que todo esta correcto.
+
+ahora crea el proyecto en la plataforma que desees
+
+instala la liberia
+Microsoft.AspNetCore.SignalR.Client
+habilita los permisos de internet y diseña la Ui

@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CCB5DF6D-A5BC-4FE3-8AF3-8052FA9856D7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PsDataCore</RootNamespace>
+    <AssemblyName>PsDataCore</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DbTools.cs" />
+    <Compile Include="GenericDao.cs" />
+    <Compile Include="Mods\Coop\WSocios.cs" />
+    <Compile Include="Mods\Gen\WGeneric.cs" />
+    <Compile Include="Mods\Ong\WMiembros.cs" />
+    <Compile Include="Mods\Pos\CARGOS.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\Carrito.cs" />
+    <Compile Include="Mods\Pos\CLIENTES.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\COMPANIA.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\COMPANIA_SUCURSALES.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\CUENTAS.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\CUENTAS_CLASIFICACION.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\CUENTAS_EVENTOS.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\CUENTAS_EVENTOS_DETALLE.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\CUENTAS_ORIGEN.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\EMPRESAS_GENERAL.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\EMPRESAS_TIPO.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\GetEquivalencias_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\GetEventosContablesDetalle_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\GetPresentaciones_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\GetTransacciones_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\GetVentasDetalle_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\GetVentas_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\ListCategoriaServicios_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\ListClientes_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\ListCUENTASContables_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\ListCuentasOrigen_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\ListCuentas_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\ListEventosContables_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\ListProductos2_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\ListProductos_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\ListServicios_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\ListTiposEmpresas_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\ListTransacciones2_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\ListTransaccionesTipo_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\ListTransacciones_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\ListTrans_Result.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\PosModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PosModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\PosModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\PosModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PosModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\SERVICIOS.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\SERVICIOS_CATEGORIA.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\SERVICIOS_ENTRADAS.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\SERVICIOS_EQUIVALENCIAS.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\SERVICIOS_UNIDADES.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\TIPOS_PAGOS.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\TIPOS_SERVICIOS.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\TRANSACCIONES.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\TRANSACCIONES_TIPO.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\VENTAS.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\VENTAS_DETALLE.cs">
+      <DependentUpon>PosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Pos\WClientes.cs" />
+    <Compile Include="Mods\Pos\wServicios.cs" />
+    <Compile Include="Mods\Seg\AUTORES.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\AUTORES_PAGO.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\AUTORES_PLANES.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\BARRIOS_PARAJES.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\DIST_MUNICIPALES.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ESTATUSM.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\GetOpcionesRoles_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\GetOpcionesRol_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\GetOpciones_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\GetRolesUsuario_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\GetRoles_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\GetUsuarios_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ListAutores_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ListMonedas_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ListOpcionesRoles_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ListOpcionesRol_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ListOpciones_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ListPaisNacionalidad_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ListPeriodicidades_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ListPersonasTipo_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ListRolesUsuarios_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ListRolesUsuario_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ListRoles_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ListStatus_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ListUsuarios_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ListUsuario_Result.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\MONEDAS.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\MUNICIPIOS.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\NACIONALIDADES.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\OPCIONES.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\OPCIONESROL.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\OPCIONES_PADRE.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\PAISES.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\PERIODICIDADES.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\PERSONAS.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\PERSONAS_TIPO.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\PROVINCIAS.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\REGIONES.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ROLES.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ROLESUSUARIO.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\SECCIONES.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\SegModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SegModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\SegModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\SegModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SegModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\SUBBARRIOS.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\USUARIOSSEG.cs">
+      <DependentUpon>SegModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mods\Seg\ValidaAcceso.cs" />
+    <Compile Include="Mods\Sig\HistGinecologica.cs" />
+    <Compile Include="Mods\Sig\HistObstetricia.cs" />
+    <Compile Include="Mods\Sig\HistPediatrica.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlDataCore.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mods\Pos\PosModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PosModel.edmx</DependentUpon>
+      <LastGenOutput>PosModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Mods\Pos\PosModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PosModel.edmx</DependentUpon>
+      <LastGenOutput>PosModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Mods\Seg\SegModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SegModel.Context.cs</LastGenOutput>
+      <DependentUpon>SegModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Mods\Seg\SegModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SegModel.edmx</DependentUpon>
+      <LastGenOutput>SegModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Librería UTIL.docx" />
+    <EntityDeploy Include="Mods\Seg\SegModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SegModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Mods\Pos\PosModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PosModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Mods\Pos\PosModel.edmx.diagram">
+      <DependentUpon>PosModel.edmx</DependentUpon>
+    </None>
+    <None Include="Mods\Seg\SegModel.edmx.diagram">
+      <DependentUpon>SegModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

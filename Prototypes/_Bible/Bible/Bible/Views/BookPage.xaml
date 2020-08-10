@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Bible.Views.BookPage"
+    BindingContext="{Binding Main, Source={StaticResource Locator}}"
+    Title="Book">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding Book}"
+            Padding="5">
+            <ListView 
+                HasUnevenRows="true" 
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                ItemsSource="{Binding Verses}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    FontAttributes="Bold"
+                                    FontSize="Medium"
+                                    Text="{Binding VerseNumber}"
+                                    TextColor="Black">
+                                </Label>
+                                <Label
+                                    Grid.Column="1"
+                                    Text="{Binding Text}"
+                                    TextColor="Black">
+                                </Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>        
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

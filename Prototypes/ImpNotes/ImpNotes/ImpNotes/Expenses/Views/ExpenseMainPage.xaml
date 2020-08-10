@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             x:Class="ImpNotes.Expenses.Views.ExpenseMainPage"
+             Title="Expense Manager">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="0,20,0,0">
+
+                <Grid >
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Row="0" 
+                            Grid.Column="0"
+                            BackgroundColor="ForestGreen"
+                            CornerRadius="23"  
+                            Clicked="Incomes_Click"
+                            HeightRequest="46"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding IsEnabled}"
+                            Text="Registrar Ingreso"
+                            TextColor="White">
+                    </Button>
+                    <Button Grid.Row="0" 
+                            Grid.Column="1"
+                            BackgroundColor="DarkRed"
+                            CornerRadius="23"  
+                            Clicked="Expenses_Click"
+                            HeightRequest="46"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}" 
+                            Text="Registrar Gasto"
+                            TextColor="White">
+                    </Button>
+
+                </Grid>
+
+                <StackLayout BackgroundColor="#D5D3DC">
+                    <Label Text="Ingresos Vs Gastos"
+                           FontSize="14"
+                           FontAttributes="Bold" 
+                           TextColor="White" />
+                    <microcharts:ChartView 
+                        Chart="{Binding IncomeAndExpenses}"
+                        HeightRequest="210" />
+                </StackLayout>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Row="0" 
+                                 Grid.Column="0"
+                                 BackgroundColor="#D5D3DC">
+                        <Label Text="Cuentas de Ingresos"
+                               FontSize="14"
+                               FontAttributes="Bold" 
+                               TextColor="White" />
+                        <microcharts:ChartView 
+                            Chart="{Binding DonutChartSample}"
+                            HeightRequest="210" />
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" 
+                                 Grid.Column="1"
+                                 BackgroundColor="#D5D3DC">
+                        <Label Text="Conceptos de Ingresos"
+                               FontSize="14"
+                               FontAttributes="Bold" 
+                               TextColor="White" />
+                        <microcharts:ChartView 
+                            Chart="{Binding DonutChartSample}"
+                            HeightRequest="210" />
+                    </StackLayout>
+
+                </Grid>
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Row="0" 
+                                 Grid.Column="0"
+                                 BackgroundColor="#D5D3DC">
+                        <Label Text="Cuentas de Gastos"
+                               FontSize="14"
+                               FontAttributes="Bold" 
+                               TextColor="White" />
+                        <microcharts:ChartView 
+                            Chart="{Binding DonutChartSample}"
+                            HeightRequest="210" />
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" 
+                                 Grid.Column="1"
+                                 BackgroundColor="#D5D3DC">
+                        <Label Text="Conceptos de Gastos"
+                               FontSize="14"
+                               FontAttributes="Bold" 
+                               TextColor="White" />
+                        <microcharts:ChartView 
+                            Chart="{Binding DonutChartSample}"
+                            HeightRequest="210" />
+                    </StackLayout>
+
+                </Grid>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Row="0" 
+                            Grid.Column="0"
+                            Clicked="Accounts_Click"
+                            BackgroundColor="SandyBrown"
+                            CornerRadius="23"  
+                            HeightRequest="46"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding IsEnabled}"
+                            Text="Cuentas"
+                            TextColor="White">
+                    </Button>
+                    <Button Grid.Row="0" 
+                            Grid.Column="1"
+                            BackgroundColor="DodgerBlue"
+                            CornerRadius="23"  
+                            HeightRequest="46"
+                            Clicked="Concepts_Click"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}" 
+                            Text="Conceptos"
+                            TextColor="White">
+                    </Button>
+
+                </Grid>
+
+                <!--<StackLayout BackgroundColor="#D5D3DC">
+                    <Label Text="LineChart" FontSize="14" FontAttributes="Bold" TextColor="White" />
+                    <microcharts:ChartView Chart="{Binding LineChartSample}" HeightRequest="210" />
+                </StackLayout>
+
+                <StackLayout BackgroundColor="#D5D3DC">
+                    <Label Text="PointChart" FontSize="14" FontAttributes="Bold" TextColor="White" />
+                    <microcharts:ChartView Chart="{Binding PointChartSample}" HeightRequest="210" />
+                </StackLayout>
+
+                <StackLayout BackgroundColor="#D5D3DC">
+                    <Label Text="RadielGaugeChart" FontSize="14" FontAttributes="Bold" TextColor="White" />
+                    <microcharts:ChartView Chart="{Binding RadielGaugeChartSample}" HeightRequest="210" />
+                </StackLayout>-->
+
+
+                <!--<StackLayout BackgroundColor="#D5D3DC">
+                    <Label Text="RadarChart" FontSize="14" FontAttributes="Bold" TextColor="White" />
+                    <microcharts:ChartView Chart="{Binding RadarChartSample}" HeightRequest="210" />
+                </StackLayout>-->
+
+            </StackLayout>
+        </ScrollView>
+        <!--<StackLayout BackgroundColor="#D5D3DC">
+            <Label Text="BarChart"
+                   FontSize="14"
+                   FontAttributes="Bold"
+                   TextColor="White" />
+            <microcharts:ChartView Chart="{Binding BarCharSample}"
+                                   HeightRequest="210"
+                                   ></microcharts:ChartView>
+        </StackLayout>-->
+    </ContentPage.Content>
+</ContentPage>

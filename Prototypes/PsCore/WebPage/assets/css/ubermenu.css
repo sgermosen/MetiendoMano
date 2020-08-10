@@ -1,0 +1,29 @@
+/** UberMenu Custom Menu Styles (Customizer) **/
+/* main */
+.ubermenu-main { margin-top:30px; margin-bottom:10px; }
+.ubermenu-main .ubermenu-row { max-width:400px; margin-left:auto; margin-right:auto; }
+.ubermenu.ubermenu-main { background:none; border:none; box-shadow:none; }
+.ubermenu.ubermenu-main .ubermenu-item-level-0 > .ubermenu-target { border:none; box-shadow:none; }
+.ubermenu.ubermenu-main.ubermenu-horizontal .ubermenu-submenu-drop.ubermenu-submenu-align-left_edge_bar, .ubermenu.ubermenu-main.ubermenu-horizontal .ubermenu-submenu-drop.ubermenu-submenu-align-full_width { left:0; }
+.ubermenu.ubermenu-main.ubermenu-horizontal .ubermenu-item-level-0.ubermenu-active > .ubermenu-submenu-drop, .ubermenu.ubermenu-main.ubermenu-horizontal:not(.ubermenu-transition-shift) .ubermenu-item-level-0 > .ubermenu-submenu-drop { margin-top:0; }
+.ubermenu-main.ubermenu-transition-fade .ubermenu-item .ubermenu-submenu-drop { margin-top:0; }
+
+
+/** UberMenu Custom Menu Item Styles (Menu Item Settings) **/
+/* 526 */   .ubermenu .ubermenu-submenu.ubermenu-submenu-id-526 { width:250px; min-width:250px; padding:20px; }
+/* 485 */   .ubermenu .ubermenu-submenu.ubermenu-submenu-id-485 { width:750px; min-width:750px; padding:10px 20px 20px 20px;}
+            .ubermenu .ubermenu-item.ubermenu-item-485.ubermenu-active > .ubermenu-target, .ubermenu .ubermenu-item.ubermenu-item-485 > .ubermenu-target:hover, .ubermenu .ubermenu-submenu .ubermenu-item.ubermenu-item-485.ubermenu-active > .ubermenu-target, .ubermenu .ubermenu-submenu .ubermenu-item.ubermenu-item-485 > .ubermenu-target:hover { background:#5D8DDB; }
+            .ubermenu .ubermenu-item.ubermenu-item-485.ubermenu-active > .ubermenu-target, .ubermenu .ubermenu-item.ubermenu-item-485:hover > .ubermenu-target, .ubermenu .ubermenu-submenu .ubermenu-item.ubermenu-item-485.ubermenu-active > .ubermenu-target, .ubermenu .ubermenu-submenu .ubermenu-item.ubermenu-item-485:hover > .ubermenu-target { color:#ffffff; }
+            .ubermenu .ubermenu-submenu.ubermenu-submenu-id-485 .ubermenu-target, .ubermenu .ubermenu-submenu.ubermenu-submenu-id-485 .ubermenu-target > .ubermenu-target-description { color:black; }
+/* 495 */   .ubermenu .ubermenu-submenu.ubermenu-submenu-id-495 { width:750px; min-width:750px; padding:10px 20px 20px 20px; }
+            .ubermenu .ubermenu-item.ubermenu-item-495.ubermenu-active > .ubermenu-target, .ubermenu .ubermenu-item.ubermenu-item-495 > .ubermenu-target:hover, .ubermenu .ubermenu-submenu .ubermenu-item.ubermenu-item-495.ubermenu-active > .ubermenu-target, .ubermenu .ubermenu-submenu .ubermenu-item.ubermenu-item-495 > .ubermenu-target:hover { background:#70c000; }
+            .ubermenu .ubermenu-item.ubermenu-item-495.ubermenu-active > .ubermenu-target, .ubermenu .ubermenu-item.ubermenu-item-495:hover > .ubermenu-target, .ubermenu .ubermenu-submenu .ubermenu-item.ubermenu-item-495.ubermenu-active > .ubermenu-target, .ubermenu .ubermenu-submenu .ubermenu-item.ubermenu-item-495:hover > .ubermenu-target { color:#ffffff; }
+/* 511 */   .ubermenu .ubermenu-submenu.ubermenu-submenu-id-511 { width:750px; min-width:750px; padding:10px 20px 20px 20px; }
+            .ubermenu .ubermenu-item.ubermenu-item-511.ubermenu-active > .ubermenu-target, .ubermenu .ubermenu-item.ubermenu-item-511 > .ubermenu-target:hover, .ubermenu .ubermenu-submenu .ubermenu-item.ubermenu-item-511.ubermenu-active > .ubermenu-target, .ubermenu .ubermenu-submenu .ubermenu-item.ubermenu-item-511 > .ubermenu-target:hover { background:#f97d00; }
+            .ubermenu .ubermenu-item.ubermenu-item-511.ubermenu-active > .ubermenu-target, .ubermenu .ubermenu-item.ubermenu-item-511:hover > .ubermenu-target, .ubermenu .ubermenu-submenu .ubermenu-item.ubermenu-item-511.ubermenu-active > .ubermenu-target, .ubermenu .ubermenu-submenu .ubermenu-item.ubermenu-item-511:hover > .ubermenu-target { color:#ffffff; }
+/* 517 */   .ubermenu .ubermenu-submenu.ubermenu-submenu-id-517 { width:750px; min-width:750px; padding:10px 20px 20px 20px; }
+            .ubermenu .ubermenu-item.ubermenu-item-517.ubermenu-active > .ubermenu-target, .ubermenu .ubermenu-item.ubermenu-item-517 > .ubermenu-target:hover, .ubermenu .ubermenu-submenu .ubermenu-item.ubermenu-item-517.ubermenu-active > .ubermenu-target, .ubermenu .ubermenu-submenu .ubermenu-item.ubermenu-item-517 > .ubermenu-target:hover { background:#6c8b98; }
+            .ubermenu .ubermenu-item.ubermenu-item-517.ubermenu-active > .ubermenu-target, .ubermenu .ubermenu-item.ubermenu-item-517:hover > .ubermenu-target, .ubermenu .ubermenu-submenu .ubermenu-item.ubermenu-item-517.ubermenu-active > .ubermenu-target, .ubermenu .ubermenu-submenu .ubermenu-item.ubermenu-item-517:hover > .ubermenu-target { color:#ffffff; }
+/* 524 */   .ubermenu .ubermenu-submenu.ubermenu-submenu-id-524 { width:750px; min-width:750px; padding:10px 20px 20px 20px; }
+
+/* Status: Loaded from Transient */

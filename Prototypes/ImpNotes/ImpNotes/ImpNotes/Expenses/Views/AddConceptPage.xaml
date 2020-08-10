@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ImpNotes.Expenses.Views.AddConceptPage">
+    <ContentPage.Content>
+        <ScrollView >
+            <StackLayout  Padding="5"
+                          HorizontalOptions="FillAndExpand"
+                          VerticalOptions="FillAndExpand">
+
+                <Frame CornerRadius="20" 
+                       Margin="5" 
+                       HorizontalOptions="FillAndExpand" 
+                       VerticalOptions="CenterAndExpand">
+
+                    <StackLayout>
+
+                        <Entry Text="{Binding Name, Mode=TwoWay}"
+                               Placeholder="Enter a Name">
+                        </Entry>
+
+                        <Entry Text="{Binding Description, Mode=TwoWay}"
+                               Placeholder="Enter a Description">
+                        </Entry>
+
+                    </StackLayout>
+                </Frame>
+                <!--<ActivityIndicator
+                    IsRunning="{Binding IsRunning}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>-->
+                        <StackLayout
+                    Margin="40,0"
+                    Orientation="Horizontal"
+                    VerticalOptions="CenterAndExpand">
+                            <Button
+                        BackgroundColor="DodgerBlue"
+                        CornerRadius="23" Clicked="Save_Clicked"
+                        HeightRequest="46"
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled}"
+                        Text="Save"
+                        TextColor="White">
+                            </Button>
+                            <Button
+                        BackgroundColor="DarkRed"
+                        CornerRadius="23" Clicked="Cancel_Clicked"
+                        HeightRequest="46"
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}" 
+                        Text="Cancel"
+                        TextColor="White">
+                            </Button>
+                        </StackLayout>
+
+
+
+                    </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

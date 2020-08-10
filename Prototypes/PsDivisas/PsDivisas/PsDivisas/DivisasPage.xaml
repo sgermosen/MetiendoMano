@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PsDivisas.DivisasPage">
+
+
+  <StackLayout Spacing="10" Padding="10" BackgroundColor="Gray">
+
+    <Label Text="Divisas"
+            Font="Large"
+            TextColor="White"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"  />
+    <Label  x:Name="mensajeLabel"  Text="Ingrese valor en pesos y presione el boton calcular"
+            Font="Medium"
+            TextColor="White"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+    <Label Text="Pesos:"
+            Font="Medium"
+            TextColor="White"
+            VerticalOptions="Center"   />
+    <Entry x:Name="pesosEntry"
+            Keyboard="Numeric"  />
+    <Button x:Name="calcularButton"
+           Text="Calcular"
+            Clicked="calcularButtonClicked"
+           BackgroundColor="Yellow"
+           TextColor="Black"  />
+    <Label Text="Dolares:"
+            Font="Medium"
+            TextColor="White"
+            VerticalOptions="Center"   />
+    <Entry x:Name="dolaresEntry"
+            Keyboard="Numeric"  
+            IsEnabled="False"/>
+    <Label Text="Euros:"
+            Font="Medium"
+            TextColor="White"
+            VerticalOptions="Center"   />
+    <Entry x:Name="eurosEntry"
+            Keyboard="Numeric"
+            IsEnabled="False"/>
+    <Label Text="Libras:"
+            Font="Medium"
+            TextColor="White"
+            VerticalOptions="Center"   />
+    <Entry x:Name="librasEntry"
+            Keyboard="Numeric"
+            IsEnabled="False"/>
+   
+    
+  </StackLayout>
+
+</ContentPage>

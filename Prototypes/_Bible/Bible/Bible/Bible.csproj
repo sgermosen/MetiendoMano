@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.1.1" />
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.122203" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\BiblesType\Afri.cs" />
+    <Compile Remove="Models\BiblesType\Bishops.cs" />
+    <Compile Remove="Models\BiblesType\Bkr.cs" />
+    <Compile Remove="Models\BiblesType\Cornilescu.cs" />
+    <Compile Remove="Models\BiblesType\Coverdale.cs" />
+    <Compile Remove="Models\BiblesType\Diodati.cs" />
+    <Compile Remove="Models\BiblesType\Epee.cs" />
+    <Compile Remove="Models\BiblesType\Finn.cs" />
+    <Compile Remove="Models\BiblesType\Geneva.cs" />
+    <Compile Remove="Models\BiblesType\Karoli.cs" />
+    <Compile Remove="Models\BiblesType\Kjv.cs" />
+    <Compile Remove="Models\BiblesType\KjvStrongs.cs" />
+    <Compile Remove="Models\BiblesType\Lith.cs" />
+    <Compile Remove="Models\BiblesType\Luther.cs" />
+    <Compile Remove="Models\BiblesType\Maori.cs" />
+    <Compile Remove="Models\BiblesType\Martin.cs" />
+    <Compile Remove="Models\BiblesType\Oster.cs" />
+    <Compile Remove="Models\BiblesType\Rv1858.cs" />
+    <Compile Remove="Models\BiblesType\Rv1909.cs" />
+    <Compile Remove="Models\BiblesType\Rvg.cs" />
+    <Compile Remove="Models\BiblesType\Sagradas.cs" />
+    <Compile Remove="Models\BiblesType\Stve.cs" />
+    <Compile Remove="Models\BiblesType\Svd.cs" />
+    <Compile Remove="Models\BiblesType\Synodal.cs" />
+    <Compile Remove="Models\BiblesType\Thaikjv.cs" />
+    <Compile Remove="Models\BiblesType\Tr.cs" />
+    <Compile Remove="Models\BiblesType\Trparsed.cs" />
+    <Compile Remove="Models\BiblesType\Tyndale.cs" />
+    <Compile Remove="Models\BiblesType\Wlc.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
+      <DependentUpon>*.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\BookPage.xaml.cs">
+      <DependentUpon>BookPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+    <Folder Include="Infraestructure\" />
+    <Folder Include="Views\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+</Project>

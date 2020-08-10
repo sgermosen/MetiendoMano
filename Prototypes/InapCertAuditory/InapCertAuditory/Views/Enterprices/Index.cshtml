@@ -1,0 +1,53 @@
+﻿@model IEnumerable<InapCertAuditory.Models.Enterprice>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1> Listado </h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"> Adicionar Nueva </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+             Nombre
+            </th>
+            <th>
+              Telefono
+            </th>
+            <th>
+               Direccion
+            </th>
+            <th>
+             Observaciones
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observations)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EnterpriceId" class="btn btn-warning">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.EnterpriceId" class="btn btn-info">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.EnterpriceId" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

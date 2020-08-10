@@ -1,0 +1,2432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PosDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CARGOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="VALOR" Type="float" />
+          <Property Name="AUTORID" Type="int" />
+        </EntityType>
+        <EntityType Name="CLIENTES">
+          <Key>
+            <PropertyRef Name="PERSONAID" />
+          </Key>
+          <Property Name="PERSONAID" Type="int" Nullable="false" />
+          <Property Name="GASTADO" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="ADEUDADO" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="GANADO" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="CREDITO" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="SUCURSALID" Type="int" />
+          <Property Name="CODIGO" Type="int" />
+        </EntityType>
+        <EntityType Name="COMPANIA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RNC" Type="varchar" MaxLength="15" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="150" />
+          <Property Name="TEL1" Type="varchar" MaxLength="15" />
+          <Property Name="TEL2" Type="varchar" MaxLength="15" />
+          <Property Name="FAX" Type="varchar" MaxLength="15" />
+          <Property Name="CORREO1" Type="varchar" MaxLength="50" />
+          <Property Name="CORREO2" Type="varchar" MaxLength="50" />
+          <Property Name="SUBBARRIOID" Type="int" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="250" />
+          <Property Name="CODIGOPOSTAL" Type="varchar" MaxLength="10" />
+          <Property Name="ESTADO" Type="bit" />
+          <Property Name="AUTORID" Type="int" />
+          <Property Name="EMPRESAS_TIPOID" Type="int" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="COMPANIA_SUCURSALES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="150" />
+          <Property Name="TEL1" Type="varchar" MaxLength="15" />
+          <Property Name="TEL2" Type="varchar" MaxLength="15" />
+          <Property Name="FAX" Type="varchar" MaxLength="15" />
+          <Property Name="CORREO1" Type="varchar" MaxLength="50" />
+          <Property Name="CORREO2" Type="varchar" MaxLength="50" />
+          <Property Name="SUBBARRIOID" Type="int" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="250" />
+          <Property Name="CODIGOPOSTAL" Type="varchar" MaxLength="10" />
+          <Property Name="ESTADO" Type="bit" />
+          <Property Name="COMPANIAID" Type="int" />
+        </EntityType>
+        <EntityType Name="CUENTAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="250" />
+          <Property Name="BALACT" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="FECULTTRANS" Type="datetime" />
+          <Property Name="CUENTAS_CLASIFICACIONID" Type="int" />
+          <Property Name="AUTORID" Type="int" />
+        </EntityType>
+        <EntityType Name="CUENTAS_CLASIFICACION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="250" />
+          <Property Name="BALANCE" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="CUENTAS_ORIGENID" Type="int" />
+        </EntityType>
+        <EntityType Name="CUENTAS_EVENTOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="DESCRIPCION" Type="varchar(max)" />
+          <Property Name="ESTATUS" Type="bit" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+          <Property Name="AUTORID" Type="int" />
+        </EntityType>
+        <EntityType Name="CUENTAS_EVENTOS_DETALLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CUENTA_EVENTOID" Type="int" Nullable="false" />
+          <Property Name="CUENTAID" Type="int" />
+          <Property Name="MODO" Type="int" />
+        </EntityType>
+        <EntityType Name="CUENTAS_ORIGEN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="2" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EMPRESAS_GENERAL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+          <Property Name="RNC" Type="varchar" MaxLength="15" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="150" />
+          <Property Name="TEL1" Type="varchar" MaxLength="15" />
+          <Property Name="TEL2" Type="varchar" MaxLength="15" />
+          <Property Name="FAX" Type="varchar" MaxLength="15" />
+          <Property Name="CORREO1" Type="varchar" MaxLength="50" />
+          <Property Name="CORREO2" Type="varchar" MaxLength="50" />
+          <Property Name="SUBBARRIOID" Type="int" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="250" />
+          <Property Name="CODIGOPOSTAL" Type="varchar" MaxLength="10" />
+          <Property Name="ESTADO" Type="bit" />
+          <Property Name="EMPRESAS_TIPOID" Type="int" />
+        </EntityType>
+        <EntityType Name="EMPRESAS_TIPO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SERVICIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="6" />
+          <Property Name="NOMBRE" Type="nvarchar" MaxLength="50" />
+          <Property Name="DESCRIPCION" Type="nvarchar" MaxLength="250" />
+          <Property Name="PRECIO" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="NOTAS" Type="varchar" MaxLength="450" />
+          <Property Name="COSTO" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="STOCK" Type="int" />
+          <Property Name="CATEGORIAID" Type="int" />
+          <Property Name="AUTORID" Type="int" />
+          <Property Name="IMAGEN" Type="nvarchar" MaxLength="250" />
+          <Property Name="SUCURSALID" Type="int" />
+          <Property Name="BARCODE" Type="varchar" MaxLength="50" />
+          <Property Name="PRECIO2" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="PRECIO3" Type="decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="SERVICIOS_CATEGORIA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="15" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="TIPO_SERVICIOID" Type="int" />
+        </EntityType>
+        <EntityType Name="SERVICIOS_ENTRADAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="PRODUCTOID" Type="int" Nullable="false" />
+          <Property Name="STOCK_NEW" Type="int" Nullable="false" />
+          <Property Name="STOCK_OLD" Type="int" Nullable="false" />
+          <Property Name="PRECIO" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="PRECIO2" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="PRECIO3" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="FECHA" Type="date" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="250" />
+          <Property Name="USERID" Type="int" />
+          <Property Name="ESTATUSID" Type="int" />
+        </EntityType>
+        <EntityType Name="SERVICIOS_EQUIVALENCIAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UNIDAD_MAESTRAID" Type="int" />
+          <Property Name="UNIDAD_DETALLEID" Type="int" />
+          <Property Name="EQUIVALENCIA" Type="int" />
+          <Property Name="SERVICIOID" Type="int" />
+        </EntityType>
+        <EntityType Name="SERVICIOS_UNIDADES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="15" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="SERVICIOID" Type="int" />
+          <Property Name="PRECIO" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="COSTO" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="STOCK" Type="int" />
+        </EntityType>
+        <EntityType Name="TIPOS_PAGOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="15" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="MONTO_MIN" Type="decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="TIPOS_SERVICIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="15" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TRANSACCIONES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="250" />
+          <Property Name="FECHA" Type="datetime" />
+          <Property Name="MONTO_TRANS" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="MONEDAID" Type="int" />
+          <Property Name="CUENTAID" Type="int" />
+          <Property Name="BAL_ANT_CUENTA" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="USUARIOID" Type="int" />
+          <Property Name="TIPO" Type="int" />
+          <Property Name="SUCURSALID" Type="int" />
+        </EntityType>
+        <EntityType Name="TRANSACCIONES_TIPO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="250" />
+          <Property Name="BALANCE" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="FECRECORDAR" Type="date" />
+          <Property Name="MARCARECORDAR" Type="bit" />
+          <Property Name="FECULTTRANS" Type="datetime" />
+          <Property Name="CUENTAID" Type="int" />
+        </EntityType>
+        <EntityType Name="VENTAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NUMDOC" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TIPODOC" Type="int" Nullable="false" />
+          <Property Name="FECHA" Type="smalldatetime" />
+          <Property Name="FECHAPAGADA" Type="smalldatetime" />
+          <Property Name="FECHAABONO" Type="smalldatetime" />
+          <Property Name="SUBTOTAL" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="TOTAL" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="BALANCEPENDIENTE" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="SALDOPAGADO" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="CLIENTEID" Type="int" />
+          <Property Name="COMENTARIOS" Type="varchar" MaxLength="250" />
+          <Property Name="ESTATUSID" Type="int" />
+          <Property Name="AUTORID" Type="int" />
+          <Property Name="CARGOS" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="DESCUENTOS" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="USERID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PRAYSOFTDBCORE.POS.VENTAS_DETALLE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VENTAS_DETALLE">
+          <Key>
+            <PropertyRef Name="VENTAID" />
+            <PropertyRef Name="SERVICIOID" />
+            <PropertyRef Name="CANTIDAD" />
+            <PropertyRef Name="PRECIO" />
+            <PropertyRef Name="CARGO" />
+            <PropertyRef Name="TOTAL" />
+          </Key>
+          <Property Name="VENTAID" Type="int" Nullable="false" />
+          <Property Name="SERVICIOID" Type="int" Nullable="false" />
+          <Property Name="CANTIDAD" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="PRECIO" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="CARGO" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="TOTAL" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="DESCUENTO" Type="decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <Association Name="FK_CLIENTES_COMPANIA_SUCURSALES">
+          <End Role="COMPANIA_SUCURSALES" Type="Self.COMPANIA_SUCURSALES" Multiplicity="0..1" />
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANIA_SUCURSALES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CLIENTES">
+              <PropertyRef Name="SUCURSALID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUENTAS_CLASIFICACION_CUENTAS_ORIGEN">
+          <End Role="CUENTAS_ORIGEN" Type="Self.CUENTAS_ORIGEN" Multiplicity="0..1" />
+          <End Role="CUENTAS_CLASIFICACION" Type="Self.CUENTAS_CLASIFICACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUENTAS_ORIGEN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUENTAS_CLASIFICACION">
+              <PropertyRef Name="CUENTAS_ORIGENID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUENTAS_CUENTAS_CLASIFICACION">
+          <End Role="CUENTAS_CLASIFICACION" Type="Self.CUENTAS_CLASIFICACION" Multiplicity="0..1" />
+          <End Role="CUENTAS" Type="Self.CUENTAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUENTAS_CLASIFICACION">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUENTAS">
+              <PropertyRef Name="CUENTAS_CLASIFICACIONID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUENTAS_EVENTOS_DETALLE_CUENTAS">
+          <End Role="CUENTAS" Type="Self.CUENTAS" Multiplicity="0..1" />
+          <End Role="CUENTAS_EVENTOS_DETALLE" Type="Self.CUENTAS_EVENTOS_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUENTAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUENTAS_EVENTOS_DETALLE">
+              <PropertyRef Name="CUENTAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUENTAS_EVENTOS_DETALLE_CUENTAS_EVENTOS">
+          <End Role="CUENTAS_EVENTOS" Type="Self.CUENTAS_EVENTOS" Multiplicity="1" />
+          <End Role="CUENTAS_EVENTOS_DETALLE" Type="Self.CUENTAS_EVENTOS_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUENTAS_EVENTOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUENTAS_EVENTOS_DETALLE">
+              <PropertyRef Name="CUENTA_EVENTOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPRESAS_EMPRESAS_TIPO">
+          <End Role="EMPRESAS_TIPO" Type="Self.EMPRESAS_TIPO" Multiplicity="0..1" />
+          <End Role="COMPANIA" Type="Self.COMPANIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESAS_TIPO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMPANIA">
+              <PropertyRef Name="EMPRESAS_TIPOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPRESAS_GENERAL_EMPRESAS_TIPO">
+          <End Role="EMPRESAS_TIPO" Type="Self.EMPRESAS_TIPO" Multiplicity="0..1" />
+          <End Role="EMPRESAS_GENERAL" Type="Self.EMPRESAS_GENERAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESAS_TIPO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EMPRESAS_GENERAL">
+              <PropertyRef Name="EMPRESAS_TIPOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPRESAS_SUCURSALES_EMPRESAS">
+          <End Role="COMPANIA" Type="Self.COMPANIA" Multiplicity="0..1" />
+          <End Role="COMPANIA_SUCURSALES" Type="Self.COMPANIA_SUCURSALES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANIA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMPANIA_SUCURSALES">
+              <PropertyRef Name="COMPANIAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIOS_CATEGORIA_TIPOS_SERVICIOS">
+          <End Role="TIPOS_SERVICIOS" Type="Self.TIPOS_SERVICIOS" Multiplicity="0..1" />
+          <End Role="SERVICIOS_CATEGORIA" Type="Self.SERVICIOS_CATEGORIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_SERVICIOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERVICIOS_CATEGORIA">
+              <PropertyRef Name="TIPO_SERVICIOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIOS_COMPANIA_SUCURSALES">
+          <End Role="COMPANIA_SUCURSALES" Type="Self.COMPANIA_SUCURSALES" Multiplicity="0..1" />
+          <End Role="SERVICIOS" Type="Self.SERVICIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANIA_SUCURSALES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERVICIOS">
+              <PropertyRef Name="SUCURSALID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIOS_ENTRADAS_SERVICIOS">
+          <End Role="SERVICIOS" Type="Self.SERVICIOS" Multiplicity="1" />
+          <End Role="SERVICIOS_ENTRADAS" Type="Self.SERVICIOS_ENTRADAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERVICIOS_ENTRADAS">
+              <PropertyRef Name="PRODUCTOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS">
+          <End Role="SERVICIOS" Type="Self.SERVICIOS" Multiplicity="0..1" />
+          <End Role="SERVICIOS_EQUIVALENCIAS" Type="Self.SERVICIOS_EQUIVALENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERVICIOS_EQUIVALENCIAS">
+              <PropertyRef Name="SERVICIOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES">
+          <End Role="SERVICIOS_UNIDADES" Type="Self.SERVICIOS_UNIDADES" Multiplicity="0..1" />
+          <End Role="SERVICIOS_EQUIVALENCIAS" Type="Self.SERVICIOS_EQUIVALENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIOS_UNIDADES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERVICIOS_EQUIVALENCIAS">
+              <PropertyRef Name="UNIDAD_MAESTRAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES1">
+          <End Role="SERVICIOS_UNIDADES" Type="Self.SERVICIOS_UNIDADES" Multiplicity="0..1" />
+          <End Role="SERVICIOS_EQUIVALENCIAS" Type="Self.SERVICIOS_EQUIVALENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIOS_UNIDADES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERVICIOS_EQUIVALENCIAS">
+              <PropertyRef Name="UNIDAD_DETALLEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIOS_SERVICIOS_CATEGORIA">
+          <End Role="SERVICIOS_CATEGORIA" Type="Self.SERVICIOS_CATEGORIA" Multiplicity="0..1" />
+          <End Role="SERVICIOS" Type="Self.SERVICIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIOS_CATEGORIA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERVICIOS">
+              <PropertyRef Name="CATEGORIAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIOS_UNIDADES_SERVICIOS">
+          <End Role="SERVICIOS" Type="Self.SERVICIOS" Multiplicity="0..1" />
+          <End Role="SERVICIOS_UNIDADES" Type="Self.SERVICIOS_UNIDADES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERVICIOS_UNIDADES">
+              <PropertyRef Name="SERVICIOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSACCIONES_COMPANIA_SUCURSALES">
+          <End Role="COMPANIA_SUCURSALES" Type="Self.COMPANIA_SUCURSALES" Multiplicity="0..1" />
+          <End Role="TRANSACCIONES" Type="Self.TRANSACCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANIA_SUCURSALES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRANSACCIONES">
+              <PropertyRef Name="SUCURSALID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSACCIONES_TIPO_CUENTAS">
+          <End Role="CUENTAS" Type="Self.CUENTAS" Multiplicity="0..1" />
+          <End Role="TRANSACCIONES_TIPO" Type="Self.TRANSACCIONES_TIPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUENTAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRANSACCIONES_TIPO">
+              <PropertyRef Name="CUENTAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSACCIONES_TRANSACCIONES_TIPO1">
+          <End Role="TRANSACCIONES_TIPO" Type="Self.TRANSACCIONES_TIPO" Multiplicity="0..1" />
+          <End Role="TRANSACCIONES" Type="Self.TRANSACCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRANSACCIONES_TIPO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRANSACCIONES">
+              <PropertyRef Name="CUENTAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VENTAS_CLIENTES">
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="0..1" />
+          <End Role="VENTAS" Type="Self.VENTAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES">
+              <PropertyRef Name="PERSONAID" />
+            </Principal>
+            <Dependent Role="VENTAS">
+              <PropertyRef Name="CLIENTEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ventasDetalle_servicios">
+          <End Role="SERVICIOS" Type="Self.SERVICIOS" Multiplicity="1" />
+          <End Role="VENTAS_DETALLE" Type="Self.VENTAS_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VENTAS_DETALLE">
+              <PropertyRef Name="SERVICIOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ventasDetalle_ventas">
+          <End Role="VENTAS" Type="Self.VENTAS" Multiplicity="1" />
+          <End Role="VENTAS_DETALLE" Type="Self.VENTAS_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENTAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VENTAS_DETALLE">
+              <PropertyRef Name="VENTAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetEquivalencias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="ServicioID" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetEventosContablesDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="EventoID" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetPresentaciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="ServicioID" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetTransacciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="SucursalID" Type="int" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetVentaDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetVentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="autor" Type="int" Mode="In" />
+          <Parameter Name="desde" Type="date" Mode="In" />
+          <Parameter Name="hasta" Type="date" Mode="In" />
+          <Parameter Name="idventa" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetVentasDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="idventa" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListCategoriaServicios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="dec" Type="smallint" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="autor" Type="int" Mode="In" />
+          <Parameter Name="sucursal" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListCuentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListCUENTASContables" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="AutorID" Type="int" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListCuentasOrigen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListEventosContables" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="autor" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="autor" Type="int" Mode="In" />
+          <Parameter Name="SUCURSALID" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListProductos2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="autor" Type="int" Mode="In" />
+          <Parameter Name="SUCURSALID" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListServicios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="autor" Type="int" Mode="In" />
+          <Parameter Name="stock" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListTiposEmpresas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="dec" Type="smallint" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListTrans" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="SucursalID" Type="int" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListTransacciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="SucursalID" Type="int" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListTransacciones2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="SucursalID" Type="int" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListTransaccionesTipo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="POS">
+          <Parameter Name="autor" Type="int" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="PosDbModelStoreContainer">
+          <EntitySet Name="CARGOS" EntityType="Self.CARGOS" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="COMPANIA" EntityType="Self.COMPANIA" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="COMPANIA_SUCURSALES" EntityType="Self.COMPANIA_SUCURSALES" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="CUENTAS" EntityType="Self.CUENTAS" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="CUENTAS_CLASIFICACION" EntityType="Self.CUENTAS_CLASIFICACION" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="CUENTAS_EVENTOS" EntityType="Self.CUENTAS_EVENTOS" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="CUENTAS_EVENTOS_DETALLE" EntityType="Self.CUENTAS_EVENTOS_DETALLE" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="CUENTAS_ORIGEN" EntityType="Self.CUENTAS_ORIGEN" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="EMPRESAS_GENERAL" EntityType="Self.EMPRESAS_GENERAL" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="EMPRESAS_TIPO" EntityType="Self.EMPRESAS_TIPO" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="SERVICIOS" EntityType="Self.SERVICIOS" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="SERVICIOS_CATEGORIA" EntityType="Self.SERVICIOS_CATEGORIA" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="SERVICIOS_ENTRADAS" EntityType="Self.SERVICIOS_ENTRADAS" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="SERVICIOS_EQUIVALENCIAS" EntityType="Self.SERVICIOS_EQUIVALENCIAS" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="SERVICIOS_UNIDADES" EntityType="Self.SERVICIOS_UNIDADES" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="TIPOS_PAGOS" EntityType="Self.TIPOS_PAGOS" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="TIPOS_SERVICIOS" EntityType="Self.TIPOS_SERVICIOS" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="TRANSACCIONES" EntityType="Self.TRANSACCIONES" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="TRANSACCIONES_TIPO" EntityType="Self.TRANSACCIONES_TIPO" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="VENTAS" EntityType="Self.VENTAS" Schema="POS" store:Type="Tables" />
+          <EntitySet Name="VENTAS_DETALLE" EntityType="Self.VENTAS_DETALLE" store:Type="Tables" store:Schema="POS">
+            <DefiningQuery>SELECT 
+    [VENTAS_DETALLE].[VENTAID] AS [VENTAID], 
+    [VENTAS_DETALLE].[SERVICIOID] AS [SERVICIOID], 
+    [VENTAS_DETALLE].[CANTIDAD] AS [CANTIDAD], 
+    [VENTAS_DETALLE].[PRECIO] AS [PRECIO], 
+    [VENTAS_DETALLE].[CARGO] AS [CARGO], 
+    [VENTAS_DETALLE].[TOTAL] AS [TOTAL], 
+    [VENTAS_DETALLE].[DESCUENTO] AS [DESCUENTO]
+    FROM [POS].[VENTAS_DETALLE] AS [VENTAS_DETALLE]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CLIENTES_COMPANIA_SUCURSALES" Association="Self.FK_CLIENTES_COMPANIA_SUCURSALES">
+            <End Role="COMPANIA_SUCURSALES" EntitySet="COMPANIA_SUCURSALES" />
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUENTAS_CLASIFICACION_CUENTAS_ORIGEN" Association="Self.FK_CUENTAS_CLASIFICACION_CUENTAS_ORIGEN">
+            <End Role="CUENTAS_ORIGEN" EntitySet="CUENTAS_ORIGEN" />
+            <End Role="CUENTAS_CLASIFICACION" EntitySet="CUENTAS_CLASIFICACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUENTAS_CUENTAS_CLASIFICACION" Association="Self.FK_CUENTAS_CUENTAS_CLASIFICACION">
+            <End Role="CUENTAS_CLASIFICACION" EntitySet="CUENTAS_CLASIFICACION" />
+            <End Role="CUENTAS" EntitySet="CUENTAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUENTAS_EVENTOS_DETALLE_CUENTAS" Association="Self.FK_CUENTAS_EVENTOS_DETALLE_CUENTAS">
+            <End Role="CUENTAS" EntitySet="CUENTAS" />
+            <End Role="CUENTAS_EVENTOS_DETALLE" EntitySet="CUENTAS_EVENTOS_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUENTAS_EVENTOS_DETALLE_CUENTAS_EVENTOS" Association="Self.FK_CUENTAS_EVENTOS_DETALLE_CUENTAS_EVENTOS">
+            <End Role="CUENTAS_EVENTOS" EntitySet="CUENTAS_EVENTOS" />
+            <End Role="CUENTAS_EVENTOS_DETALLE" EntitySet="CUENTAS_EVENTOS_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPRESAS_EMPRESAS_TIPO" Association="Self.FK_EMPRESAS_EMPRESAS_TIPO">
+            <End Role="EMPRESAS_TIPO" EntitySet="EMPRESAS_TIPO" />
+            <End Role="COMPANIA" EntitySet="COMPANIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPRESAS_GENERAL_EMPRESAS_TIPO" Association="Self.FK_EMPRESAS_GENERAL_EMPRESAS_TIPO">
+            <End Role="EMPRESAS_TIPO" EntitySet="EMPRESAS_TIPO" />
+            <End Role="EMPRESAS_GENERAL" EntitySet="EMPRESAS_GENERAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPRESAS_SUCURSALES_EMPRESAS" Association="Self.FK_EMPRESAS_SUCURSALES_EMPRESAS">
+            <End Role="COMPANIA" EntitySet="COMPANIA" />
+            <End Role="COMPANIA_SUCURSALES" EntitySet="COMPANIA_SUCURSALES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIOS_CATEGORIA_TIPOS_SERVICIOS" Association="Self.FK_SERVICIOS_CATEGORIA_TIPOS_SERVICIOS">
+            <End Role="TIPOS_SERVICIOS" EntitySet="TIPOS_SERVICIOS" />
+            <End Role="SERVICIOS_CATEGORIA" EntitySet="SERVICIOS_CATEGORIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIOS_COMPANIA_SUCURSALES" Association="Self.FK_SERVICIOS_COMPANIA_SUCURSALES">
+            <End Role="COMPANIA_SUCURSALES" EntitySet="COMPANIA_SUCURSALES" />
+            <End Role="SERVICIOS" EntitySet="SERVICIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIOS_ENTRADAS_SERVICIOS" Association="Self.FK_SERVICIOS_ENTRADAS_SERVICIOS">
+            <End Role="SERVICIOS" EntitySet="SERVICIOS" />
+            <End Role="SERVICIOS_ENTRADAS" EntitySet="SERVICIOS_ENTRADAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS" Association="Self.FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS">
+            <End Role="SERVICIOS" EntitySet="SERVICIOS" />
+            <End Role="SERVICIOS_EQUIVALENCIAS" EntitySet="SERVICIOS_EQUIVALENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES" Association="Self.FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES">
+            <End Role="SERVICIOS_UNIDADES" EntitySet="SERVICIOS_UNIDADES" />
+            <End Role="SERVICIOS_EQUIVALENCIAS" EntitySet="SERVICIOS_EQUIVALENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES1" Association="Self.FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES1">
+            <End Role="SERVICIOS_UNIDADES" EntitySet="SERVICIOS_UNIDADES" />
+            <End Role="SERVICIOS_EQUIVALENCIAS" EntitySet="SERVICIOS_EQUIVALENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIOS_SERVICIOS_CATEGORIA" Association="Self.FK_SERVICIOS_SERVICIOS_CATEGORIA">
+            <End Role="SERVICIOS_CATEGORIA" EntitySet="SERVICIOS_CATEGORIA" />
+            <End Role="SERVICIOS" EntitySet="SERVICIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIOS_UNIDADES_SERVICIOS" Association="Self.FK_SERVICIOS_UNIDADES_SERVICIOS">
+            <End Role="SERVICIOS" EntitySet="SERVICIOS" />
+            <End Role="SERVICIOS_UNIDADES" EntitySet="SERVICIOS_UNIDADES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSACCIONES_COMPANIA_SUCURSALES" Association="Self.FK_TRANSACCIONES_COMPANIA_SUCURSALES">
+            <End Role="COMPANIA_SUCURSALES" EntitySet="COMPANIA_SUCURSALES" />
+            <End Role="TRANSACCIONES" EntitySet="TRANSACCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSACCIONES_TIPO_CUENTAS" Association="Self.FK_TRANSACCIONES_TIPO_CUENTAS">
+            <End Role="CUENTAS" EntitySet="CUENTAS" />
+            <End Role="TRANSACCIONES_TIPO" EntitySet="TRANSACCIONES_TIPO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSACCIONES_TRANSACCIONES_TIPO1" Association="Self.FK_TRANSACCIONES_TRANSACCIONES_TIPO1">
+            <End Role="TRANSACCIONES_TIPO" EntitySet="TRANSACCIONES_TIPO" />
+            <End Role="TRANSACCIONES" EntitySet="TRANSACCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VENTAS_CLIENTES" Association="Self.FK_VENTAS_CLIENTES">
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+            <End Role="VENTAS" EntitySet="VENTAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ventasDetalle_servicios" Association="Self.FK_ventasDetalle_servicios">
+            <End Role="SERVICIOS" EntitySet="SERVICIOS" />
+            <End Role="VENTAS_DETALLE" EntitySet="VENTAS_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ventasDetalle_ventas" Association="Self.FK_ventasDetalle_ventas">
+            <End Role="VENTAS" EntitySet="VENTAS" />
+            <End Role="VENTAS_DETALLE" EntitySet="VENTAS_DETALLE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PosDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CARGOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VALOR" Type="Double" />
+          <Property Name="AUTORID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CLIENTES">
+          <Key>
+            <PropertyRef Name="PERSONAID" />
+          </Key>
+          <Property Name="PERSONAID" Type="Int32" Nullable="false" />
+          <Property Name="GASTADO" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="ADEUDADO" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="GANADO" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="CREDITO" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="SUCURSALID" Type="Int32" />
+          <Property Name="CODIGO" Type="Int32" />
+          <NavigationProperty Name="COMPANIA_SUCURSALES" Relationship="Self.FK_CLIENTES_COMPANIA_SUCURSALES" FromRole="CLIENTES" ToRole="COMPANIA_SUCURSALES" />
+          <NavigationProperty Name="VENTAS" Relationship="Self.FK_VENTAS_CLIENTES" FromRole="CLIENTES" ToRole="VENTAS" />
+        </EntityType>
+        <EntityType Name="COMPANIA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RNC" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="TEL1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="TEL2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FAX" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CORREO1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CORREO2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SUBBARRIOID" Type="Int32" />
+          <Property Name="DIRECCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGOPOSTAL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="Boolean" />
+          <Property Name="AUTORID" Type="Int32" />
+          <Property Name="EMPRESAS_TIPOID" Type="Int32" />
+          <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPRESAS_TIPO" Relationship="Self.FK_EMPRESAS_EMPRESAS_TIPO" FromRole="COMPANIA" ToRole="EMPRESAS_TIPO" />
+          <NavigationProperty Name="COMPANIA_SUCURSALES" Relationship="Self.FK_EMPRESAS_SUCURSALES_EMPRESAS" FromRole="COMPANIA" ToRole="COMPANIA_SUCURSALES" />
+        </EntityType>
+        <EntityType Name="COMPANIA_SUCURSALES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="TEL1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="TEL2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FAX" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CORREO1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CORREO2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SUBBARRIOID" Type="Int32" />
+          <Property Name="DIRECCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGOPOSTAL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="Boolean" />
+          <Property Name="COMPANIAID" Type="Int32" />
+          <NavigationProperty Name="CLIENTES" Relationship="Self.FK_CLIENTES_COMPANIA_SUCURSALES" FromRole="COMPANIA_SUCURSALES" ToRole="CLIENTES" />
+          <NavigationProperty Name="COMPANIA" Relationship="Self.FK_EMPRESAS_SUCURSALES_EMPRESAS" FromRole="COMPANIA_SUCURSALES" ToRole="COMPANIA" />
+          <NavigationProperty Name="SERVICIOS" Relationship="Self.FK_SERVICIOS_COMPANIA_SUCURSALES" FromRole="COMPANIA_SUCURSALES" ToRole="SERVICIOS" />
+          <NavigationProperty Name="TRANSACCIONES" Relationship="Self.FK_TRANSACCIONES_COMPANIA_SUCURSALES" FromRole="COMPANIA_SUCURSALES" ToRole="TRANSACCIONES" />
+        </EntityType>
+        <EntityType Name="CUENTAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="BALACT" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="FECULTTRANS" Type="DateTime" Precision="3" />
+          <Property Name="CUENTAS_CLASIFICACIONID" Type="Int32" />
+          <Property Name="AUTORID" Type="Int32" />
+          <NavigationProperty Name="CUENTAS_CLASIFICACION" Relationship="Self.FK_CUENTAS_CUENTAS_CLASIFICACION" FromRole="CUENTAS" ToRole="CUENTAS_CLASIFICACION" />
+          <NavigationProperty Name="CUENTAS_EVENTOS_DETALLE" Relationship="Self.FK_CUENTAS_EVENTOS_DETALLE_CUENTAS" FromRole="CUENTAS" ToRole="CUENTAS_EVENTOS_DETALLE" />
+          <NavigationProperty Name="TRANSACCIONES_TIPO" Relationship="Self.FK_TRANSACCIONES_TIPO_CUENTAS" FromRole="CUENTAS" ToRole="TRANSACCIONES_TIPO" />
+        </EntityType>
+        <EntityType Name="CUENTAS_CLASIFICACION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="BALANCE" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="CUENTAS_ORIGENID" Type="Int32" />
+          <NavigationProperty Name="CUENTAS" Relationship="Self.FK_CUENTAS_CUENTAS_CLASIFICACION" FromRole="CUENTAS_CLASIFICACION" ToRole="CUENTAS" />
+          <NavigationProperty Name="CUENTAS_ORIGEN" Relationship="Self.FK_CUENTAS_CLASIFICACION_CUENTAS_ORIGEN" FromRole="CUENTAS_CLASIFICACION" ToRole="CUENTAS_ORIGEN" />
+        </EntityType>
+        <EntityType Name="CUENTAS_EVENTOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ESTATUS" Type="Boolean" />
+          <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AUTORID" Type="Int32" />
+          <NavigationProperty Name="CUENTAS_EVENTOS_DETALLE" Relationship="Self.FK_CUENTAS_EVENTOS_DETALLE_CUENTAS_EVENTOS" FromRole="CUENTAS_EVENTOS" ToRole="CUENTAS_EVENTOS_DETALLE" />
+        </EntityType>
+        <EntityType Name="CUENTAS_EVENTOS_DETALLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CUENTA_EVENTOID" Type="Int32" Nullable="false" />
+          <Property Name="CUENTAID" Type="Int32" />
+          <Property Name="MODO" Type="Int32" />
+          <NavigationProperty Name="CUENTAS" Relationship="Self.FK_CUENTAS_EVENTOS_DETALLE_CUENTAS" FromRole="CUENTAS_EVENTOS_DETALLE" ToRole="CUENTAS" />
+          <NavigationProperty Name="CUENTAS_EVENTOS" Relationship="Self.FK_CUENTAS_EVENTOS_DETALLE_CUENTAS_EVENTOS" FromRole="CUENTAS_EVENTOS_DETALLE" ToRole="CUENTAS_EVENTOS" />
+        </EntityType>
+        <EntityType Name="CUENTAS_ORIGEN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CUENTAS_CLASIFICACION" Relationship="Self.FK_CUENTAS_CLASIFICACION_CUENTAS_ORIGEN" FromRole="CUENTAS_ORIGEN" ToRole="CUENTAS_CLASIFICACION" />
+        </EntityType>
+        <EntityType Name="EMPRESAS_GENERAL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="RNC" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="TEL1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="TEL2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FAX" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CORREO1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CORREO2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SUBBARRIOID" Type="Int32" />
+          <Property Name="DIRECCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGOPOSTAL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="Boolean" />
+          <Property Name="EMPRESAS_TIPOID" Type="Int32" />
+          <NavigationProperty Name="EMPRESAS_TIPO" Relationship="Self.FK_EMPRESAS_GENERAL_EMPRESAS_TIPO" FromRole="EMPRESAS_GENERAL" ToRole="EMPRESAS_TIPO" />
+        </EntityType>
+        <EntityType Name="EMPRESAS_TIPO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="COMPANIA" Relationship="Self.FK_EMPRESAS_EMPRESAS_TIPO" FromRole="EMPRESAS_TIPO" ToRole="COMPANIA" />
+          <NavigationProperty Name="EMPRESAS_GENERAL" Relationship="Self.FK_EMPRESAS_GENERAL_EMPRESAS_TIPO" FromRole="EMPRESAS_TIPO" ToRole="EMPRESAS_GENERAL" />
+        </EntityType>
+        <EntityType Name="SERVICIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PRECIO" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="NOTAS" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+          <Property Name="COSTO" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="STOCK" Type="Int32" />
+          <Property Name="CATEGORIAID" Type="Int32" />
+          <Property Name="AUTORID" Type="Int32" />
+          <Property Name="IMAGEN" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SUCURSALID" Type="Int32" />
+          <Property Name="BARCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PRECIO2" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="PRECIO3" Type="Decimal" Precision="12" Scale="2" />
+          <NavigationProperty Name="COMPANIA_SUCURSALES" Relationship="Self.FK_SERVICIOS_COMPANIA_SUCURSALES" FromRole="SERVICIOS" ToRole="COMPANIA_SUCURSALES" />
+          <NavigationProperty Name="SERVICIOS_ENTRADAS" Relationship="Self.FK_SERVICIOS_ENTRADAS_SERVICIOS" FromRole="SERVICIOS" ToRole="SERVICIOS_ENTRADAS" />
+          <NavigationProperty Name="SERVICIOS_EQUIVALENCIAS" Relationship="Self.FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS" FromRole="SERVICIOS" ToRole="SERVICIOS_EQUIVALENCIAS" />
+          <NavigationProperty Name="SERVICIOS_CATEGORIA" Relationship="Self.FK_SERVICIOS_SERVICIOS_CATEGORIA" FromRole="SERVICIOS" ToRole="SERVICIOS_CATEGORIA" />
+          <NavigationProperty Name="SERVICIOS_UNIDADES" Relationship="Self.FK_SERVICIOS_UNIDADES_SERVICIOS" FromRole="SERVICIOS" ToRole="SERVICIOS_UNIDADES" />
+          <NavigationProperty Name="VENTAS_DETALLE" Relationship="Self.FK_ventasDetalle_servicios" FromRole="SERVICIOS" ToRole="VENTAS_DETALLE" />
+        </EntityType>
+        <EntityType Name="SERVICIOS_CATEGORIA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_SERVICIOID" Type="Int32" />
+          <NavigationProperty Name="SERVICIOS" Relationship="Self.FK_SERVICIOS_SERVICIOS_CATEGORIA" FromRole="SERVICIOS_CATEGORIA" ToRole="SERVICIOS" />
+          <NavigationProperty Name="TIPOS_SERVICIOS" Relationship="Self.FK_SERVICIOS_CATEGORIA_TIPOS_SERVICIOS" FromRole="SERVICIOS_CATEGORIA" ToRole="TIPOS_SERVICIOS" />
+        </EntityType>
+        <EntityType Name="SERVICIOS_ENTRADAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="PRODUCTOID" Type="Int32" Nullable="false" />
+          <Property Name="STOCK_NEW" Type="Int32" Nullable="false" />
+          <Property Name="STOCK_OLD" Type="Int32" Nullable="false" />
+          <Property Name="PRECIO" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="PRECIO2" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="PRECIO3" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="FECHA" Type="DateTime" Precision="0" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="USERID" Type="Int32" />
+          <Property Name="ESTATUSID" Type="Int32" />
+          <NavigationProperty Name="SERVICIOS" Relationship="Self.FK_SERVICIOS_ENTRADAS_SERVICIOS" FromRole="SERVICIOS_ENTRADAS" ToRole="SERVICIOS" />
+        </EntityType>
+        <EntityType Name="SERVICIOS_EQUIVALENCIAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UNIDAD_MAESTRAID" Type="Int32" />
+          <Property Name="UNIDAD_DETALLEID" Type="Int32" />
+          <Property Name="EQUIVALENCIA" Type="Int32" />
+          <Property Name="SERVICIOID" Type="Int32" />
+          <NavigationProperty Name="SERVICIOS" Relationship="Self.FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS" FromRole="SERVICIOS_EQUIVALENCIAS" ToRole="SERVICIOS" />
+          <NavigationProperty Name="SERVICIOS_UNIDADES" Relationship="Self.FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES" FromRole="SERVICIOS_EQUIVALENCIAS" ToRole="SERVICIOS_UNIDADES" />
+          <NavigationProperty Name="SERVICIOS_UNIDADES1" Relationship="Self.FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES1" FromRole="SERVICIOS_EQUIVALENCIAS" ToRole="SERVICIOS_UNIDADES" />
+        </EntityType>
+        <EntityType Name="SERVICIOS_UNIDADES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SERVICIOID" Type="Int32" />
+          <Property Name="PRECIO" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="COSTO" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="STOCK" Type="Int32" />
+          <NavigationProperty Name="SERVICIOS" Relationship="Self.FK_SERVICIOS_UNIDADES_SERVICIOS" FromRole="SERVICIOS_UNIDADES" ToRole="SERVICIOS" />
+          <NavigationProperty Name="SERVICIOS_EQUIVALENCIAS" Relationship="Self.FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES" FromRole="SERVICIOS_UNIDADES" ToRole="SERVICIOS_EQUIVALENCIAS" />
+          <NavigationProperty Name="SERVICIOS_EQUIVALENCIAS1" Relationship="Self.FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES1" FromRole="SERVICIOS_UNIDADES" ToRole="SERVICIOS_EQUIVALENCIAS" />
+        </EntityType>
+        <EntityType Name="TIPOS_PAGOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MONTO_MIN" Type="Decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="TIPOS_SERVICIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SERVICIOS_CATEGORIA" Relationship="Self.FK_SERVICIOS_CATEGORIA_TIPOS_SERVICIOS" FromRole="TIPOS_SERVICIOS" ToRole="SERVICIOS_CATEGORIA" />
+        </EntityType>
+        <EntityType Name="TRANSACCIONES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA" Type="DateTime" Precision="3" />
+          <Property Name="MONTO_TRANS" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="MONEDAID" Type="Int32" />
+          <Property Name="CUENTAID" Type="Int32" />
+          <Property Name="BAL_ANT_CUENTA" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="USUARIOID" Type="Int32" />
+          <Property Name="TIPO" Type="Int32" />
+          <Property Name="SUCURSALID" Type="Int32" />
+          <NavigationProperty Name="COMPANIA_SUCURSALES" Relationship="Self.FK_TRANSACCIONES_COMPANIA_SUCURSALES" FromRole="TRANSACCIONES" ToRole="COMPANIA_SUCURSALES" />
+          <NavigationProperty Name="TRANSACCIONES_TIPO" Relationship="Self.FK_TRANSACCIONES_TRANSACCIONES_TIPO1" FromRole="TRANSACCIONES" ToRole="TRANSACCIONES_TIPO" />
+        </EntityType>
+        <EntityType Name="TRANSACCIONES_TIPO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="BALANCE" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="FECRECORDAR" Type="DateTime" Precision="0" />
+          <Property Name="MARCARECORDAR" Type="Boolean" />
+          <Property Name="FECULTTRANS" Type="DateTime" Precision="3" />
+          <Property Name="CUENTAID" Type="Int32" />
+          <NavigationProperty Name="CUENTAS" Relationship="Self.FK_TRANSACCIONES_TIPO_CUENTAS" FromRole="TRANSACCIONES_TIPO" ToRole="CUENTAS" />
+          <NavigationProperty Name="TRANSACCIONES" Relationship="Self.FK_TRANSACCIONES_TRANSACCIONES_TIPO1" FromRole="TRANSACCIONES_TIPO" ToRole="TRANSACCIONES" />
+        </EntityType>
+        <EntityType Name="VENTAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NUMDOC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TIPODOC" Type="Int32" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Precision="0" />
+          <Property Name="FECHAPAGADA" Type="DateTime" Precision="0" />
+          <Property Name="FECHAABONO" Type="DateTime" Precision="0" />
+          <Property Name="SUBTOTAL" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="TOTAL" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="BALANCEPENDIENTE" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="SALDOPAGADO" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="CLIENTEID" Type="Int32" />
+          <Property Name="COMENTARIOS" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ESTATUSID" Type="Int32" />
+          <Property Name="AUTORID" Type="Int32" />
+          <Property Name="CARGOS" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="DESCUENTOS" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="USERID" Type="Int32" />
+          <NavigationProperty Name="CLIENTES" Relationship="Self.FK_VENTAS_CLIENTES" FromRole="VENTAS" ToRole="CLIENTES" />
+          <NavigationProperty Name="VENTAS_DETALLE" Relationship="Self.FK_ventasDetalle_ventas" FromRole="VENTAS" ToRole="VENTAS_DETALLE" />
+        </EntityType>
+        <EntityType Name="VENTAS_DETALLE">
+          <Key>
+            <PropertyRef Name="VENTAID" />
+            <PropertyRef Name="SERVICIOID" />
+            <PropertyRef Name="CANTIDAD" />
+            <PropertyRef Name="PRECIO" />
+            <PropertyRef Name="CARGO" />
+            <PropertyRef Name="TOTAL" />
+          </Key>
+          <Property Name="VENTAID" Type="Int32" Nullable="false" />
+          <Property Name="SERVICIOID" Type="Int32" Nullable="false" />
+          <Property Name="CANTIDAD" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="PRECIO" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="CARGO" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="TOTAL" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="DESCUENTO" Type="Decimal" Precision="12" Scale="2" />
+          <NavigationProperty Name="SERVICIOS" Relationship="Self.FK_ventasDetalle_servicios" FromRole="VENTAS_DETALLE" ToRole="SERVICIOS" />
+          <NavigationProperty Name="VENTAS" Relationship="Self.FK_ventasDetalle_ventas" FromRole="VENTAS_DETALLE" ToRole="VENTAS" />
+        </EntityType>
+        <Association Name="FK_CLIENTES_COMPANIA_SUCURSALES">
+          <End Role="COMPANIA_SUCURSALES" Type="Self.COMPANIA_SUCURSALES" Multiplicity="0..1" />
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANIA_SUCURSALES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CLIENTES">
+              <PropertyRef Name="SUCURSALID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VENTAS_CLIENTES">
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="0..1" />
+          <End Role="VENTAS" Type="Self.VENTAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES">
+              <PropertyRef Name="PERSONAID" />
+            </Principal>
+            <Dependent Role="VENTAS">
+              <PropertyRef Name="CLIENTEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPRESAS_EMPRESAS_TIPO">
+          <End Role="EMPRESAS_TIPO" Type="Self.EMPRESAS_TIPO" Multiplicity="0..1" />
+          <End Role="COMPANIA" Type="Self.COMPANIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESAS_TIPO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMPANIA">
+              <PropertyRef Name="EMPRESAS_TIPOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPRESAS_SUCURSALES_EMPRESAS">
+          <End Role="COMPANIA" Type="Self.COMPANIA" Multiplicity="0..1" />
+          <End Role="COMPANIA_SUCURSALES" Type="Self.COMPANIA_SUCURSALES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANIA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMPANIA_SUCURSALES">
+              <PropertyRef Name="COMPANIAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIOS_COMPANIA_SUCURSALES">
+          <End Role="COMPANIA_SUCURSALES" Type="Self.COMPANIA_SUCURSALES" Multiplicity="0..1" />
+          <End Role="SERVICIOS" Type="Self.SERVICIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANIA_SUCURSALES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERVICIOS">
+              <PropertyRef Name="SUCURSALID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSACCIONES_COMPANIA_SUCURSALES">
+          <End Role="COMPANIA_SUCURSALES" Type="Self.COMPANIA_SUCURSALES" Multiplicity="0..1" />
+          <End Role="TRANSACCIONES" Type="Self.TRANSACCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANIA_SUCURSALES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRANSACCIONES">
+              <PropertyRef Name="SUCURSALID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUENTAS_CUENTAS_CLASIFICACION">
+          <End Role="CUENTAS_CLASIFICACION" Type="Self.CUENTAS_CLASIFICACION" Multiplicity="0..1" />
+          <End Role="CUENTAS" Type="Self.CUENTAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUENTAS_CLASIFICACION">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUENTAS">
+              <PropertyRef Name="CUENTAS_CLASIFICACIONID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUENTAS_EVENTOS_DETALLE_CUENTAS">
+          <End Role="CUENTAS" Type="Self.CUENTAS" Multiplicity="0..1" />
+          <End Role="CUENTAS_EVENTOS_DETALLE" Type="Self.CUENTAS_EVENTOS_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUENTAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUENTAS_EVENTOS_DETALLE">
+              <PropertyRef Name="CUENTAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSACCIONES_TIPO_CUENTAS">
+          <End Role="CUENTAS" Type="Self.CUENTAS" Multiplicity="0..1" />
+          <End Role="TRANSACCIONES_TIPO" Type="Self.TRANSACCIONES_TIPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUENTAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRANSACCIONES_TIPO">
+              <PropertyRef Name="CUENTAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUENTAS_CLASIFICACION_CUENTAS_ORIGEN">
+          <End Role="CUENTAS_ORIGEN" Type="Self.CUENTAS_ORIGEN" Multiplicity="0..1" />
+          <End Role="CUENTAS_CLASIFICACION" Type="Self.CUENTAS_CLASIFICACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUENTAS_ORIGEN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUENTAS_CLASIFICACION">
+              <PropertyRef Name="CUENTAS_ORIGENID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUENTAS_EVENTOS_DETALLE_CUENTAS_EVENTOS">
+          <End Role="CUENTAS_EVENTOS" Type="Self.CUENTAS_EVENTOS" Multiplicity="1" />
+          <End Role="CUENTAS_EVENTOS_DETALLE" Type="Self.CUENTAS_EVENTOS_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUENTAS_EVENTOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUENTAS_EVENTOS_DETALLE">
+              <PropertyRef Name="CUENTA_EVENTOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPRESAS_GENERAL_EMPRESAS_TIPO">
+          <End Role="EMPRESAS_TIPO" Type="Self.EMPRESAS_TIPO" Multiplicity="0..1" />
+          <End Role="EMPRESAS_GENERAL" Type="Self.EMPRESAS_GENERAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESAS_TIPO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EMPRESAS_GENERAL">
+              <PropertyRef Name="EMPRESAS_TIPOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIOS_ENTRADAS_SERVICIOS">
+          <End Role="SERVICIOS" Type="Self.SERVICIOS" Multiplicity="1" />
+          <End Role="SERVICIOS_ENTRADAS" Type="Self.SERVICIOS_ENTRADAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERVICIOS_ENTRADAS">
+              <PropertyRef Name="PRODUCTOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS">
+          <End Role="SERVICIOS" Type="Self.SERVICIOS" Multiplicity="0..1" />
+          <End Role="SERVICIOS_EQUIVALENCIAS" Type="Self.SERVICIOS_EQUIVALENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERVICIOS_EQUIVALENCIAS">
+              <PropertyRef Name="SERVICIOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIOS_SERVICIOS_CATEGORIA">
+          <End Role="SERVICIOS_CATEGORIA" Type="Self.SERVICIOS_CATEGORIA" Multiplicity="0..1" />
+          <End Role="SERVICIOS" Type="Self.SERVICIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIOS_CATEGORIA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERVICIOS">
+              <PropertyRef Name="CATEGORIAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIOS_UNIDADES_SERVICIOS">
+          <End Role="SERVICIOS" Type="Self.SERVICIOS" Multiplicity="0..1" />
+          <End Role="SERVICIOS_UNIDADES" Type="Self.SERVICIOS_UNIDADES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERVICIOS_UNIDADES">
+              <PropertyRef Name="SERVICIOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ventasDetalle_servicios">
+          <End Role="SERVICIOS" Type="Self.SERVICIOS" Multiplicity="1" />
+          <End Role="VENTAS_DETALLE" Type="Self.VENTAS_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VENTAS_DETALLE">
+              <PropertyRef Name="SERVICIOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIOS_CATEGORIA_TIPOS_SERVICIOS">
+          <End Role="TIPOS_SERVICIOS" Type="Self.TIPOS_SERVICIOS" Multiplicity="0..1" />
+          <End Role="SERVICIOS_CATEGORIA" Type="Self.SERVICIOS_CATEGORIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_SERVICIOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERVICIOS_CATEGORIA">
+              <PropertyRef Name="TIPO_SERVICIOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES">
+          <End Role="SERVICIOS_UNIDADES" Type="Self.SERVICIOS_UNIDADES" Multiplicity="0..1" />
+          <End Role="SERVICIOS_EQUIVALENCIAS" Type="Self.SERVICIOS_EQUIVALENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIOS_UNIDADES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERVICIOS_EQUIVALENCIAS">
+              <PropertyRef Name="UNIDAD_MAESTRAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES1">
+          <End Role="SERVICIOS_UNIDADES" Type="Self.SERVICIOS_UNIDADES" Multiplicity="0..1" />
+          <End Role="SERVICIOS_EQUIVALENCIAS" Type="Self.SERVICIOS_EQUIVALENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIOS_UNIDADES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERVICIOS_EQUIVALENCIAS">
+              <PropertyRef Name="UNIDAD_DETALLEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSACCIONES_TRANSACCIONES_TIPO1">
+          <End Role="TRANSACCIONES_TIPO" Type="Self.TRANSACCIONES_TIPO" Multiplicity="0..1" />
+          <End Role="TRANSACCIONES" Type="Self.TRANSACCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRANSACCIONES_TIPO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRANSACCIONES">
+              <PropertyRef Name="CUENTAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ventasDetalle_ventas">
+          <End Role="VENTAS" Type="Self.VENTAS" Multiplicity="1" />
+          <End Role="VENTAS_DETALLE" Type="Self.VENTAS_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENTAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VENTAS_DETALLE">
+              <PropertyRef Name="VENTAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PosDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CARGOS" EntityType="Self.CARGOS" />
+          <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" />
+          <EntitySet Name="COMPANIA" EntityType="Self.COMPANIA" />
+          <EntitySet Name="COMPANIA_SUCURSALES" EntityType="Self.COMPANIA_SUCURSALES" />
+          <EntitySet Name="CUENTAS" EntityType="Self.CUENTAS" />
+          <EntitySet Name="CUENTAS_CLASIFICACION" EntityType="Self.CUENTAS_CLASIFICACION" />
+          <EntitySet Name="CUENTAS_EVENTOS" EntityType="Self.CUENTAS_EVENTOS" />
+          <EntitySet Name="CUENTAS_EVENTOS_DETALLE" EntityType="Self.CUENTAS_EVENTOS_DETALLE" />
+          <EntitySet Name="CUENTAS_ORIGEN" EntityType="Self.CUENTAS_ORIGEN" />
+          <EntitySet Name="EMPRESAS_GENERAL" EntityType="Self.EMPRESAS_GENERAL" />
+          <EntitySet Name="EMPRESAS_TIPO" EntityType="Self.EMPRESAS_TIPO" />
+          <EntitySet Name="SERVICIOS" EntityType="Self.SERVICIOS" />
+          <EntitySet Name="SERVICIOS_CATEGORIA" EntityType="Self.SERVICIOS_CATEGORIA" />
+          <EntitySet Name="SERVICIOS_ENTRADAS" EntityType="Self.SERVICIOS_ENTRADAS" />
+          <EntitySet Name="SERVICIOS_EQUIVALENCIAS" EntityType="Self.SERVICIOS_EQUIVALENCIAS" />
+          <EntitySet Name="SERVICIOS_UNIDADES" EntityType="Self.SERVICIOS_UNIDADES" />
+          <EntitySet Name="TIPOS_PAGOS" EntityType="Self.TIPOS_PAGOS" />
+          <EntitySet Name="TIPOS_SERVICIOS" EntityType="Self.TIPOS_SERVICIOS" />
+          <EntitySet Name="TRANSACCIONES" EntityType="Self.TRANSACCIONES" />
+          <EntitySet Name="TRANSACCIONES_TIPO" EntityType="Self.TRANSACCIONES_TIPO" />
+          <EntitySet Name="VENTAS" EntityType="Self.VENTAS" />
+          <EntitySet Name="VENTAS_DETALLE" EntityType="Self.VENTAS_DETALLE" />
+          <AssociationSet Name="FK_CLIENTES_COMPANIA_SUCURSALES" Association="Self.FK_CLIENTES_COMPANIA_SUCURSALES">
+            <End Role="COMPANIA_SUCURSALES" EntitySet="COMPANIA_SUCURSALES" />
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VENTAS_CLIENTES" Association="Self.FK_VENTAS_CLIENTES">
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+            <End Role="VENTAS" EntitySet="VENTAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPRESAS_EMPRESAS_TIPO" Association="Self.FK_EMPRESAS_EMPRESAS_TIPO">
+            <End Role="EMPRESAS_TIPO" EntitySet="EMPRESAS_TIPO" />
+            <End Role="COMPANIA" EntitySet="COMPANIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPRESAS_SUCURSALES_EMPRESAS" Association="Self.FK_EMPRESAS_SUCURSALES_EMPRESAS">
+            <End Role="COMPANIA" EntitySet="COMPANIA" />
+            <End Role="COMPANIA_SUCURSALES" EntitySet="COMPANIA_SUCURSALES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIOS_COMPANIA_SUCURSALES" Association="Self.FK_SERVICIOS_COMPANIA_SUCURSALES">
+            <End Role="COMPANIA_SUCURSALES" EntitySet="COMPANIA_SUCURSALES" />
+            <End Role="SERVICIOS" EntitySet="SERVICIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSACCIONES_COMPANIA_SUCURSALES" Association="Self.FK_TRANSACCIONES_COMPANIA_SUCURSALES">
+            <End Role="COMPANIA_SUCURSALES" EntitySet="COMPANIA_SUCURSALES" />
+            <End Role="TRANSACCIONES" EntitySet="TRANSACCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUENTAS_CUENTAS_CLASIFICACION" Association="Self.FK_CUENTAS_CUENTAS_CLASIFICACION">
+            <End Role="CUENTAS_CLASIFICACION" EntitySet="CUENTAS_CLASIFICACION" />
+            <End Role="CUENTAS" EntitySet="CUENTAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUENTAS_EVENTOS_DETALLE_CUENTAS" Association="Self.FK_CUENTAS_EVENTOS_DETALLE_CUENTAS">
+            <End Role="CUENTAS" EntitySet="CUENTAS" />
+            <End Role="CUENTAS_EVENTOS_DETALLE" EntitySet="CUENTAS_EVENTOS_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSACCIONES_TIPO_CUENTAS" Association="Self.FK_TRANSACCIONES_TIPO_CUENTAS">
+            <End Role="CUENTAS" EntitySet="CUENTAS" />
+            <End Role="TRANSACCIONES_TIPO" EntitySet="TRANSACCIONES_TIPO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUENTAS_CLASIFICACION_CUENTAS_ORIGEN" Association="Self.FK_CUENTAS_CLASIFICACION_CUENTAS_ORIGEN">
+            <End Role="CUENTAS_ORIGEN" EntitySet="CUENTAS_ORIGEN" />
+            <End Role="CUENTAS_CLASIFICACION" EntitySet="CUENTAS_CLASIFICACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUENTAS_EVENTOS_DETALLE_CUENTAS_EVENTOS" Association="Self.FK_CUENTAS_EVENTOS_DETALLE_CUENTAS_EVENTOS">
+            <End Role="CUENTAS_EVENTOS" EntitySet="CUENTAS_EVENTOS" />
+            <End Role="CUENTAS_EVENTOS_DETALLE" EntitySet="CUENTAS_EVENTOS_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPRESAS_GENERAL_EMPRESAS_TIPO" Association="Self.FK_EMPRESAS_GENERAL_EMPRESAS_TIPO">
+            <End Role="EMPRESAS_TIPO" EntitySet="EMPRESAS_TIPO" />
+            <End Role="EMPRESAS_GENERAL" EntitySet="EMPRESAS_GENERAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIOS_ENTRADAS_SERVICIOS" Association="Self.FK_SERVICIOS_ENTRADAS_SERVICIOS">
+            <End Role="SERVICIOS" EntitySet="SERVICIOS" />
+            <End Role="SERVICIOS_ENTRADAS" EntitySet="SERVICIOS_ENTRADAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS" Association="Self.FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS">
+            <End Role="SERVICIOS" EntitySet="SERVICIOS" />
+            <End Role="SERVICIOS_EQUIVALENCIAS" EntitySet="SERVICIOS_EQUIVALENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIOS_SERVICIOS_CATEGORIA" Association="Self.FK_SERVICIOS_SERVICIOS_CATEGORIA">
+            <End Role="SERVICIOS_CATEGORIA" EntitySet="SERVICIOS_CATEGORIA" />
+            <End Role="SERVICIOS" EntitySet="SERVICIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIOS_UNIDADES_SERVICIOS" Association="Self.FK_SERVICIOS_UNIDADES_SERVICIOS">
+            <End Role="SERVICIOS" EntitySet="SERVICIOS" />
+            <End Role="SERVICIOS_UNIDADES" EntitySet="SERVICIOS_UNIDADES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ventasDetalle_servicios" Association="Self.FK_ventasDetalle_servicios">
+            <End Role="SERVICIOS" EntitySet="SERVICIOS" />
+            <End Role="VENTAS_DETALLE" EntitySet="VENTAS_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIOS_CATEGORIA_TIPOS_SERVICIOS" Association="Self.FK_SERVICIOS_CATEGORIA_TIPOS_SERVICIOS">
+            <End Role="TIPOS_SERVICIOS" EntitySet="TIPOS_SERVICIOS" />
+            <End Role="SERVICIOS_CATEGORIA" EntitySet="SERVICIOS_CATEGORIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES" Association="Self.FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES">
+            <End Role="SERVICIOS_UNIDADES" EntitySet="SERVICIOS_UNIDADES" />
+            <End Role="SERVICIOS_EQUIVALENCIAS" EntitySet="SERVICIOS_EQUIVALENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES1" Association="Self.FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES1">
+            <End Role="SERVICIOS_UNIDADES" EntitySet="SERVICIOS_UNIDADES" />
+            <End Role="SERVICIOS_EQUIVALENCIAS" EntitySet="SERVICIOS_EQUIVALENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSACCIONES_TRANSACCIONES_TIPO1" Association="Self.FK_TRANSACCIONES_TRANSACCIONES_TIPO1">
+            <End Role="TRANSACCIONES_TIPO" EntitySet="TRANSACCIONES_TIPO" />
+            <End Role="TRANSACCIONES" EntitySet="TRANSACCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ventasDetalle_ventas" Association="Self.FK_ventasDetalle_ventas">
+            <End Role="VENTAS" EntitySet="VENTAS" />
+            <End Role="VENTAS_DETALLE" EntitySet="VENTAS_DETALLE" />
+          </AssociationSet>
+          <FunctionImport Name="GetEquivalencias" ReturnType="Collection(PosDbModel.GetEquivalencias_Result)">
+            <Parameter Name="ServicioID" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetEventosContablesDetalle" ReturnType="Collection(PosDbModel.GetEventosContablesDetalle_Result)">
+            <Parameter Name="EventoID" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetPresentaciones" ReturnType="Collection(PosDbModel.GetPresentaciones_Result)">
+            <Parameter Name="ServicioID" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetTransacciones" ReturnType="Collection(PosDbModel.GetTransacciones_Result)">
+            <Parameter Name="SucursalID" Mode="In" Type="Int32" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetVentaDetalle">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetVentas" ReturnType="Collection(PosDbModel.GetVentas_Result)">
+            <Parameter Name="autor" Mode="In" Type="Int32" />
+            <Parameter Name="desde" Mode="In" Type="DateTime" />
+            <Parameter Name="hasta" Mode="In" Type="DateTime" />
+            <Parameter Name="idventa" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetVentasDetalle" ReturnType="Collection(PosDbModel.GetVentasDetalle_Result)">
+            <Parameter Name="idventa" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListCategoriaServicios" ReturnType="Collection(PosDbModel.ListCategoriaServicios_Result)">
+            <Parameter Name="dec" Mode="In" Type="Int16" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListClientes" ReturnType="Collection(PosDbModel.ListClientes_Result)">
+            <Parameter Name="autor" Mode="In" Type="Int32" />
+            <Parameter Name="sucursal" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListCuentas" ReturnType="Collection(PosDbModel.ListCuentas_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListCUENTASContables" ReturnType="Collection(PosDbModel.ListCUENTASContables_Result)">
+            <Parameter Name="AutorID" Mode="In" Type="Int32" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListCuentasOrigen" ReturnType="Collection(PosDbModel.ListCuentasOrigen_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListEventosContables" ReturnType="Collection(PosDbModel.ListEventosContables_Result)">
+            <Parameter Name="autor" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListProductos" ReturnType="Collection(PosDbModel.ListProductos_Result)">
+            <Parameter Name="autor" Mode="In" Type="Int32" />
+            <Parameter Name="SUCURSALID" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListProductos2" ReturnType="Collection(PosDbModel.ListProductos2_Result)">
+            <Parameter Name="autor" Mode="In" Type="Int32" />
+            <Parameter Name="SUCURSALID" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListServicios" ReturnType="Collection(PosDbModel.ListServicios_Result)">
+            <Parameter Name="autor" Mode="In" Type="Int32" />
+            <Parameter Name="stock" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListTiposEmpresas" ReturnType="Collection(PosDbModel.ListTiposEmpresas_Result)">
+            <Parameter Name="dec" Mode="In" Type="Int16" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListTrans" ReturnType="Collection(PosDbModel.ListTrans_Result)">
+            <Parameter Name="SucursalID" Mode="In" Type="Int32" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListTransacciones" ReturnType="Collection(PosDbModel.ListTransacciones_Result)">
+            <Parameter Name="SucursalID" Mode="In" Type="Int32" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListTransacciones2" ReturnType="Collection(PosDbModel.ListTransacciones2_Result)">
+            <Parameter Name="SucursalID" Mode="In" Type="Int32" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListTransaccionesTipo" ReturnType="Collection(PosDbModel.ListTransaccionesTipo_Result)">
+            <Parameter Name="autor" Mode="In" Type="Int32" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetEquivalencias_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="UNIDAD_MAESTRAID" Nullable="true" />
+          <Property Type="Int32" Name="UNIDAD_DETALLEID" Nullable="true" />
+          <Property Type="Int32" Name="EQUIVALENCIA" Nullable="true" />
+          <Property Type="Int32" Name="SERVICIOID" Nullable="true" />
+          <Property Type="String" Name="NOMBSERVICIO" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NOMBMAESTRA" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NOMBDETALLE" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetEventosContablesDetalle_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CUENTA_EVENTOID" Nullable="false" />
+          <Property Type="Int32" Name="CUENTAID" Nullable="true" />
+          <Property Type="Int32" Name="MODO" Nullable="true" />
+          <Property Type="String" Name="MODOAFECTADO" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="NOMBCUENTA" Nullable="true" MaxLength="103" />
+        </ComplexType>
+        <ComplexType Name="GetPresentaciones_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CODIGO" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="SERVICIOID" Nullable="true" />
+          <Property Type="Decimal" Name="PRECIO" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="COSTO" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Int32" Name="STOCK" Nullable="true" />
+          <Property Type="String" Name="NOMBSERVICIO" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetTransacciones_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="FECHA" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="MONTO_TRANS" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Int32" Name="MONEDAID" Nullable="true" />
+          <Property Type="Int32" Name="CUENTAID" Nullable="true" />
+          <Property Type="Decimal" Name="BAL_ANT_CUENTA" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Int32" Name="USUARIOID" Nullable="true" />
+          <Property Type="Int32" Name="TIPO" Nullable="true" />
+          <Property Type="Int32" Name="SUCURSALID" Nullable="true" />
+          <Property Type="String" Name="TIPOS" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="CUENTA" Nullable="true" MaxLength="103" />
+        </ComplexType>
+        <ComplexType Name="GetVentas_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="101" />
+          <Property Type="DateTime" Name="fecha" Nullable="true" Precision="16" />
+          <Property Type="DateTime" Name="fechaPagada" Nullable="true" Precision="16" />
+          <Property Type="DateTime" Name="fechaAbono" Nullable="true" Precision="16" />
+          <Property Type="Decimal" Name="subTotal" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="cargos" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="descuento" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="total" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="balancePendiente" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="saldoPagado" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="String" Name="estatus" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="101" />
+        </ComplexType>
+        <ComplexType Name="GetVentasDetalle_Result">
+          <Property Type="Int32" Name="VENTAID" Nullable="false" />
+          <Property Type="Int32" Name="SERVICIOID" Nullable="false" />
+          <Property Type="Decimal" Name="CANTIDAD" Nullable="false" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="PRECIO" Nullable="false" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="CARGO" Nullable="false" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="TOTAL" Nullable="false" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="DESCUENTO" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="String" Name="CODSERVICIO" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="NOMBSERVICIO" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ListCategoriaServicios_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CODIGO" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TIPO_SERVICIOID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ListClientes_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Correo" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Gastado" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="Ganado" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="Deuda" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="Credito" Nullable="true" Precision="12" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ListCuentas_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CODIGO" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="BALANCE" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Int32" Name="CUENTAS_ORIGENID" Nullable="true" />
+          <Property Type="String" Name="CUENTAS_ORIGENC" Nullable="true" MaxLength="55" />
+        </ComplexType>
+        <ComplexType Name="ListCUENTASContables_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CODIGO" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="BALACT" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="DateTime" Name="FECULTTRANS" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CUENTAS_CLASIFICACIONID" Nullable="true" />
+          <Property Type="Int32" Name="AUTORID" Nullable="true" />
+          <Property Type="String" Name="CATEGORIA" Nullable="true" MaxLength="103" />
+          <Property Type="String" Name="CUENTAS_ORIGENC" Nullable="true" MaxLength="55" />
+        </ComplexType>
+        <ComplexType Name="ListCuentasOrigen_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CODIGO" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ListEventosContables_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" />
+          <Property Type="Boolean" Name="ESTATUS" Nullable="true" />
+          <Property Type="String" Name="CODIGO" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="AUTORID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ListProductos_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CODIGO" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="PRECIO" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="String" Name="NOTAS" Nullable="true" MaxLength="450" />
+          <Property Type="Decimal" Name="COSTO" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Int32" Name="STOCK" Nullable="true" />
+          <Property Type="Int32" Name="CATEGORIAID" Nullable="true" />
+          <Property Type="Int32" Name="AUTORID" Nullable="true" />
+          <Property Type="String" Name="IMAGEN" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="SUCURSALID" Nullable="true" />
+          <Property Type="String" Name="BARCODE" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="PRECIO2" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="PRECIO3" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="String" Name="CATEGORIA" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ListProductos2_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CODIGO" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="PRECIO" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="String" Name="NOTAS" Nullable="true" MaxLength="450" />
+          <Property Type="Decimal" Name="COSTO" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Int32" Name="STOCK" Nullable="true" />
+          <Property Type="Int32" Name="CATEGORIAID" Nullable="true" />
+          <Property Type="Int32" Name="AUTORID" Nullable="true" />
+          <Property Type="String" Name="IMAGEN" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="SUCURSALID" Nullable="true" />
+          <Property Type="String" Name="BARCODE" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="PRECIO2" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="PRECIO3" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="String" Name="CATEGORIA" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ListServicios_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CODIGO" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="PRECIO" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="String" Name="NOTAS" Nullable="true" MaxLength="450" />
+          <Property Type="Decimal" Name="COSTO" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Int32" Name="STOCK" Nullable="true" />
+          <Property Type="Int32" Name="CATEGORIAID" Nullable="true" />
+          <Property Type="Int32" Name="AUTORID" Nullable="true" />
+          <Property Type="String" Name="IMAGEN" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="SUCURSALID" Nullable="true" />
+          <Property Type="String" Name="BARCODE" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="PRECIO2" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="PRECIO3" Nullable="true" Precision="12" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ListTiposEmpresas_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CODIGO" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="ListTrans_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="FECHA" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="MONTO_TRANS" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Int32" Name="MONEDAID" Nullable="true" />
+          <Property Type="Int32" Name="CUENTAID" Nullable="true" />
+          <Property Type="Decimal" Name="BAL_ANT_CUENTA" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Int32" Name="USUARIOID" Nullable="true" />
+          <Property Type="Int32" Name="TIPO" Nullable="true" />
+          <Property Type="Int32" Name="SUCURSALID" Nullable="true" />
+          <Property Type="String" Name="CUENTA" Nullable="true" MaxLength="103" />
+        </ComplexType>
+        <ComplexType Name="ListTransacciones_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="FECHA" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="MONTO_TRANS" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Int32" Name="MONEDAID" Nullable="true" />
+          <Property Type="Int32" Name="CUENTAID" Nullable="true" />
+          <Property Type="Decimal" Name="BAL_ANT_CUENTA" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Int32" Name="USUARIOID" Nullable="true" />
+          <Property Type="Int32" Name="TIPO" Nullable="true" />
+          <Property Type="Int32" Name="SUCURSALID" Nullable="true" />
+          <Property Type="String" Name="CUENTA" Nullable="true" MaxLength="103" />
+        </ComplexType>
+        <ComplexType Name="ListTransacciones2_Result">
+          <Property Type="String" Name="Tipo" Nullable="false" MaxLength="11" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CUENTA" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="BalanceAnterior" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="BalanceTransaccion" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="ListTransaccionesTipo_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CODIGO" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="BALANCE" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="DateTime" Name="FECRECORDAR" Nullable="true" />
+          <Property Type="Boolean" Name="MARCARECORDAR" Nullable="true" />
+          <Property Type="DateTime" Name="FECULTTRANS" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CUENTAID" Nullable="true" />
+          <Property Type="String" Name="MOTIVO" Nullable="true" MaxLength="103" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PosDbModelStoreContainer" CdmEntityContainer="PosDbEntities">
+          <EntitySetMapping Name="CARGOS">
+            <EntityTypeMapping TypeName="PosDbModel.CARGOS">
+              <MappingFragment StoreEntitySet="CARGOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTES">
+            <EntityTypeMapping TypeName="PosDbModel.CLIENTES">
+              <MappingFragment StoreEntitySet="CLIENTES">
+                <ScalarProperty Name="PERSONAID" ColumnName="PERSONAID" />
+                <ScalarProperty Name="GASTADO" ColumnName="GASTADO" />
+                <ScalarProperty Name="ADEUDADO" ColumnName="ADEUDADO" />
+                <ScalarProperty Name="GANADO" ColumnName="GANADO" />
+                <ScalarProperty Name="CREDITO" ColumnName="CREDITO" />
+                <ScalarProperty Name="SUCURSALID" ColumnName="SUCURSALID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPANIA">
+            <EntityTypeMapping TypeName="PosDbModel.COMPANIA">
+              <MappingFragment StoreEntitySet="COMPANIA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="TEL1" ColumnName="TEL1" />
+                <ScalarProperty Name="TEL2" ColumnName="TEL2" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+                <ScalarProperty Name="CORREO1" ColumnName="CORREO1" />
+                <ScalarProperty Name="CORREO2" ColumnName="CORREO2" />
+                <ScalarProperty Name="SUBBARRIOID" ColumnName="SUBBARRIOID" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="CODIGOPOSTAL" ColumnName="CODIGOPOSTAL" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+                <ScalarProperty Name="EMPRESAS_TIPOID" ColumnName="EMPRESAS_TIPOID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPANIA_SUCURSALES">
+            <EntityTypeMapping TypeName="PosDbModel.COMPANIA_SUCURSALES">
+              <MappingFragment StoreEntitySet="COMPANIA_SUCURSALES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="TEL1" ColumnName="TEL1" />
+                <ScalarProperty Name="TEL2" ColumnName="TEL2" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+                <ScalarProperty Name="CORREO1" ColumnName="CORREO1" />
+                <ScalarProperty Name="CORREO2" ColumnName="CORREO2" />
+                <ScalarProperty Name="SUBBARRIOID" ColumnName="SUBBARRIOID" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="CODIGOPOSTAL" ColumnName="CODIGOPOSTAL" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="COMPANIAID" ColumnName="COMPANIAID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUENTAS">
+            <EntityTypeMapping TypeName="PosDbModel.CUENTAS">
+              <MappingFragment StoreEntitySet="CUENTAS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="BALACT" ColumnName="BALACT" />
+                <ScalarProperty Name="FECULTTRANS" ColumnName="FECULTTRANS" />
+                <ScalarProperty Name="CUENTAS_CLASIFICACIONID" ColumnName="CUENTAS_CLASIFICACIONID" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUENTAS_CLASIFICACION">
+            <EntityTypeMapping TypeName="PosDbModel.CUENTAS_CLASIFICACION">
+              <MappingFragment StoreEntitySet="CUENTAS_CLASIFICACION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="BALANCE" ColumnName="BALANCE" />
+                <ScalarProperty Name="CUENTAS_ORIGENID" ColumnName="CUENTAS_ORIGENID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUENTAS_EVENTOS">
+            <EntityTypeMapping TypeName="PosDbModel.CUENTAS_EVENTOS">
+              <MappingFragment StoreEntitySet="CUENTAS_EVENTOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUENTAS_EVENTOS_DETALLE">
+            <EntityTypeMapping TypeName="PosDbModel.CUENTAS_EVENTOS_DETALLE">
+              <MappingFragment StoreEntitySet="CUENTAS_EVENTOS_DETALLE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CUENTA_EVENTOID" ColumnName="CUENTA_EVENTOID" />
+                <ScalarProperty Name="CUENTAID" ColumnName="CUENTAID" />
+                <ScalarProperty Name="MODO" ColumnName="MODO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUENTAS_ORIGEN">
+            <EntityTypeMapping TypeName="PosDbModel.CUENTAS_ORIGEN">
+              <MappingFragment StoreEntitySet="CUENTAS_ORIGEN">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPRESAS_GENERAL">
+            <EntityTypeMapping TypeName="PosDbModel.EMPRESAS_GENERAL">
+              <MappingFragment StoreEntitySet="EMPRESAS_GENERAL">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="TEL1" ColumnName="TEL1" />
+                <ScalarProperty Name="TEL2" ColumnName="TEL2" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+                <ScalarProperty Name="CORREO1" ColumnName="CORREO1" />
+                <ScalarProperty Name="CORREO2" ColumnName="CORREO2" />
+                <ScalarProperty Name="SUBBARRIOID" ColumnName="SUBBARRIOID" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="CODIGOPOSTAL" ColumnName="CODIGOPOSTAL" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="EMPRESAS_TIPOID" ColumnName="EMPRESAS_TIPOID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPRESAS_TIPO">
+            <EntityTypeMapping TypeName="PosDbModel.EMPRESAS_TIPO">
+              <MappingFragment StoreEntitySet="EMPRESAS_TIPO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICIOS">
+            <EntityTypeMapping TypeName="PosDbModel.SERVICIOS">
+              <MappingFragment StoreEntitySet="SERVICIOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="NOTAS" ColumnName="NOTAS" />
+                <ScalarProperty Name="COSTO" ColumnName="COSTO" />
+                <ScalarProperty Name="STOCK" ColumnName="STOCK" />
+                <ScalarProperty Name="CATEGORIAID" ColumnName="CATEGORIAID" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+                <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+                <ScalarProperty Name="SUCURSALID" ColumnName="SUCURSALID" />
+                <ScalarProperty Name="BARCODE" ColumnName="BARCODE" />
+                <ScalarProperty Name="PRECIO2" ColumnName="PRECIO2" />
+                <ScalarProperty Name="PRECIO3" ColumnName="PRECIO3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICIOS_CATEGORIA">
+            <EntityTypeMapping TypeName="PosDbModel.SERVICIOS_CATEGORIA">
+              <MappingFragment StoreEntitySet="SERVICIOS_CATEGORIA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="TIPO_SERVICIOID" ColumnName="TIPO_SERVICIOID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICIOS_ENTRADAS">
+            <EntityTypeMapping TypeName="PosDbModel.SERVICIOS_ENTRADAS">
+              <MappingFragment StoreEntitySet="SERVICIOS_ENTRADAS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PRODUCTOID" ColumnName="PRODUCTOID" />
+                <ScalarProperty Name="STOCK_NEW" ColumnName="STOCK_NEW" />
+                <ScalarProperty Name="STOCK_OLD" ColumnName="STOCK_OLD" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="PRECIO2" ColumnName="PRECIO2" />
+                <ScalarProperty Name="PRECIO3" ColumnName="PRECIO3" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="ESTATUSID" ColumnName="ESTATUSID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICIOS_EQUIVALENCIAS">
+            <EntityTypeMapping TypeName="PosDbModel.SERVICIOS_EQUIVALENCIAS">
+              <MappingFragment StoreEntitySet="SERVICIOS_EQUIVALENCIAS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UNIDAD_MAESTRAID" ColumnName="UNIDAD_MAESTRAID" />
+                <ScalarProperty Name="UNIDAD_DETALLEID" ColumnName="UNIDAD_DETALLEID" />
+                <ScalarProperty Name="EQUIVALENCIA" ColumnName="EQUIVALENCIA" />
+                <ScalarProperty Name="SERVICIOID" ColumnName="SERVICIOID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICIOS_UNIDADES">
+            <EntityTypeMapping TypeName="PosDbModel.SERVICIOS_UNIDADES">
+              <MappingFragment StoreEntitySet="SERVICIOS_UNIDADES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="SERVICIOID" ColumnName="SERVICIOID" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="COSTO" ColumnName="COSTO" />
+                <ScalarProperty Name="STOCK" ColumnName="STOCK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOS_PAGOS">
+            <EntityTypeMapping TypeName="PosDbModel.TIPOS_PAGOS">
+              <MappingFragment StoreEntitySet="TIPOS_PAGOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="MONTO_MIN" ColumnName="MONTO_MIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOS_SERVICIOS">
+            <EntityTypeMapping TypeName="PosDbModel.TIPOS_SERVICIOS">
+              <MappingFragment StoreEntitySet="TIPOS_SERVICIOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRANSACCIONES">
+            <EntityTypeMapping TypeName="PosDbModel.TRANSACCIONES">
+              <MappingFragment StoreEntitySet="TRANSACCIONES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="MONTO_TRANS" ColumnName="MONTO_TRANS" />
+                <ScalarProperty Name="MONEDAID" ColumnName="MONEDAID" />
+                <ScalarProperty Name="CUENTAID" ColumnName="CUENTAID" />
+                <ScalarProperty Name="BAL_ANT_CUENTA" ColumnName="BAL_ANT_CUENTA" />
+                <ScalarProperty Name="USUARIOID" ColumnName="USUARIOID" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="SUCURSALID" ColumnName="SUCURSALID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRANSACCIONES_TIPO">
+            <EntityTypeMapping TypeName="PosDbModel.TRANSACCIONES_TIPO">
+              <MappingFragment StoreEntitySet="TRANSACCIONES_TIPO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="BALANCE" ColumnName="BALANCE" />
+                <ScalarProperty Name="FECRECORDAR" ColumnName="FECRECORDAR" />
+                <ScalarProperty Name="MARCARECORDAR" ColumnName="MARCARECORDAR" />
+                <ScalarProperty Name="FECULTTRANS" ColumnName="FECULTTRANS" />
+                <ScalarProperty Name="CUENTAID" ColumnName="CUENTAID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VENTAS">
+            <EntityTypeMapping TypeName="PosDbModel.VENTAS">
+              <MappingFragment StoreEntitySet="VENTAS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NUMDOC" ColumnName="NUMDOC" />
+                <ScalarProperty Name="TIPODOC" ColumnName="TIPODOC" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="FECHAPAGADA" ColumnName="FECHAPAGADA" />
+                <ScalarProperty Name="FECHAABONO" ColumnName="FECHAABONO" />
+                <ScalarProperty Name="SUBTOTAL" ColumnName="SUBTOTAL" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="BALANCEPENDIENTE" ColumnName="BALANCEPENDIENTE" />
+                <ScalarProperty Name="SALDOPAGADO" ColumnName="SALDOPAGADO" />
+                <ScalarProperty Name="CLIENTEID" ColumnName="CLIENTEID" />
+                <ScalarProperty Name="COMENTARIOS" ColumnName="COMENTARIOS" />
+                <ScalarProperty Name="ESTATUSID" ColumnName="ESTATUSID" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+                <ScalarProperty Name="CARGOS" ColumnName="CARGOS" />
+                <ScalarProperty Name="DESCUENTOS" ColumnName="DESCUENTOS" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VENTAS_DETALLE">
+            <EntityTypeMapping TypeName="PosDbModel.VENTAS_DETALLE">
+              <MappingFragment StoreEntitySet="VENTAS_DETALLE">
+                <ScalarProperty Name="VENTAID" ColumnName="VENTAID" />
+                <ScalarProperty Name="SERVICIOID" ColumnName="SERVICIOID" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="CARGO" ColumnName="CARGO" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="DESCUENTO" ColumnName="DESCUENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetEquivalencias" FunctionName="PosDbModel.Store.GetEquivalencias">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.GetEquivalencias_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UNIDAD_MAESTRAID" ColumnName="UNIDAD_MAESTRAID" />
+                <ScalarProperty Name="UNIDAD_DETALLEID" ColumnName="UNIDAD_DETALLEID" />
+                <ScalarProperty Name="EQUIVALENCIA" ColumnName="EQUIVALENCIA" />
+                <ScalarProperty Name="SERVICIOID" ColumnName="SERVICIOID" />
+                <ScalarProperty Name="NOMBSERVICIO" ColumnName="NOMBSERVICIO" />
+                <ScalarProperty Name="NOMBMAESTRA" ColumnName="NOMBMAESTRA" />
+                <ScalarProperty Name="NOMBDETALLE" ColumnName="NOMBDETALLE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEventosContablesDetalle" FunctionName="PosDbModel.Store.GetEventosContablesDetalle">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.GetEventosContablesDetalle_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CUENTA_EVENTOID" ColumnName="CUENTA_EVENTOID" />
+                <ScalarProperty Name="CUENTAID" ColumnName="CUENTAID" />
+                <ScalarProperty Name="MODO" ColumnName="MODO" />
+                <ScalarProperty Name="MODOAFECTADO" ColumnName="MODOAFECTADO" />
+                <ScalarProperty Name="NOMBCUENTA" ColumnName="NOMBCUENTA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPresentaciones" FunctionName="PosDbModel.Store.GetPresentaciones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.GetPresentaciones_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="SERVICIOID" ColumnName="SERVICIOID" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="COSTO" ColumnName="COSTO" />
+                <ScalarProperty Name="STOCK" ColumnName="STOCK" />
+                <ScalarProperty Name="NOMBSERVICIO" ColumnName="NOMBSERVICIO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetTransacciones" FunctionName="PosDbModel.Store.GetTransacciones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.GetTransacciones_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="MONTO_TRANS" ColumnName="MONTO_TRANS" />
+                <ScalarProperty Name="MONEDAID" ColumnName="MONEDAID" />
+                <ScalarProperty Name="CUENTAID" ColumnName="CUENTAID" />
+                <ScalarProperty Name="BAL_ANT_CUENTA" ColumnName="BAL_ANT_CUENTA" />
+                <ScalarProperty Name="USUARIOID" ColumnName="USUARIOID" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="SUCURSALID" ColumnName="SUCURSALID" />
+                <ScalarProperty Name="TIPOS" ColumnName="TIPOS" />
+                <ScalarProperty Name="CUENTA" ColumnName="CUENTA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetVentaDetalle" FunctionName="PosDbModel.Store.GetVentaDetalle" />
+          <FunctionImportMapping FunctionImportName="GetVentas" FunctionName="PosDbModel.Store.GetVentas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.GetVentas_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="fechaPagada" ColumnName="fechaPagada" />
+                <ScalarProperty Name="fechaAbono" ColumnName="fechaAbono" />
+                <ScalarProperty Name="subTotal" ColumnName="subTotal" />
+                <ScalarProperty Name="cargos" ColumnName="cargos" />
+                <ScalarProperty Name="descuento" ColumnName="descuento" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="balancePendiente" ColumnName="balancePendiente" />
+                <ScalarProperty Name="saldoPagado" ColumnName="saldoPagado" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetVentasDetalle" FunctionName="PosDbModel.Store.GetVentasDetalle">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.GetVentasDetalle_Result">
+                <ScalarProperty Name="VENTAID" ColumnName="VENTAID" />
+                <ScalarProperty Name="SERVICIOID" ColumnName="SERVICIOID" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="CARGO" ColumnName="CARGO" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="DESCUENTO" ColumnName="DESCUENTO" />
+                <ScalarProperty Name="CODSERVICIO" ColumnName="CODSERVICIO" />
+                <ScalarProperty Name="NOMBSERVICIO" ColumnName="NOMBSERVICIO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListCategoriaServicios" FunctionName="PosDbModel.Store.ListCategoriaServicios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.ListCategoriaServicios_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="TIPO_SERVICIOID" ColumnName="TIPO_SERVICIOID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListClientes" FunctionName="PosDbModel.Store.ListClientes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.ListClientes_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Gastado" ColumnName="Gastado" />
+                <ScalarProperty Name="Ganado" ColumnName="Ganado" />
+                <ScalarProperty Name="Deuda" ColumnName="Deuda" />
+                <ScalarProperty Name="Credito" ColumnName="Credito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListCuentas" FunctionName="PosDbModel.Store.ListCuentas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.ListCuentas_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="BALANCE" ColumnName="BALANCE" />
+                <ScalarProperty Name="CUENTAS_ORIGENID" ColumnName="CUENTAS_ORIGENID" />
+                <ScalarProperty Name="CUENTAS_ORIGENC" ColumnName="CUENTAS_ORIGENC" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListCUENTASContables" FunctionName="PosDbModel.Store.ListCUENTASContables">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.ListCUENTASContables_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="BALACT" ColumnName="BALACT" />
+                <ScalarProperty Name="FECULTTRANS" ColumnName="FECULTTRANS" />
+                <ScalarProperty Name="CUENTAS_CLASIFICACIONID" ColumnName="CUENTAS_CLASIFICACIONID" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+                <ScalarProperty Name="CATEGORIA" ColumnName="CATEGORIA" />
+                <ScalarProperty Name="CUENTAS_ORIGENC" ColumnName="CUENTAS_ORIGENC" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListCuentasOrigen" FunctionName="PosDbModel.Store.ListCuentasOrigen">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.ListCuentasOrigen_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListEventosContables" FunctionName="PosDbModel.Store.ListEventosContables">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.ListEventosContables_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListProductos" FunctionName="PosDbModel.Store.ListProductos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.ListProductos_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="NOTAS" ColumnName="NOTAS" />
+                <ScalarProperty Name="COSTO" ColumnName="COSTO" />
+                <ScalarProperty Name="STOCK" ColumnName="STOCK" />
+                <ScalarProperty Name="CATEGORIAID" ColumnName="CATEGORIAID" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+                <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+                <ScalarProperty Name="SUCURSALID" ColumnName="SUCURSALID" />
+                <ScalarProperty Name="BARCODE" ColumnName="BARCODE" />
+                <ScalarProperty Name="PRECIO2" ColumnName="PRECIO2" />
+                <ScalarProperty Name="PRECIO3" ColumnName="PRECIO3" />
+                <ScalarProperty Name="CATEGORIA" ColumnName="CATEGORIA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListProductos2" FunctionName="PosDbModel.Store.ListProductos2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.ListProductos2_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="NOTAS" ColumnName="NOTAS" />
+                <ScalarProperty Name="COSTO" ColumnName="COSTO" />
+                <ScalarProperty Name="STOCK" ColumnName="STOCK" />
+                <ScalarProperty Name="CATEGORIAID" ColumnName="CATEGORIAID" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+                <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+                <ScalarProperty Name="SUCURSALID" ColumnName="SUCURSALID" />
+                <ScalarProperty Name="BARCODE" ColumnName="BARCODE" />
+                <ScalarProperty Name="PRECIO2" ColumnName="PRECIO2" />
+                <ScalarProperty Name="PRECIO3" ColumnName="PRECIO3" />
+                <ScalarProperty Name="CATEGORIA" ColumnName="CATEGORIA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListServicios" FunctionName="PosDbModel.Store.ListServicios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.ListServicios_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="NOTAS" ColumnName="NOTAS" />
+                <ScalarProperty Name="COSTO" ColumnName="COSTO" />
+                <ScalarProperty Name="STOCK" ColumnName="STOCK" />
+                <ScalarProperty Name="CATEGORIAID" ColumnName="CATEGORIAID" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+                <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+                <ScalarProperty Name="SUCURSALID" ColumnName="SUCURSALID" />
+                <ScalarProperty Name="BARCODE" ColumnName="BARCODE" />
+                <ScalarProperty Name="PRECIO2" ColumnName="PRECIO2" />
+                <ScalarProperty Name="PRECIO3" ColumnName="PRECIO3" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListTiposEmpresas" FunctionName="PosDbModel.Store.ListTiposEmpresas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.ListTiposEmpresas_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListTrans" FunctionName="PosDbModel.Store.ListTrans">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.ListTrans_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="MONTO_TRANS" ColumnName="MONTO_TRANS" />
+                <ScalarProperty Name="MONEDAID" ColumnName="MONEDAID" />
+                <ScalarProperty Name="CUENTAID" ColumnName="CUENTAID" />
+                <ScalarProperty Name="BAL_ANT_CUENTA" ColumnName="BAL_ANT_CUENTA" />
+                <ScalarProperty Name="USUARIOID" ColumnName="USUARIOID" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="SUCURSALID" ColumnName="SUCURSALID" />
+                <ScalarProperty Name="CUENTA" ColumnName="CUENTA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListTransacciones" FunctionName="PosDbModel.Store.ListTransacciones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.ListTransacciones_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="MONTO_TRANS" ColumnName="MONTO_TRANS" />
+                <ScalarProperty Name="MONEDAID" ColumnName="MONEDAID" />
+                <ScalarProperty Name="CUENTAID" ColumnName="CUENTAID" />
+                <ScalarProperty Name="BAL_ANT_CUENTA" ColumnName="BAL_ANT_CUENTA" />
+                <ScalarProperty Name="USUARIOID" ColumnName="USUARIOID" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="SUCURSALID" ColumnName="SUCURSALID" />
+                <ScalarProperty Name="CUENTA" ColumnName="CUENTA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListTransacciones2" FunctionName="PosDbModel.Store.ListTransacciones2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.ListTransacciones2_Result">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CUENTA" ColumnName="CUENTA" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="BalanceAnterior" ColumnName="BalanceAnterior" />
+                <ScalarProperty Name="BalanceTransaccion" ColumnName="BalanceTransaccion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListTransaccionesTipo" FunctionName="PosDbModel.Store.ListTransaccionesTipo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PosDbModel.ListTransaccionesTipo_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="BALANCE" ColumnName="BALANCE" />
+                <ScalarProperty Name="FECRECORDAR" ColumnName="FECRECORDAR" />
+                <ScalarProperty Name="MARCARECORDAR" ColumnName="MARCARECORDAR" />
+                <ScalarProperty Name="FECULTTRANS" ColumnName="FECULTTRANS" />
+                <ScalarProperty Name="CUENTAID" ColumnName="CUENTAID" />
+                <ScalarProperty Name="MOTIVO" ColumnName="MOTIVO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

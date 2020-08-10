@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="23c4ba7731364c3e83413dcdbe6369d4" Name="Diagram1">
+        <EntityTypeShape EntityType="PosDbModel.CARGOS" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.CLIENTES" Width="1.5" PointX="7.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.COMPANIA" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.COMPANIA_SUCURSALES" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.CUENTAS" Width="1.5" PointX="3" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.CUENTAS_CLASIFICACION" Width="1.5" PointX="0.75" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.CUENTAS_EVENTOS" Width="1.5" PointX="6" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.CUENTAS_EVENTOS_DETALLE" Width="1.5" PointX="8.25" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.CUENTAS_ORIGEN" Width="1.5" PointX="1.5" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.EMPRESAS_GENERAL" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.EMPRESAS_TIPO" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.SERVICIOS" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.SERVICIOS_CATEGORIA" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.SERVICIOS_ENTRADAS" Width="1.5" PointX="9.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.SERVICIOS_EQUIVALENCIAS" Width="1.5" PointX="15" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.SERVICIOS_UNIDADES" Width="1.5" PointX="9.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.TIPOS_PAGOS" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.TIPOS_SERVICIOS" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.TRANSACCIONES" Width="1.5" PointX="7.5" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.TRANSACCIONES_TIPO" Width="1.5" PointX="5.25" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.VENTAS" Width="1.5" PointX="9.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosDbModel.VENTAS_DETALLE" Width="1.5" PointX="12" PointY="10.625" IsExpanded="true" />
+        <AssociationConnector Association="PosDbModel.FK_CLIENTES_COMPANIA_SUCURSALES" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_VENTAS_CLIENTES" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_EMPRESAS_EMPRESAS_TIPO" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_EMPRESAS_SUCURSALES_EMPRESAS" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_SERVICIOS_COMPANIA_SUCURSALES" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_TRANSACCIONES_COMPANIA_SUCURSALES" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_CUENTAS_CUENTAS_CLASIFICACION" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_CUENTAS_EVENTOS_DETALLE_CUENTAS" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_TRANSACCIONES_TIPO_CUENTAS" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_CUENTAS_CLASIFICACION_CUENTAS_ORIGEN" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_CUENTAS_EVENTOS_DETALLE_CUENTAS_EVENTOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_EMPRESAS_GENERAL_EMPRESAS_TIPO" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_SERVICIOS_ENTRADAS_SERVICIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_SERVICIOS_SERVICIOS_CATEGORIA" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_SERVICIOS_UNIDADES_SERVICIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_ventasDetalle_servicios" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_SERVICIOS_CATEGORIA_TIPOS_SERVICIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_SERVICIOS_EQUIVALENCIAS_SERVICIOS_UNIDADES1" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_TRANSACCIONES_TRANSACCIONES_TIPO1" ManuallyRouted="false" />
+        <AssociationConnector Association="PosDbModel.FK_ventasDetalle_ventas" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

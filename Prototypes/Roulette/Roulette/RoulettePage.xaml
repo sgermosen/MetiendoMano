@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Roulette" x:Class="Roulette.RoulettePage">
+<!--	<Label Text="Welcome to Xamarin Forms!" VerticalOptions="Center" HorizontalOptions="Center" />-->
+	<ContentPage.Content VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="000">
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Image x:Name="btn0" Grid.Row="0" Grid.Column="0" Source="item1.png" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Aspect="AspectFit" >
+				<Image.GestureRecognizers>
+					<TapGestureRecognizer
+							Command="{Binding MenuButtonClicked}"
+							CommandParameter="0" />
+				</Image.GestureRecognizers>
+			</Image>
+			<Image x:Name="btn1" Grid.Row="0" Grid.Column="1" Source="item2.png" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Aspect="AspectFit" >
+				<Image.GestureRecognizers>
+					<TapGestureRecognizer
+							Command="{Binding MenuButtonClicked}"
+							CommandParameter="1" />
+				</Image.GestureRecognizers>
+			</Image>
+			<Image x:Name="btn2" Grid.Row="0" Grid.Column="2" Source="item3.png" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Aspect="AspectFit" >
+				<Image.GestureRecognizers>
+					<TapGestureRecognizer
+							Command="{Binding MenuButtonClicked}"
+							CommandParameter="2" />
+				</Image.GestureRecognizers>
+			</Image>
+			<Image x:Name="btn3" Grid.Row="1" Grid.Column="0" Source="item4.png" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Aspect="AspectFit" >
+				<Image.GestureRecognizers>
+					<TapGestureRecognizer
+							Command="{Binding MenuButtonClicked}"
+							CommandParameter="3" />
+				</Image.GestureRecognizers>
+			</Image>
+			<Image x:Name="btn4" Grid.Row="1" Grid.Column="1" Source="item5.png" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Aspect="AspectFit" >
+				<Image.GestureRecognizers>
+					<TapGestureRecognizer
+							Command="{Binding MenuButtonClicked}"
+							CommandParameter="4" />
+				</Image.GestureRecognizers>
+			</Image>
+			<Image x:Name="btn5" Grid.Row="1" Grid.Column="2" Source="item6.png" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Aspect="AspectFit" >
+				<Image.GestureRecognizers>
+					<TapGestureRecognizer
+							Command="{Binding MenuButtonClicked}"
+							CommandParameter="5" />
+				</Image.GestureRecognizers>
+			</Image>
+			<Image x:Name="btn6" Grid.Row="2" Grid.Column="0" Source="item7.png" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Aspect="AspectFit" >
+				<Image.GestureRecognizers>
+					<TapGestureRecognizer
+							Command="{Binding MenuButtonClicked}"
+							CommandParameter="6" />
+				</Image.GestureRecognizers>
+			</Image>
+			<Image x:Name="btn7" Grid.Row="2" Grid.Column="1" Source="item8.png" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Aspect="AspectFit" >
+				<Image.GestureRecognizers>
+					<TapGestureRecognizer
+							Command="{Binding MenuButtonClicked}"
+							CommandParameter="7" />
+				</Image.GestureRecognizers>
+			</Image>
+			<Image x:Name="btn8" Grid.Row="2" Grid.Column="2" Source="item9.png" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Aspect="AspectFit" >
+				<Image.GestureRecognizers>
+					<TapGestureRecognizer
+							Command="{Binding MenuButtonClicked}"
+							CommandParameter="8" />
+				</Image.GestureRecognizers>
+			</Image>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

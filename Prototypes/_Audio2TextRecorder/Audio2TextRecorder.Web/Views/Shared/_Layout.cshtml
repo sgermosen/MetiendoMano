@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - Audio2TextRecorder.Web</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+			<div class="container">
+				<a class="navbar-brand" asp-area="" asp-controller="Audio" asp-action="Index">Audio2TextRecorder</a>
+			</div>
+		</nav>
+	</header>
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+<footer class="border-top footer text-muted">
+	<div class="container">
+		&copy; 2020 - Audio2TextRecorder - <a asp-controller="Audio" asp-action="Privacy">Privacy</a>
+	</div>
+</footer>
+
+	<div id="alert-container" class="d-flex justify-content-end align-items-end fixed-bottom m-5"></div>
+
+	<div id="loader" class="loading-indicator">
+		<div class="d-flex justify-content-center align-items-center">
+			<img src="https://media.giphy.com/media/feN0YJbVs0fwA/giphy.gif" alt="loading" width="500" height="500" />
+		</div>
+	</div>
+
+
+
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/lib/p5/p5.min.js"></script>
+	<script src="~/lib/p5/addons/p5.sound.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@RenderSection("Scripts", required: false)
+</body>
+</html>

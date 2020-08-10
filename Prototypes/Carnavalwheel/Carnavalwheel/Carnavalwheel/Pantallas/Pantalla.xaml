@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Carnavalwheel.Pantallas.Pantalla">
+
+<StackLayout>
+  <Entry x:Name ="txt1" Placeholder="Escribe algo" VerticalOptions="Center" HorizontalOptions="FillAndExpand"></Entry>
+
+  <Entry x:Name ="txt2" Placeholder="Aca va tu texto" VerticalOptions="Center" HorizontalOptions="FillAndExpand"></Entry>
+  <Button x:Name="btnClick" Text="clickeame" BackgroundColor="Green"></Button>
+
+</StackLayout>
+</ContentPage>

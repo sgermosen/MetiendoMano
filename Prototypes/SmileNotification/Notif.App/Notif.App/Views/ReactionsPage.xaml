@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Notif.App.Views.ReactionsPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Reactions">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_action_add_circle" Command="{Binding AddReactionCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding Reactions}"
+            Padding="8">
+            <ListView
+                IsRefreshing="{Binding IsRefreshing}"
+                HasUnevenRows="True"
+                ItemsSource="{Binding Reactions}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Column="0"
+                                    Source="{Binding ImageFullPath}"
+                                    WidthRequest="100">
+                                </Image>
+                                <StackLayout
+                                    Grid.Column="1"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        Text="{Binding Name}"
+                                        TextColor="Black">
+                                    </Label>
+                                    <Label
+                                        Text="{Binding Email}"
+                                        TextColor="Navy">
+                                    </Label>
+                                    <Label
+                                        Text="{Binding Punctuation, StringFormat=' {0:N2}'}"
+                                        TextColor="Black">
+                                    </Label>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

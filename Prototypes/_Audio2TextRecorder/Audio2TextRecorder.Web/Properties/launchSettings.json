@@ -1,0 +1,20 @@
+{
+  "profiles": {
+    "Audio2TextRecorder.Development": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:44334/;http://localhost:55475"
+    },
+    "Audio2TextRecorder.Production": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      },
+      "applicationUrl": "https://audio2textrecorder.azurewebsites.net/"
+    }
+  }
+}

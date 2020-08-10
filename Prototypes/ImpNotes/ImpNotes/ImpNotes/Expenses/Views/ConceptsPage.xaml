@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ads="clr-namespace:ImpNotes.Ads;assembly=ImpNotes"
+             x:Class="ImpNotes.Expenses.Views.ConceptsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_action_add_circle"
+                     Text="Add" 
+                     Clicked="AddItem_Clicked" />
+    </ContentPage.ToolbarItems>
+   
+    <StackLayout>
+        <ListView x:Name="ItemsListView"
+                  ItemsSource="{Binding Concepts}"
+                  VerticalOptions="FillAndExpand"
+                  HasUnevenRows="true"
+                  RefreshCommand="{Binding LoadItemsCommand}"
+                  IsPullToRefreshEnabled="true"
+                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                  CachingStrategy="RecycleElement"
+                  ItemSelected="ListView_ItemSelected"
+                  SeparatorVisibility="None"
+                  >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame CornerRadius="10" Margin="5,5">
+                            <StackLayout Margin="1" >
+                              
+                                <Label Text="{Binding Name}" 
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="25" />
+                              
+                              
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout Grid.Row="0" 
+                                                 Grid.Column="0">
+                                        <Label Text="Monto Gastado: "
+                                               TextColor="DarkRed"
+                                               FontAttributes="Bold" />
+                                        <Label Text="{Binding AmountWasted}" 
+                                               TextColor="Red"
+                                               FontAttributes="Bold"/>
+
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="0" 
+                                                 Grid.Column="1">
+                                        <Label Text="Monto Ingresado: "
+                                               TextColor="Green"
+                                               FontAttributes="Bold"  />
+                                        <Label Text="{Binding AmountGain}" 
+                                               TextColor="LimeGreen"
+                                               FontAttributes="Bold"/>
+                                    </StackLayout>
+
+                                </Grid>
+
+
+                            </StackLayout>
+
+                        </Frame>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ads:AdMobView  x:Name="BannerView" Grid.Row="1" />
+        <ads:AdBanner Grid.Row="1"  
+                      Size="Standardbanner"
+                      VerticalOptions="EndAndExpand"/>
+    </StackLayout>
+</ContentPage>

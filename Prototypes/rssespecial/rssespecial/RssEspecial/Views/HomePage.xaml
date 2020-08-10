@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             mc:Ignorable="d"
+              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+              xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="RssEspecial.Views.HomePage">
+    <ContentPage.Content>
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>                    <RowDefinition Height="60"/>                    <RowDefinition Height="*"/>                </Grid.RowDefinitions>                <Grid Grid.Row="0" BackgroundColor="{StaticResource topbarcolor}" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>                <Image Grid.Row="0" Grid.Column="0"  Source="RoundImage.png" Aspect="AspectFit"                             Margin="5,5,0,0" HorizontalOptions="Start"/>                    <Label  Grid.Row="0" Grid.Column="0" Text="Post from our supports "                           TextColor="{StaticResource themecolor}" FontSize="20" VerticalTextAlignment="Center"                            HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"  />                    <BoxView Grid.Row="1"  BackgroundColor="{StaticResource themecolor}" HeightRequest="1" />                </Grid>
+            <ScrollView Grid.Row="1"  BackgroundColor="{StaticResource topbarcolor}" Padding="0,10">
+
+                <StackLayout BindableLayout.ItemsSource="{Binding Items}" Margin="25" >
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="0,20,0,0">
+                                <Grid >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30*"/>
+                                        <ColumnDefinition Width="70*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <ff:CachedImage Aspect="AspectFill" Source="{Binding Image}" 
+                                                        VerticalOptions="Start" HeightRequest="100"/>
+                                    <StackLayout Margin="10,0,0,0"  Grid.Column="1"  HeightRequest="100">
+                                        <Label >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding PostTitle}"  TextColor="{StaticResource themecolor}" FontSize="15"
+                                                              FontAttributes="Bold"></Span>
+                                                    <Span Text=" "  TextColor="{StaticResource themecolor}" FontSize="15"></Span>
+                                                    <Span Text="{Binding From}"  TextColor="Yellow"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <Label Text="{Binding Date}" TextType="Text" FontSize="10"
+                                                   TextColor="LightSkyBlue" HeightRequest="13"/>
+                                        <Label Text="{Binding Content}" FontSize="12"
+                                                   TextColor="white"  HeightRequest="30"/>
+                                    </StackLayout>
+
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                                <StackLayout HeightRequest="20"></StackLayout>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+
+
+
+            <!--<Grid Grid.Row="1"  BackgroundColor="{StaticResource topbarcolor}">
+                </Grid>-->
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,280 @@
+﻿@model IEnumerable<AudioViewModel>
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+<form id="form" enctype="multipart/form-data" method="post">
+	@Html.AntiForgeryToken()
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+	<div id="audio-form" class="form-group mt-5">
+		<div class="row">
+			<div class="col-8">
+				<input id="title"
+				       name="title"
+				       class="form-control"
+				       type="text"
+				       placeholder="Audio title"
+							 required
+				       maxlength="250"/>
+				<div class="d-flex justify-content-between">
+					<span id="title-error-message" class="text-danger"></span>
+					<p class="align-self-end"><span id="title-count">0</span>/250</p>
+				</div>
+			</div>
+			<button id="record"
+			        name="record"
+			        class="btn btn-outline-dark col-2 align-self-start mx-3">
+				Record
+			</button>
+		</div>
+	</div>
+
+	<div id="audio-recorder" class="form-group mt-5">
+		<div class="row">
+			<h2 class="mx-3">
+				Recording...
+			</h2>
+			<h2 id="timer" class="mx-3"></h2>
+			<button id="stop"
+			        name="record"
+			        class="btn btn-outline-dark col-2 mx-3">
+				Stop
+			</button>
+		</div>
+		<div class="mt-2">
+			<output name="result"></output>
+		</div>
+	</div>
+</form>
+
+<h2 class="my-5">Audio List</h2>
+@if (!Model.Any())
+{
+	<div class="text-md-center">
+		<p>Ningún audio gravado.</p>
+	</div>
+}
+else
+{
+	<div class="table-responsive-sm">
+		<table class="table table-sm table-striped">
+			<thead>
+				<tr class="d-flex thead-light">
+					<th class="col-1 text-center" scope="col">#</th>
+					<th class="col-5" scope="col">
+						@Html.DisplayNameFor(model => model.Title)
+					</th>
+					<th class="col-4" scope="col">Audio</th>
+					<th class="col-2 text-center" scope="col">Actions</th>
+				</tr>
+			</thead>
+
+			@foreach (var audio in Model)
+			{
+				<tr class="d-flex">
+					<th class="col-1 text-center" scope="row">
+						@Html.DisplayFor(modelItem => audio.Id)
+					</th>
+
+					<td class="col-5">
+						@Html.DisplayFor(modelItem => audio.Title)
+					</td>
+
+					<td class="col-4">
+						<audio src="./media/audios/@audio.AudioPath" controls />
+					</td>
+
+					<td class="col-2">
+						<div class="d-flex input-group justify-content-center">
+							<a class="page-link"
+							   href="./Audio/EditAudio?audioId=@audio.Id">
+								Edit
+							</a>
+							<button class="page-link mx-2"
+							        data-toggle="modal"
+							        data-target="#exampleModal"
+							        data-entity-id="@audio.Id">
+								Delete
+							</button>
+						</div>
+					</td>
+				</tr>
+			}
+		</table>
+	</div>
+}
+
+<partial name="_DeleteDialog" />
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial"/>
+
+	<script>
+		let controller = new AbortController(),
+			form = id("form"),
+			audioForm = $("#audio-form"),
+			audioRecorder = $("#audio-recorder"),
+			header = $("#exampleModalLabel"),
+			deleteButton = $("#deleteLink"),
+			timer = $("#timer"),
+			hours = 0,
+			minutes = 0,
+			seconds = 0,
+			interval,
+			microphone,
+			recorder,
+			soundFile,
+			blob;
+
+		$(document).ready(function () {
+			audioRecorder.hide();
+			loader.hide();
+			setCount($("#title-count"), $("#title").val());
+
+			$("#form").submit(function (e) {
+				e.preventDefault(e);
+			});
+
+			$('#exampleModal').on('show.bs.modal',
+				function (event) {
+					let entityId = $(event.relatedTarget).data('entity-id');
+					header.text(`Do you want to remove this data, Id: ${entityId}?`);
+					deleteButton.attr("href", `./Audio/DeleteAudio?audioId=${entityId}`);
+				});
+
+			$("#record").click(function () {
+				if (validateForm()) startRecording();
+			});
+
+			$("#stop").click(function () {
+				stopRecording();
+			});
+
+			$("#title").bind('input',
+				function () {
+					var title = $(this).val();
+					setCount($("#title-count"), title);
+
+					validateForm();
+				});
+		});
+
+		function setup() {
+			// initialize library dependencies
+			microphone = new p5.AudioIn();
+
+			// prompts user to enable their browser microphone
+			microphone.start();
+
+			recorder = new p5.SoundRecorder();
+
+			// connect the mic to the recorder
+			recorder.setInput(microphone);
+
+			soundFile = new p5.SoundFile();
+		}
+
+		function validateForm() {
+			let title = $("#title").val(),
+				errorMessage = "";
+
+			if (title === "") {
+				errorMessage = "'Title' must not be empty.";
+			} else if (title.length > 250) {
+				errorMessage = "The length of 'Title' must be 250 characters or fewer.";
+			}
+
+			$("#title-error-message").text(errorMessage);
+			return errorMessage === "";
+		}
+
+		function startRecording() {
+			if (!microphone.enabled) {
+				location.reload();
+				return;
+			}
+
+			// start recording
+			recorder.record(soundFile);
+
+			// show recorder
+			audioForm.hide();
+			audioRecorder.show();
+			//id("stop").disabled = false;
+
+			// start timer
+			interval = setInterval(updateTimer, 1000);
+
+			log("recording stated.");
+		}
+
+		function stopRecording() {
+			//id("stop").disabled = true;
+			// show form
+			loader.show();
+			audioRecorder.hide();
+			audioForm.show();
+
+			// reset timer
+			clearInterval(interval);
+			hours = minutes = seconds = 0;
+
+			// stop recording
+			recorder.stop();
+			log("recording stopped.");
+
+			setTimeout(postAudio, 100);
+		}
+
+		function postAudio() {
+			blob = soundFile.getBlob();
+			log("file wrapped.");
+
+			let title = $("#title").val(),
+				formData = new FormData();
+
+			formData.append("title", title);
+			formData.append("file", blob, "file.wav");
+
+			fetchTimeout("/", fetchTimeOut,
+				{
+					signal: controller.signal,
+					method: 'POST',
+					body: formData,
+					headers: {
+						'enctype': 'multipart/form-data'
+					}
+				})
+				.then(() => {
+					location.reload();
+				})
+				.catch((error) => {
+					error('Error:', error);
+					loader.hide();
+					showAlert("An error occurred sending request", "alert-danger", 5000);
+				});
+		}
+
+		function updateTimer() {
+			if (minutes === 59 && seconds === 59) ++hours;
+
+			if (minutes < 59 && seconds === 59) ++minutes;
+			else if (minutes === 59 && seconds === 59) minutes = 0;
+
+			if (seconds < 59) ++seconds;
+			else seconds = 0;
+
+			if (hours > 0)
+				timer.text(`${format(hours)}:${format(minutes)}:${format(seconds)}`);
+			else if (minutes > 0)
+				timer.text(`00:${format(minutes)}:${format(seconds)}`);
+			else timer.text(`00:00:${format(seconds)}`);
+		}
+
+		function format(time) {
+			return time >= 10 ? time : `0${time}`;
+		}
+	</script>
+}
+

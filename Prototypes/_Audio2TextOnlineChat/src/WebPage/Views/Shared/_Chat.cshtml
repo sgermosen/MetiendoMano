@@ -1,0 +1,124 @@
+﻿<audio id="notification-audio">
+  <source src="https://freesound.org/people/grey24/sounds/316798/download/316798__grey24__flyffnotif.wav" type="audio/wav">
+  <source src="~/media/audios/new_message.wav" type="audio/wav">
+  Your browser does not support the audio element.
+</audio>
+
+<div class="d-flex align-items-center"
+     style="position: absolute; right: 0; top: 0; height: 100%;">
+  <div id="fixed-right-chat-button">
+    <button id="button-chat"
+            onclick="toggleChat()"
+            type="button"
+            class="btn bg-info text-light">
+      <i class="fas fa-comment-dots fa-2x m-2"></i>
+    </button>
+  </div>
+</div>
+
+<div id="fixed-bottom-chat"
+     style="width: 500px; position: fixed; bottom: 0; right: 0;">
+
+  <div
+    class="d-flex justify-content-between bg-info mr-2"
+    onclick="toggleChat()">
+    <span class="h4 card-title mx-3 my-2 text-white">Chat</span>
+  </div>
+
+  <div id="chat-container">
+
+    <div id="user-name-form" class="form-group bg-light-gray p-2 mr-2 rounded">
+      <div class="d-flex justify-content-between align-items-end mb-1">
+        <label for="user-name mb-0">User Name</label>
+      </div>
+      <div class="d-flex align-items-start">
+        <div class="col mx-1 p-0">
+          <input type="text"
+                 class="form-control"
+                 name="user-name"
+                 id="user-name"
+                 required
+                 maxlength="10"
+                 aria-describedby="user name"
+                 placeholder="Ej: pepe"/>
+          <span id="user-name-error-message" class="text-danger"></span>
+          <div style="position: absolute; right: 6px; top: 6px;">
+            <span id="user-name-count">0</span>/10
+          </div>
+        </div>
+        <button class="btn btn-primary mx-1" onclick="startChat(true)">
+          User
+        </button>
+        <button class="btn btn-secondary mx-1" onclick="startChat(false)">
+          Admin
+        </button>
+      </div>
+      <small id="user_name" class="form-text text-muted">The user name to be displayed.</small>
+    </div>
+
+    <div id="chat-form"
+         class="row pr-2 pb-2 mx-0"
+         style="background-color: #fff;">
+      <div class="col border border-primary rounded p-0"
+           style="height: 400px;">
+        <div id="chat-box">
+          <div id="messages-list"
+               class="p-2"
+               style="height: 340px; overflow-y: scroll; overflow-x: hidden;"></div>
+
+          <hr class="m-1 border-primary"/>
+
+          <div class="form-group m-0 p-2">
+            <div class="d-flex align-content-start">
+              <div class="col-10 p-0">
+                <input id="message"
+                       type="text"
+                       placeholder="Message"
+                       class="form-control"
+                       required
+                       maxlength="500"/>
+                <p class="m-0"
+                   style="position: absolute; top: 6px; right: 6px;">
+                  <span id="message-count">0</span>/500
+                </p>
+              </div>
+              <button id="send"
+                      name="send"
+                      class="btn btn-outline-info col align-self-start ml-1">
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="chat-placeholder"
+             class="position-absolute"
+             style="left: 0; top: 0; background-color: rgba(255, 255, 255, 0.4); width: 100%; height: 100%;">
+          <div class="d-flex flex-column justify-content-center align-items-center"
+               style="height: 100%;">
+            <i class="fas fa-comment-slash fa-5x"></i>
+            <span class="m-2">There are not messages.</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="user-list"
+           class="col-5 border border-primary rounded p-0"
+           style="width: 300px; overflow-y: scroll; overflow-x: hidden;">
+        <div id="connected-users"
+             class="list-group list-group-flush"
+             role="tablist"></div>
+
+        <div id="users-placeholder"
+             class="position-absolute"
+             style="left: 0; top: 0; background-color: rgba(255, 255, 255, 0.4); width: 100%; height: 100%;">
+          <div class="d-flex flex-column justify-content-center align-items-center"
+               style="height: 100%;">
+            <i class="fas fa-users-slash fa-4x"></i>
+            <span class="m-2">There are not users.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

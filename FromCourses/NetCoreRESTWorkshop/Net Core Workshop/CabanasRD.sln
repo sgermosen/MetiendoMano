@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cabanas.API", "src\Services\Cabanas\Cabanas.API\Cabanas.API.csproj", "{BC4FA60B-E993-4B21-84C7-562936293798}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A2521BF0-A786-4CB7-BC0E-3E5FDFEC3068}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{75C66267-A52D-474F-A9C2-DE6674C45F5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{2BEB2534-BDC7-42B1-AA8C-77F533BE2EE5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cabanas", "Cabanas", "{1E77BBDC-64D3-4359-879C-5D1DCDB986ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC4FA60B-E993-4B21-84C7-562936293798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC4FA60B-E993-4B21-84C7-562936293798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC4FA60B-E993-4B21-84C7-562936293798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC4FA60B-E993-4B21-84C7-562936293798}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BC4FA60B-E993-4B21-84C7-562936293798} = {1E77BBDC-64D3-4359-879C-5D1DCDB986ED}
+		{2BEB2534-BDC7-42B1-AA8C-77F533BE2EE5} = {A2521BF0-A786-4CB7-BC0E-3E5FDFEC3068}
+		{1E77BBDC-64D3-4359-879C-5D1DCDB986ED} = {2BEB2534-BDC7-42B1-AA8C-77F533BE2EE5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9DE0C796-41E7-4D67-99AB-FDE2EEA42EA4}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:drawing="clr-namespace:System.Drawing;assembly=Mono.Android"
+             xmlns:controls3="clr-namespace:DontBeDoryApp.Controls;assembly=CancionesApp.Droid"
+             x:Class="DontBeDoryApp.Paginas.PaginaNota">
+  <ContentPage.Content>
+    <StackLayout Spacing="20" Padding="20" BackgroundColor="White">
+            <Entry x:Name="txtNota"
+                   Text="{Binding NombreNota}"
+                   Placeholder="Nota"
+                   TextColor="#0099cc"
+                   FontAttributes="Bold" 
+                   PlaceholderColor="#ccffff" />
+     <Entry x:Name="txtCuerpo"
+                 Text="{Binding NombreCuerpo}"
+                 Placeholder="Cuerpo"
+                   TextColor="#006600"
+                   PlaceholderColor="#ccffcc"
+                 Keyboard="Chat" />
+
+        </StackLayout>
+      <Grid RowSpacing="0">
+          <Grid.RowDefinitions>
+              <RowDefinition Height="*" />
+              <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+          <ListView Grid.Row="0" />
+            <controls3:AdControlView Grid.Row="1" />
+      </Grid>
+
+    </ContentPage.Content>
+  <ContentPage.ToolbarItems>
+    <ToolbarItem x:Name="btnGuardar" Text="Guardar" Priority="0" Clicked="btnGuardar_Click" Order="Primary" Icon="guardar.png"/>
+    <ToolbarItem x:Name="btnEliminar" Text="Eliminar" Priority="1" Clicked="btnEliminar_Click" Order="Primary" Icon="eliminar.png"/>
+  </ContentPage.ToolbarItems>
+</ContentPage>

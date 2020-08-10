@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Notif.App.Views.AddReactionPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Añadir Reaccion">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding AddReaction}">
+            <StackLayout
+                Padding="10">
+                <Grid ColumnSpacing="10" HorizontalOptions="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Grid.Column="0"
+                        HeightRequest="50"
+                        Source="angry_face">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding ImAngryCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        Grid.Column="1"
+                    HeightRequest="50"
+                    Source="bad_face">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding ImBadCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        Grid.Column="2"
+                    HeightRequest="50"
+                    Source="meh_face">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding ImMehCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        Grid.Column="3"
+                    HeightRequest="50"
+                    Source="good_face">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding ImGoodCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        Grid.Column="4"
+                    HeightRequest="50"
+                    Source="love_face">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding ImLoveCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+                <Label
+                    FontSize="Micro"
+                    HorizontalOptions="Center"
+                    Text="Envia tu Reaccion!!!">
+                </Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Name"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Placeholder="Su Nombre (Opcional)..."
+                        Text="{Binding Name}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="Correo"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="1"                        
+                        Placeholder="Su Correo (Opcional)..."
+                        Text="{Binding Email}">
+                    </Entry>
+                </Grid>
+                <StackLayout>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Observaciones"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Editor
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        HeightRequest="100"
+                        Placeholder="Opiniones o Sugerencias, Las usamos para mejorar :) ..."
+                        Text="{Binding Observation}">
+                    </Editor>
+                </StackLayout>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <Button
+                    BackgroundColor="Navy"
+                    BorderRadius="23"
+                    Command="{Binding SaveCommand}"
+                    HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled}"
+                    Text="Enviar mi Reaccion"
+                    TextColor="White">
+                </Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+ 

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="ChatClient.Views.UserListPage"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:c="clr-namespace:ChatClient.Views.Converters;assembly=ChatClient"
+	xmlns:data="clr-namespace:Web.Core.Data;assembly=Web.Core"
+	xmlns:shapeControl="clr-namespace:Stormlion.ShapeControl;assembly=Stormlion.ShapeControl"
+	Title="{Binding Title}"
+	Padding="8">
+	<Grid>
+		<ListView
+			HorizontalScrollBarVisibility="Never"
+			ItemsSource="{Binding AvailableUsers}"
+			RowHeight="50"
+			SelectionMode="None"
+			SeparatorVisibility="Default"
+			VerticalScrollBarVisibility="Always">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<Grid Margin="8" VerticalOptions="FillAndExpand">
+							<Grid.GestureRecognizers>
+								<TapGestureRecognizer
+									Command="{Binding UserSelectedCommand}"
+									CommandParameter="{Binding .}"
+									NumberOfTapsRequired="1" />
+							</Grid.GestureRecognizers>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="Auto" />
+							</Grid.ColumnDefinitions>
+							<Label Text="{Binding UserName}" VerticalOptions="Center" />
+							<Grid
+								Grid.Column="1"
+								IsVisible="{Binding MessageCount, Converter={c:IntToVisibilityConverter}}"
+								VerticalOptions="Center">
+								<shapeControl:Circle HeightRequest="25" WidthRequest="25">
+									<shapeControl:Circle.Paint>
+										<shapeControl:SSPaint FillColor="DeepSkyBlue" />
+									</shapeControl:Circle.Paint>
+								</shapeControl:Circle>
+								<Label
+									HorizontalOptions="Center"
+									Text="{Binding MessageCount}"
+									VerticalOptions="Center" />
+							</Grid>
+						</Grid>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+		<Label
+			HorizontalTextAlignment="Center"
+			IsVisible="{Binding UsersCount, Converter={c:CountToVisibilityConverter}}"
+			Text="{x:Static data:Resources.NotUserAvailable}"
+			VerticalOptions="Center" />
+		<ActivityIndicator
+			BackgroundColor="White"
+			IsRunning="{Binding IsProcessing}"
+			IsVisible="{Binding IsProcessing}"
+			Color="Red" />
+	</Grid>
+
+</ContentPage>

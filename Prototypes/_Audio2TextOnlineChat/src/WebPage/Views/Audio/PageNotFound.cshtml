@@ -1,0 +1,19 @@
+﻿@{
+	ViewData["Title"] = "Page not found";
+}
+
+<div class="d-flex align-items-center justify-content-center">
+	<div class="text-center m-5">
+		<h1 style="font-size: 200px; font-weight: bold;">404</h1>
+		<h1>@ViewData["Title"]</h1>
+		<p>The resource you are trying to access was not found.</p>
+	</div>
+</div>
+
+@section Scripts {
+	<script>
+		$(document).ready(function () {
+			loader.hide();
+		});
+	</script>
+}

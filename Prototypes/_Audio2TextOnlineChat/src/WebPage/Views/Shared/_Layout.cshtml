@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - WebPage</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" />
+	<script src="https://kit.fontawesome.com/0358124a37.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+			<div class="container">
+				<a class="navbar-brand" asp-area="" asp-controller="Audio" asp-action="Index">Audio2text</a>
+			</div>
+		</nav>
+	</header>
+
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	<footer class="border-top footer text-muted">
+		<div class="container">
+			&copy; 2020 - WebPage - <a asp-controller="Audio" asp-action="Privacy">Privacy</a>
+		</div>
+	</footer>
+
+	<partial name="_Chat" />
+
+	<div style="width: 300px; position: fixed; bottom: 12px; right: 12px;">
+		<div id="alert-container" style="width: 100%;"></div>
+	</div>
+
+	<div id="loader" class="loading-indicator">
+		<div class="d-flex justify-content-center align-items-center">
+			<img alt="loading"
+					 src="https://media.giphy.com/media/feN0YJbVs0fwA/giphy.gif"
+					 width="500"
+					 height="500" />
+		</div>
+	</div>
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/lib/jquery/jquery-dateformat.js"></script>
+	<script src="~/lib/signalr/dist/browser/signalr.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	<script src="~/js/chat.js"></script>
+	@RenderSection("Scripts", required: false)
+</body>
+</html>

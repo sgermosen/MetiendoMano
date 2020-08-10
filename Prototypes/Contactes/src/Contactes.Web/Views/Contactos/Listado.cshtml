@@ -1,0 +1,36 @@
+﻿@model ICollection<Persona>
+@{
+    ViewData["Title"] = "Listado";
+}
+<br /> <br />
+<h1>Listado</h1>
+
+@await Html.PartialAsync("_ContactosPartial", Model)
+
+
+@section scripts{
+<script>
+
+    $(document).ready(function () {
+        $(".js-eliminar").click(function (e) {
+            var btn = $(e.target);
+
+            $.post("/Contactos/EliminarContacto", { identificador: btn.attr("data-contato-id") })
+                .done(function () {
+                    alert("Todo BIiiiiiieeeeeeeeeeen :D");
+                })
+                .fail(function () {
+                     alert("Todo Mal :'(");
+                })
+
+             
+        })//end del js-eliminar
+    })//end del ready
+</script>
+
+ }
+
+
+
+
+

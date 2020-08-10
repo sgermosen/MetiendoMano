@@ -1,0 +1,47 @@
+﻿@model IEnumerable<InapCertAuditory.Models.Facilitator>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1> Listado </h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"> Adicionar Nuevo </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+              Nombre
+            </th>
+            <th>
+               Apellido
+            </th>
+            <th>
+            Observaciones
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observations)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FacilitatorId" class="btn btn-warning">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.FacilitatorId" class="btn btn-info">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.FacilitatorId" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,2359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SegDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AUTORES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+          <Property Name="ESTADO" Type="bit" />
+          <Property Name="CORREO" Type="nvarchar" MaxLength="50" />
+          <Property Name="TELEFONO" Type="nvarchar" MaxLength="15" />
+          <Property Name="FECINICIO" Type="date" />
+          <Property Name="PLANID" Type="int" />
+        </EntityType>
+        <EntityType Name="AUTORES_PAGO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AUTORID" Type="int" />
+          <Property Name="REFERENCIA" Type="varchar" MaxLength="50" />
+          <Property Name="MONEDAID" Type="int" />
+          <Property Name="MONTO" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="DETALLE" Type="varchar" MaxLength="250" />
+          <Property Name="FECHA" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AUTORES_PLANES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="15" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="PERIODICIDADID" Type="int" />
+          <Property Name="MONEDAID" Type="int" />
+          <Property Name="MONTO" Type="decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="BARRIOS_PARAJES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+          <Property Name="SECCIONID" Type="int" />
+        </EntityType>
+        <EntityType Name="DIST_MUNICIPALES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+          <Property Name="MUNICIPIOID" Type="int" />
+        </EntityType>
+        <EntityType Name="ESTATUSM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TABLA" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="MONEDAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="15" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MUNICIPIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+          <Property Name="PROVINCIAID" Type="int" />
+        </EntityType>
+        <EntityType Name="NACIONALIDADES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+          <Property Name="PAISID" Type="int" />
+        </EntityType>
+        <EntityType Name="PAISES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+          <Property Name="GENTILICIO" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PERIODICIDADES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="15" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PERSONAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRES" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="APELLIDOS" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECNACIMIENTO" Type="datetime" />
+          <Property Name="RNC" Type="varchar" MaxLength="20" />
+          <Property Name="TIPORNC" Type="char" MaxLength="1" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="15" />
+          <Property Name="CELULAR" Type="varchar" MaxLength="15" />
+          <Property Name="GENERO" Type="char" MaxLength="1" />
+          <Property Name="ESTATUSMARITAL" Type="char" MaxLength="1" />
+          <Property Name="OCUPACION" Type="varchar" MaxLength="50" />
+          <Property Name="RELIGION" Type="varchar" MaxLength="50" />
+          <Property Name="FECCREACION" Type="datetime" />
+          <Property Name="ULTIMAVISITA" Type="datetime" />
+          <Property Name="ESTATUS" Type="bit" Nullable="false" />
+          <Property Name="AUTOR" Type="varchar" MaxLength="50" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="250" />
+          <Property Name="AUTORID" Type="int" />
+          <Property Name="PAISID" Type="int" />
+        </EntityType>
+        <EntityType Name="PERSONAS_TIPO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="450" />
+          <Property Name="TABLA_MODULO" Type="nvarchar" MaxLength="50" />
+          <Property Name="AUTORID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROVINCIAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+          <Property Name="REGIONID" Type="int" />
+        </EntityType>
+        <EntityType Name="REGIONES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+          <Property Name="PAISID" Type="int" />
+        </EntityType>
+        <EntityType Name="SECCIONES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+          <Property Name="DISTMUNICIPALID" Type="int" />
+        </EntityType>
+        <EntityType Name="SUBBARRIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+          <Property Name="BARRIOID" Type="int" />
+        </EntityType>
+        <EntityType Name="OPCIONES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="250" />
+          <Property Name="LINK" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ORDEN" Type="int" />
+          <Property Name="ESTATUS" Type="bit" Nullable="false" />
+          <Property Name="OPCIONESTIPO" Type="int" Nullable="false" />
+          <Property Name="CLASS" Type="varchar" MaxLength="200" />
+          <Property Name="ICON" Type="varchar" MaxLength="200" />
+          <Property Name="COD" Type="int" />
+          <Property Name="PADRE" Type="int" />
+        </EntityType>
+        <EntityType Name="OPCIONES_PADRE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="250" />
+          <Property Name="LINK" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ORDEN" Type="int" />
+          <Property Name="ESTATUS" Type="bit" Nullable="false" />
+          <Property Name="OPCIONESTIPO" Type="int" Nullable="false" />
+          <Property Name="CLASS" Type="varchar" MaxLength="200" />
+          <Property Name="ICON" Type="varchar" MaxLength="200" />
+          <Property Name="COD" Type="int" />
+        </EntityType>
+        <EntityType Name="OPCIONESROL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="OPCIONID" Type="int" Nullable="false" />
+          <Property Name="ROLID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESDE" Type="date" />
+          <Property Name="HASTA" Type="date" />
+          <Property Name="ESTATUS" Type="bit" Nullable="false" />
+          <Property Name="INDEFINIDO" Type="bit" />
+        </EntityType>
+        <EntityType Name="ROLES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="250" />
+          <Property Name="AUTOR" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ESTATUS" Type="bit" Nullable="false" />
+          <Property Name="AUTORID" Type="int" />
+        </EntityType>
+        <EntityType Name="ROLESUSUARIO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ROLID" Type="int" Nullable="false" />
+          <Property Name="USERID" Type="int" Nullable="false" />
+          <Property Name="DEFAULTPAGE" Type="varchar" MaxLength="50" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESDE" Type="date" />
+          <Property Name="HASTA" Type="date" />
+          <Property Name="ESTATUS" Type="bit" Nullable="false" />
+          <Property Name="INDEFINIDO" Type="bit" />
+        </EntityType>
+        <EntityType Name="USUARIOSSEG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRES" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="APELLIDOS" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="FECCREACION" Type="datetime" />
+          <Property Name="ULTIMAVISITA" Type="datetime" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="NIVEL" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ESTATUS" Type="bit" Nullable="false" />
+          <Property Name="AUTOR" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AUTORID" Type="int" />
+          <Property Name="SUCURSALID" Type="int" />
+        </EntityType>
+        <Association Name="FK_AUTORES_AUTORES_PLANES">
+          <End Role="AUTORES_PLANES" Type="Self.AUTORES_PLANES" Multiplicity="0..1" />
+          <End Role="AUTORES" Type="Self.AUTORES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTORES_PLANES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AUTORES">
+              <PropertyRef Name="PLANID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AUTORES_PAGO_AUTORES">
+          <End Role="AUTORES" Type="Self.AUTORES" Multiplicity="0..1" />
+          <End Role="AUTORES_PAGO" Type="Self.AUTORES_PAGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTORES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AUTORES_PAGO">
+              <PropertyRef Name="AUTORID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AUTORES_PAGO_MONEDAS">
+          <End Role="MONEDAS" Type="Self.MONEDAS" Multiplicity="0..1" />
+          <End Role="AUTORES_PAGO" Type="Self.AUTORES_PAGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONEDAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AUTORES_PAGO">
+              <PropertyRef Name="MONEDAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AUTORES_PLANES_MONEDAS">
+          <End Role="MONEDAS" Type="Self.MONEDAS" Multiplicity="0..1" />
+          <End Role="AUTORES_PLANES" Type="Self.AUTORES_PLANES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONEDAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AUTORES_PLANES">
+              <PropertyRef Name="MONEDAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AUTORES_PLANES_PERIODICIDADES">
+          <End Role="PERIODICIDADES" Type="Self.PERIODICIDADES" Multiplicity="0..1" />
+          <End Role="AUTORES_PLANES" Type="Self.AUTORES_PLANES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERIODICIDADES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AUTORES_PLANES">
+              <PropertyRef Name="PERIODICIDADID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BARRIOS_PARAJES_SECCIONES">
+          <End Role="SECCIONES" Type="Self.SECCIONES" Multiplicity="0..1" />
+          <End Role="BARRIOS_PARAJES" Type="Self.BARRIOS_PARAJES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECCIONES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BARRIOS_PARAJES">
+              <PropertyRef Name="SECCIONID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DISTMUNICIPALES_MUNICIPIOS">
+          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="0..1" />
+          <End Role="DIST_MUNICIPALES" Type="Self.DIST_MUNICIPALES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MUNICIPIOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DIST_MUNICIPALES">
+              <PropertyRef Name="MUNICIPIOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MUNICIPIOS_PROVINCIAS">
+          <End Role="PROVINCIAS" Type="Self.PROVINCIAS" Multiplicity="0..1" />
+          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCIAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MUNICIPIOS">
+              <PropertyRef Name="PROVINCIAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NACIONALIDADES_PAISES">
+          <End Role="PAISES" Type="Self.PAISES" Multiplicity="0..1" />
+          <End Role="NACIONALIDADES" Type="Self.NACIONALIDADES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAISES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NACIONALIDADES">
+              <PropertyRef Name="PAISID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OPCIONES_OPCIONES_PADRE">
+          <End Role="OPCIONES_PADRE" Type="Self.OPCIONES_PADRE" Multiplicity="0..1" />
+          <End Role="OPCIONES" Type="Self.OPCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OPCIONES_PADRE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OPCIONES">
+              <PropertyRef Name="PADRE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONAS_AUTORES">
+          <End Role="AUTORES" Type="Self.AUTORES" Multiplicity="0..1" />
+          <End Role="PERSONAS" Type="Self.PERSONAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTORES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONAS">
+              <PropertyRef Name="AUTORID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONAS_AUTORES1">
+          <End Role="AUTORES" Type="Self.AUTORES" Multiplicity="0..1" />
+          <End Role="PERSONAS" Type="Self.PERSONAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTORES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONAS">
+              <PropertyRef Name="AUTORID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONAS_PAISES">
+          <End Role="PAISES" Type="Self.PAISES" Multiplicity="0..1" />
+          <End Role="PERSONAS" Type="Self.PERSONAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAISES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONAS">
+              <PropertyRef Name="PAISID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONAS_TIPO_AUTORES">
+          <End Role="AUTORES" Type="Self.AUTORES" Multiplicity="1" />
+          <End Role="PERSONAS_TIPO" Type="Self.PERSONAS_TIPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTORES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONAS_TIPO">
+              <PropertyRef Name="AUTORID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROVINCIAS_REGIONES">
+          <End Role="REGIONES" Type="Self.REGIONES" Multiplicity="0..1" />
+          <End Role="PROVINCIAS" Type="Self.PROVINCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGIONES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PROVINCIAS">
+              <PropertyRef Name="REGIONID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGIONES_PAISES">
+          <End Role="PAISES" Type="Self.PAISES" Multiplicity="0..1" />
+          <End Role="REGIONES" Type="Self.REGIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAISES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REGIONES">
+              <PropertyRef Name="PAISID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROLES_AUTORES">
+          <End Role="AUTORES" Type="Self.AUTORES" Multiplicity="0..1" />
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTORES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ROLES">
+              <PropertyRef Name="AUTORID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rolesopciones_opciones">
+          <End Role="OPCIONES" Type="Self.OPCIONES" Multiplicity="1" />
+          <End Role="OPCIONESROL" Type="Self.OPCIONESROL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OPCIONES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OPCIONESROL">
+              <PropertyRef Name="OPCIONID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rolesopciones_roles">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+          <End Role="OPCIONESROL" Type="Self.OPCIONESROL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OPCIONESROL">
+              <PropertyRef Name="ROLID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SECCIONES_DISTMUNICIPALES">
+          <End Role="DIST_MUNICIPALES" Type="Self.DIST_MUNICIPALES" Multiplicity="0..1" />
+          <End Role="SECCIONES" Type="Self.SECCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIST_MUNICIPALES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SECCIONES">
+              <PropertyRef Name="DISTMUNICIPALID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUBBARRIOS_BARRIOS_PARAJES">
+          <End Role="BARRIOS_PARAJES" Type="Self.BARRIOS_PARAJES" Multiplicity="0..1" />
+          <End Role="SUBBARRIOS" Type="Self.SUBBARRIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BARRIOS_PARAJES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SUBBARRIOS">
+              <PropertyRef Name="BARRIOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuariosroles_roles">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+          <End Role="ROLESUSUARIO" Type="Self.ROLESUSUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ROLESUSUARIO">
+              <PropertyRef Name="ROLID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuariosroles_usuariosSEG">
+          <End Role="USUARIOSSEG" Type="Self.USUARIOSSEG" Multiplicity="1" />
+          <End Role="ROLESUSUARIO" Type="Self.ROLESUSUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOSSEG">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ROLESUSUARIO">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOSSEG_AUTORES">
+          <End Role="AUTORES" Type="Self.AUTORES" Multiplicity="0..1" />
+          <End Role="USUARIOSSEG" Type="Self.USUARIOSSEG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTORES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USUARIOSSEG">
+              <PropertyRef Name="AUTORID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GENERACODIGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN">
+          <Parameter Name="table" Type="varchar" Mode="In" />
+          <Parameter Name="autor" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListMonedas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN">
+          <Parameter Name="dec" Type="smallint" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListPaisNacionalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListPeriodicidades" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN">
+          <Parameter Name="dec" Type="smallint" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListPersonasTipo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN">
+          <Parameter Name="Tabla" Type="varchar" Mode="In" />
+          <Parameter Name="AutorID" Type="int" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN">
+          <Parameter Name="tabla" Type="varchar" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetOpciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetOpcionesRol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="RolID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetOpcionesRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="RolID" Type="int" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="dec" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="autor" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="dec" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetRolesUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="autor" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="dec" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListAutores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListOpciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="autor" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListOpcionesRol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="RolID" Type="int" Mode="In" />
+          <Parameter Name="autor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ListOpcionesRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="RolID" Type="int" Mode="In" />
+          <Parameter Name="autor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ListRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="autor" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListRolesUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="userId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListRolesUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="RolID" Type="int" Mode="In" />
+          <Parameter Name="autor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ListUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="autor" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="autor" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="SegDbModelStoreContainer">
+          <EntitySet Name="AUTORES" EntityType="Self.AUTORES" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="AUTORES_PAGO" EntityType="Self.AUTORES_PAGO" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="AUTORES_PLANES" EntityType="Self.AUTORES_PLANES" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="BARRIOS_PARAJES" EntityType="Self.BARRIOS_PARAJES" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="DIST_MUNICIPALES" EntityType="Self.DIST_MUNICIPALES" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="ESTATUSM" EntityType="Self.ESTATUSM" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="MONEDAS" EntityType="Self.MONEDAS" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="MUNICIPIOS" EntityType="Self.MUNICIPIOS" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="NACIONALIDADES" EntityType="Self.NACIONALIDADES" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="PAISES" EntityType="Self.PAISES" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="PERIODICIDADES" EntityType="Self.PERIODICIDADES" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="PERSONAS" EntityType="Self.PERSONAS" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="PERSONAS_TIPO" EntityType="Self.PERSONAS_TIPO" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="PROVINCIAS" EntityType="Self.PROVINCIAS" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="REGIONES" EntityType="Self.REGIONES" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="SECCIONES" EntityType="Self.SECCIONES" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="SUBBARRIOS" EntityType="Self.SUBBARRIOS" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="OPCIONES" EntityType="Self.OPCIONES" Schema="SEG" store:Type="Tables" />
+          <EntitySet Name="OPCIONES_PADRE" EntityType="Self.OPCIONES_PADRE" Schema="SEG" store:Type="Tables" />
+          <EntitySet Name="OPCIONESROL" EntityType="Self.OPCIONESROL" Schema="SEG" store:Type="Tables" />
+          <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="SEG" store:Type="Tables" />
+          <EntitySet Name="ROLESUSUARIO" EntityType="Self.ROLESUSUARIO" Schema="SEG" store:Type="Tables" />
+          <EntitySet Name="USUARIOSSEG" EntityType="Self.USUARIOSSEG" Schema="SEG" store:Type="Tables" />
+          <AssociationSet Name="FK_AUTORES_AUTORES_PLANES" Association="Self.FK_AUTORES_AUTORES_PLANES">
+            <End Role="AUTORES_PLANES" EntitySet="AUTORES_PLANES" />
+            <End Role="AUTORES" EntitySet="AUTORES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AUTORES_PAGO_AUTORES" Association="Self.FK_AUTORES_PAGO_AUTORES">
+            <End Role="AUTORES" EntitySet="AUTORES" />
+            <End Role="AUTORES_PAGO" EntitySet="AUTORES_PAGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AUTORES_PAGO_MONEDAS" Association="Self.FK_AUTORES_PAGO_MONEDAS">
+            <End Role="MONEDAS" EntitySet="MONEDAS" />
+            <End Role="AUTORES_PAGO" EntitySet="AUTORES_PAGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AUTORES_PLANES_MONEDAS" Association="Self.FK_AUTORES_PLANES_MONEDAS">
+            <End Role="MONEDAS" EntitySet="MONEDAS" />
+            <End Role="AUTORES_PLANES" EntitySet="AUTORES_PLANES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AUTORES_PLANES_PERIODICIDADES" Association="Self.FK_AUTORES_PLANES_PERIODICIDADES">
+            <End Role="PERIODICIDADES" EntitySet="PERIODICIDADES" />
+            <End Role="AUTORES_PLANES" EntitySet="AUTORES_PLANES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BARRIOS_PARAJES_SECCIONES" Association="Self.FK_BARRIOS_PARAJES_SECCIONES">
+            <End Role="SECCIONES" EntitySet="SECCIONES" />
+            <End Role="BARRIOS_PARAJES" EntitySet="BARRIOS_PARAJES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DISTMUNICIPALES_MUNICIPIOS" Association="Self.FK_DISTMUNICIPALES_MUNICIPIOS">
+            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
+            <End Role="DIST_MUNICIPALES" EntitySet="DIST_MUNICIPALES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MUNICIPIOS_PROVINCIAS" Association="Self.FK_MUNICIPIOS_PROVINCIAS">
+            <End Role="PROVINCIAS" EntitySet="PROVINCIAS" />
+            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NACIONALIDADES_PAISES" Association="Self.FK_NACIONALIDADES_PAISES">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="NACIONALIDADES" EntitySet="NACIONALIDADES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OPCIONES_OPCIONES_PADRE" Association="Self.FK_OPCIONES_OPCIONES_PADRE">
+            <End Role="OPCIONES_PADRE" EntitySet="OPCIONES_PADRE" />
+            <End Role="OPCIONES" EntitySet="OPCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONAS_AUTORES" Association="Self.FK_PERSONAS_AUTORES">
+            <End Role="AUTORES" EntitySet="AUTORES" />
+            <End Role="PERSONAS" EntitySet="PERSONAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONAS_AUTORES1" Association="Self.FK_PERSONAS_AUTORES1">
+            <End Role="AUTORES" EntitySet="AUTORES" />
+            <End Role="PERSONAS" EntitySet="PERSONAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONAS_PAISES" Association="Self.FK_PERSONAS_PAISES">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="PERSONAS" EntitySet="PERSONAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONAS_TIPO_AUTORES" Association="Self.FK_PERSONAS_TIPO_AUTORES">
+            <End Role="AUTORES" EntitySet="AUTORES" />
+            <End Role="PERSONAS_TIPO" EntitySet="PERSONAS_TIPO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROVINCIAS_REGIONES" Association="Self.FK_PROVINCIAS_REGIONES">
+            <End Role="REGIONES" EntitySet="REGIONES" />
+            <End Role="PROVINCIAS" EntitySet="PROVINCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGIONES_PAISES" Association="Self.FK_REGIONES_PAISES">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="REGIONES" EntitySet="REGIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROLES_AUTORES" Association="Self.FK_ROLES_AUTORES">
+            <End Role="AUTORES" EntitySet="AUTORES" />
+            <End Role="ROLES" EntitySet="ROLES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rolesopciones_opciones" Association="Self.FK_rolesopciones_opciones">
+            <End Role="OPCIONES" EntitySet="OPCIONES" />
+            <End Role="OPCIONESROL" EntitySet="OPCIONESROL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rolesopciones_roles" Association="Self.FK_rolesopciones_roles">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="OPCIONESROL" EntitySet="OPCIONESROL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SECCIONES_DISTMUNICIPALES" Association="Self.FK_SECCIONES_DISTMUNICIPALES">
+            <End Role="DIST_MUNICIPALES" EntitySet="DIST_MUNICIPALES" />
+            <End Role="SECCIONES" EntitySet="SECCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUBBARRIOS_BARRIOS_PARAJES" Association="Self.FK_SUBBARRIOS_BARRIOS_PARAJES">
+            <End Role="BARRIOS_PARAJES" EntitySet="BARRIOS_PARAJES" />
+            <End Role="SUBBARRIOS" EntitySet="SUBBARRIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuariosroles_roles" Association="Self.FK_usuariosroles_roles">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="ROLESUSUARIO" EntitySet="ROLESUSUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuariosroles_usuariosSEG" Association="Self.FK_usuariosroles_usuariosSEG">
+            <End Role="USUARIOSSEG" EntitySet="USUARIOSSEG" />
+            <End Role="ROLESUSUARIO" EntitySet="ROLESUSUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOSSEG_AUTORES" Association="Self.FK_USUARIOSSEG_AUTORES">
+            <End Role="AUTORES" EntitySet="AUTORES" />
+            <End Role="USUARIOSSEG" EntitySet="USUARIOSSEG" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SegDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AUTORES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="Boolean" />
+          <Property Name="CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TELEFONO" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="FECINICIO" Type="DateTime" Precision="0" />
+          <Property Name="PLANID" Type="Int32" />
+          <NavigationProperty Name="AUTORES_PLANES" Relationship="Self.FK_AUTORES_AUTORES_PLANES" FromRole="AUTORES" ToRole="AUTORES_PLANES" />
+          <NavigationProperty Name="AUTORES_PAGO" Relationship="Self.FK_AUTORES_PAGO_AUTORES" FromRole="AUTORES" ToRole="AUTORES_PAGO" />
+          <NavigationProperty Name="PERSONAS" Relationship="Self.FK_PERSONAS_AUTORES" FromRole="AUTORES" ToRole="PERSONAS" />
+          <NavigationProperty Name="PERSONAS1" Relationship="Self.FK_PERSONAS_AUTORES1" FromRole="AUTORES" ToRole="PERSONAS" />
+          <NavigationProperty Name="PERSONAS_TIPO" Relationship="Self.FK_PERSONAS_TIPO_AUTORES" FromRole="AUTORES" ToRole="PERSONAS_TIPO" />
+          <NavigationProperty Name="ROLES" Relationship="Self.FK_ROLES_AUTORES" FromRole="AUTORES" ToRole="ROLES" />
+          <NavigationProperty Name="USUARIOSSEG" Relationship="Self.FK_USUARIOSSEG_AUTORES" FromRole="AUTORES" ToRole="USUARIOSSEG" />
+        </EntityType>
+        <EntityType Name="AUTORES_PAGO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AUTORID" Type="Int32" />
+          <Property Name="REFERENCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MONEDAID" Type="Int32" />
+          <Property Name="MONTO" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="DETALLE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AUTORES" Relationship="Self.FK_AUTORES_PAGO_AUTORES" FromRole="AUTORES_PAGO" ToRole="AUTORES" />
+          <NavigationProperty Name="MONEDAS" Relationship="Self.FK_AUTORES_PAGO_MONEDAS" FromRole="AUTORES_PAGO" ToRole="MONEDAS" />
+        </EntityType>
+        <EntityType Name="AUTORES_PLANES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PERIODICIDADID" Type="Int32" />
+          <Property Name="MONEDAID" Type="Int32" />
+          <Property Name="MONTO" Type="Decimal" Precision="12" Scale="2" />
+          <NavigationProperty Name="AUTORES" Relationship="Self.FK_AUTORES_AUTORES_PLANES" FromRole="AUTORES_PLANES" ToRole="AUTORES" />
+          <NavigationProperty Name="MONEDAS" Relationship="Self.FK_AUTORES_PLANES_MONEDAS" FromRole="AUTORES_PLANES" ToRole="MONEDAS" />
+          <NavigationProperty Name="PERIODICIDADES" Relationship="Self.FK_AUTORES_PLANES_PERIODICIDADES" FromRole="AUTORES_PLANES" ToRole="PERIODICIDADES" />
+        </EntityType>
+        <EntityType Name="BARRIOS_PARAJES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SECCIONID" Type="Int32" />
+          <NavigationProperty Name="SECCIONES" Relationship="Self.FK_BARRIOS_PARAJES_SECCIONES" FromRole="BARRIOS_PARAJES" ToRole="SECCIONES" />
+          <NavigationProperty Name="SUBBARRIOS" Relationship="Self.FK_SUBBARRIOS_BARRIOS_PARAJES" FromRole="BARRIOS_PARAJES" ToRole="SUBBARRIOS" />
+        </EntityType>
+        <EntityType Name="DIST_MUNICIPALES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MUNICIPIOID" Type="Int32" />
+          <NavigationProperty Name="MUNICIPIOS" Relationship="Self.FK_DISTMUNICIPALES_MUNICIPIOS" FromRole="DIST_MUNICIPALES" ToRole="MUNICIPIOS" />
+          <NavigationProperty Name="SECCIONES" Relationship="Self.FK_SECCIONES_DISTMUNICIPALES" FromRole="DIST_MUNICIPALES" ToRole="SECCIONES" />
+        </EntityType>
+        <EntityType Name="ESTATUSM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TABLA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MONEDAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AUTORES_PAGO" Relationship="Self.FK_AUTORES_PAGO_MONEDAS" FromRole="MONEDAS" ToRole="AUTORES_PAGO" />
+          <NavigationProperty Name="AUTORES_PLANES" Relationship="Self.FK_AUTORES_PLANES_MONEDAS" FromRole="MONEDAS" ToRole="AUTORES_PLANES" />
+        </EntityType>
+        <EntityType Name="MUNICIPIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PROVINCIAID" Type="Int32" />
+          <NavigationProperty Name="DIST_MUNICIPALES" Relationship="Self.FK_DISTMUNICIPALES_MUNICIPIOS" FromRole="MUNICIPIOS" ToRole="DIST_MUNICIPALES" />
+          <NavigationProperty Name="PROVINCIAS" Relationship="Self.FK_MUNICIPIOS_PROVINCIAS" FromRole="MUNICIPIOS" ToRole="PROVINCIAS" />
+        </EntityType>
+        <EntityType Name="NACIONALIDADES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PAISID" Type="Int32" />
+          <NavigationProperty Name="PAISES" Relationship="Self.FK_NACIONALIDADES_PAISES" FromRole="NACIONALIDADES" ToRole="PAISES" />
+        </EntityType>
+        <EntityType Name="PAISES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GENTILICIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NACIONALIDADES" Relationship="Self.FK_NACIONALIDADES_PAISES" FromRole="PAISES" ToRole="NACIONALIDADES" />
+          <NavigationProperty Name="PERSONAS" Relationship="Self.FK_PERSONAS_PAISES" FromRole="PAISES" ToRole="PERSONAS" />
+          <NavigationProperty Name="REGIONES" Relationship="Self.FK_REGIONES_PAISES" FromRole="PAISES" ToRole="REGIONES" />
+        </EntityType>
+        <EntityType Name="PERIODICIDADES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AUTORES_PLANES" Relationship="Self.FK_AUTORES_PLANES_PERIODICIDADES" FromRole="PERIODICIDADES" ToRole="AUTORES_PLANES" />
+        </EntityType>
+        <EntityType Name="PERSONAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDOS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECNACIMIENTO" Type="DateTime" Precision="3" />
+          <Property Name="RNC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TIPORNC" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CELULAR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="GENERO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ESTATUSMARITAL" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="OCUPACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RELIGION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FECCREACION" Type="DateTime" Precision="3" />
+          <Property Name="ULTIMAVISITA" Type="DateTime" Precision="3" />
+          <Property Name="ESTATUS" Type="Boolean" Nullable="false" />
+          <Property Name="AUTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="AUTORID" Type="Int32" />
+          <Property Name="PAISID" Type="Int32" />
+          <NavigationProperty Name="AUTORES" Relationship="Self.FK_PERSONAS_AUTORES" FromRole="PERSONAS" ToRole="AUTORES" />
+          <NavigationProperty Name="AUTORES1" Relationship="Self.FK_PERSONAS_AUTORES1" FromRole="PERSONAS" ToRole="AUTORES" />
+          <NavigationProperty Name="PAISES" Relationship="Self.FK_PERSONAS_PAISES" FromRole="PERSONAS" ToRole="PAISES" />
+        </EntityType>
+        <EntityType Name="PERSONAS_TIPO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+          <Property Name="TABLA_MODULO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AUTORID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AUTORES" Relationship="Self.FK_PERSONAS_TIPO_AUTORES" FromRole="PERSONAS_TIPO" ToRole="AUTORES" />
+        </EntityType>
+        <EntityType Name="PROVINCIAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="REGIONID" Type="Int32" />
+          <NavigationProperty Name="MUNICIPIOS" Relationship="Self.FK_MUNICIPIOS_PROVINCIAS" FromRole="PROVINCIAS" ToRole="MUNICIPIOS" />
+          <NavigationProperty Name="REGIONES" Relationship="Self.FK_PROVINCIAS_REGIONES" FromRole="PROVINCIAS" ToRole="REGIONES" />
+        </EntityType>
+        <EntityType Name="REGIONES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PAISID" Type="Int32" />
+          <NavigationProperty Name="PAISES" Relationship="Self.FK_REGIONES_PAISES" FromRole="REGIONES" ToRole="PAISES" />
+          <NavigationProperty Name="PROVINCIAS" Relationship="Self.FK_PROVINCIAS_REGIONES" FromRole="REGIONES" ToRole="PROVINCIAS" />
+        </EntityType>
+        <EntityType Name="SECCIONES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DISTMUNICIPALID" Type="Int32" />
+          <NavigationProperty Name="BARRIOS_PARAJES" Relationship="Self.FK_BARRIOS_PARAJES_SECCIONES" FromRole="SECCIONES" ToRole="BARRIOS_PARAJES" />
+          <NavigationProperty Name="DIST_MUNICIPALES" Relationship="Self.FK_SECCIONES_DISTMUNICIPALES" FromRole="SECCIONES" ToRole="DIST_MUNICIPALES" />
+        </EntityType>
+        <EntityType Name="SUBBARRIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BARRIOID" Type="Int32" />
+          <NavigationProperty Name="BARRIOS_PARAJES" Relationship="Self.FK_SUBBARRIOS_BARRIOS_PARAJES" FromRole="SUBBARRIOS" ToRole="BARRIOS_PARAJES" />
+        </EntityType>
+        <EntityType Name="OPCIONES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LINK" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ORDEN" Type="Int32" />
+          <Property Name="ESTATUS" Type="Boolean" Nullable="false" />
+          <Property Name="OPCIONESTIPO" Type="Int32" Nullable="false" />
+          <Property Name="CLASS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ICON" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="COD" Type="Int32" />
+          <Property Name="PADRE" Type="Int32" />
+          <NavigationProperty Name="OPCIONES_PADRE" Relationship="Self.FK_OPCIONES_OPCIONES_PADRE" FromRole="OPCIONES" ToRole="OPCIONES_PADRE" />
+          <NavigationProperty Name="OPCIONESROL" Relationship="Self.FK_rolesopciones_opciones" FromRole="OPCIONES" ToRole="OPCIONESROL" />
+        </EntityType>
+        <EntityType Name="OPCIONES_PADRE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LINK" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ORDEN" Type="Int32" />
+          <Property Name="ESTATUS" Type="Boolean" Nullable="false" />
+          <Property Name="OPCIONESTIPO" Type="Int32" Nullable="false" />
+          <Property Name="CLASS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ICON" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="COD" Type="Int32" />
+          <NavigationProperty Name="OPCIONES" Relationship="Self.FK_OPCIONES_OPCIONES_PADRE" FromRole="OPCIONES_PADRE" ToRole="OPCIONES" />
+        </EntityType>
+        <EntityType Name="OPCIONESROL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="OPCIONID" Type="Int32" Nullable="false" />
+          <Property Name="ROLID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESDE" Type="DateTime" Precision="0" />
+          <Property Name="HASTA" Type="DateTime" Precision="0" />
+          <Property Name="ESTATUS" Type="Boolean" Nullable="false" />
+          <Property Name="INDEFINIDO" Type="Boolean" />
+          <NavigationProperty Name="OPCIONES" Relationship="Self.FK_rolesopciones_opciones" FromRole="OPCIONESROL" ToRole="OPCIONES" />
+          <NavigationProperty Name="ROLES" Relationship="Self.FK_rolesopciones_roles" FromRole="OPCIONESROL" ToRole="ROLES" />
+        </EntityType>
+        <EntityType Name="ROLES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="AUTOR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTATUS" Type="Boolean" Nullable="false" />
+          <Property Name="AUTORID" Type="Int32" />
+          <NavigationProperty Name="AUTORES" Relationship="Self.FK_ROLES_AUTORES" FromRole="ROLES" ToRole="AUTORES" />
+          <NavigationProperty Name="OPCIONESROL" Relationship="Self.FK_rolesopciones_roles" FromRole="ROLES" ToRole="OPCIONESROL" />
+          <NavigationProperty Name="ROLESUSUARIO" Relationship="Self.FK_usuariosroles_roles" FromRole="ROLES" ToRole="ROLESUSUARIO" />
+        </EntityType>
+        <EntityType Name="ROLESUSUARIO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ROLID" Type="Int32" Nullable="false" />
+          <Property Name="USERID" Type="Int32" Nullable="false" />
+          <Property Name="DEFAULTPAGE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESDE" Type="DateTime" Precision="0" />
+          <Property Name="HASTA" Type="DateTime" Precision="0" />
+          <Property Name="ESTATUS" Type="Boolean" Nullable="false" />
+          <Property Name="INDEFINIDO" Type="Boolean" />
+          <NavigationProperty Name="ROLES" Relationship="Self.FK_usuariosroles_roles" FromRole="ROLESUSUARIO" ToRole="ROLES" />
+          <NavigationProperty Name="USUARIOSSEG" Relationship="Self.FK_usuariosroles_usuariosSEG" FromRole="ROLESUSUARIO" ToRole="USUARIOSSEG" />
+        </EntityType>
+        <EntityType Name="USUARIOSSEG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDOS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FECCREACION" Type="DateTime" Precision="3" />
+          <Property Name="ULTIMAVISITA" Type="DateTime" Precision="3" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NIVEL" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ESTATUS" Type="Boolean" Nullable="false" />
+          <Property Name="AUTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AUTORID" Type="Int32" />
+          <Property Name="SUCURSALID" Type="Int32" />
+          <NavigationProperty Name="AUTORES" Relationship="Self.FK_USUARIOSSEG_AUTORES" FromRole="USUARIOSSEG" ToRole="AUTORES" />
+          <NavigationProperty Name="ROLESUSUARIO" Relationship="Self.FK_usuariosroles_usuariosSEG" FromRole="USUARIOSSEG" ToRole="ROLESUSUARIO" />
+        </EntityType>
+        <Association Name="FK_AUTORES_AUTORES_PLANES">
+          <End Role="AUTORES_PLANES" Type="Self.AUTORES_PLANES" Multiplicity="0..1" />
+          <End Role="AUTORES" Type="Self.AUTORES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTORES_PLANES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AUTORES">
+              <PropertyRef Name="PLANID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AUTORES_PAGO_AUTORES">
+          <End Role="AUTORES" Type="Self.AUTORES" Multiplicity="0..1" />
+          <End Role="AUTORES_PAGO" Type="Self.AUTORES_PAGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTORES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AUTORES_PAGO">
+              <PropertyRef Name="AUTORID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONAS_AUTORES">
+          <End Role="AUTORES" Type="Self.AUTORES" Multiplicity="0..1" />
+          <End Role="PERSONAS" Type="Self.PERSONAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTORES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONAS">
+              <PropertyRef Name="AUTORID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONAS_AUTORES1">
+          <End Role="AUTORES" Type="Self.AUTORES" Multiplicity="0..1" />
+          <End Role="PERSONAS" Type="Self.PERSONAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTORES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONAS">
+              <PropertyRef Name="AUTORID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONAS_TIPO_AUTORES">
+          <End Role="AUTORES" Type="Self.AUTORES" Multiplicity="1" />
+          <End Role="PERSONAS_TIPO" Type="Self.PERSONAS_TIPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTORES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONAS_TIPO">
+              <PropertyRef Name="AUTORID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROLES_AUTORES">
+          <End Role="AUTORES" Type="Self.AUTORES" Multiplicity="0..1" />
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTORES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ROLES">
+              <PropertyRef Name="AUTORID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOSSEG_AUTORES">
+          <End Role="AUTORES" Type="Self.AUTORES" Multiplicity="0..1" />
+          <End Role="USUARIOSSEG" Type="Self.USUARIOSSEG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTORES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USUARIOSSEG">
+              <PropertyRef Name="AUTORID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AUTORES_PAGO_MONEDAS">
+          <End Role="MONEDAS" Type="Self.MONEDAS" Multiplicity="0..1" />
+          <End Role="AUTORES_PAGO" Type="Self.AUTORES_PAGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONEDAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AUTORES_PAGO">
+              <PropertyRef Name="MONEDAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AUTORES_PLANES_MONEDAS">
+          <End Role="MONEDAS" Type="Self.MONEDAS" Multiplicity="0..1" />
+          <End Role="AUTORES_PLANES" Type="Self.AUTORES_PLANES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONEDAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AUTORES_PLANES">
+              <PropertyRef Name="MONEDAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AUTORES_PLANES_PERIODICIDADES">
+          <End Role="PERIODICIDADES" Type="Self.PERIODICIDADES" Multiplicity="0..1" />
+          <End Role="AUTORES_PLANES" Type="Self.AUTORES_PLANES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERIODICIDADES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AUTORES_PLANES">
+              <PropertyRef Name="PERIODICIDADID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BARRIOS_PARAJES_SECCIONES">
+          <End Role="SECCIONES" Type="Self.SECCIONES" Multiplicity="0..1" />
+          <End Role="BARRIOS_PARAJES" Type="Self.BARRIOS_PARAJES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECCIONES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BARRIOS_PARAJES">
+              <PropertyRef Name="SECCIONID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUBBARRIOS_BARRIOS_PARAJES">
+          <End Role="BARRIOS_PARAJES" Type="Self.BARRIOS_PARAJES" Multiplicity="0..1" />
+          <End Role="SUBBARRIOS" Type="Self.SUBBARRIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BARRIOS_PARAJES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SUBBARRIOS">
+              <PropertyRef Name="BARRIOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DISTMUNICIPALES_MUNICIPIOS">
+          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="0..1" />
+          <End Role="DIST_MUNICIPALES" Type="Self.DIST_MUNICIPALES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MUNICIPIOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DIST_MUNICIPALES">
+              <PropertyRef Name="MUNICIPIOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SECCIONES_DISTMUNICIPALES">
+          <End Role="DIST_MUNICIPALES" Type="Self.DIST_MUNICIPALES" Multiplicity="0..1" />
+          <End Role="SECCIONES" Type="Self.SECCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIST_MUNICIPALES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SECCIONES">
+              <PropertyRef Name="DISTMUNICIPALID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MUNICIPIOS_PROVINCIAS">
+          <End Role="PROVINCIAS" Type="Self.PROVINCIAS" Multiplicity="0..1" />
+          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCIAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MUNICIPIOS">
+              <PropertyRef Name="PROVINCIAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NACIONALIDADES_PAISES">
+          <End Role="PAISES" Type="Self.PAISES" Multiplicity="0..1" />
+          <End Role="NACIONALIDADES" Type="Self.NACIONALIDADES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAISES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NACIONALIDADES">
+              <PropertyRef Name="PAISID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONAS_PAISES">
+          <End Role="PAISES" Type="Self.PAISES" Multiplicity="0..1" />
+          <End Role="PERSONAS" Type="Self.PERSONAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAISES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONAS">
+              <PropertyRef Name="PAISID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGIONES_PAISES">
+          <End Role="PAISES" Type="Self.PAISES" Multiplicity="0..1" />
+          <End Role="REGIONES" Type="Self.REGIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAISES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REGIONES">
+              <PropertyRef Name="PAISID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROVINCIAS_REGIONES">
+          <End Role="REGIONES" Type="Self.REGIONES" Multiplicity="0..1" />
+          <End Role="PROVINCIAS" Type="Self.PROVINCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGIONES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PROVINCIAS">
+              <PropertyRef Name="REGIONID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OPCIONES_OPCIONES_PADRE">
+          <End Role="OPCIONES_PADRE" Type="Self.OPCIONES_PADRE" Multiplicity="0..1" />
+          <End Role="OPCIONES" Type="Self.OPCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OPCIONES_PADRE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OPCIONES">
+              <PropertyRef Name="PADRE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rolesopciones_opciones">
+          <End Role="OPCIONES" Type="Self.OPCIONES" Multiplicity="1" />
+          <End Role="OPCIONESROL" Type="Self.OPCIONESROL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OPCIONES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OPCIONESROL">
+              <PropertyRef Name="OPCIONID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rolesopciones_roles">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+          <End Role="OPCIONESROL" Type="Self.OPCIONESROL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OPCIONESROL">
+              <PropertyRef Name="ROLID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuariosroles_roles">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+          <End Role="ROLESUSUARIO" Type="Self.ROLESUSUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ROLESUSUARIO">
+              <PropertyRef Name="ROLID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuariosroles_usuariosSEG">
+          <End Role="USUARIOSSEG" Type="Self.USUARIOSSEG" Multiplicity="1" />
+          <End Role="ROLESUSUARIO" Type="Self.ROLESUSUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOSSEG">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ROLESUSUARIO">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SegDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AUTORES" EntityType="Self.AUTORES" />
+          <EntitySet Name="AUTORES_PAGO" EntityType="Self.AUTORES_PAGO" />
+          <EntitySet Name="AUTORES_PLANES" EntityType="Self.AUTORES_PLANES" />
+          <EntitySet Name="BARRIOS_PARAJES" EntityType="Self.BARRIOS_PARAJES" />
+          <EntitySet Name="DIST_MUNICIPALES" EntityType="Self.DIST_MUNICIPALES" />
+          <EntitySet Name="ESTATUSM" EntityType="Self.ESTATUSM" />
+          <EntitySet Name="MONEDAS" EntityType="Self.MONEDAS" />
+          <EntitySet Name="MUNICIPIOS" EntityType="Self.MUNICIPIOS" />
+          <EntitySet Name="NACIONALIDADES" EntityType="Self.NACIONALIDADES" />
+          <EntitySet Name="PAISES" EntityType="Self.PAISES" />
+          <EntitySet Name="PERIODICIDADES" EntityType="Self.PERIODICIDADES" />
+          <EntitySet Name="PERSONAS" EntityType="Self.PERSONAS" />
+          <EntitySet Name="PERSONAS_TIPO" EntityType="Self.PERSONAS_TIPO" />
+          <EntitySet Name="PROVINCIAS" EntityType="Self.PROVINCIAS" />
+          <EntitySet Name="REGIONES" EntityType="Self.REGIONES" />
+          <EntitySet Name="SECCIONES" EntityType="Self.SECCIONES" />
+          <EntitySet Name="SUBBARRIOS" EntityType="Self.SUBBARRIOS" />
+          <EntitySet Name="OPCIONES" EntityType="Self.OPCIONES" />
+          <EntitySet Name="OPCIONES_PADRE" EntityType="Self.OPCIONES_PADRE" />
+          <EntitySet Name="OPCIONESROL" EntityType="Self.OPCIONESROL" />
+          <EntitySet Name="ROLES" EntityType="Self.ROLES" />
+          <EntitySet Name="ROLESUSUARIO" EntityType="Self.ROLESUSUARIO" />
+          <EntitySet Name="USUARIOSSEG" EntityType="Self.USUARIOSSEG" />
+          <AssociationSet Name="FK_AUTORES_AUTORES_PLANES" Association="Self.FK_AUTORES_AUTORES_PLANES">
+            <End Role="AUTORES_PLANES" EntitySet="AUTORES_PLANES" />
+            <End Role="AUTORES" EntitySet="AUTORES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AUTORES_PAGO_AUTORES" Association="Self.FK_AUTORES_PAGO_AUTORES">
+            <End Role="AUTORES" EntitySet="AUTORES" />
+            <End Role="AUTORES_PAGO" EntitySet="AUTORES_PAGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONAS_AUTORES" Association="Self.FK_PERSONAS_AUTORES">
+            <End Role="AUTORES" EntitySet="AUTORES" />
+            <End Role="PERSONAS" EntitySet="PERSONAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONAS_AUTORES1" Association="Self.FK_PERSONAS_AUTORES1">
+            <End Role="AUTORES" EntitySet="AUTORES" />
+            <End Role="PERSONAS" EntitySet="PERSONAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONAS_TIPO_AUTORES" Association="Self.FK_PERSONAS_TIPO_AUTORES">
+            <End Role="AUTORES" EntitySet="AUTORES" />
+            <End Role="PERSONAS_TIPO" EntitySet="PERSONAS_TIPO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROLES_AUTORES" Association="Self.FK_ROLES_AUTORES">
+            <End Role="AUTORES" EntitySet="AUTORES" />
+            <End Role="ROLES" EntitySet="ROLES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOSSEG_AUTORES" Association="Self.FK_USUARIOSSEG_AUTORES">
+            <End Role="AUTORES" EntitySet="AUTORES" />
+            <End Role="USUARIOSSEG" EntitySet="USUARIOSSEG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AUTORES_PAGO_MONEDAS" Association="Self.FK_AUTORES_PAGO_MONEDAS">
+            <End Role="MONEDAS" EntitySet="MONEDAS" />
+            <End Role="AUTORES_PAGO" EntitySet="AUTORES_PAGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AUTORES_PLANES_MONEDAS" Association="Self.FK_AUTORES_PLANES_MONEDAS">
+            <End Role="MONEDAS" EntitySet="MONEDAS" />
+            <End Role="AUTORES_PLANES" EntitySet="AUTORES_PLANES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AUTORES_PLANES_PERIODICIDADES" Association="Self.FK_AUTORES_PLANES_PERIODICIDADES">
+            <End Role="PERIODICIDADES" EntitySet="PERIODICIDADES" />
+            <End Role="AUTORES_PLANES" EntitySet="AUTORES_PLANES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BARRIOS_PARAJES_SECCIONES" Association="Self.FK_BARRIOS_PARAJES_SECCIONES">
+            <End Role="SECCIONES" EntitySet="SECCIONES" />
+            <End Role="BARRIOS_PARAJES" EntitySet="BARRIOS_PARAJES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUBBARRIOS_BARRIOS_PARAJES" Association="Self.FK_SUBBARRIOS_BARRIOS_PARAJES">
+            <End Role="BARRIOS_PARAJES" EntitySet="BARRIOS_PARAJES" />
+            <End Role="SUBBARRIOS" EntitySet="SUBBARRIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DISTMUNICIPALES_MUNICIPIOS" Association="Self.FK_DISTMUNICIPALES_MUNICIPIOS">
+            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
+            <End Role="DIST_MUNICIPALES" EntitySet="DIST_MUNICIPALES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SECCIONES_DISTMUNICIPALES" Association="Self.FK_SECCIONES_DISTMUNICIPALES">
+            <End Role="DIST_MUNICIPALES" EntitySet="DIST_MUNICIPALES" />
+            <End Role="SECCIONES" EntitySet="SECCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MUNICIPIOS_PROVINCIAS" Association="Self.FK_MUNICIPIOS_PROVINCIAS">
+            <End Role="PROVINCIAS" EntitySet="PROVINCIAS" />
+            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NACIONALIDADES_PAISES" Association="Self.FK_NACIONALIDADES_PAISES">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="NACIONALIDADES" EntitySet="NACIONALIDADES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONAS_PAISES" Association="Self.FK_PERSONAS_PAISES">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="PERSONAS" EntitySet="PERSONAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGIONES_PAISES" Association="Self.FK_REGIONES_PAISES">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="REGIONES" EntitySet="REGIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROVINCIAS_REGIONES" Association="Self.FK_PROVINCIAS_REGIONES">
+            <End Role="REGIONES" EntitySet="REGIONES" />
+            <End Role="PROVINCIAS" EntitySet="PROVINCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OPCIONES_OPCIONES_PADRE" Association="Self.FK_OPCIONES_OPCIONES_PADRE">
+            <End Role="OPCIONES_PADRE" EntitySet="OPCIONES_PADRE" />
+            <End Role="OPCIONES" EntitySet="OPCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rolesopciones_opciones" Association="Self.FK_rolesopciones_opciones">
+            <End Role="OPCIONES" EntitySet="OPCIONES" />
+            <End Role="OPCIONESROL" EntitySet="OPCIONESROL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rolesopciones_roles" Association="Self.FK_rolesopciones_roles">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="OPCIONESROL" EntitySet="OPCIONESROL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuariosroles_roles" Association="Self.FK_usuariosroles_roles">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="ROLESUSUARIO" EntitySet="ROLESUSUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuariosroles_usuariosSEG" Association="Self.FK_usuariosroles_usuariosSEG">
+            <End Role="USUARIOSSEG" EntitySet="USUARIOSSEG" />
+            <End Role="ROLESUSUARIO" EntitySet="ROLESUSUARIO" />
+          </AssociationSet>
+          <FunctionImport Name="GENERACODIGO" ReturnType="Collection(Int32)">
+            <Parameter Name="table" Mode="In" Type="String" />
+            <Parameter Name="autor" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListMonedas" ReturnType="Collection(SegDbModel.ListMonedas_Result)">
+            <Parameter Name="dec" Mode="In" Type="Int16" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListPaisNacionalidad" ReturnType="Collection(SegDbModel.ListPaisNacionalidad_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListPeriodicidades" ReturnType="Collection(SegDbModel.ListPeriodicidades_Result)">
+            <Parameter Name="dec" Mode="In" Type="Int16" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListPersonasTipo" ReturnType="Collection(SegDbModel.ListPersonasTipo_Result)">
+            <Parameter Name="Tabla" Mode="In" Type="String" />
+            <Parameter Name="AutorID" Mode="In" Type="Int32" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListStatus" ReturnType="Collection(SegDbModel.ListStatus_Result)">
+            <Parameter Name="tabla" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetOpciones" ReturnType="Collection(SegDbModel.GetOpciones_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetOpcionesRol" ReturnType="Collection(SegDbModel.GetOpcionesRol_Result)">
+            <Parameter Name="RolID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetOpcionesRoles" ReturnType="Collection(SegDbModel.GetOpcionesRoles_Result)">
+            <Parameter Name="RolID" Mode="In" Type="Int32" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="dec" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetRoles" ReturnType="Collection(SegDbModel.GetRoles_Result)">
+            <Parameter Name="autor" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="dec" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetRolesUsuario" ReturnType="Collection(SegDbModel.GetRolesUsuario_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetUsuarios" ReturnType="Collection(SegDbModel.GetUsuarios_Result)">
+            <Parameter Name="autor" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="dec" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListAutores" ReturnType="Collection(SegDbModel.ListAutores_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListOpciones" ReturnType="Collection(SegDbModel.ListOpciones_Result)">
+            <Parameter Name="autor" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListOpcionesRol" ReturnType="Collection(SegDbModel.ListOpcionesRol_Result)">
+            <Parameter Name="RolID" Mode="In" Type="Int32" />
+            <Parameter Name="autor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ListOpcionesRoles" ReturnType="Collection(SegDbModel.ListOpcionesRoles_Result)">
+            <Parameter Name="RolID" Mode="In" Type="Int32" />
+            <Parameter Name="autor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ListRoles" ReturnType="Collection(SegDbModel.ListRoles_Result)">
+            <Parameter Name="autor" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListRolesUsuario" ReturnType="Collection(SegDbModel.ListRolesUsuario_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListRolesUsuarios" ReturnType="Collection(SegDbModel.ListRolesUsuarios_Result)">
+            <Parameter Name="RolID" Mode="In" Type="Int32" />
+            <Parameter Name="autor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ListUsuario" ReturnType="Collection(SegDbModel.ListUsuario_Result)">
+            <Parameter Name="autor" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListUsuarios" ReturnType="Collection(SegDbModel.ListUsuarios_Result)">
+            <Parameter Name="autor" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ListMonedas_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CODIGO" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ListPaisNacionalidad_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CODIGO" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="GENTILICIO" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ListPeriodicidades_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CODIGO" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ListPersonasTipo_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CODIGO" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="NOMBRE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="450" />
+          <Property Type="String" Name="TABLA_MODULO" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="AUTORID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ListStatus_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CODE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TABLA" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="GetOpciones_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NOMBRE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="LINK" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="ORDEN" Nullable="true" />
+          <Property Type="Boolean" Name="ESTATUS" Nullable="false" />
+          <Property Type="Int32" Name="OPCIONESTIPO" Nullable="false" />
+          <Property Type="String" Name="CLASS" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ICON" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="COD" Nullable="true" />
+          <Property Type="Int32" Name="PADRE" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetOpcionesRol_Result">
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="link" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="CLASS" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ICON" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="OPCIONESTIPO" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetOpcionesRoles_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="ROLID" Nullable="false" />
+          <Property Type="Int32" Name="OPCIONID" Nullable="false" />
+          <Property Type="String" Name="NOMBROL" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NOMBAUTOR" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="DESDE" Nullable="true" />
+          <Property Type="DateTime" Name="HASTA" Nullable="true" />
+          <Property Type="String" Name="NOMBOPCION" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="LINK" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="CLASS" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="ORDEN" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetRoles_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NOMBRE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="AUTOR" Nullable="false" MaxLength="25" />
+          <Property Type="Boolean" Name="ESTATUS" Nullable="false" />
+          <Property Type="Int32" Name="AUTORID" Nullable="true" />
+          <Property Type="String" Name="CODAUTOR" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="GetRolesUsuario_Result">
+          <Property Type="String" Name="NOMBRE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="ROLID" Nullable="false" />
+          <Property Type="Int32" Name="USERID" Nullable="false" />
+          <Property Type="String" Name="DEFAULTPAGE" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="DateTime" Name="DESDE" Nullable="true" />
+          <Property Type="DateTime" Name="HASTA" Nullable="true" />
+          <Property Type="Boolean" Name="ESTATUS" Nullable="false" />
+          <Property Type="Boolean" Name="INDEFINIDO" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetUsuarios_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NOMBRES" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="APELLIDOS" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FECCREACION" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ULTIMAVISITA" Nullable="true" Precision="23" />
+          <Property Type="String" Name="USERNAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PASSWORD" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="NIVEL" Nullable="false" MaxLength="1" />
+          <Property Type="Boolean" Name="ESTATUS" Nullable="false" />
+          <Property Type="String" Name="AUTOR" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="AUTORID" Nullable="true" />
+          <Property Type="Int32" Name="SUCURSALID" Nullable="true" />
+          <Property Type="String" Name="CODAUTOR" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="ListAutores_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CODIGO" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="ESTADO" Nullable="true" />
+          <Property Type="String" Name="CORREO" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TELEFONO" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="FECINICIO" Nullable="true" />
+          <Property Type="Int32" Name="PLANID" Nullable="true" />
+          <Property Type="String" Name="NOMBPLAN" Nullable="true" MaxLength="68" />
+          <Property Type="String" Name="NOMBPERIODICIDAD" Nullable="true" MaxLength="68" />
+        </ComplexType>
+        <ComplexType Name="ListOpciones_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NOMBRE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="LINK" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="ORDEN" Nullable="true" />
+          <Property Type="Boolean" Name="ESTATUS" Nullable="false" />
+          <Property Type="Int32" Name="OPCIONESTIPO" Nullable="false" />
+          <Property Type="String" Name="CLASS" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ICON" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="COD" Nullable="true" />
+          <Property Type="Int32" Name="PADRE" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ListOpcionesRol_Result">
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="link" Nullable="false" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="ListOpcionesRoles_Result">
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="link" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="CLASS" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ICON" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="OPCIONESTIPO" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ListRoles_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NOMBRE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="AUTOR" Nullable="false" MaxLength="25" />
+          <Property Type="Boolean" Name="ESTATUS" Nullable="false" />
+          <Property Type="Int32" Name="AUTORID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ListRolesUsuario_Result">
+          <Property Type="Int32" Name="ROLID" Nullable="false" />
+          <Property Type="Int32" Name="USERID" Nullable="false" />
+          <Property Type="String" Name="DEFAULTPAGE" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="DateTime" Name="DESDE" Nullable="true" />
+          <Property Type="DateTime" Name="HASTA" Nullable="true" />
+          <Property Type="Boolean" Name="ESTATUS" Nullable="false" />
+          <Property Type="Boolean" Name="INDEFINIDO" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ListRolesUsuarios_Result">
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="link" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="CLASS" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ICON" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="OPCIONESTIPO" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ListUsuario_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NOMBRES" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="APELLIDOS" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FECCREACION" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ULTIMAVISITA" Nullable="true" Precision="23" />
+          <Property Type="String" Name="USERNAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PASSWORD" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="NIVEL" Nullable="false" MaxLength="1" />
+          <Property Type="Boolean" Name="ESTATUS" Nullable="false" />
+          <Property Type="String" Name="AUTOR" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="AUTORID" Nullable="true" />
+          <Property Type="Int32" Name="SUCURSALID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ListUsuarios_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NOMBRES" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="APELLIDOS" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FECCREACION" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ULTIMAVISITA" Nullable="true" Precision="23" />
+          <Property Type="String" Name="USERNAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PASSWORD" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="NIVEL" Nullable="false" MaxLength="1" />
+          <Property Type="Boolean" Name="ESTATUS" Nullable="false" />
+          <Property Type="String" Name="AUTOR" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="AUTORID" Nullable="true" />
+          <Property Type="Int32" Name="SUCURSALID" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SegDbModelStoreContainer" CdmEntityContainer="SegDbEntities">
+          <EntitySetMapping Name="AUTORES">
+            <EntityTypeMapping TypeName="SegDbModel.AUTORES">
+              <MappingFragment StoreEntitySet="AUTORES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="FECINICIO" ColumnName="FECINICIO" />
+                <ScalarProperty Name="PLANID" ColumnName="PLANID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AUTORES_PAGO">
+            <EntityTypeMapping TypeName="SegDbModel.AUTORES_PAGO">
+              <MappingFragment StoreEntitySet="AUTORES_PAGO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+                <ScalarProperty Name="REFERENCIA" ColumnName="REFERENCIA" />
+                <ScalarProperty Name="MONEDAID" ColumnName="MONEDAID" />
+                <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+                <ScalarProperty Name="DETALLE" ColumnName="DETALLE" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AUTORES_PLANES">
+            <EntityTypeMapping TypeName="SegDbModel.AUTORES_PLANES">
+              <MappingFragment StoreEntitySet="AUTORES_PLANES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="PERIODICIDADID" ColumnName="PERIODICIDADID" />
+                <ScalarProperty Name="MONEDAID" ColumnName="MONEDAID" />
+                <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BARRIOS_PARAJES">
+            <EntityTypeMapping TypeName="SegDbModel.BARRIOS_PARAJES">
+              <MappingFragment StoreEntitySet="BARRIOS_PARAJES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="SECCIONID" ColumnName="SECCIONID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DIST_MUNICIPALES">
+            <EntityTypeMapping TypeName="SegDbModel.DIST_MUNICIPALES">
+              <MappingFragment StoreEntitySet="DIST_MUNICIPALES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="MUNICIPIOID" ColumnName="MUNICIPIOID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTATUSM">
+            <EntityTypeMapping TypeName="SegDbModel.ESTATUSM">
+              <MappingFragment StoreEntitySet="ESTATUSM">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="TABLA" ColumnName="TABLA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MONEDAS">
+            <EntityTypeMapping TypeName="SegDbModel.MONEDAS">
+              <MappingFragment StoreEntitySet="MONEDAS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MUNICIPIOS">
+            <EntityTypeMapping TypeName="SegDbModel.MUNICIPIOS">
+              <MappingFragment StoreEntitySet="MUNICIPIOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="PROVINCIAID" ColumnName="PROVINCIAID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NACIONALIDADES">
+            <EntityTypeMapping TypeName="SegDbModel.NACIONALIDADES">
+              <MappingFragment StoreEntitySet="NACIONALIDADES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="PAISID" ColumnName="PAISID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAISES">
+            <EntityTypeMapping TypeName="SegDbModel.PAISES">
+              <MappingFragment StoreEntitySet="PAISES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="GENTILICIO" ColumnName="GENTILICIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERIODICIDADES">
+            <EntityTypeMapping TypeName="SegDbModel.PERIODICIDADES">
+              <MappingFragment StoreEntitySet="PERIODICIDADES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERSONAS">
+            <EntityTypeMapping TypeName="SegDbModel.PERSONAS">
+              <MappingFragment StoreEntitySet="PERSONAS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="FECNACIMIENTO" ColumnName="FECNACIMIENTO" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="TIPORNC" ColumnName="TIPORNC" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="CELULAR" ColumnName="CELULAR" />
+                <ScalarProperty Name="GENERO" ColumnName="GENERO" />
+                <ScalarProperty Name="ESTATUSMARITAL" ColumnName="ESTATUSMARITAL" />
+                <ScalarProperty Name="OCUPACION" ColumnName="OCUPACION" />
+                <ScalarProperty Name="RELIGION" ColumnName="RELIGION" />
+                <ScalarProperty Name="FECCREACION" ColumnName="FECCREACION" />
+                <ScalarProperty Name="ULTIMAVISITA" ColumnName="ULTIMAVISITA" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="AUTOR" ColumnName="AUTOR" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+                <ScalarProperty Name="PAISID" ColumnName="PAISID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERSONAS_TIPO">
+            <EntityTypeMapping TypeName="SegDbModel.PERSONAS_TIPO">
+              <MappingFragment StoreEntitySet="PERSONAS_TIPO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="TABLA_MODULO" ColumnName="TABLA_MODULO" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVINCIAS">
+            <EntityTypeMapping TypeName="SegDbModel.PROVINCIAS">
+              <MappingFragment StoreEntitySet="PROVINCIAS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="REGIONID" ColumnName="REGIONID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REGIONES">
+            <EntityTypeMapping TypeName="SegDbModel.REGIONES">
+              <MappingFragment StoreEntitySet="REGIONES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="PAISID" ColumnName="PAISID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SECCIONES">
+            <EntityTypeMapping TypeName="SegDbModel.SECCIONES">
+              <MappingFragment StoreEntitySet="SECCIONES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DISTMUNICIPALID" ColumnName="DISTMUNICIPALID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUBBARRIOS">
+            <EntityTypeMapping TypeName="SegDbModel.SUBBARRIOS">
+              <MappingFragment StoreEntitySet="SUBBARRIOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="BARRIOID" ColumnName="BARRIOID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OPCIONES">
+            <EntityTypeMapping TypeName="SegDbModel.OPCIONES">
+              <MappingFragment StoreEntitySet="OPCIONES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="LINK" ColumnName="LINK" />
+                <ScalarProperty Name="ORDEN" ColumnName="ORDEN" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="OPCIONESTIPO" ColumnName="OPCIONESTIPO" />
+                <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+                <ScalarProperty Name="ICON" ColumnName="ICON" />
+                <ScalarProperty Name="COD" ColumnName="COD" />
+                <ScalarProperty Name="PADRE" ColumnName="PADRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OPCIONES_PADRE">
+            <EntityTypeMapping TypeName="SegDbModel.OPCIONES_PADRE">
+              <MappingFragment StoreEntitySet="OPCIONES_PADRE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="LINK" ColumnName="LINK" />
+                <ScalarProperty Name="ORDEN" ColumnName="ORDEN" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="OPCIONESTIPO" ColumnName="OPCIONESTIPO" />
+                <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+                <ScalarProperty Name="ICON" ColumnName="ICON" />
+                <ScalarProperty Name="COD" ColumnName="COD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OPCIONESROL">
+            <EntityTypeMapping TypeName="SegDbModel.OPCIONESROL">
+              <MappingFragment StoreEntitySet="OPCIONESROL">
+                <ScalarProperty Name="OPCIONID" ColumnName="OPCIONID" />
+                <ScalarProperty Name="ROLID" ColumnName="ROLID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESDE" ColumnName="DESDE" />
+                <ScalarProperty Name="HASTA" ColumnName="HASTA" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="INDEFINIDO" ColumnName="INDEFINIDO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLES">
+            <EntityTypeMapping TypeName="SegDbModel.ROLES">
+              <MappingFragment StoreEntitySet="ROLES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="AUTOR" ColumnName="AUTOR" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLESUSUARIO">
+            <EntityTypeMapping TypeName="SegDbModel.ROLESUSUARIO">
+              <MappingFragment StoreEntitySet="ROLESUSUARIO">
+                <ScalarProperty Name="ROLID" ColumnName="ROLID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="DEFAULTPAGE" ColumnName="DEFAULTPAGE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESDE" ColumnName="DESDE" />
+                <ScalarProperty Name="HASTA" ColumnName="HASTA" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="INDEFINIDO" ColumnName="INDEFINIDO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOSSEG">
+            <EntityTypeMapping TypeName="SegDbModel.USUARIOSSEG">
+              <MappingFragment StoreEntitySet="USUARIOSSEG">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="FECCREACION" ColumnName="FECCREACION" />
+                <ScalarProperty Name="ULTIMAVISITA" ColumnName="ULTIMAVISITA" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="NIVEL" ColumnName="NIVEL" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="AUTOR" ColumnName="AUTOR" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+                <ScalarProperty Name="SUCURSALID" ColumnName="SUCURSALID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GENERACODIGO" FunctionName="SegDbModel.Store.GENERACODIGO" />
+          <FunctionImportMapping FunctionImportName="ListMonedas" FunctionName="SegDbModel.Store.ListMonedas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.ListMonedas_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListPaisNacionalidad" FunctionName="SegDbModel.Store.ListPaisNacionalidad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.ListPaisNacionalidad_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="GENTILICIO" ColumnName="GENTILICIO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListPeriodicidades" FunctionName="SegDbModel.Store.ListPeriodicidades">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.ListPeriodicidades_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListPersonasTipo" FunctionName="SegDbModel.Store.ListPersonasTipo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.ListPersonasTipo_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="TABLA_MODULO" ColumnName="TABLA_MODULO" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListStatus" FunctionName="SegDbModel.Store.ListStatus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.ListStatus_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="TABLA" ColumnName="TABLA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetOpciones" FunctionName="SegDbModel.Store.GetOpciones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.GetOpciones_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="LINK" ColumnName="LINK" />
+                <ScalarProperty Name="ORDEN" ColumnName="ORDEN" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="OPCIONESTIPO" ColumnName="OPCIONESTIPO" />
+                <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+                <ScalarProperty Name="ICON" ColumnName="ICON" />
+                <ScalarProperty Name="COD" ColumnName="COD" />
+                <ScalarProperty Name="PADRE" ColumnName="PADRE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetOpcionesRol" FunctionName="SegDbModel.Store.GetOpcionesRol">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.GetOpcionesRol_Result">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+                <ScalarProperty Name="ICON" ColumnName="ICON" />
+                <ScalarProperty Name="OPCIONESTIPO" ColumnName="OPCIONESTIPO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetOpcionesRoles" FunctionName="SegDbModel.Store.GetOpcionesRoles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.GetOpcionesRoles_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ROLID" ColumnName="ROLID" />
+                <ScalarProperty Name="OPCIONID" ColumnName="OPCIONID" />
+                <ScalarProperty Name="NOMBROL" ColumnName="NOMBROL" />
+                <ScalarProperty Name="NOMBAUTOR" ColumnName="NOMBAUTOR" />
+                <ScalarProperty Name="DESDE" ColumnName="DESDE" />
+                <ScalarProperty Name="HASTA" ColumnName="HASTA" />
+                <ScalarProperty Name="NOMBOPCION" ColumnName="NOMBOPCION" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="LINK" ColumnName="LINK" />
+                <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+                <ScalarProperty Name="ORDEN" ColumnName="ORDEN" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRoles" FunctionName="SegDbModel.Store.GetRoles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.GetRoles_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="AUTOR" ColumnName="AUTOR" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+                <ScalarProperty Name="CODAUTOR" ColumnName="CODAUTOR" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRolesUsuario" FunctionName="SegDbModel.Store.GetRolesUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.GetRolesUsuario_Result">
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ROLID" ColumnName="ROLID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="DEFAULTPAGE" ColumnName="DEFAULTPAGE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESDE" ColumnName="DESDE" />
+                <ScalarProperty Name="HASTA" ColumnName="HASTA" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="INDEFINIDO" ColumnName="INDEFINIDO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetUsuarios" FunctionName="SegDbModel.Store.GetUsuarios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.GetUsuarios_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="FECCREACION" ColumnName="FECCREACION" />
+                <ScalarProperty Name="ULTIMAVISITA" ColumnName="ULTIMAVISITA" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="NIVEL" ColumnName="NIVEL" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="AUTOR" ColumnName="AUTOR" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+                <ScalarProperty Name="SUCURSALID" ColumnName="SUCURSALID" />
+                <ScalarProperty Name="CODAUTOR" ColumnName="CODAUTOR" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListAutores" FunctionName="SegDbModel.Store.ListAutores">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.ListAutores_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="FECINICIO" ColumnName="FECINICIO" />
+                <ScalarProperty Name="PLANID" ColumnName="PLANID" />
+                <ScalarProperty Name="NOMBPLAN" ColumnName="NOMBPLAN" />
+                <ScalarProperty Name="NOMBPERIODICIDAD" ColumnName="NOMBPERIODICIDAD" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListOpciones" FunctionName="SegDbModel.Store.ListOpciones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.ListOpciones_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="LINK" ColumnName="LINK" />
+                <ScalarProperty Name="ORDEN" ColumnName="ORDEN" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="OPCIONESTIPO" ColumnName="OPCIONESTIPO" />
+                <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+                <ScalarProperty Name="ICON" ColumnName="ICON" />
+                <ScalarProperty Name="COD" ColumnName="COD" />
+                <ScalarProperty Name="PADRE" ColumnName="PADRE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListOpcionesRol" FunctionName="SegDbModel.Store.ListOpcionesRol">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.ListOpcionesRol_Result">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="link" ColumnName="link" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListOpcionesRoles" FunctionName="SegDbModel.Store.ListOpcionesRoles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.ListOpcionesRoles_Result">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+                <ScalarProperty Name="ICON" ColumnName="ICON" />
+                <ScalarProperty Name="OPCIONESTIPO" ColumnName="OPCIONESTIPO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListRoles" FunctionName="SegDbModel.Store.ListRoles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.ListRoles_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="AUTOR" ColumnName="AUTOR" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListRolesUsuario" FunctionName="SegDbModel.Store.ListRolesUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.ListRolesUsuario_Result">
+                <ScalarProperty Name="ROLID" ColumnName="ROLID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="DEFAULTPAGE" ColumnName="DEFAULTPAGE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESDE" ColumnName="DESDE" />
+                <ScalarProperty Name="HASTA" ColumnName="HASTA" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="INDEFINIDO" ColumnName="INDEFINIDO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListRolesUsuarios" FunctionName="SegDbModel.Store.ListRolesUsuarios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.ListRolesUsuarios_Result">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+                <ScalarProperty Name="ICON" ColumnName="ICON" />
+                <ScalarProperty Name="OPCIONESTIPO" ColumnName="OPCIONESTIPO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListUsuario" FunctionName="SegDbModel.Store.ListUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.ListUsuario_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="FECCREACION" ColumnName="FECCREACION" />
+                <ScalarProperty Name="ULTIMAVISITA" ColumnName="ULTIMAVISITA" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="NIVEL" ColumnName="NIVEL" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="AUTOR" ColumnName="AUTOR" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+                <ScalarProperty Name="SUCURSALID" ColumnName="SUCURSALID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListUsuarios" FunctionName="SegDbModel.Store.ListUsuarios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SegDbModel.ListUsuarios_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="FECCREACION" ColumnName="FECCREACION" />
+                <ScalarProperty Name="ULTIMAVISITA" ColumnName="ULTIMAVISITA" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="NIVEL" ColumnName="NIVEL" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="AUTOR" ColumnName="AUTOR" />
+                <ScalarProperty Name="AUTORID" ColumnName="AUTORID" />
+                <ScalarProperty Name="SUCURSALID" ColumnName="SUCURSALID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

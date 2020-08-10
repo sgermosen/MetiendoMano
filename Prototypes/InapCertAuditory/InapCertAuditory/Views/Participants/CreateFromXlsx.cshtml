@@ -1,0 +1,69 @@
+﻿<form method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-4">
+            <input type="file" id="fUpload" name="files" class="form-control" />
+        </div>
+        <div class="col-md-8">
+            <input type="button" id="btnUpload" value="Upload" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8" style="padding-top:10px;">
+            <button asp-page-handler="Export">Export</button>
+        </div>
+    </div>
+    <br />
+    <div id="dvData"></div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+    <script>
+        $(document).ready(function () {
+            $('#btnUpload').on('click', function () {
+                var fileExtension = ['xls', 'xlsx'];
+                var filename = $('#fUpload').val();
+                if (filename.length == 0) {
+                    alert("Please select a file.");
+                    return false;
+                }
+                else {
+                    var extension = filename.replace(/^.*\./, '');
+                    if ($.inArray(extension, fileExtension) == -1) {
+                        alert("Please select only excel files.");
+                        return false;
+                    }
+                }
+                var fdata = new FormData();
+                var fileUpload = $("#fUpload").get(0);
+                var files = fileUpload.files;
+                fdata.append(files[0].name, files[0]);
+                $.ajax({
+                    type: "POST",
+                    url: "/Participants?handler=Import",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("XSRF-TOKEN",
+                            $('input:hidden[name="__RequestVerificationToken"]').val());
+                    },
+                    data: fdata,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        if (response.length == 0)
+                            alert('Some error occured while uploading');
+                        else {
+                            $('#dvData').html(response);
+                        }
+                    },
+                    error: function (e) {
+                        $('#dvData').html(e.responseText);
+                    }
+                });
+            })
+        });
+
+    </script>
+
+}

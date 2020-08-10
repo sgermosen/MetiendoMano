@@ -1,0 +1,82 @@
+﻿@model Reaction
+@{
+    ViewData["Title"] = "Crear una Reaccion";
+}
+
+<h1>Añadir una Reaccion</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Punctuation" class="control-label">Puntua tu Reaccion del 1 al 5</label>
+                <input asp-for="Punctuation" class="form-control"/>
+                <span asp-validation-for="Punctuation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Nombre (Opcional)</label>
+                <input asp-for="Name" class="form-control"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Email (Opcional)</label>
+                <input asp-for="Email" class="form-control"/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observation" class="control-label">Observacion (Requerido)</label>
+                <input asp-for="Observation" class="form-control"/>
+                <span asp-validation-for="Observation" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="ImageUrl" class="control-label"></label>
+                <input asp-for="ImageUrl" class="form-control"/>
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoundUrl" class="control-label"></label>
+                <input asp-for="SoundUrl" class="form-control"/>
+                <span asp-validation-for="SoundUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VideoUrl" class="control-label"></label>
+                <input asp-for="VideoUrl" class="form-control"/>
+                <span asp-validation-for="VideoUrl" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Longitude" class="control-label"></label>
+                <input asp-for="Longitude" class="form-control"/>
+                <span asp-validation-for="Longitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Latitude" class="control-label"></label>
+                <input asp-for="Latitude" class="form-control"/>
+                <span asp-validation-for="Latitude" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Private"/> @Html.DisplayNameFor(model => model.Private)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control"/>
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>*@
+
+            <div class="form-group">
+                <input type="submit" value="Enviar Reaccion" class="btn btn-primary"/>
+                <a asp-action="Index" class="btn btn-success">Volver a la Lista</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

@@ -1,0 +1,59 @@
+﻿<div class="row">
+    <div class="col-md-12 text-center">
+        <h4>Get Page Title From a Specific Url </h4>
+        <h6> - Web Scraper - </h6>
+        <br />
+    </div>
+    <div class="col-md-12 text-center">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text">
+                    Enter the Page Urls, of which you want to extract the tiltle.
+                    <br />
+                    <br />
+                    <a href="@Url.Action("Index","Home")" class="btn btn-secondary"> Back To All Examples </a>
+            </div>
+        </div>
+        <br />
+    </div>
+
+    <div class="col-md-4">
+        <br />
+        <form asp-action="GetPageTitleFromURL" asp-controller="Home" method="post" lass="form-inline">
+            <div class="card bg-danger text-white">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Enter Url of Page</label>
+                        <input type="text" class="form-control" name="PageUrl" value="@ViewBag.SearchedPageUrl" placeholder="Enter Page Url" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Get Details" class="btn btn-primary" />
+                    </div>
+                </div>
+
+            </div>
+
+
+        </form>
+
+    </div>
+    <div class="col-md-8" style="min-height:400px;">
+        <br />
+        <div class="card ">
+            <div class="card-body">
+                <h5 class="card-title">Search Results </h5>
+                <p class="card-text"> Below is the tile of the URL You entered : </p>
+            </div>
+            <ul class="list-group list-group-flush ">
+                @if (ViewBag.DataTitle != null)
+                {
+            <li class="list-group-item active" style="font-size:20px;">Page Title : <i> @ViewBag.DataTitle </i></li>
+
+
+}
+             
+            </ul>
+        </div>
+    </div>
+</div>

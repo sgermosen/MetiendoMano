@@ -1,0 +1,13 @@
+[
+  {
+    "Page": "http://www.juegosmental.es/",
+    "Type": "blogger",
+    "PostLimit": 10
+  },
+ 
+  {
+    "Page": "https://juegosmentales.online/",
+    "Type": "wordpress",
+    "PostLimit": 10
+  }
+]

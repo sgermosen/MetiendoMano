@@ -1,0 +1,336 @@
+﻿<div class="container">
+	<audio id="notification-audio">
+		<source src="https://freesound.org/people/grey24/sounds/316798/download/316798__grey24__flyffnotif.wav" type="audio/wav">
+		<source src="~/media/audios/new_message.wav" type="audio/wav">
+		Your browser does not support the audio element.
+	</audio>
+	<div id="connect-form" class="form-group mt-5">
+		<div class="row">
+			<div class="col-10 p-0">
+				<input id="user-name"
+				       type="text"
+				       placeholder="User Name"
+				       class="form-control"
+				       required
+				       maxlength="10"/>
+				<div class="d-flex justify-content-between">
+					<span id="user-name-error-message" class="text-danger"></span>
+					<p class="align-self-end"><span id="user-name-count">0</span>/10</p>
+				</div>
+			</div>
+			<button id="connect"
+			        name="connect"
+			        class="btn btn-outline-info col align-self-start ml-1">
+				Connect
+			</button>
+		</div>
+	</div>
+
+	<div id="chat-form" class="row">
+		<div class="col-sm-8 border border-primary rounded p-0 mb-5"
+		     style="height: 400px;">
+			<div id="chat-box">
+				<div id="messages-list"
+				     class="p-2"
+				     style="height: 340px; overflow-y: scroll; overflow-x: hidden;"></div>
+
+				<hr class="m-1 border-primary"/>
+
+				<div class="form-group m-0 p-2">
+					<div class="d-flex align-content-start">
+						<div class="col-10 p-0">
+							<input id="message"
+							       type="text"
+							       placeholder="Message"
+							       class="form-control"
+							       required
+							       maxlength="500"/>
+							<p class="m-0" style="position: absolute; top: 6px; right: 6px;">
+								<span id="message-count">0</span>/500
+							</p>
+						</div>
+						<button id="send"
+						        name="send"
+						        class="btn btn-outline-info col align-self-start ml-1">
+							Send
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="placeholder"
+			     class="position-absolute"
+			     style="left: 0; top: 0; background-color: rgba(255, 255, 255, 0.4); width: 100%; height: 100%;">
+				<div class="d-flex flex-column justify-content-center align-items-center" style="height: 100%;">
+					<img src="https://img.pngio.com/chat-png-icon-free-download-searchpngcom-chat-png-1253_1152.png"
+					     alt="Chat PNG Icon Free Download searchpng.com"
+					     width="150"
+					     height="150"/>
+					<button id="start-chat"
+					        name="start-chat"
+					        class="btn btn-outline-success m-2">
+						Start Chat
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="user-list" class="col border border-primary rounded p-0"
+		     style="height: 400px; overflow-y: scroll; overflow-x: hidden;">
+			<div id="connected-users"
+			     class="list-group list-group-flush"
+			     role="tablist"></div>
+		</div>
+	</div>
+
+</div>
+
+
+@section Scripts {
+	<script src="~/lib/jquery/jquery-dateformat.js"></script>
+	<script src="~/lib/signalr/dist/browser/signalr.js"></script>
+	<script src="~/js/chat.js"></script>
+	<script type="text/javascript">
+		const userNameInput = $("#user-name"),
+			connectButton = $("#connect"),
+			messageInput = $("#message"),
+			sendButton = $("#send"),
+			connectForm = $("#connect-form"),
+			chatForm = $("#chat-form"),
+			placeholder = $("#placeholder"),
+			startChatButton = $("#start-chat"),
+			userList = $("#connected-users"),
+			messageList = $("#messages-list");
+
+
+		var userId,
+			toUserId,
+			userName,
+			connectedUsers,
+			errorMessages,
+			isPtpChat;
+
+		$(document).ready(async () => {
+			connection.on("UpdateConnectedUsers",
+				data => {
+					userList.empty();
+					if (data) {
+						connectedUsers = data;
+						connectedUsers.forEach(element => {
+							var user = createUser({
+								userName: element.userName,
+								userId: element.userId,
+								messageCount: element.messageCount
+							});
+							userList.append(user);
+						});
+					}
+				});
+
+			connection.on("NewUserAvailable",
+				data => {
+					if (data && !isPtpChat) {
+						if (!connectedUsers.includes(data))
+							connectedUsers.push(data);
+
+						var user = createUser({
+							userName: data.userName,
+							userId: data.userId,
+							messageCount: data.messageCount
+						});
+						userList.append(user);
+					}
+				});
+
+			connection.on("UserNotAvailable",
+				data => {
+					if (data && !isPtpChat) {
+						const userItem = $(`#${data}`);
+						if (userItem)
+							userItem.detach();
+
+						connectedUsers = connectedUsers.filter(x => x.userId !== data);
+					}
+				});
+
+			connection.on("ConnectWith", data => toUserId = data);
+
+			connection.on("UpdateUnreadMessages",
+				data => {
+					if (data && !isPtpChat) {
+						var user = connectedUsers.filter(x => x.userId === data);
+						if (toUserId === data || user.length <= 0)
+							return;
+
+						let messageCount = $(`#count-${data}`).text();
+						messageCount = messageCount ? ++messageCount : "1";
+						$(`#count-${data}`).text(messageCount);
+
+						const audio = id("notification-audio");
+						audio.play();
+					}
+				});
+
+			connection.on("ReceiveConversation",
+				data => {
+					messageList.empty();
+					if (data) {
+						data.forEach(element => {
+							if (element.fromUserName === userName)
+								element.fromUserName = "Me";
+							const message = createMessage(element);
+							messageList.append(message);
+						});
+					}
+				});
+
+			connection.on("ReceiveMessage",
+				data => {
+					if (data) {
+						if (data.fromUserId !== toUserId)
+							return;
+
+						const message = createMessage(data);
+						messageList.append(message);
+					}
+				});
+
+			connection.onreconnecting(() => {
+				showAlert(errorMessages['ConnectionLost'], "alert-danger", 5000);
+			});
+
+			connectButton.click(connect);
+
+			startChatButton.click(startChat);
+
+			sendButton.click(sendMessage);
+
+			userNameInput.bind('input',
+				function() {
+					setCount($("#user-name-count"), $(this).val());
+				});
+
+			messageInput.bind('input', updateMessageBox);
+
+			// start the connection
+			start();
+			getErrorMessages();
+
+			loader.hide();
+			chatForm.hide();
+			sendButton.prop('disabled', true);
+			userNameInput.val("").focus();
+		});
+
+		function getErrorMessages() {
+			fetch("chat/getErrorMessages", { method: "GET" })
+				.then(response => response.json())
+				.then(data => errorMessages = data)
+				.catch(e => error(e));
+		}
+
+		function connect() {
+			userName = userNameInput.val();
+
+			if (userName.length <= 0) {
+				showAlert(errorMessages['InvalidUserName'], "alert-danger", 5000);
+				return;
+			}
+
+			connectForm.hide();
+			chatForm.show();
+			getConnectedUsers();
+		}
+
+		function startChat() {
+			showRoom(true);
+			isPtpChat = true;
+			connectedUsers = [];
+			const messageBody = createMessage({
+				fromUserName: "",
+				messageDate: "",
+				message: "Wait for and admin to assist you."
+			});
+			messageList.append(messageBody);
+			userList.hide();
+		}
+
+		function chatWith(id) {
+			if (toUserId === id)
+				return;
+
+			if (!userId)
+				showRoom();
+
+			toUserId = id;
+
+			setTimeout(() => {
+					connection.invoke("RequestConversation", userId, toUserId)
+						.then(() => {
+							placeholder.hide();
+							$(`#count-${toUserId}`).text("");
+						})
+						.catch(e => {
+							error(e);
+							showAlert(errorMessages['UserIsDisconnected'], "alert-danger", 5000);
+						});
+				},
+				200);
+		}
+
+		function showRoom(isNewRoom = false) {
+			connection.invoke("Connect", userName, isNewRoom)
+				.then(data => {
+					userId = data.value;
+					if (isNewRoom)
+						placeholder.hide();
+				})
+				.catch(e => {
+					error(e);
+					showAlert(errorMessages['UserIsConnected'], "alert-danger", 5000);
+				});
+		}
+
+		function sendMessage() {
+			const message = messageInput.val(),
+				messageDetails = {
+					fromUserId: userId,
+					toUserId: toUserId,
+					fromUserName: userName,
+					messageDate: new Date(),
+					message: message
+				},
+				method = toUserId ? "SendPrivateMessage" : "CacheMessage";
+
+			connection.invoke(method, messageDetails)
+				.then(() => {
+					messageDetails.fromUserName = "Me";
+					const messageBody = createMessage(messageDetails);
+					messageList.append(messageBody);
+				})
+				.catch(e => {
+					error(e);
+					showAlert(errorMessages['UserIsDisconnected'], "alert-danger", 5000);
+				});
+
+			messageInput.val("").focus();
+			updateMessageBox();
+		}
+
+		function updateMessageBox() {
+			const text = messageInput.val(),
+				isButtonDisabled = text.length <= 0;
+
+			setCount($("#message-count"), text);
+			sendButton.prop('disabled', isButtonDisabled);
+		}
+
+		function getConnectedUsers() {
+			connection.invoke("RequestConnectedUsers")
+				.catch(e => {
+					error(e);
+					showAlert(errorMessages['UnableToGetConnectedUsers'], "alert-danger", 5000);
+				});
+		}
+	</script>
+}

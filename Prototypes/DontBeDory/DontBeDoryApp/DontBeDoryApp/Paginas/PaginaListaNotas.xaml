@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls3="clr-namespace:DontBeDoryApp.Controls;assembly=CancionesApp.Droid"
+             x:Class="DontBeDoryApp.Paginas.PaginaListaNotas">
+  <ContentPage.Content>
+    <StackLayout BackgroundColor="White">
+      <Label Text="Dory Notes" FontSize="40" TextColor="Blue" HorizontalOptions="Center"/>
+
+      <ActivityIndicator Color="Green" x:Name="actInd" />
+      <ListView x:Name="lsvNotas" ItemSelected="lsvNotas_Selected" RowHeight="50">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding NombreNota}"
+                                       FontAttributes="Bold"
+                                       TextColor="#0099cc"
+                                       FontSize="20"/>
+                                <Label Text="{Binding NombreCuerpo}"
+                                       TextColor="#006600"
+                                       FontSize="14"/>
+              </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </StackLayout>
+      <Grid RowSpacing="0">
+          <Grid.RowDefinitions>
+              <RowDefinition Height="*" />
+              <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+          <ListView Grid.Row="0" />
+            <controls3:AdControlView Grid.Row="1" />
+      </Grid>
+    </ContentPage.Content>
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem x:Name="btnNuevo" Text="Nuevo" Priority="0" Clicked="btnNuevo_Click" Order="Primary" Icon="agregar.png"/>
+  </ContentPage.ToolbarItems>
+</ContentPage>

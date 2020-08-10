@@ -1,0 +1,61 @@
+﻿@model PersonaViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+    <form asp-action="Create">
+   
+        <div class="form-group">
+            <label asp-for="Nombre">  </label>
+            <input asp-for="Nombre" class="form-control" placeholder="Entre un Nombre">
+            <span asp-validation-for="Nombre"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Apellido">  </label>
+            <input asp-for="Apellido" class="form-control" placeholder="Entre un Apellido">
+            <span asp-validation-for="Apellido"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">  </label>
+            <input asp-for="Email" class="form-control" placeholder="Entre un Email">
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Telefono">  </label>
+            <input asp-for="Telefono" class="form-control" placeholder="Entre un Telefono">
+            <span asp-validation-for="Telefono"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Direccion">  </label>
+            <input asp-for="Direccion" class="form-control" placeholder="Entre un Direccion">
+            <span asp-validation-for="Direccion"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="MontoAdeudado">  </label>
+            <input asp-for="MontoAdeudado" class="form-control" placeholder="Entre un Direccion">
+            <span asp-validation-for="MontoAdeudado"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="TipoIdentificador">  </label>
+            <select asp-for="TipoIdentificador"
+                    asp-items="@Model.TiposDeContactos"
+                    class="form-control"></select>
+
+        </div>
+
+
+        <button class="btn btn-primary btn-lg" type="submit">
+            Save
+        </button>
+
+    </form>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

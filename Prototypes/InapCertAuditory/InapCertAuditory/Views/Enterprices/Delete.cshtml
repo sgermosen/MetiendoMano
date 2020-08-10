@@ -1,0 +1,45 @@
+﻿@model InapCertAuditory.Models.Enterprice
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminacion de Registro</h1>
+
+<h3>Esta seguro que desea eliminar este registro?</h3>
+<div>
+    <h4>Enterprice</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Observations)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Observations)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="EnterpriceId" />
+        <input type="submit" value="Guardar y Procesar" class="btn btn-danger"/> |
+        <a class="btn btn-secondary" asp-action="Index"><= Cancelar y Volver al Listado</a>
+    </form>
+</div>

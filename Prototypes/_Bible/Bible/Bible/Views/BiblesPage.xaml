@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Bible.Views.BiblesPage"
+    BindingContext="{Binding Main, Source={StaticResource Locator}}"
+    Title="Bibles">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding Bibles}"
+            Padding="5">
+            <ListView 
+                HasUnevenRows="true" 
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                ItemsSource="{Binding Bibles}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectBibleCommand}"/>
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout
+                                    Grid.Column="0">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        Text="{Binding Name}"
+                                        TextColor="Black">
+                                    </Label>
+                                    <Label
+                                        Text="{Binding Module}"
+                                        TextColor="Black">
+                                    </Label>
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="1">
+                                    <Label
+                                        HorizontalOptions="End"
+                                        Text="{Binding Lang}"
+                                        TextColor="Black">
+                                    </Label>
+                                    <Label
+                                        HorizontalOptions="End"
+                                        Text="{Binding Year}"
+                                        TextColor="Black">
+                                    </Label>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>        
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

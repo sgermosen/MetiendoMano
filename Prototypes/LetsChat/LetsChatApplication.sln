@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetsChatApplication", "LetsChatApplication\LetsChatApplication.csproj", "{75314A66-5996-4339-AC76-B369C0BBCD4F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{AB76E61B-2D51-4EBF-B918-85A67671D917}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
+		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{15D0CC74-45FD-43EB-9294-F251E96BCDBE}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\LetsChatApplication-WAWS-dev.json = PublishScripts\Configurations\LetsChatApplication-WAWS-dev.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75314A66-5996-4339-AC76-B369C0BBCD4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75314A66-5996-4339-AC76-B369C0BBCD4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75314A66-5996-4339-AC76-B369C0BBCD4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75314A66-5996-4339-AC76-B369C0BBCD4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{15D0CC74-45FD-43EB-9294-F251E96BCDBE} = {AB76E61B-2D51-4EBF-B918-85A67671D917}
+	EndGlobalSection
+EndGlobal

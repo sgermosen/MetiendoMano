@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{71164CEB-11F0-45B0-8231-D57E5B3A91EE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MonsterSmashing.Android</RootNamespace>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <AssemblyName>MonsterSmashing.Android</AssemblyName>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="box2d">
+      <HintPath>..\..\packages\CocosSharp.PCL.Shared.1.5.0.1\lib\MonoAndroid10\box2d.dll</HintPath>
+    </Reference>
+    <Reference Include="CocosSharp">
+      <HintPath>..\..\packages\CocosSharp.PCL.Shared.1.5.0.1\lib\MonoAndroid10\CocosSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Lidgren.Network">
+      <HintPath>..\..\packages\CocosSharp.PCL.Shared.1.5.0.1\lib\MonoAndroid10\Lidgren.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\..\packages\CocosSharp.PCL.Shared.1.5.0.1\lib\MonoAndroid10\MonoGame.Framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MonsterSmashing.Common\MonsterSmashing.Common.csproj">
+      <Project>{3F22F626-08FB-4538-B1BA-F31327A96E3E}</Project>
+      <Name>MonsterSmashing.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Assets\Content\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Enemy.plist" />
+    <AndroidAsset Include="Assets\Content\Icon-72.png" />
+    <AndroidAsset Include="Assets\Content\MonsterSmashing.png" />
+    <AndroidAsset Include="Assets\Content\WoodRetroApple_iPad_HomeScreen.jpg" />
+    <AndroidAsset Include="Assets\Content\backgroundMonsters2.png" />
+    <AndroidAsset Include="Assets\Content\backgroundSound.mp3" />
+    <AndroidAsset Include="Assets\Content\exit.png" />
+    <AndroidAsset Include="Assets\Content\hearth.png" />
+    <AndroidAsset Include="Assets\Content\monsterBlue.png" />
+    <AndroidAsset Include="Assets\Content\monsterGreen.png" />
+    <AndroidAsset Include="Assets\Content\monsterRed.png" />
+    <AndroidAsset Include="Assets\Content\pauseButton.png" />
+    <AndroidAsset Include="Assets\Content\play.png" />
+    <AndroidAsset Include="Assets\Content\playSelected.png" />
+    <AndroidAsset Include="Assets\Content\resume.png" />
+    <AndroidAsset Include="Assets\Content\soundOff.png" />
+    <AndroidAsset Include="Assets\Content\soundOffSelected.png" />
+    <AndroidAsset Include="Assets\Content\soundOn.png" />
+    <AndroidAsset Include="Assets\Content\soundOnSelected.png" />
+    <AndroidAsset Include="Assets\Content\splashMonsterBlue.png" />
+    <AndroidAsset Include="Assets\Content\splashMonsterGreen.png" />
+    <AndroidAsset Include="Assets\Content\splashMonsterRed.png" />
+    <AndroidAsset Include="Assets\Content\textureRed.png" />
+    <AndroidAsset Include="Assets\Content\Sounds\SplatEffect.aac" />
+    <AndroidAsset Include="Assets\Content\Sounds\SplatEffect.mp3" />
+    <AndroidAsset Include="Assets\Content\Sounds\SplatEffect.wav" />
+    <AndroidAsset Include="Assets\Content\Sounds\backgroundSound.mp3" />
+    <AndroidAsset Include="Assets\Content\Sounds\pew-pew-lei.wav" />
+  </ItemGroup>
+</Project>

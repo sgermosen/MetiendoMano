@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="ChatClient.Views.ConnectPage"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:c="clr-namespace:ChatClient.Views.Converters;assembly=ChatClient"
+	xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+	xmlns:data="clr-namespace:Web.Core.Data;assembly=Web.Core"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:prism="http://prismlibrary.com"
+	Title="{Binding Title}"
+	Padding="8"
+	mc:Ignorable="d">
+	<ContentPage.Content>
+		<Grid>
+			<StackLayout>
+				<Label Text="{x:Static data:Resources.ConnectInputLabel}" />
+				<Grid MinimumHeightRequest="200">
+					<Entry
+						x:Name="UserNameEntry"
+						ClearButtonVisibility="Never"
+						MaxLength="10"
+						Placeholder="{x:Static data:Resources.ConnectInputPlaceHolder}"
+						Text="{Binding UserName}">
+						<!--<Entry.Behaviors>
+								<prism:EventToCommandBehavior Command="{Binding ValidateUserNameCommand}" EventName="TextChanged" />
+							</Entry.Behaviors>-->
+					</Entry>
+					<Label
+						Margin="8,0"
+						HorizontalOptions="End"
+						Text="{Binding Text, Source={x:Reference UserNameEntry}, Converter={c:StringToIntConverter}, StringFormat='{0}/10'}"
+						VerticalOptions="Center" />
+				</Grid>
+				<StackLayout
+					Margin="0,16"
+					HorizontalOptions="{OnIdiom Start,
+					                            Phone=Fill}"
+					Orientation="{OnIdiom Horizontal,
+					                      Phone=Vertical}">
+					<Button Command="{Binding ConnectAsUserCommand}" Text="{x:Static data:Resources.ConnectAsUserButtonText}" />
+					<Button Command="{Binding ConnectAsAdminCommand}" Text="{x:Static data:Resources.ConnectAsAdminButtonText}" />
+				</StackLayout>
+			</StackLayout>
+			<ActivityIndicator
+				BackgroundColor="White"
+				IsRunning="{Binding IsProcessing}"
+				IsVisible="{Binding IsProcessing}"
+				Color="Red" />
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

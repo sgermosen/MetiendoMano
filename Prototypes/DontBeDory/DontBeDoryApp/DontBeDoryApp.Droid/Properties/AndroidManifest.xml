@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.icebeam.notaes" android:installLocation="preferExternal">
+	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="28" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<application android:label="Dont Be a Dory" android:icon="@drawable/Icon"></application>
+</manifest>

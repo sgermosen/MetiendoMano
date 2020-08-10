@@ -1,0 +1,48 @@
+﻿@model  ICollection<Persona>
+
+    <table class="table table-bordered table-responsive">
+        <thead>
+            <tr>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Telefono
+                </th>
+                <th>
+                    Estado
+                </th>
+                <th>
+                    Acciones
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contacto in Model)
+            {
+                <tr>
+                    <td>
+                        @contacto.NombreCompleto
+                    </td>
+                    <td>
+                        @contacto.Email
+                    </td>
+                    <td>
+                        @contacto.Telefono
+                    </td>
+                    <td>
+                        @contacto.Estado
+                    </td>
+                    <td>
+                        <a class="btn btn-danger js-eliminar" data-contato-id="@contacto.Identificador">
+                            Eliminar Contacto
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>

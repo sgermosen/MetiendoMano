@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ads="clr-namespace:ImpNotes.Ads;assembly=ImpNotes"
+             x:Class="ImpNotes.Notes.Views.NotesListPage"
+             Title="My Notes">
+
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_action_add_circle"
+                     Text="Add" 
+                     Clicked="AddItem_Clicked" />
+    </ContentPage.ToolbarItems>-->
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_action_add_circle" 
+                     Text="Add New Note"
+                     Command="{Binding AddNoteCommand2}"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <ListView x:Name="ItemsListView"
+                  ItemsSource="{Binding NotesList}"
+                  VerticalOptions="FillAndExpand"
+                  HasUnevenRows="true"
+                  RefreshCommand="{Binding LoadItemsCommand}"
+                  IsPullToRefreshEnabled="true"
+                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                  CachingStrategy="RecycleElement"
+          
+                  SeparatorVisibility="None"
+                  RowHeight="100">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame CornerRadius="10" Margin="5,5" HeightRequest="100">
+                            <StackLayout Padding="5"
+                                         Margin="1">
+                                <!--<Grid>
+                                    <Label Text="X" FontAttributes="Bold" FontSize="Large" HorizontalOptions="EndAndExpand"
+                                       Margin="10,5,10,5">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>-->
+                                <Label Text="{Binding Title}" 
+                                   LineBreakMode="NoWrap" 
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="20" />
+
+                                <!--<Label Text="{Binding Text}" 
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemDetailTextStyle}"
+                                   FontSize="13" />-->
+
+                                <Label Text="{Binding Text,Converter={StaticResource ListTitleConvertor}}" 
+                                       TextColor="{Binding TextColor,Converter={StaticResource StringToColorConverter}}"
+                                       FontSize="16" Margin="10,0">
+                                    <!--<Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                    </Label.GestureRecognizers>-->
+                                </Label>
+
+                                <!--<StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>-->
+                            </StackLayout>
+
+                        </Frame>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ads:AdMobView  x:Name="BannerView" Grid.Row="1" />
+        <ads:AdBanner Grid.Row="1"  
+                      Size="Standardbanner"
+                      VerticalOptions="EndAndExpand"/>
+    </StackLayout>
+
+
+</ContentPage>

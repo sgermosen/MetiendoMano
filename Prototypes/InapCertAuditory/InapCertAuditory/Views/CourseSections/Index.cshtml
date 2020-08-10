@@ -1,0 +1,53 @@
+﻿@model IEnumerable<InapCertAuditory.Models.CourseSection>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1> Listado </h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"> Adicionar Nueva </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Codigo
+            </th>
+            <th>
+               Desde
+            </th>
+            <th>
+              Hasta
+            </th>
+            <th>
+               Observaciones
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observations)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CourseSectionId" class="btn btn-warning">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.CourseSectionId" class="btn btn-info">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.CourseSectionId" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

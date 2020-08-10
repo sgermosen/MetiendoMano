@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ImpNotes.Notes.Views.NotesDetailPage">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout  Margin="1">
+                <!--<StackLayout
+                    Margin="1,0"
+                    Orientation="Horizontal">-->
+                <!--<Button Text="Convert To Image" 
+                            TextColor="White" Command="{Binding NavigateCommand}"></Button>-->
+                <ScrollView Orientation="Horizontal">
+                    <StackLayout
+                            Margin="5,10"
+                            Orientation="Horizontal">
+                        <Button
+                                BackgroundColor="Orange"
+                                CornerRadius="23" 
+                                HeightRequest="46"
+                                HorizontalOptions="FillAndExpand"
+                                IsEnabled="{Binding IsEnabled}"
+                                Text="Edit"
+                               
+                                TextColor="White">
+                        </Button>
+                        <Button
+                            BackgroundColor="DodgerBlue"
+                            CornerRadius="23" 
+                            HeightRequest="46"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding IsEnabled}"
+                            Text="Convert To Image"
+                            TextColor="White">
+                        </Button>
+                        <Button
+                            BackgroundColor="YellowGreen"
+                            CornerRadius="23" 
+                            HeightRequest="46"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding IsEnabled}"
+                            Text="Convert To Audio"
+                            TextColor="White">
+                        </Button>
+                        <Button
+                                BackgroundColor="Red"
+                                CornerRadius="23" 
+                                HeightRequest="46"
+                                HorizontalOptions="FillAndExpand"
+                                IsEnabled="{Binding IsEnabled}"
+                                Text="Delete"
+                                TextColor="White">
+                        </Button>
+
+                    </StackLayout>
+                </ScrollView>
+
+
+                <!--</StackLayout>-->
+
+
+
+                <Label Text="{Binding Title}"
+                       TextColor="{Binding SelectedTextColor,Converter={StaticResource StringToColorConverter}}"
+                       FontAttributes="Bold"
+                       FontSize="Large"
+                       Margin="5"/>
+
+                <Label Text="{Binding Text}"
+                       TextColor="{Binding SelectedTextColor,Converter={StaticResource StringToColorConverter}}"
+                       FontSize="Medium"/>
+
+
+            </StackLayout>
+
+
+        </ScrollView>
+
+    </ContentPage.Content>
+
+    <!--<StackLayout Spacing="20" Padding="15">
+        <Label Text="Text:" FontSize="Medium" />
+        <Label Text="{Binding Item.Title}" FontSize="Small"/>
+        <Label Text="Description:" FontSize="Medium" />
+        <Label Text="{Binding Item.Text}" FontSize="Small"/>
+    </StackLayout>-->
+</ContentPage>

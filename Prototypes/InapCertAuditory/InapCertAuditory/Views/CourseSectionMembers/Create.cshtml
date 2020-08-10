@@ -1,0 +1,38 @@
+﻿@model InapCertAuditory.Models.CourseSectionMember
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1> Adicionar Registro </h1>
+
+<h4>CourseSectionMember</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Observations" class="control-label"></label>
+                <input asp-for="Observations" class="form-control" />
+                <span asp-validation-for="Observations" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Punctuation" class="control-label"></label>
+                <input asp-for="Punctuation" class="form-control" />
+                <span asp-validation-for="Punctuation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar y Procesar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-secondary" asp-action="Index"><= Cancelar y Volver al Listado</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

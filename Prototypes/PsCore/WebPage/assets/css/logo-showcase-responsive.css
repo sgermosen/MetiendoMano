@@ -1,0 +1,14 @@
+.logo_showcase{padding:0 30px 20px 30px !important; margin:0 !important; text-align:center; clear:both;}
+.logo_showcase .slick-arrow  { top:30% !important;}
+.logo_showcase .slick-next{right:0px !important;}
+.logo_showcase .slick-prev{ left:0px !important}
+.logo_showcase .slick-dots{left:15px !important; right:15px !important; text-align:center;  bottom:-10px !important;}
+
+.logo_showcase .slick-slide img{display:inline-block !important; padding:10px; border:1px solid #f1f1f1;}
+.logo_showcase .slick-slide{ padding:0 10px; text-align:center !important; display: inline-block !important;   float:none !important;    vertical-align: middle !important;     }
+.logo_showcase .slick-slide .logo-title{color:#444; padding:10px 0; font-size:18px;}
+.logo_showcase .slick-arrow{display: none; } 
+.logo_showcase.center .slick-slide {opacity: 0.5;transform: scale(0.7);transition: all 300ms ease 0s;}
+.logo_showcase.center .slick-center{opacity: 1;transform: scale(1);}
+
+.logo_showcase .slick-prev::before, .logo_showcase .slick-next::before{display: none !important;}

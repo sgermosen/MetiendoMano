@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:convertors="clr-namespace:ImpNotes.Convertors"
+             x:Class="ImpNotes.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <convertors:StringToColorConverter x:Key="StringToColorConverter"></convertors:StringToColorConverter>
+            <convertors:ListTitleConvertor x:Key="ListTitleConvertor"></convertors:ListTitleConvertor>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

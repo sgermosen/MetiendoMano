@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestShell.Views.HomePage"  xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:effects="clr-namespace:TestShell.Effects"
+             xmlns:pages="clr-namespace:TestShell.Views"
+             xmlns:controls="clr-namespace:TestShell.Controls"
+             android:TabbedPage.IsSwipePagingEnabled="False"
+             android:TabbedPage.ToolbarPlacement="Bottom"
+             BarBackgroundColor="{OnPlatform Android=White}">
+    <TabbedPage.Effects>
+        <effects:TabbedPageNoShiftEffect />
+    </TabbedPage.Effects>
+    <controls:MyNavigationPage Title="About" Icon="ic_about.png">
+        <x:Arguments>
+            <pages:AboutPage />
+        </x:Arguments>
+    </controls:MyNavigationPage>
+
+
+    <controls:MyNavigationPage Title="Twitter" Icon="ic_twitter.png">
+        <x:Arguments>
+            <pages:TwitterPage />
+        </x:Arguments>
+    </controls:MyNavigationPage>
+
+
+    <controls:MyNavigationPage Title="Podcasts" Icon="ic_podcast.png">
+        <x:Arguments>
+            <pages:PodcastDirectoryPage />
+        </x:Arguments>
+    </controls:MyNavigationPage>
+
+
+    <controls:MyNavigationPage Title="Videos" Icon="ic_video.png">
+        <x:Arguments>
+            <pages:VideoDirectoryPage />
+        </x:Arguments>
+    </controls:MyNavigationPage>
+    </TabbedPage>

@@ -1,0 +1,95 @@
+﻿<div class="row">
+    <div class="col-md-12 text-center">
+        <h4>Get Email Ids From Google Search  </h4>
+        <h6>-Web Scraper-</h6>
+        <br />
+    </div>
+    <div class="col-md-12 text-center">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text">
+                    Enter the keyword (the query you want to search) and page number to search the list of emails for a specific keyword.
+                    <br />
+                    Example: Supppose you want to serach for <strong>Web Development</strong> and on page number <strong> one (1)</strong> ,<br /> than you will get the email list from the websites listed on the page 1 of google search with keyword 'Web Development'.
+                    <br />
+                    <br />
+                    <a href="@Url.Action("Index","Home")" class="btn btn-secondary"> Back To All Examples </a>
+</div>
+        </div>
+        <br />
+    </div>
+
+    <div class="col-md-4">
+        <br />
+        <form asp-action="GetEmailFromGoogleSearch" asp-controller="Home" method="post" lass="form-inline">
+            <div class="card bg-danger text-white">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Enter Search Keyword</label>
+                        <input type="text" class="form-control" name="GoogleSearchQuery" value="@ViewBag.SearchText" placeholder="ex: Web Development" required>
+                        <label>Enter Page Number</label>
+
+                        <input type="number" step="1" min="1" max="100" class="form-control" name="PageNumber" value="@ViewBag.SearchPN" placeholder="ex: 1" required>
+
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Get Details" class="btn btn-primary" />
+                    </div>
+                </div>
+
+            </div>
+
+
+        </form>
+
+    </div>
+    <div class="col-md-8" style="min-height:400px;">
+        <br />
+        <div class="card-body">
+            <h5 class="card-title">Search Results </h5>
+        </div>
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="card ">
+                    <div class="card-body">
+                        <p class="card-text">List of Emails for the entered query : </p>
+                    </div>
+                    <ul class="list-group list-group-flush ">
+                        @if (ViewBag.DataEmailList != null)
+            {
+                @foreach (var item in ViewBag.DataEmailList)
+    {
+
+            <li class="list-group-item text-primary">@item</li>
+
+}
+}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card ">
+                    <div class="card-body">
+                        <p class="card-text">List of Websites for the entered query : </p>
+                    </div>
+                    <ul class="list-group list-group-flush ">
+                        @if (ViewBag.DataWebsiteList != null)
+            {
+                @foreach (var item in ViewBag.DataWebsiteList)
+    {
+
+            <li class="list-group-item text-primary">@item</li>
+
+}
+}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+

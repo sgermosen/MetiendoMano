@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="ChatClient.Views.ChatPage"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:c="clr-namespace:ChatClient.Views.Converters;assembly=ChatClient"
+	xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+	xmlns:data="clr-namespace:Web.Core.Data;assembly=Web.Core"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	Title="{Binding Title}"
+	Padding="8"
+	mc:Ignorable="d">
+	<ContentPage.Content>
+		<Grid RowSpacing="8">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<ListView
+				HasUnevenRows="True"
+				HorizontalScrollBarVisibility="Never"
+				ItemsSource="{Binding Messages}"
+				SelectionMode="None"
+				SeparatorVisibility="None"
+				VerticalScrollBarVisibility="Always">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<StackLayout
+								Margin="8"
+								Padding="8"
+								BackgroundColor="{Binding FromUserName, Converter={c:TextToColorConverter}}"
+								Spacing="8">
+								<Grid IsVisible="{Binding FromUserName, Converter={c:TextToVisibilityConverter}}">
+									<Label HorizontalOptions="Start" Text="{Binding FromUserName}" />
+									<Label HorizontalOptions="End" Text="{Binding MessageDate, StringFormat='{0:dd/MM/yyyy h:mm:ss tt}'}" />
+								</Grid>
+								<Label LineBreakMode="CharacterWrap" Text="{Binding Message}" />
+							</StackLayout>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+
+			<Label
+				Grid.Row="0"
+				HorizontalTextAlignment="Center"
+				IsVisible="{Binding MessagesCount, Converter={c:CountToVisibilityConverter}}"
+				Text="{x:Static data:Resources.NotMessagesAvailable}"
+				VerticalOptions="Center" />
+
+			<Grid Grid.Row="1" ColumnSpacing="8">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				<Grid>
+					<Entry
+						x:Name="MessageEntry"
+						ClearButtonVisibility="Never"
+						HorizontalOptions="FillAndExpand"
+						HorizontalTextAlignment="Start"
+						IsSpellCheckEnabled="True"
+						IsTextPredictionEnabled="True"
+						MaxLength="500"
+						Placeholder="message"
+						Text="{Binding Message}"
+						VerticalTextAlignment="Start" />
+					<Label
+						Margin="8,0"
+						HorizontalOptions="End"
+						Text="{Binding Text, Source={x:Reference MessageEntry}, Converter={c:StringToIntConverter}, StringFormat='{0}/500'}"
+						VerticalOptions="Center" />
+				</Grid>
+				<Button
+					Grid.Column="1"
+					Command="{Binding SendMessageCommand}"
+					Text="Send" />
+			</Grid>
+
+			<ActivityIndicator
+				Grid.Row="0"
+				Grid.RowSpan="2"
+				BackgroundColor="White"
+				IsRunning="{Binding IsProcessing}"
+				IsVisible="{Binding IsProcessing}"
+				Color="Red" />
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

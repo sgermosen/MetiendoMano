@@ -1,0 +1,328 @@
+﻿@model IEnumerable<AudioViewModel>
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+<form id="form" enctype="multipart/form-data" method="post">
+	@Html.AntiForgeryToken()
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+	<div class="form-group mt-5">
+		<div id="audio-form" class="row">
+			<div class="col-8">
+				<input id="title"
+							 name="title"
+							 class="form-control"
+							 type="text"
+							 placeholder="Audio title"
+							 required
+							 maxlength="250" />
+				<div class="d-flex justify-content-between">
+					<span id="title-error-message" class="text-danger"></span>
+					<p class="align-self-end"><span id="title-count">0</span>/250</p>
+				</div>
+			</div>
+			<button id="record"
+							name="record"
+							class="btn btn-outline-dark col-2 align-self-start mx-3">
+				Record
+			</button>
+		</div>
+
+		<div id="audio-recorder" class="row">
+			<h2 class="mx-3">
+				Recording...
+			</h2>
+			<h2 id="timer" class="mx-3"></h2>
+			<button id="stop"
+							name="record"
+							class="btn btn-outline-dark col-2 mx-3">
+				Stop
+			</button>
+		</div>
+		<div class="mt-2">
+			<output name="result"></output>
+		</div>
+
+		<div id="min-loader" class="row">
+			<div class="d-flex justify-content-center align-items-center">
+				<h2 class="mx-3">
+					Processing...
+				</h2>
+				<img class="mx-5"
+						 alt="loading"
+						 src="https://media.giphy.com/media/feN0YJbVs0fwA/giphy.gif"
+						 width="100"
+						 height="100">
+			</div>
+		</div>
+	</div>
+</form>
+
+<h2 class="my-5">Audio List</h2>
+
+<div class="table-responsive-sm">
+	<table id="audio-list" class="table table-sm table-striped">
+		<thead>
+			<tr class="d-flex thead-light">
+				<th class="col-1 text-center" scope="col">#</th>
+				<th class="col-5" scope="col">
+					@Html.DisplayNameFor(model => model.Title)
+				</th>
+				<th class="col-4" scope="col">Audio</th>
+				<th class="col-2 text-center" scope="col">Actions</th>
+			</tr>
+		</thead>
+
+		@if (Model.Any())
+		{
+			<tbody>
+				@foreach (var audio in Model)
+				{
+					<tr class="d-flex">
+						<th class="col-1 text-center" scope="row">
+							@Html.DisplayFor(modelItem => audio.Id)
+						</th>
+
+						<td class="col-5">
+							@Html.DisplayFor(modelItem => audio.Title)
+						</td>
+
+						<td class="col-4">
+							<audio src="./media/audios/@audio.AudioPath" controls />
+						</td>
+
+						<td class="col-2">
+							<div class="d-flex input-group justify-content-center">
+								<a class="page-link"
+									 href="./Audio/EditAudio?audioId=@audio.Id">
+									Edit
+								</a>
+								<button class="page-link mx-2"
+												data-toggle="modal"
+												data-target="#exampleModal"
+												data-entity-id="@audio.Id">
+									Delete
+								</button>
+							</div>
+						</td>
+					</tr>
+				}
+			</tbody>
+		}
+		else
+		{
+			<tfoot id="empty-table-message">
+				<tr>
+					<th colspan="4" class="text-md-center">Ningún audio gravado.</th>
+				</tr>
+			</tfoot>
+		}
+	</table>
+</div>
+
+<partial name="_DeleteDialog" />
+
+@section Scripts {
+	<script src="~/lib/msr/MediaStreamRecorder.js"></script>
+	<script type="text/javascript">
+		const maxRecordingTime = 300000; // 5 minutes.
+		let controller = new AbortController(),
+			form = id("form"),
+			header = $("#exampleModalLabel"),
+			deleteButton = $("#deleteLink"),
+			timer = $("#timer"),
+			mediaConstraints = { audio: true },
+			hours = 0,
+			minutes = 0,
+			seconds = 0,
+			interval,
+			recorder;
+
+		$(document).ready(function () {
+			$("#form").submit(function (e) {
+				e.preventDefault(e);
+			});
+
+			$('#exampleModal').on('show.bs.modal',
+				function (event) {
+					let entityId = $(event.relatedTarget).data('entity-id');
+					header.text(`Do you want to remove this data, Id: ${entityId}?`);
+					deleteButton.attr("href", `./Audio/DeleteAudio?audioId=${entityId}`);
+				});
+
+			$("#record").click(function () {
+				if (validateForm()) startRecording();
+			});
+
+			$("#stop").click(function () {
+				stopRecording();
+			});
+
+			$("#title").bind('input',
+				function () {
+					var title = $(this).val();
+					setCount($("#title-count"), title);
+
+					validateForm();
+				});
+
+			setRecorderState('stopped');
+			setCount($("#title-count"), $("#title").val());
+			loader.hide();
+		});
+
+		function onMediaSuccess(stream) {
+			recorder = new MediaStreamRecorder(stream);
+			recorder.mimeType = 'audio/wav';
+			recorder.ondataavailable = postAudio;
+
+			// start timer
+			interval = setInterval(updateTimer, 1000);
+			recorder.start(maxRecordingTime);
+			setRecorderState('recording');
+
+			log("recording stated.");
+		}
+
+		function onMediaError(e) {
+			error(e);
+			showAlert("Error your media is not supported", "alert-danger", 5000);
+		}
+
+		function validateForm() {
+			let title = $("#title").val(),
+				errorMessage = "";
+
+			if (title === "") {
+				errorMessage = "'Title' must not be empty.";
+			} else if (title.length > 250) {
+				errorMessage = "The length of 'Title' must be 250 characters or fewer.";
+			}
+
+			$("#title-error-message").text(errorMessage);
+			return errorMessage === "";
+		}
+
+		function startRecording() {
+			navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError);
+		}
+
+		function stopRecording() {
+			setRecorderState('stopped');
+
+			// stop recording
+			recorder.stop();
+
+			log("recording stopped.");
+		}
+
+		function postAudio(blob) {
+			setRecorderState('processing');
+
+			let title = $("#title").val(),
+				formData = new FormData(),
+				blobURL = URL.createObjectURL(blob);;
+
+			formData.append("title", title);
+			formData.append("file", blob, "file.wav");
+
+			fetchTimeout("/",
+				fetchTimeOut,
+				{
+					signal: controller.signal,
+					method: 'POST',
+					body: formData,
+					headers: {
+						'enctype': 'multipart/form-data'
+					}
+				})
+				.then(response => response.json())
+				.then(data => {
+					setRecorderState('stopped');
+					updateTable(data, blobURL);
+					showAlert("All data saved.", "alert-success", 5000);
+				})
+				.catch(e => {
+					setRecorderState('stopped');
+					if (e.name === "AbortError") {
+						showAlert("The request has timeout.", "alert-warning", 5000);
+					} else {
+						showAlert("An error occurred sending request.", "alert-danger", 5000);
+					}
+				});
+		}
+
+		function setRecorderState(state) {
+			let audioForm = $("#audio-form"),
+				audioRecorder = $("#audio-recorder"),
+				miniLoader = $("#min-loader");
+
+			if (state === 'stopped') {
+				miniLoader.hide();
+				audioRecorder.hide();
+				audioForm.show();
+
+				// reset timer
+				clearInterval(interval);
+				updateTimer(true);
+			} else if (state === 'recording') {
+				miniLoader.hide();
+				audioForm.hide();
+				audioRecorder.show();
+			} else {
+				audioRecorder.hide();
+				audioForm.hide();
+				miniLoader.show();
+			}
+		}
+
+		function updateTimer(reset = false) {
+			if (reset)
+				hours = minutes = seconds = 0;
+			else {
+				if (minutes === 59 && seconds === 59) ++hours;
+
+				if (minutes < 59 && seconds === 59) ++minutes;
+				else if (minutes === 59 && seconds === 59) minutes = 0;
+
+				if (seconds < 59) ++seconds;
+				else seconds = 0;
+			}
+
+			if (hours > 0)
+				timer.text(`${format(hours)}:${format(minutes)}:${format(seconds)}`);
+			else if (minutes > 0)
+				timer.text(`00:${format(minutes)}:${format(seconds)}`);
+			else timer.text(`00:00:${format(seconds)}`);
+		}
+
+		function format(time) {
+			return time >= 10 ? time : `0${time}`;
+		}
+
+		function updateTable(audio, blobURL) {
+			var row = `<tr class="d-flex">
+								<th class="col-1 text-center" scope="row">${audio.id}</th>
+								<td class="col-5">${audio.title}</td>
+								<td class="col-4">
+									<audio src="${blobURL}" controls />
+								</td>
+								<td class="col-2">
+									<div class="d-flex input-group justify-content-center">
+										<a class="page-link" href="./Audio/EditAudio?audioId=${audio.id}">Edit</a>
+										<button class="page-link mx-2"
+											data-toggle="modal"
+											data-target="#exampleModal"
+											data-entity-id="${audio.id}">Delete</button>
+									</div>
+								</td>
+							</tr>`;
+
+			if ($("#empty-table-message").is(":visible"))
+				$("#empty-table-message").hide();
+			$("#audio-list").append(row);
+		}
+	</script>
+}
+

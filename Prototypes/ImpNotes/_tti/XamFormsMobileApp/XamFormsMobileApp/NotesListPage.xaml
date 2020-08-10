@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamFormsMobileApp.Ads"
+             x:Class="XamFormsMobileApp.NotesListPage"
+             Title="Notes">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ListView Grid.Row="0" ItemsSource="{Binding NotesList}" SeparatorVisibility="None" RowHeight="100"
+                  ItemSelected="ListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame CornerRadius="5" Margin="15,5" HeightRequest="100">
+                                <StackLayout Margin="-10">
+                                    <!--<Grid>
+                                    <Label Text="X" FontAttributes="Bold" FontSize="Large" HorizontalOptions="EndAndExpand"
+                                       Margin="10,5,10,5">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>-->
+                                    <Label Text="{Binding Notes,Converter={StaticResource ListTitleConvertor}}" 
+                                       TextColor="{Binding TextColor,Converter={StaticResource StringToColorConverter}}"
+                                       FontSize="20" Margin="10,0">
+                                        <!--<Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                    </Label.GestureRecognizers>-->
+                                    </Label>
+
+                                    <!--<StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>-->
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--<local:AdMobView  x:Name="BannerView" Grid.Row="1" />-->
+            <local:AdBanner Grid.Row="1"  Size="Standardbanner" VerticalOptions="EndAndExpand"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

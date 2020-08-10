@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0af78eff0b474129a1b3fa1708191b3f" Name="Diagram1">
+        <EntityTypeShape EntityType="SegDbModel.AUTORES" Width="1.5" PointX="8.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.AUTORES_PAGO" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.AUTORES_PLANES" Width="1.5" PointX="6" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.BARRIOS_PARAJES" Width="1.5" PointX="24.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.DIST_MUNICIPALES" Width="1.5" PointX="20.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.ESTATUSM" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.MONEDAS" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.MUNICIPIOS" Width="1.5" PointX="18" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.NACIONALIDADES" Width="1.5" PointX="13.5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.PAISES" Width="1.5" PointX="11.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.PERIODICIDADES" Width="1.5" PointX="3.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.PERSONAS" Width="1.5" PointX="13.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.PERSONAS_TIPO" Width="1.5" PointX="10.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.PROVINCIAS" Width="1.5" PointX="15.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.REGIONES" Width="1.5" PointX="13.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.SECCIONES" Width="1.5" PointX="22.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.SUBBARRIOS" Width="1.5" PointX="27" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.OPCIONES" Width="1.5" PointX="10.5" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.OPCIONES_PADRE" Width="1.5" PointX="8.25" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.OPCIONESROL" Width="1.5" PointX="12.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.ROLES" Width="1.5" PointX="10.5" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.ROLESUSUARIO" Width="1.5" PointX="12.75" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SegDbModel.USUARIOSSEG" Width="1.5" PointX="10.5" PointY="21.5" IsExpanded="true" />
+        <AssociationConnector Association="SegDbModel.FK_AUTORES_AUTORES_PLANES" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_AUTORES_PAGO_AUTORES" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_PERSONAS_AUTORES" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_PERSONAS_AUTORES1" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_PERSONAS_TIPO_AUTORES" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_ROLES_AUTORES" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_USUARIOSSEG_AUTORES" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_AUTORES_PAGO_MONEDAS" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_AUTORES_PLANES_MONEDAS" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_AUTORES_PLANES_PERIODICIDADES" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_BARRIOS_PARAJES_SECCIONES" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_SUBBARRIOS_BARRIOS_PARAJES" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_DISTMUNICIPALES_MUNICIPIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_SECCIONES_DISTMUNICIPALES" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_MUNICIPIOS_PROVINCIAS" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_NACIONALIDADES_PAISES" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_PERSONAS_PAISES" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_REGIONES_PAISES" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_PROVINCIAS_REGIONES" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_OPCIONES_OPCIONES_PADRE" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_rolesopciones_opciones" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_rolesopciones_roles" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_usuariosroles_roles" ManuallyRouted="false" />
+        <AssociationConnector Association="SegDbModel.FK_usuariosroles_usuariosSEG" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,77 @@
+﻿@model AudioFormUpdateViewModel
+
+@{
+	ViewBag.Title = "Edit Audio";
+}
+
+<h2 class="my-5">Edit Audio</h2>
+
+@using (Html.BeginForm("EditAudio", "Audio", FormMethod.Post))
+{
+	@Html.AntiForgeryToken()
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	@Html.HiddenFor(model => model.Id)
+
+	<div class="form-group">
+		<label asp-for="Title" class="control-label"></label>
+		<div class="col-md-10">
+			<input asp-for="Title"
+			       class="form-control"
+						 required
+			       maxlength="250" />
+			<div class="d-flex justify-content-between">
+				<span asp-validation-for="Title" class="text-danger"></span>
+				<p><span id="title-count">0</span>/250</p>
+			</div>
+		</div>
+	</div>
+
+	<input id="isDisable" type="checkbox" asp-for="IsTranscribing" hidden/>
+
+	<div class="form-group mb-5">
+		<label asp-for="Transcription" class="control-label"></label>
+		<div class="col-md-10">
+			<textarea asp-for="Transcription"
+								class="form-control"
+								required
+								maxlength="50000"></textarea>
+			<div class="d-flex justify-content-between">
+				<span asp-validation-for="Transcription" class="text-danger"></span>
+				<p><span id="transcription-count">0</span>/50000</p>
+			</div>
+		</div>
+	</div>
+
+	<button asp-action="EditAudio" type="submit"
+					class="btn btn-outline-primary">
+		Save changes
+	</button>
+}
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial"/>
+
+	<script>
+		$(document).ready(function() {
+			$("#Title").bind('input',
+				function() {
+					setCount($("#title-count"), $(this).val());
+				});
+
+			$("#Transcription").bind('input',
+				function() {
+					setCount($("#transcription-count"), $(this).val());
+				});
+
+			isTranscribed();
+			setCount($("#title-count"), $("#Title").val());
+			setCount($("#transcription-count"), $("#Transcription").val());
+			loader.hide();
+		});
+
+		function isTranscribed() {
+			if (id("isDisable").checked)
+				$("#Transcription").prop('disabled', true);
+		}
+	</script>
+}

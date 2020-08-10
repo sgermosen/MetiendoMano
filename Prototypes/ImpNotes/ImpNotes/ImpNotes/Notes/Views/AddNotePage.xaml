@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ImpNotes.Notes.Views.AddNotePage"
+             Title="Add New Note">
+    <ContentPage.Content>
+         
+        <ScrollView >
+            <StackLayout  Padding="5"
+                          HorizontalOptions="FillAndExpand"
+                          VerticalOptions="FillAndExpand">
+
+                <!--<Frame CornerRadius="20" 
+                       Margin="5" 
+                       HorizontalOptions="FillAndExpand" 
+                       VerticalOptions="CenterAndExpand">-->
+
+                    <StackLayout Margin="5,10">
+                        <!--<Label Text="Enter a Tittle" 
+                               TextColor="Gray" 
+                               FontAttributes="Bold">
+                        </Label>-->
+                        <Entry Text="{Binding Title, Mode=TwoWay}"
+                               Placeholder="Enter a Tittle">
+                        </Entry>
+                       
+                        <Editor Text="{Binding Text, Mode=TwoWay}" 
+                                HorizontalOptions="FillAndExpand"
+                                HeightRequest="400"
+                                Placeholder="Enter your notes here"
+                                VerticalOptions="FillAndExpand"
+                                TextColor="{Binding SelectedTextColor,
+                            Converter={StaticResource StringToColorConverter}}">
+                        </Editor>
+
+                    </StackLayout>
+                <!--</Frame>-->
+               
+                <StackLayout
+                    Margin="40,0"
+                    Orientation="Horizontal">
+                    <Button
+                        BackgroundColor="DodgerBlue"
+                        CornerRadius="23" 
+                        HeightRequest="46"
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled}"
+                        Text="Save"
+                        TextColor="White">
+                    </Button>
+                    <Button
+                        BackgroundColor="DarkRed"
+                        CornerRadius="23" 
+                        HeightRequest="46"
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}" 
+                        Text="Cancel"
+                        TextColor="White">
+                    </Button>
+                </StackLayout>
+              
+               
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

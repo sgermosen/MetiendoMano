@@ -1,0 +1,35 @@
+﻿@model IEnumerable<InapCertAuditory.Models.Tanda>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1> Listado </h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"> Adicionar Nueva </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Tanda
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TandaId" class="btn btn-warning">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.TandaId" class="btn btn-info">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.TandaId" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
