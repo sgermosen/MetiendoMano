@@ -1,0 +1,146 @@
+﻿@using System.Web.Script.Serialization;
+@model SGC_MVC.Models.UserTask
+@using SGC_MVC.CustomCode; 
+@{ 
+    ViewBag.Title = "Sub Tarea - Editar";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Actualizar informaci&oacute;n de Sub Tarea</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Datos de la Sub Tarea a Editar</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "standard_form fluid_wrap" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                @Html.Hidden("validateUniq","UserTask&Nombre")
+                <legend>Editar Sub Tarea</legend>
+
+                @Html.HiddenFor(model => model.ID)
+                @Html.HiddenFor(model => model.statusID)
+                @Html.HiddenFor(model => model.createDate)
+                @Html.HiddenFor(model => model.parentTaskID)
+                @Html.HiddenFor(model => model.companyID)
+
+                <ul class="form_items_container col-lg-6 pl0">
+                    <li>
+                        @Html.LabelForR(model => model.name)
+                        @Html.TextBoxFor(model => model.name, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.name)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.fromDate)
+                        @Html.TextBoxFor(model => model.fromDate, new { Value = @Model.fromDate.Value.ToString("yyyy/MM/dd") ,@class = "date col-lg-12 form-control", data_min = new JavaScriptSerializer().Serialize(Model.UserTask2.toDate) })
+                        @Html.ValidationMessageFor(model => model.fromDate)
+                    </li>
+
+                    <li>
+                        @Html.LabelForR(model => model.description)
+                        @Html.TextAreaFor(model => model.description, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.description)
+                    </li>
+
+                </ul>
+                <ul class="form_items_container col-lg-6 pr0">
+                    <li>
+                        @Html.LabelForR(model => model.ruleID, "Normas Aplicables")
+                        @Html.DropDownListFor(model => model.ruleID, null, String.Empty, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.ruleID)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.toDate)
+                        @Html.TextBoxFor(model => model.toDate, new { Value = @Model.toDate.Value.ToString("yyyy/MM/dd") ,@class = "date col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.toDate)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.responsible, "Responsable de tarea")
+                        @Html.DropDownListFor(model => model.responsible, null, String.Empty, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.responsible)
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-12 pl0">
+                    <li>
+                        @Html.LabelForR(model => model.UserTask1)
+
+                        <table class="eis_table table normalTable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.description)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.User1.name)
+                                    </th>
+                                    <th></th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.UserTask1)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.description)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.User1.name)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Editar", "EditChildTask", new { id = item.ID }, new { @class = "edit_link button_link" })
+                                            @Html.ActionLink("Eliminar", "DeleteChildTask", new { id = item.ID }, new { @class = "delete_link button_link" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </li>
+
+                    <li>
+                        <label class="checkbox"> <input type="checkbox" id="chainTask" name="chainTask" />Nueva tarea al finalizar?</label>
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-6 pl0">
+                    <li>
+                        <div class="form_items_container col-lg-8 pl0">
+                            <p>
+                                <input type="submit" value="Guardar" class="button_save btstyles col-lg-5" />
+                                @Html.ActionLink(
+                                    "Cancelar",
+                                    (Model.UserTask2.UserTask2 == null) ? "Edit" : "EditChild",
+                                    new { id = Model.parentTaskID },
+                                    new { @class="button_cancel btstyles col-lg-5" })
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </fieldset>
+        }
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+@section Scripts {
+    <script src="~/Scripts/DataTableClient.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#fromDate').datepicker({ dateFormat: 'yy/mm/dd' });
+            $('#toDate').datepicker({ dateFormat: 'yy/mm/dd' });
+        });
+    </script>
+}

@@ -1,0 +1,59 @@
+@model SGC_MVC.Models.DocumentType
+@using SGC_MVC.CustomCode; 
+ @{ 
+ ViewBag.Title = "Tipo de documento - Editar";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Actualizar informaci&oacute;n del tipo de documento</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Datos del tipo de documento</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "standard_form fluid_wrap" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                @Html.Hidden("validateUniq","DocumentType&Nombre")
+                <legend></legend>
+
+                @Html.HiddenFor(model => model.ID)
+                <ul class="form_items_container col-lg-6 pl0">
+
+                    <li  >
+                        @Html.LabelForR(model => model.name)
+                        @Html.TextBoxFor(model => model.name, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.name)
+                    </li>
+
+                    <li  >
+                        @Html.LabelForR(model => model.description)
+                        @Html.TextAreaFor(model => model.description, new { @class = "col-lg-12 form-control textarea_level2" })
+                        @Html.ValidationMessageFor(model => model.description)
+                    </li>
+
+                    <li>
+                        <div class="form_items_container col-lg-8 pl0">
+                            <p>
+                                <input type="submit" value="Guardar" class="button_save btstyles col-lg-5" />
+                                @Html.ActionLink("Cancelar", "Index", null, new { @class="button_cancel btstyles col-lg-5" })
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </fieldset>
+        }
+    </div>
+<!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+@section Scripts {
+}

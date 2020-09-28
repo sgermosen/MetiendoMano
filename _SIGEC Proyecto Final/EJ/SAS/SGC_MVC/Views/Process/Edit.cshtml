@@ -1,0 +1,280 @@
+﻿@using SGC_MVC.CustomCode;
+@model SGC_MVC.Models.Process
+
+@{ 
+    ViewBag.Title = "Procesos - Editar";
+    string temp = "";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Actualizar informaci&oacute;n del proceso</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Datos del proceso</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "standard_form fluid_wrap" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend></legend>
+                @Html.Hidden("validateUniq", "Process&Nombre")
+                @Html.HiddenFor(model => model.ID)
+                @Html.HiddenFor(model => model.statusID)
+                @Html.HiddenFor(model => model.createUser)
+                @Html.HiddenFor(model => model.createDate, new { @class = "ignore" })
+                @Html.HiddenFor(model => model.version)
+                @Html.HiddenFor(model => model.companyID)
+                @Html.Hidden("submitVal")
+                @Html.HiddenFor(model => model.changeReason, new { @class = "changeReason" })
+                @Html.Hidden("updateLevel2", @Url.Action("UpdateLevel2", "Process", new { ID = Model.ID }))
+
+                <ul class="form_items_container col-lg-6 pl0">
+                    <li>
+                        @Html.LabelForR(model => model.ruleID)
+                        @Html.DropDownListFor(model => model.ruleID, null, String.Empty, new { @class = "col-lg-12 form-control dropdown" })
+                        @Html.ValidationMessageFor(model => model.ruleID)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.responsible)
+                        @Html.DropDownListFor(model => model.responsible, null, String.Empty, new { @class = "col-lg-12 form-control dropdown" })
+                        @Html.ValidationMessageFor(model => model.responsible)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.target)
+                        @Html.TextAreaFor(model => model.target, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.target)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.entries)
+                        @Html.TextAreaFor(model => model.entries, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.entries)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.outputs)
+                        @Html.TextAreaFor(model => model.outputs, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.outputs)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.controlMeasures)
+                        @Html.TextAreaFor(model => model.controlMeasures, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.controlMeasures)
+                    </li>
+                    <li>
+                        <label>Proveedores</label>
+                        @Html.DropDownList("Proveedorores", null, new { @class = "chosen form-control", multiple = "multiple", style = "heigth: 30px" })
+                    </li>
+                    @*<li>
+                        <label>Indicadores</label>
+                        @Html.DropDownList("Indicadores", null, new { @class = "chosen", multiple = "multiple", @readonly = "readonly" })
+                    </li>*@
+                    <li>
+                        <label>Requisito ISO</label>
+                        @Html.DropDownList("ILRules", null, new { @class = "chosen form-control", multiple = "multiple" })
+                    </li>
+                    <li>
+                        <label>Requisitos ISO (new)</label>
+                        @Html.DropDownList("isoRequisites", null, new { @class = "chosen form-control", multiple = "multiple" })
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-6 pr0">
+                    <li>
+                        @Html.LabelForR(model => model.processTypeID, "ProcessType")
+                        @Html.DropDownListFor(model => model.processTypeID, null, String.Empty, new { @class = "col-lg-12 form-control dropdown" })
+                        @Html.ValidationMessageFor(model => model.processTypeID)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.name)
+                        @Html.TextBoxFor(model => model.name, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.name)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.description)
+                        @Html.TextAreaFor(model => model.description, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.description)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.activities)
+                        @Html.TextAreaFor(model => model.activities, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.activities)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.customerRequirements)
+                        @Html.TextAreaFor(model => model.customerRequirements, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.customerRequirements)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.outputRequirements)
+                        @Html.TextAreaFor(model => model.outputRequirements, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.outputRequirements)
+                    </li>
+                    <li>
+                        <label>Clientes</label>
+                        @Html.DropDownList("Clientes", null, new { @class = "chosen form-control", multiple = "multiple" })
+                    </li>
+                    <li>
+                        <label>Recursos</label>
+                        @Html.DropDownList("ILProcessResource", null, new { @class = "chosen form-control", multiple = "multiple" })
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-12 pl0">
+                    <li>
+                        <div>
+                            @Html.LabelFor(model => model.ProcessDocuments, new { style = "float:left; margin-top:22px;" })
+                            <div class="form_items_container col-lg-5 pr0" style="float: right;">
+                                <p>
+                                    <input type="submit" value="Asociar Archivo" class="button_generic btstyles col-lg-4 btSub btnSubmit" style="float: right;" />
+                                </p>
+                            </div>
+                        </div>
+                        <table class="eis_table table normalTable">
+                            <thead>
+                                <tr>
+                                    <th>Documento
+                                    </th>
+                                    <th>Opciones
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in (List<SGC_MVC.Models.ProcessDocument>)ViewBag.ILProcessDocuments)
+                                {
+                                    <tr>
+                                        <td>
+                                            @if (string.IsNullOrEmpty(item.text))
+                                            {
+                                                temp = item.Document.title;
+                                            }
+                                            else
+                                            {
+                                                temp = item.text;
+                                            }
+                                            @temp
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Editar", "EditAssociatedDocument", new { id = item.ID }, new { @class = "edit_link button_link" })
+                                            @Html.ActionLink("Eliminar", "DeleteAssociatedDocuments", new { id = item.ID }, new { @class = "delete_link button_link" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-6 pl0">
+                    <li>
+                        <div class="form_items_container col-lg-12 pl0">
+                            <p>
+                                <input type="submit" value="Guardar" class="btSub button_save btstyles col-lg-3" />
+                                <input type="button" value="Nueva version" id="SvNewVersion" class="button_generic btstyles col-lg-3" />
+                                @Html.ActionLink("Cancelar", "Index", null, new { @class = "button_cancel btstyles col-lg-3" })
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+                <div id="dialog" class="dn">
+                    <ul>
+                        <li>
+                            <label>Razon de nueva versi&oacute;n</label><br />
+                            @Html.TextArea("changeReason", new { @class = "changeR form-control col-lg-12 textarea_level2" })
+                        </li>
+                    </ul>
+                </div>
+                <div id="postBack" class="dn"></div>
+            </fieldset>
+        }
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/DataTableClient.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".chosen").chosen(/*{ maxSelectedOptions: 2 }*/);
+            $(".chosen-deselect").chosen({ allowSingleDeselect: true });
+            $(".chosen").chosen().change();
+            $(".chosen").trigger('liszt:updated');
+        });
+        $('.changeR').jqte();
+        $('#SvNewVersion').on("click", function () {
+            $('#dialog').dialog("open");
+        });
+        $('.btnSubmit').on("click", function () {
+            if ($('#submitVal').val() != "" && $('#submitVal').val()) {
+                if ($(this.val() == "Asociar Archivo")) {
+                }
+            }
+            else {
+                $('#submitVal').val($(this).val());
+            }
+        });
+
+        $('#dialog').dialog({
+            autoOpen: false,
+            title: 'Razón de nueva versión',
+            width: 540,
+            height: 400,
+            resizable: false,
+            draggable: false,
+            modal: true,
+            buttons: {
+                "Guardar": function () {
+                    if (!$('.changeR').val()) {
+                        alert('debe insertar una razon de nueva version');
+                    }
+                    else {
+                        $('#submitVal').val("nueva version");
+                        $('.changeReason').val($('.changeR').val());
+                        $(this).dialog("close");
+                    }
+                },
+                "Cancelar": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        $('#ruleID').on("change", function () {
+            var rule = $(this).val();
+            var processID = $('#ID').val();
+            var html = "";
+            $.ajax({
+                url: $('#updateLevel2').val(),
+                type: 'POST',
+                data: JSON.stringify({ ruleID: rule }),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    if (data == undefined || data == "") {
+                        $('#isoRequisites').html(html);
+                        $(".chosen").trigger('liszt:updated');
+                    }
+                    else {
+                        $.each(data, function (key, isoRequisites) {
+                            //fill the dropdown
+                            html +=
+                                '<option value="' + isoRequisites.Value + '">'
+                                + isoRequisites.Text +
+                                '</option>';
+                        });
+                        $('#isoRequisites').html(html);
+                        $(".chosen").trigger('liszt:updated');
+                    }
+                },
+                error: function (data) {
+                    $('#isoRequisites').html(html);
+                    $(".chosen").trigger('liszt:updated');
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,259 @@
+﻿@using SGC_MVC.CustomCode
+
+@model SGC_MVC.Models.FormField
+
+@{
+    ViewBag.Title = "Formularios - Editar Pregunta";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Actualizar campo del formulario</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Datos del campo del formulario</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "standard_form fluid_wrap" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                @Html.HiddenFor(model => model.formID)
+                @Html.HiddenFor(model => model.ID)
+                @Html.Hidden("OriginalType", Model.fieldTypeID)
+                @Html.Hidden("Options", Json.Encode(Model.FormFieldOptions.Select(m => new { m.label, m.value, m.defaultValue, m.isOtherOption})))
+                <legend></legend>
+                <ul class="form_items_container col-lg-6 pl0">
+                    <li>
+                        @Html.LabelForR(model => model.question)
+                        @Html.TextBoxFor(model => model.question, new { @class = "form-control col-lg-12" })
+                        @Html.ValidationMessageFor(model => model.question)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.tooltip)
+                        @Html.TextBoxFor(model => model.tooltip, new { @class = "form-control col-lg-12" })
+                        @Html.ValidationMessageFor(model => model.tooltip)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.fieldTypeID)
+                        @Html.DropDownListFor(model => model.fieldTypeID, null, string.Empty, new { @class = "form-control col-lg-12 dropdown" })
+                        @Html.ValidationMessageFor(model => model.fieldTypeID)
+                    </li>
+
+                    <li>
+                        <div id="fieldTypeOptions">
+                        </div>
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-6 pr0">
+                    <li>
+                        @Html.LabelForR(model => model.variableShortcut)
+                        @Html.TextBoxFor(model => model.variableShortcut, new { @class = "form-control col-lg-12" })
+                        @Html.ValidationMessageFor(model => model.variableShortcut)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.noOrder)
+                        @Html.TextBoxFor(model => model.noOrder, new { @class = "form-control col-lg-12" })
+                        @Html.ValidationMessageFor(model => model.noOrder)
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-12 pl0">
+                    <li>
+                        <div class="form_items_container col-lg-4">
+                            <p>
+                                <input type="submit" value="Guardar" class="button_save btstyles col-lg-5" />
+                                @Html.ActionLink("Cancelar", "Edit", new { id = Model.formID }, new { @class = "button_cancel btstyles col-lg-5" })
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+                @Html.Hidden("GetOptions", Url.Action("GetFieldOptions", "Forms"))
+                <div id="options" class="dn"></div>
+            </fieldset>
+        }
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+@section Scripts{
+    <script src="~/Scripts/jquery.maskedinput.min.js"></script>
+    <script src="~/Scripts/autoNumeric.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.post(
+                $('#GetOptions').val(),
+                { fieldTypeId: $('#fieldTypeID').val(), formFieldID: $('#ID').val() },
+                function (data) {
+                    $('#fieldTypeOptions').html('');
+                    $('#fieldTypeOptions').html(data);
+                    var selected = $('#fieldTypeID').prop("selectedIndex");
+                    fnApplyFieldFormat(selected);
+                }
+            );
+            
+            $('#fieldTypeID').on("change", function () {
+                if ($(this).prop("selectedIndex") == 0) {
+                    $('#fieldTypeOptions').html('');
+                    return;
+                }
+                $.post(
+                    $('#GetOptions').val(),
+                    { fieldTypeId: $('#fieldTypeID').val(), formFieldID: $('#ID').val() },
+                    function (data) {
+                        $('#fieldTypeOptions').html('');
+                        $('#fieldTypeOptions').html(data);
+                        fnValidateDynamicContent($('#fieldTypeID'));
+                        fnClearFields();
+                        var selected = $('#fieldTypeID').prop("selectedIndex");
+                        fnApplyFieldFormat(selected);
+                    }
+                );
+            });
+
+            $('.standard_form').on("submit", function () {
+                var selected = $('#fieldTypeID').prop("selectedIndex");
+                if (selected >= 6) {
+                    var tbl = $('.eis_table').dataTable();
+                    tbl.fnSetColumnVis(3, true);
+                }
+                switch (selected) {
+                    case 1:
+                    case 3: {
+                        if ($('#rangeFrom').val() > $('#rangeTo').val()) {
+                            alert('El rango de longitud especificado es invalido');
+                            return false;
+                        }
+
+                    } break;
+                    case 2: {
+
+                    } break;
+                    case 5: {
+                        if (!isDate($('#rangeFrom').val()) || !isDate($('#rangeTo').val())) {
+                            alert('El rango de fecha especificado es invalido');
+                            return false;
+                        }
+
+                        if (new Date($('#rangeFrom').val()) > new Date($('#rangeTo').val())) {
+                            alert('El rango de longitud especificado es invalido');
+                            return false;
+                        }
+                    } break;
+                    case 6:
+                    case 7:
+                    case 8:{
+                        if ($('#OtherOpt').prop("checked") == true) {
+                            if (!$('#otherLabel').val() || $('#otherInputType').val() == 0) {
+                                alert('Debe proporcionar datos validos para la opcion (Otro)');
+                                return false;
+                            }
+                            var otherSets = $('#otherLabel').val() + '|' + $('#otherInputType').val();
+                            $('#otherProprs').val(otherSets);
+                        }
+                    } break;
+                }
+            });
+
+        });
+
+        function fnApplyFieldFormat(selected) {
+            switch (selected) {
+                case 1: {
+                    $('#rangeFrom').autoNumeric({ aSep: '', aNeg: '', mDec: 0, mNum: 10 });
+                    $('#rangeTo').autoNumeric({ aSep: '', aNeg: '', mDec: 0, mNum: 10 });
+                } break;
+                case 3: {
+                    $('#rangeFrom').autoNumeric({ aSep: '', aNeg: '', mDec: 0, mNum: 10 });
+                    $('#rangeTo').autoNumeric({ aSep: '', aNeg: '', mDec: 0, mNum: 10 });
+                } break;
+                case 5: {
+                    $('#rangeFrom').datepicker({ dateFormat: 'yy/mm/dd' });
+                    $('#rangeTo').datepicker({ dateFormat: 'yy/mm/dd' });
+                } break;
+                case 6:
+                case 7:
+                case 8:{
+                    var tbl = $('.eis_table').dataTable();
+                    tbl.fnSetColumnVis(3, false);
+                    
+                    $('.hiddenFieldTable').on('click', '.tblLink', function (e) {
+                        e.preventDefault();
+                        var nRow = $(this).closest("tr").get(0);
+                        tbl.fnDeleteRow(nRow);
+                    });
+                    $('.addFieldOption').on("click", function () {
+                        var Text = $('#Text').val();
+                        var Val = $('#Value').val();
+                        var Def = $('#Default').prop("checked");
+
+                        if (!$('#Text').val() || !$('#Value').val()) {
+                            alert('Faltan datos para agregar la opcion');
+                        }
+                        else {
+                            var table = $('.eis_table').dataTable();
+                            var exit = false;
+                            $.each(table.fnGetData(), function (i, row) {
+                                if (row[2] == 'Si' && Def == true && selected != 8) {
+                                    alert('Solo puede haber 1 valor por defecto definido');
+                                    exit = true;
+                                    return;
+                                }
+                                if (row[0] == Text) {
+                                    alert('No pueden haber 2 opciones con el mismo texto');
+                                    exit = true;
+                                    return;
+                                }
+                            })
+                            if (exit) return;
+                            var numRecords = table.fnSettings().fnRecordsTotal();
+                            var link = '<a class="delete_link button_link tblLink" >Eliminar</a>';
+                            var opt = '<input name="frmFieldOpts" type="hidden" value="' + Text + '|' + Val + '|' + Def + '" />';
+                            var added = $('.eis_table').dataTable().fnAddData([Text, Val, (Def == true) ? "Si" : "", opt, link]);
+                            var n = table.fnSettings().aoData[added[0]].nTr;
+                            n.setAttribute("name", "rows");
+                        }
+                    });
+
+                    if($('#OriginalType').val() == $('#fieldTypeID').val()){
+                        var oppts = jQuery.parseJSON($('#Options').val());
+                        $.each(oppts, function (index, value) {
+                            var table = $('.eis_table').dataTable();
+                            var numRecords = table.fnSettings().fnRecordsTotal();
+                            if (value.isOtherOption) {
+                                $('#OtherOpt').prop("checked", true);
+                                $('#otherLabel').val(value.label);
+                                $('#otherInputType').prop("selectedIndex", value.value);
+                            }
+                            else {
+                                var link = '<a class="delete_link button_link tblLink" >Eliminar</a>';
+                                var opt = '<input name="frmFieldOpts" type="hidden" value="' + value.label + '|' + value.value + '|' + value.defaultValue + '" />';
+                                var added = $('.eis_table').dataTable().fnAddData([value.label, value.value, (value.defaultValue == true) ? "Si" : "", opt, link]);
+                                var n = table.fnSettings().aoData[added[0]].nTr;
+                                n.setAttribute("name", "rows");
+                            }
+                        });
+                    }
+                } break;
+            }
+        }
+
+        function isDate(val) {
+            var d = new Date(val);
+            return !isNaN(d.valueOf());
+        }
+
+        function fnClearFields() {
+            if ($('#OriginalType').val() != $('#fieldTypeID').val()) {
+                $('#rangeFrom').val(' ');
+                $('#rangeTo').val(' ');
+                $('#requiredText').val(' ');
+            }
+        }
+    </script>
+}

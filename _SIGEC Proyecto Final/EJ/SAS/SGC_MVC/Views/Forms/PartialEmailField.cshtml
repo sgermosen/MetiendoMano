@@ -1,0 +1,15 @@
+﻿@model SGC_MVC.Models.FormField
+
+<fieldset class="groupbox">
+    <legend>@Html.Label("Opciones de la pregunta")</legend>
+    <ul class="form_items_container col-lg-12 pl0">
+        <li>
+            <label class="checkbox">@Html.CheckBox("required", Model.required) Pregunta de respuesta obligatoria (opcional)</label>
+            @Html.TextBoxFor(model => model.requiredText, new { @class = "form-control col-lg-12" })
+        </li>
+        <li>
+            @Html.LabelFor(model => model.validationMessage)
+            @Html.TextBoxFor(model => model.validationMessage, new { @class = "form-control col-lg-12" })
+        </li>
+    </ul>
+</fieldset>

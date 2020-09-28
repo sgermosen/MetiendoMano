@@ -1,0 +1,13 @@
+@model System.Web.Mvc.HandleErrorInfo
+@using SGC_MVC.CustomCode; 
+ @{ 
+ ViewBag.Title = "Error";
+}
+
+<hgroup class="title">
+    <h1 class="error">Error.</h1>
+    <h2 class="error">Ha ocurrido un error al procesar su solicitud.</h2>
+
+    <h1> Details: </h1>
+    <h3>@Model.Exception.Message</h3>
+</hgroup>

@@ -1,0 +1,66 @@
+﻿@model SGC_MVC.Models.FormField
+
+<fieldset class="groupbox">
+    <legend>@Html.Label("Opciones de la pregunta")</legend>
+    <ul class="form_items_container col-lg-12 pl0">
+
+        @Html.Label("Opciones de respuesta")
+        <li>
+            <div>
+                <ul class="form_items_container col-lg-4 pl0">
+                    <li>
+                        @Html.Label("Texto")
+                        @Html.TextBox("Text", null, new { @class = "form-control col-lg-12" })
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-4">
+                    <li>
+                        @Html.Label("Valor")
+                        @Html.TextBox("Value", null, new { @class = "form-control col-lg-12" })
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-4 pr0">
+                    <li>
+                        <label class="checkbox">@Html.CheckBox("Default") Por defecto</label>
+                        <div>
+                            <input type="button" class="addFieldOption btstyles button_add col-lg-11 fr" value="Agregar" />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <table class="eis_table table hiddenFieldTable">
+                <thead>
+                    <tr>
+                        <th>Texto</th>
+                        <th>Valor</th>
+                        <th>Por Defecto</th>
+                        <th>postVal</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            <label class="inline">@Html.CheckBox("OtherOpt")&nbsp; &nbsp;Agregar la opción "Otro" o un campo de comentarios (opcional)</label>
+            @Html.Label("Etiqueta de la opcion", new { @class = "inline col-lg-4" }) &nbsp; &nbsp;
+            @Html.TextBox("otherLabel", null, new{ @class = "col-lg-8 form-control" })
+        </li>
+        <li>
+            @Html.Label("Tipo de campo para respuesta")
+            <select id = "otherInputType" name ="otherInputType" class="col-lg-4 dropdown form-control">
+               <option value = "0"></option>
+               <option value = "1">Campo de Texto Simple (una Linea)</option>
+               <option value = "2">Campo de texto Multiple (multilinea)</option>
+             </select>
+        </li>
+        <li>
+            <label class="checkbox">@Html.CheckBox("required", Model.required) Pregunta de respuesta obligatoria (opcional)</label>
+            @Html.TextBoxFor(model => model.requiredText, new { @class = "form-control col-lg-12" })
+        </li>
+        @Html.Hidden("otherProprs")
+    </ul>
+</fieldset>

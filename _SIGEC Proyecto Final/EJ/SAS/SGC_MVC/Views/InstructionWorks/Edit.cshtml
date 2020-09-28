@@ -1,0 +1,178 @@
+﻿@using SGC_MVC.CustomCode; 
+@model SGC_MVC.Models.InstructionWork
+
+ @{ 
+ ViewBag.Title = "Instruccion de trabajo - Editar";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Actualizar informaci&oacute;n de la Instrucci&oacute;n de trabajo</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Datos de la Instrucci&oacute;n de trabajo</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "editForm", @class = "standard_form fluid_wrap" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                @Html.Hidden("validateUniq", "InstructionWorks&Nombre")
+                <legend></legend>
+
+                @Html.HiddenFor(model => model.ID)
+                @Html.HiddenFor(model => model.statusID)
+                @Html.HiddenFor(model => model.createUser)
+                @Html.HiddenFor(model => model.createDate, new { @class = "ignore" })
+                @Html.HiddenFor(model => model.updateDate, new { @class = "ignore" })
+                @Html.HiddenFor(model => model.version)
+                @Html.HiddenFor(model => model.companyID)
+                @Html.Hidden("submitVal")
+
+                <ul class="form_items_container col-lg-6 pl0">
+                    <li>
+                        @Html.LabelForR(model => model.ruleID)
+                        @Html.DropDownListFor(model => model.ruleID, null, string.Empty, new { @class = "col-lg-12 form-control dropdown" })
+                        @Html.ValidationMessageFor(model => model.ruleID)
+                    </li>
+
+                    <li>
+                        @Html.LabelForR(model => model.name)
+                        @Html.TextBoxFor(model => model.name, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.name)
+                    </li>
+
+                    <li>
+                        @Html.LabelForR(model => model.departmentID)
+                        @Html.DropDownListFor(model => model.departmentID, null, string.Empty, new { @class = "col-lg-12 form-control dropdown" })
+                        @Html.ValidationMessageFor(model => model.departmentID)
+                    </li>
+
+                    <li></li>
+
+                </ul>
+                <ul class="form_items_container col-lg-6 pr0">
+                    <li>
+                        @Html.LabelForR(model => model.processID)
+                        @Html.DropDownListFor(model => model.processID, null, string.Empty, new { @class = "col-lg-12 form-control dropdown" })
+                        @Html.ValidationMessageFor(model => model.processID)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.responsible)
+                        @Html.DropDownListFor(model => model.responsible, null, string.Empty, new { @class = "col-lg-12 form-control dropdown" })
+                        @Html.ValidationMessageFor(model => model.responsible)
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-12 pl0">
+                    <li>
+                        @Html.LabelFor(model => model.Tasks)
+                        <div class="form_items_container col-lg-4 pr0 fr">
+                            @Html.ActionLink("Agregar", "Create", "InstructionTasks", new { ID = Model.ID, ruleID = Model.ruleID, processID = Model.processID }, new { @class = "fr btnSubmit button_add btstyles col-lg-5" })
+                        </div>
+                        <table class="eis_table table normalTable">
+                            <thead>
+                                @{SGC_MVC.Models.Task t = new SGC_MVC.Models.Task();}
+                                <tr>
+                                    <th>@Html.DisplayNameFor(m => t.description)</th>
+                                    <th>@Html.DisplayNameFor(m => t.howTo)</th>
+                                    <th>@Html.DisplayNameFor(m => t.whyDo)</th>
+                                    <th>Opciones
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Tasks)
+                                {
+            
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.description)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.howTo)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.whyDo)</td>
+                                        <td>
+                                            @Html.ActionLink("Editar", "Edit", "InstructionTasks", new { id = item.ID }, new { @class = "edit_link button_link" })
+                                            @Html.ActionLink("Eliminar", "Delete", "InstructionTasks", new { id = item.ID }, new { @class = "delete_link button_link" })
+                                        </td>
+                                    </tr>
+                
+                                }
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+            </fieldset>
+            <div class="form_items_container col-lg-10 pl0">
+                <div id="dialog" class="dn">
+                    <ul>
+                        <li>
+                            @Html.Label("Razon de nueva versión")<br />
+                            <br />
+                            @Html.TextAreaFor(model => model.changeReason, new { @class="form-control textarea_level2" })
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="postBack" class="dn"></div>
+
+                <p>
+                    <input type="submit" class="button_save btstyles col-lg-2 allSave btnSubmit" value="Guardar" />
+                    <input type="button" class="button_generic btstyles col-lg-2" value="Nueva Versión" id="SvNewVersion" />
+                    @Html.ActionLink("Cancelar", "Index", null, new { @class="button_cancel btstyles col-lg-2" })
+                </p>
+
+            </div>
+        }
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+@section Scripts{
+    <script src="~/Scripts/DataTableClient.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#changeReason').jqte();
+            $('.btnSubmit').on("click", function () {
+                $('#submitVal').val($(this).val());
+            });
+
+            $('#SvNewVersion').on("click", function () {
+                $('#dialog').dialog("open");
+            });
+
+            $('#dialog').dialog({
+                autoOpen: false,
+                width: 580,
+                height: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Save": function () {
+                        if (!$('#changeReason').val()) {
+                            alert('debe insertar una razon de nueva version');
+                            $(this).dialog("open");
+                        }
+                        else {
+                            $('.allSave').val("nueva version");
+                            $('.allSave').trigger("click");
+                            $(this).dialog("close");
+                        }
+
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $('#editForm').submit(function () {
+                $('#changeReason').prependTo('#postBack');
+            });
+        });
+    </script>
+}

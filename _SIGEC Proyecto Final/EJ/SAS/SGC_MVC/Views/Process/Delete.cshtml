@@ -1,0 +1,96 @@
+﻿@model SGC_MVC.Models.Process
+@using SGC_MVC.CustomCode; 
+ @{ 
+ ViewBag.Title = "Procesos - Eliminar";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Eliminar datos del proceso</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>¿Esta seguro que desea eliminar los datos de este proceso?</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        <ul class="form_items_container col-lg-6 pl0">
+            <li>
+                @Html.LabelFor(model => model.ProcessType.name)
+                @Html.DisplayFor(model => model.ProcessType.name)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.Position)
+                @Html.DisplayFor(model => model.Position.name)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.name)
+                @Html.DisplayFor(model => model.name)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.description)
+                @Html.DisplayFor(model => model.description)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.target)
+                @Html.DisplayFor(model => model.target)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.entries)
+                @Html.DisplayFor(model => model.entries)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.activities)
+                @Html.DisplayFor(model => model.activities)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.outputs)
+                @Html.DisplayFor(model => model.outputs)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.customerRequirements)
+                @Html.DisplayFor(model => model.customerRequirements)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.controlMeasures)
+                @Html.DisplayFor(model => model.controlMeasures)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.outputRequirements)
+                @Html.DisplayFor(model => model.outputRequirements)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.User.name)
+                @Html.DisplayFor(model => model.User.name)
+            </li>
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "standard_form fluid_wrap" }))
+            {
+                <li>
+                    <div class="form_items_container col-lg-8 pl0">
+                        <br />
+                        <p>
+                            <input type="submit" value="Eliminar" class="button_delete btstyles col-lg-5" />
+                            @Html.ActionLink("Cancelar", "Index", null, new { @class="button_cancel btstyles col-lg-5" })
+                        </p>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->

@@ -1,0 +1,35 @@
+@model SGC_MVC.Models.RegisterExternalLoginModel@using SGC_MVC.CustomCode; 
+ @{ 
+ ViewBag.Title = "Registrar nuevo usuario";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>Asociar su cuenta de @ViewBag.ProviderDisplayName .</h2>
+</hgroup>
+
+@using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Asociaci&oacute;n de cuenta</legend>
+        <p>
+            Usted se ha autenticado correctamente con <strong>@ViewBag.ProviderDisplayName</strong>.
+            Por favor digite un nombre de usuario para este sitio debajo y presione el bot&oacute;n de
+            confirmar para finalizar iniciando sesi&oacute;n.
+        </p>
+        <ol>
+            <li class="name">
+                @Html.LabelForR(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName)
+            </li>
+        </ol>
+        @Html.HiddenFor(m => m.ExternalLoginData)
+        <input type="submit" value="Register" />
+    </fieldset>
+}
+
+@section Scripts {
+}

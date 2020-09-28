@@ -1,0 +1,115 @@
+﻿@model SGC_MVC.Models.Plan
+
+@{
+    ViewBag.Title = "Planes - Eliminar";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Eliminar datos del plan</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>¿Esta seguro que desea eliminar los datos de este plan?</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        <ul class="form_items_container col-lg-6 pl0">
+            <li>
+                @Html.LabelFor(model => model.code)
+                @Html.DisplayFor(model => model.code)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.name)
+                @Html.DisplayFor(model => model.name)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.responsible)
+                @Html.DisplayFor(model => model.responsible)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.planObjetives)
+                @Html.DisplayFor(model => model.planObjetives)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.responsibles)
+                @Html.DisplayFor(model => model.responsibles)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.actions)
+                @Html.DisplayFor(model => model.actions)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.startDate)
+                @Html.DisplayFor(model => model.startDate)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.endDate)
+                @Html.DisplayFor(model => model.endDate)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.createDate)
+                @Html.DisplayFor(model => model.createDate)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.updateDate)
+                @Html.DisplayFor(model => model.updateDate)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.Company.name)
+                @Html.DisplayFor(model => model.Company.name)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.createUser)
+                @Html.DisplayFor(model => model.createUser)
+            </li>
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "standard_form fluid_wrap" }))
+            {
+                <li>
+                    <div class="form_items_container col-lg-8 pl0">
+                        <br />
+                        <p>
+                            <input type="submit" value="Eliminar" class="button_delete btstyles col-lg-5" />
+                            @Html.ActionLink("Cancelar", "Index", null, new { @class = "button_cancel btstyles col-lg-5" })
+                        </p>
+                    </div>
+                </li>
+                @Html.Hidden("childCount", Model.PlanResources.Count)
+            }
+        </ul>
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('.button_delete').on("click", function (event) {
+                if ($('#childCount').val() > 0) {
+                    if (confirm('Este plan tiene recursos asignadas, ¿esta seguro de que desea eliminarlo?')) {
+                        $('.standard_form').submit();
+                    }
+                }
+                else {
+                    $('.standard_form').submit();
+                }
+                event.preventDefault();
+            });
+        });
+    </script>
+}

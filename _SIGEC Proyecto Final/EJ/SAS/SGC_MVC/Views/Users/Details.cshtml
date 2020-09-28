@@ -1,0 +1,113 @@
+﻿@model SGC_MVC.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>User</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.status)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.username)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.password)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.password)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.activeKey)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.activeKey)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lastVisitAt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lastVisitAt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.superUser)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.superUser)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Department.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Department.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Company.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Company.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.createDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.createDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.updateDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.updateDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.User2.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User2.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Position.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Position.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.imageUrl)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.imageUrl)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

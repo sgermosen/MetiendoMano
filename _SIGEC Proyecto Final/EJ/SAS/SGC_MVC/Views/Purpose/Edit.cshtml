@@ -1,0 +1,105 @@
+@using SGC_MVC.CustomCode; 
+@model SGC_MVC.Models.ViewModels.PurposeEditViewModel
+
+@{ 
+    ViewBag.Title = "Proposito - Editar";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Actualizar informaci&oacute;n del prop&oacute;sito</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Datos del prop&oacute;sito</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        @using (Html.BeginForm("Edit", "Purpose", FormMethod.Post, new { id = "EditForm", @class = "standard_form fluid_wrap" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend></legend>
+
+                @Html.HiddenFor(model => model.id)
+
+                <ul class="form_items_container col-lg-6 pl0">
+
+                    <li>
+                        @Html.LabelForR(model => model.document_text)
+                        @Html.TextAreaFor(model => model.document_text, new { @class = "col-lg-12 form-control textarea_level3" })
+                        @Html.ValidationMessageFor(model => model.document_text)
+                    </li>
+
+                    @Html.HiddenFor(model => model.isNewVersion)
+                    @Html.HiddenFor(model => model.changeReason)
+                    @Html.HiddenFor(model => model.docType)
+
+                    <li>
+                        <div class="form_items_container col-lg-12 pl0">
+                            <p>
+                                <input type="submit" value="Guardar" class="button_save btstyles col-lg-3" />
+                                <input type="button" class="bdialog button_generic btstyles col-lg-3" value="Nueva version" />
+                                @Html.ActionLink("Cancelar", "Index", null, new { @class="button_cancel btstyles col-lg-3" })
+                            </p>
+                        </div>
+                    </li>
+
+                </ul>
+
+                <div id="dialog" class="dn">
+                    <ul>
+                    <li>
+                        @Html.Label("Razon de nueva version")<br /><br />
+                        @Html.TextArea("generic", null, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.changeReason)
+                    </li>
+                        </ul>
+                </div>
+
+            </fieldset>
+        }
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.bdialog').on("click", function () {
+                $('#dialog').dialog("open");
+            });
+            $('#dialog').dialog({
+                autoOpen: false,
+                width: 540,
+                height: 300,
+                modal: true,
+                buttons: {
+                    "Guardar": function () {
+                        if (!$("#generic").val()) {
+                            alert('debe insertar una razon de nueva version');
+                            $(this).dialog("open");
+                        }
+                        else {
+                            $('#isNewVersion').val(true);
+                            $('#changeReason').val($('#generic').val());
+                            $('.save').trigger("click");
+                            $(this).dialog("close");
+                        }
+
+                    },
+                    "Cancelar": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $('#documentText').jqte();
+        });
+    </script>
+}

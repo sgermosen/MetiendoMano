@@ -1,0 +1,85 @@
+﻿@model IEnumerable<SGC_MVC.Models.UserTask>
+@using SGC_MVC.CustomCode; 
+ @{ 
+ ViewBag.Title = "Tareas - Pagina Principal";
+    string Label = new SGC_MVC.Helpers.MenuAuthorize().getMenuLabel(Request);
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">@Label</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>@Label de la aplicación</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        <ul class="form_items_container col-lg-4 pr0 fr">
+            <li>
+                <p>
+                    @Html.ActionLink("Agregar", "Create", null, new { @class = "button_add btstyles col-lg-5 fr" })
+                </p>
+            </li>
+        </ul>
+        <table class="eis_table table normalTable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Rule.name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.fromDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.toDate)
+                    </th>
+                    <th>
+                        Opciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Rule.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.fromDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.toDate)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.ID }, new { @class = "edit_link button_link" })
+                            @Html.ActionLink("Ver Detalles", "Details", new { id = item.ID }, new { @class = "add_link button_link" })
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.ID }, new { @class = "delete_link button_link" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+@section Scripts {
+    <script src="~/Scripts/DataTableClient.js"></script>
+}

@@ -1,0 +1,26 @@
+@{
+    ViewBag.Title = "SAS - Acerca de";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">SAS - Contáctenos</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Agregar información Acerca de Aquí</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+
+        <ul class="for_items_container col-lg-6">
+            <li>@Html.ActionLink("Dashboard", "Index", null, new { @class = "button_generic btstyles col-lg-3" })</li>
+            <li>@Html.ActionLink("Acerca de", "About", null, new { @class = "button_generic btstyles col-lg-3" })</li>
+            <li>@Html.ActionLink("Contacto", "Contact", null, new { @class = "button_generic btstyles col-lg-3" })</li>
+        </ul>
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->

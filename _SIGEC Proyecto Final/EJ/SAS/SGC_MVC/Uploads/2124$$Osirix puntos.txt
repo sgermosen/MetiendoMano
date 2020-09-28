@@ -1,0 +1,17 @@
+
+Colocar el reporte preliminar elaborado en CLOUD para Moca y Aguadilla (8 horas)
+
+8 horas para las 4
+
+Alerta para las imágenes por archivos existentes (5 segundos). 2
+Expandir el preview de la imagen luego de darle clic al botón de escanear.
+
+Colocar el botón en la lista de estudios y dentro reemplazando el botón para bajar imágenes. 2
+Guardar el nombre de la imagen con el PatientID si no tiene Accession Number.
+
+
+--A futuro
+	Loading de la página de un estudio esta tardando mucho.
+	Modificar el textArea por un ckeditor.
+	Macros de reportes preliminares editables.
+	Plugins para levantar el proceso de PDF a DICOM (ReportPDFToDICOM)

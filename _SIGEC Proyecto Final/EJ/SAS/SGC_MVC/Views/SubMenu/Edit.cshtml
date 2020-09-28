@@ -1,0 +1,60 @@
+﻿@model SGC_MVC.Models.SubMenu
+@using SGC_MVC.CustomCode; 
+ @{ 
+ ViewBag.Title = "Sub Menu - Editar";
+}
+
+<h2>Editar</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Editar Sub Menu</legend>
+
+        @Html.HiddenFor(model => model.subMenuID)
+
+        <div  >
+            @Html.LabelForR(model => model.menuID, "Menu")
+        </div>
+        <div  >
+            @Html.DropDownList("menuID", String.Empty)
+            @Html.ValidationMessageFor(model => model.menuID)
+        </div>
+
+        <div  >
+            @Html.LabelForR(model => model.name)
+        </div>
+        <div  >
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+
+        <div  >
+            @Html.LabelForR(model => model.viewID, "Vista")
+        </div>
+        <div  >
+            @Html.DropDownList("viewID", String.Empty)
+            @Html.ValidationMessageFor(model => model.viewID)
+        </div>
+
+        <div  >
+            @Html.LabelForR(model => model.noOrder)
+        </div>
+        <div  >
+            @Html.EditorFor(model => model.noOrder)
+            @Html.ValidationMessageFor(model => model.noOrder)
+        </div>
+
+        <p>
+            <input type="submit" value="Guardar" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+}

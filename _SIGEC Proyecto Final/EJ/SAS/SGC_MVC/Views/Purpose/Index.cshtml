@@ -1,0 +1,65 @@
+@using SGC_MVC.CustomCode;
+@model SGC_MVC.Models.ViewModels.PurposeViewModel
+
+@{ 
+    ViewBag.Title = "Proposito";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Actualizar informaci&oacute;n del Prop&oacute;sito</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Datos del Prop&oacute;sito</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        <ul class="form_items_container col-lg-12 fluid_wrap">
+
+            <li>Mision   |   @String.Format("{0}-{1}.{2}", "V", Model.mission.version, "0")   |   Fecha de modificacion @Model.mission.updateDate.Value.ToLongDateString() </li>
+
+            <p>
+                @Html.Raw(Model.mission.documentText)
+            </p>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.mission.ID }, new { @class = "edit_link button_link col-lg-2" })
+            <li>
+                <br />
+                <br />
+                ------------------------------------------------------------------------------------------------<br /><br />
+            </li>
+
+            <li>Vision   |   @String.Format("{0}-{1}.{2}", "V", Model.vision.version, "0")   |   Fecha de modificacion @Model.vision.updateDate.Value.ToLongDateString() </li>
+            <p>
+                @Html.Raw(Model.vision.documentText)
+            </p>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.vision.ID }, new { @class = "edit_link button_link col-lg-2" })
+            <li>
+                <br />
+                <br />
+                ------------------------------------------------------------------------------------------------<br /><br />
+            </li>
+
+            <li>Valores  |   @String.Format("{0}-{1}.{2}", "V", Model.values.version, "0")   |      Fecha de modificacion @Model.values.updateDate.Value.ToLongDateString() </li>
+            <p>
+                @Html.Raw(Model.values.documentText)
+            </p>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.values.ID }, new { @class = "edit_link button_link col-lg-2" })
+            <li>
+                <br />
+                <br />
+                ------------------------------------------------------------------------------------------------<br /><br />
+            </li>
+
+            <li>Politicas     |   @String.Format("{0}-{1}.{2}", "V", Model.policies.version, "0")   |      Fecha de modificacion @Model.policies.updateDate.Value.ToLongDateString() </li>
+            <p>
+                @Html.Raw(Model.policies.documentText)
+            </p>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.policies.ID }, new { @class = "edit_link button_link col-lg-2" })
+        </ul>
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->

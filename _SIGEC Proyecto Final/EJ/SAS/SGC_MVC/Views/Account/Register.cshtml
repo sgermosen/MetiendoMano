@@ -1,0 +1,146 @@
+@model SGC_MVC.Models.RegisterModel
+@using SGC_MVC.CustomCode;
+@{ 
+    ViewBag.Title = "Registrarse";
+            //List<SGC_MVC.Models.Webpages_Roles> allRoles = ViewBag.roles;
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Formulario de registro de nuevo usuario</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Datos del nuevo usuario</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "registerForm", @class = "standard_form fluid_wrap" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <fieldset>
+                <legend></legend>
+                @Html.Hidden("validateUniq", "User&E-Mail")
+                <ul class="form_items_container col-lg-12 pl0">
+                    @if (!string.IsNullOrEmpty(ViewBag.Done))
+                    {
+                        <li>
+                            <h1 style="color: #17cf10 !important;">@ViewBag.Done</h1>
+                        </li>
+                    }
+                </ul>
+                <ul class="form_items_container col-lg-4 pl0">
+                    <li>
+                        @Html.LabelForR(m => m.UserName)
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </li>
+
+                    <li>
+                        @Html.LabelForR(m => m.name)
+                        @Html.TextBoxFor(m => m.name, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(m => m.name)
+                    </li>
+
+                    @*@Html.TextBoxFor(model => model.imageName, new { @class = "dn" })
+                                    < @Html.ValidationMessageFor(model => model.imageName)*@
+
+                    @*<li>
+                        @Html.Label("Roles para el usuario")
+                        @foreach (var role in allRoles)
+                        {
+                            <label class="checkbox">
+                                <input type="checkbox" name="roles" id="roles" value="@role.RoleName" />
+                                @role.RoleName
+                            </label>
+                        }
+                        @Html.ValidationMessageFor(m => m.roles)
+                    </li>*@
+                    <li>
+                        @Html.Label("Roles para el usuario")
+                        @Html.ListBox("roles", null, new { @class = "chosen" })
+                    </li>
+                    <li>
+                        <input type="submit" value="Registrar" id="registerButton" class="button_save btstyles col-lg-5" />
+                        @Html.ActionLink("Cancelar", "Index", "Home", null, new { @class = "button_cancel btstyles col-lg-5" })
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-4 pl0">
+                    <li>
+                        @Html.LabelForR(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.position_id, "Puesto")
+                        @Html.DropDownListFor(model => model.position_id, null, String.Empty, new { @class = "col-lg-12 form-control dropdown" })
+                        @Html.ValidationMessageFor(model => model.position_id)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.image, "Archivo para imagen de perfil")
+                        @Html.TextBoxFor(model => model.image, new { @type = "file", @class = "fieldInput fl" })
+                        @Html.TextBox("Cargar", "", new { id = "filename", @readonly = true, @class = "falseInputFile col-lg-8" })
+                        <span class="filetrigger" title="Los tipos de extensiones permitidas son: jpeg, jpg, png, gif, bmp.">Upload</span>
+                        <input type="button" id="clearInput" class="eraseInput eraseFile" value="Quitar" title="Quitar Archivo" />
+                        @Html.ValidationMessageFor(model => model.image)
+                </ul>
+                <ul class="form_items_container col-lg-4 pl0">
+                    <li>
+                        @Html.LabelForR(m => m.ConfirmPassword)
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                    </li>
+                    @*<li>
+                        @Html.LabelForR(model => model.company_id, "Compañia")
+                        <div class="dropdown fluid_wrap">
+                            @Html.DropDownList("company_id", null, string.Empty, new { @class = "col-lg-12 form-control dropdown-select" })
+                            @Html.ValidationMessageFor(model => model.company_id)
+                        </div>
+                    </li>*@
+
+                    <li>
+                        @Html.LabelFor(model => model.department_id, "Departamento")
+                        <div class="dropdown fluid_wrap">
+                            @Html.DropDownListFor(model => model.department_id, null, String.Empty, new { @class = "col-lg-12 form-control dropdown-select" })
+                            @Html.ValidationMessageFor(model => model.department_id)
+                        </div>
+                    </li>
+
+                    <li>
+                        <label class="checkbox">
+                            @Html.CheckBoxFor(model => model.superUser) Super Usuario?
+                        </label>
+                    </li>
+                </ul>
+
+            </fieldset>
+        }
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+@section Scripts {
+    <script src="~/Scripts/FileSizeValidationRules.js"></script>
+    <script src="~/Scripts/FileExtensionsRules.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".chosen").chosen(/*{ maxSelectedOptions: 2 }*/);
+            $(".chosen-deselect").chosen({ allowSingleDeselect: true });
+            $(".chosen").chosen().change();
+            $(".chosen").trigger('liszt:updated');
+
+            //$('#image').change(function () {
+            //    $('#imageName').val($(this).val());
+            //    $('#registerForm').valid();
+            //});
+
+            //$('#registerButton').on('click', function () {
+
+            //});
+        });
+    </script>
+}

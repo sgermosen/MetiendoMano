@@ -1,0 +1,68 @@
+﻿@using SGC_MVC.CustomCode
+
+@model SGC_MVC.Models.FormField
+
+@{
+    ViewBag.Title = "Formularios - Eliminar Pregunta";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Eliminar pregunta del formulario</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Datos de la pregunta a eliminar</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "standard_form fluid_wrap" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                @Html.HiddenFor(model => model.formID)
+                <legend></legend>
+                <ul class="form_items_container col-lg-6 pl0">
+                    <li>
+                        @Html.LabelFor(model => model.question)
+                        @Html.DisplayFor(model => model.question)
+                    </li>
+                    <li>
+                        @Html.LabelFor(model => model.tooltip)
+                        @Html.DisplayFor(model => model.tooltip)
+                    </li>
+                    <li>
+                        @Html.LabelFor(model => model.fieldTypeID)
+                        @Html.DisplayFor(model => model.FieldType.name)
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-6 pr0">
+                    <li>
+                        @Html.LabelFor(model => model.variableShortcut)
+                        @Html.DisplayFor(model => model.variableShortcut)
+                    </li>
+                    <li>
+                        @Html.LabelFor(model => model.noOrder)
+                        @Html.DisplayFor(model => model.noOrder)
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-12 pl0">
+                    <li>
+                        <div class="form_items_container col-lg-4">
+                            <p>
+                                <input type="submit" value="Eliminar" class="button_delete btstyles col-lg-5" />
+                                @Html.ActionLink("Cancelar", "Edit", new { id = Model.formID }, new { @class = "button_cancel btstyles col-lg-5" })
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+                @Html.Hidden("GetOptions", Url.Action("GetFieldOptions", "Forms"))
+            </fieldset>
+        }
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->

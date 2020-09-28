@@ -1,0 +1,107 @@
+﻿@model SGC_MVC.Models.Menu
+@using SGC_MVC.CustomCode; 
+ @{ 
+ ViewBag.Title = "Menu - Editar";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Actualizar informaci&oacute;n del men&uacute;</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Datos del men&uacute;</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "policyForm", @class = "standard_form fluid_wrap" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                @Html.Hidden("validateUniq","Menu&Nombre")
+                <legend></legend>
+
+                @Html.HiddenFor(model => model.ID)
+                @Html.HiddenFor(model => model.noOrder)
+
+                <ul class="form_items_container col-lg-6 pl0">
+                    <li>
+                        @Html.LabelForR(model => model.name)
+                        @Html.TextBoxFor(model => model.name, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.name)
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.description)
+                        @Html.TextAreaFor(model => model.description, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(model => model.description)
+                    </li>
+
+                    <li>
+                            @Html.Label("Sub Menús:", new { style = "float:left; margin-top:22px;" })
+                            
+                    </li>
+                    <li>
+                        <input type="submit" value="Agregar" name="submitVal" style="float: right;" class="button_add btstyles col-lg-3 btnSubmit" />
+
+                        <table class="eis_table table dndTable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.noOrder)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.name)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.SubMenus)
+                                {
+                                    <tr id="@item.ID">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.noOrder)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.name)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Editar", "EditChild", new { id = item.ID }, new { @class = "edit_link button_link" })
+                                            @Html.ActionLink("Eliminar", "DeleteChild", new { id = item.ID }, new { @class = "delete_link button_link" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </li>
+                    @Html.Hidden("updateUrl", Url.Action("UpdateSubOrder", "Menu"))
+                    <li>
+                        <div class="form_items_container col-lg-8 pl0">
+                            <p>
+                                <input type="submit" value="Guardar" class="button_save btstyles col-lg-5 btnSubmit" />
+                                @Html.ActionLink("Cancelar", "Index", null, new { @class="button_cancel btstyles col-lg-5" })
+                                @Html.Hidden("submitVal")
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </fieldset>
+        }
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/DataTableClient.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.btnSubmit').on("click", function () {
+                $('#submitVal').val($(this).val());
+            });
+        });
+    </script>
+}

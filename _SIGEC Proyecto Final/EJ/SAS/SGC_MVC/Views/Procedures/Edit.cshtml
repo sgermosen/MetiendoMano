@@ -1,0 +1,445 @@
+﻿@using SGC_MVC.Models;
+@using SGC_MVC.CustomCode;
+@model Procedure
+
+@{ 
+    ViewBag.Title = "Procedimiento - Editar";
+}
+<div id="content_area_wrap" class="fluid_wrap reset">
+    <div id="content_area" class="container">
+        <div class="col-lg-12">
+            <div class="section_title fluid_wrap">
+                <div class="col-lg-8 pl0">
+                    <h1 class="the_title">Editar Procedimiento</h1>
+                </div>
+                <div class="col-lg-4 pr0"></div>
+            </div>
+
+            <div class="drag_and_drop_container fluid_wrap reset">
+                <div class="drag_container_title">
+                    <h2>Datos del procedimiento</h2>
+                </div>
+                <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "mainForm", @class = "standard_form fluid_wrap" }))
+                    {
+                        @Html.ValidationSummary(true)
+
+                        <fieldset>
+                            @Html.Hidden("validateUniq", "Procedure&Nombre")
+                            <legend></legend>
+                            @Html.HiddenFor(model => model.ID)
+                            @Html.HiddenFor(model => model.createDate, new { @class = "ignore" })
+                            @Html.HiddenFor(model => model.createUser)
+                            @Html.HiddenFor(model => model.companyID)
+                            @Html.HiddenFor(model => model.statusID)
+                            @Html.HiddenFor(model => model.version)
+                            @Html.Hidden("submitVal")
+                            @Html.HiddenFor(model => model.changeReason, new { @class = "changeReason" })
+                            @Html.Hidden("updateNormatives", @Url.Action("UpdateNormatives", "Procedures"))
+                            @Html.Hidden("updateGlossaries", @Url.Action("UpdateGlossaries", "Procedures"))
+                            @Html.Hidden("updateReferences", @Url.Action("UpdateReferences", "Procedures"))
+                            @Html.Hidden("updateAnnexes", @Url.Action("UpdateAnnexes", "Procedures"))
+                            @Html.Hidden("doctTypeUrl", @Url.Action("CreateDoc", "Procedures"))
+
+                            <ul class="form_items_container col-lg-6 pl0">
+
+                                <li>
+                                    @Html.LabelForR(model => model.ruleID)
+
+                                    <div class="dropdown fluid_wrap">
+                                        @Html.DropDownListFor(model => model.ruleID, null, string.Empty, new { @class = "col-lg-12 form-control dropdown-select" })
+                                        @Html.ValidationMessageFor(model => model.ruleID)
+                                    </div>
+                                </li>
+
+                                <li>
+                                    @Html.LabelForR(model => model.name)
+                                    @Html.TextBoxFor(model => model.name, new { @class = "col-lg-12 form-control" })
+                                    @Html.ValidationMessageFor(model => model.name)
+                                </li>
+
+                                <li>
+                                    @Html.LabelForR(model => model.target)
+                                    @Html.TextAreaFor(model => model.target, new { @class = "col-lg-12 form-control textarea_level2" })
+                                    @Html.ValidationMessageFor(model => model.target)
+                                </li>
+
+                                <li>
+                                    @Html.LabelForR(model => model.Glossaries)
+                                    @Html.ListBox("glossaryID", null, new { @class = "col-lg-12 chosenS", multiple = "multiple", data_placeholder = "Seleccione un término..." })
+                                    @Html.ActionLink("Agregar nuevo", "Create", "Glossary", null, new { @class = "fr add_link button_link", target = "_blank" })
+                                    <a class="updateGlossaries fr reload_link button_link mr10" onclick="javascript:void(0);">Actualizar</a>
+                                </li>
+                            </ul>
+
+                            <ul class="form_items_container col-lg-6 pr0">
+                                <li>
+                                    @Html.LabelForR(model => model.Process)
+
+                                    <div class="dropdown fluid_wrap">
+                                        @Html.DropDownListFor(model => model.processID, null, string.Empty, new { @class = "col-lg-12 form-control dropdown-select" })
+                                        @Html.ValidationMessageFor(model => model.processID)
+                                    </div>
+                                </li>
+
+                                <li>
+                                    @Html.LabelForR(model => model.responsible)
+
+                                    <div class="dropdown fluid_wrap">
+                                        @Html.DropDownListFor(model => model.responsible, null, string.Empty, new { @class = "col-lg-12 form-control dropdown-select" })
+                                        @Html.ValidationMessageFor(model => model.responsible)
+                                    </div>
+                                </li>
+                                <li>
+                                    @Html.LabelForR(model => model.procedureScope)
+
+                                    @Html.TextAreaFor(model => model.procedureScope, new { @class = "col-lg-3 form-control textarea_level2" })
+                                    @Html.ValidationMessageFor(model => model.procedureScope)
+                                </li>
+
+                                <li>
+                                    @Html.Label("Normativas")
+                                    @Html.ListBox("normativeID", null, new { @class = "col-lg-12 chosenS", style = "heigth: 30px" })
+                                    @Html.ActionLink("Agregar nuevo", "Create", "BaseLegal", null, new { @class = "fr add_link button_link", target = "_blank" })
+                                    <a class="updateNormative fr reload_link button_link mr10" onclick="javascript:void(0);">Actualizar</a>
+                                </li>
+                            </ul>
+                            <br />
+                            <ul class="form_items_container col-lg-12 pl0">
+
+                                @Html.Hidden("partialUrl", Url.Action("GetActivities", "Procedures", new { procedureId = Model.ID }))
+
+                                @{ ProcedureActivity activity = new ProcedureActivity(); }
+                                <li>
+                                    <div class="form_items_container col-lg-12 pl0">
+                                        <div class="form_items_container col-lg-6 pl0">
+                                            <ul>
+                                                <li>
+                                                    @Html.LabelForR(c => activity.User1.name)
+
+                                                    <div class="dropdown fluid_wrap">
+                                                        @Html.DropDownList("responsibleAct", null, String.Empty, new { @class = "col-lg-12 form-control dropdown-select" })
+                                                    </div>
+                                                </li>
+                                                <li>
+
+                                                    @Html.LabelForR(c => activity.activity)
+
+                                                    @Html.TextArea("activity", new { @class = "col-lg-12 form-control textarea_level2" })
+                                                </li>
+                                                <li>
+                                                    <div class="form_items_container col-lg-8 pl0">
+                                                        <input type="button" id="addActivity" name="addActivity" value="Agregar" class="button_add btstyles col-lg-5" />
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    @Html.Hidden("addActivityUrl", Url.Action("AddActivity", "Procedures", new { procedureId = Model.ID }))
+                                    <table class="eis_table table partialTable">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    @Html.Label("Responsable")
+                                                </th>
+                                                <th>
+                                                    @Html.Label("Actividades y directrices")
+                                                </th>
+                                                <th>Opciones
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table_data_container">
+                                        </tbody>
+                                    </table>
+                                </li>
+                            </ul>
+                            <br />
+                            <div class="form_items_container col-lg-12 pl0">
+                                <ul class="form_items_container col-lg-6 pl0">
+                                    <li>
+                                        @Html.Label("Referencias: *")
+                                        @Html.ListBox("docReferences", null, new { @class = "col-lg-12 chosenS" })
+                                        <a class="fr add_link button_link mr10 addDoc">Agregar Nuevo</a>
+                                        <a class="fr updateReferences reload_link button_link mr10" onclick="javascript:void(0);">Actualizar</a>
+                                    </li>
+                                    <li>
+                                        <input id="actionModalUrl" name="actionModalUrl" type="hidden" value="" />
+
+                                    </li>
+                                </ul>
+                                <ul class="form_items_container col-lg-6 pr0">
+                                    <li>
+                                        @Html.Label("Anexos: *")
+                                        @Html.ListBox("docAnnexes", null, new { @class = "col-lg-12 chosenS" })
+
+                                        <a class="fr add_link button_link mr10 addDoc">Agregar Nuevo</a>
+                                        <a class="updateAnnexes fr reload_link button_link mr10" onclick="javascript:void(0);">Actualizar</a>
+                                    </li>
+                                    <li>
+                                        <div id="modalPanel" class="dn">
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="form_items_container col-lg-10 pl0">
+                                    <input type="submit" value="Guardar" class="btnSubmit button_save btstyles col-lg-2" />
+                                    <input type="button" value="Nueva version" id="SvNewVersion" class="button_generic btstyles col-lg-2" />
+                                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "button_cancel btstyles col-lg-2" })
+                                </div>
+                                <div id="dialog" class="dn">
+                                    <ul>
+                                        <li>
+                                            <label>Razon de nueva versi&oacute;n</label><br />
+                                            @Html.TextArea("changeReason", new { @class = "changeR" })
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="postBack" class="dn"></div>
+                            </div>
+                        </fieldset>
+                    }
+
+                    <div class="docTypePanel dn">
+                        @Html.Hidden("documentType")
+                        @Html.Label("Seleccione el Tipo de documento: ")
+                        <br />
+                        <br />
+                        @Html.DropDownList("documentTypeID", null, string.Empty, new { @class = "fr col-lg-12 dropdown" })
+                        <a class="nDoc dn"></a>
+                    </div>
+                </div>
+                <!--end drag_container_the_content_area-->
+            </div>
+            <!--end drag_and_drop_container-->
+        </div>
+        <!--end col-lg-12-->
+    </div>
+    <!--end content area-->
+</div>
+<!--end content wrap-->
+
+@section Scripts{
+    <script src="~/Scripts/DataTableClient.js"></script>
+    <script>
+        var dataValEdit = "/SAS/Procedures/EditActivity/";
+        var dataValDelete = "/SAS/Procedures/DeleteActivity/";
+        var dataUrlEdit = "/SAS/Procedures/EditActivity/";
+        var dataUrlDelete = "/SAS/Procedures/DeleteActivity/";
+        $(document).ready(function () {
+            $('.updateGlossaries').on("click", function () {
+                var procedure = $('#ID').val();
+                var selectedValues = $('#glossaryID').chosen().val();
+                var url = $('#updateGlossaries').val();
+                var data = { procedureID: procedure, selected: selectedValues };
+                updateDropdown(data, url, $('#glossaryID'), $('.chosenS'));
+            });
+
+            $('.updateReferences').on("click", function () {
+                var procedure = $('#ID').val();
+                var selectedValues = $('#docReferences').chosen().val();
+                var url = $('#updateReferences').val();
+                var data = { procedureID: procedure, selected: selectedValues };
+                updateDropdown(data, url, $('#docReferences'), $('.chosenS'));
+            });
+
+            $('.updateAnnexes').on("click", function () {
+                var procedure = $('#ID').val();
+                var selectedValues = $('#docAnnexes').chosen().val();
+                var url = $('#updateReferences').val();
+                var data = { procedureID: procedure, selected: selectedValues };
+                updateDropdown(data, url, $('#docAnnexes'), $('.chosenS'));
+            });
+
+            $(".chosen").chosen();
+            $(".chosen-select").chosen({ width: "70%" });
+            $(".chosen-deselect").chosen({ allowSingleDeselect: true });
+            $(".chosen").chosen().change();
+            $(".chosen").trigger('liszt:updated');
+            $(".chosenDoc").chosen({ maxSelectedOptions: 1 });
+            $(".chosenDoc-deselect").chosen({ allowSingleDeselect: true });
+            $(".chosenDoc").chosen().change();
+            $(".chosenDoc").trigger('liszt:updated');
+            $(".chosenS").chosen(/*{ maxSelectedOptions: 2 }*/);
+            $(".chosenS-deselect").chosen({ allowSingleDeselect: true });
+            $(".chosenS").chosen().change();
+            $(".chosenS").trigger('liszt:updated');
+            var dataTable = $('.partialTable');
+
+            $('.changeR').jqte();
+            $('#SvNewVersion').on("click", function () {
+                $('#dialog').dialog("open");
+            });
+            $('.btnSubmit').on("click", function () {
+                if ($('#submitVal').val() != "" && $('#submitVal').val()) {
+                }
+                else {
+                    $('#submitVal').val($(this).val());
+                }
+            });
+
+            $('#dialog').dialog({
+                autoOpen: false,
+                width: 540,
+                height: 400,
+                resizable: false,
+                draggable: false,
+                modal: true,
+                buttons: {
+                    "Guardar": function () {
+                        if (!$('.changeR').val()) {
+                            alert('debe insertar una razon de nueva version');
+                            //$(this).dialog("open");
+                        }
+                        else {
+                            $('#submitVal').val("nueva version");
+                            $('.changeReason').val($('.changeR').val());
+                            $(this).dialog("close");
+                        }
+                    },
+                    "Cancelar": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $('#addActivity').on('click', function () {
+                if ($('#activity').val() && $('#responsibleAct option:selected').index() != 0) {
+                    $.post(
+                        $('#addActivityUrl').val(),
+                        {
+                            responsible: $('#responsibleAct').val(),
+                            activity: $('#activity').val()
+                        }, function (data) {
+                            alert(data);
+                            RefreshTable(".partialTable", $('#partialUrl').val(), dataValEdit, dataUrlEdit, dataValDelete, dataUrlDelete);
+                            $('#responsibleAct').prop('selectedIndex', 0);
+                            $('#activity').val('');
+                        });
+                }
+                else {
+                    alert('debe llenar todos los campos de la actividad a incluir');
+                }
+            });
+            RefreshTable(".partialTable", $('#partialUrl').val(), dataValEdit, dataUrlEdit, dataValDelete, dataUrlDelete);
+
+            $('.docTypePanel').dialog({
+                moveToTop: true,
+                autoOpen: false,
+                width: 400,
+                height: 270,
+                resizable: false,
+                draggable: false,
+                modal: true,
+                buttons: {
+                    "Continuar": function () {
+                        if ($('#documentTypeID option:selected').index() == 0) {
+                            alert('debe seleccionar un tipo de documento');
+                        }
+                        else {
+                            $('#documentType').val($('#documentTypeID').val());
+                            $('.ajaxFrm').submit();
+                            $.post(
+                                $('#doctTypeUrl').val(),
+                                {
+                                    documentType: $('#documentTypeID').val()
+                                },
+                                function (data) {
+                                    $('.nDoc').prop("href", data);
+                                    $('.nDoc').prop("target", "_blank");
+                                    $('.nDoc')[0].click();
+                                }
+                            );
+                            $(this).dialog("close");
+                        }
+                    },
+                    "Cancelar": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $('#modalPanel').dialog({
+                moveToTop: true,
+                autoOpen: false,
+                width: 540,
+                height: 390,
+                resizable: false,
+                draggable: false,
+                modal: true,
+                //open: function (event, ui) {
+                //    $(this).parent().appendTo("#mainForm");
+                //},
+                buttons: {
+                    "Guardar": function () {
+                        if ($('#responsibleModal option:selected').index() == 0 || !$('.activityModal').val()) {
+                            alert('debe insertar toda la información de la actividad');
+                        }
+                        else {
+
+                            $.post(
+                                $('#actionModalUrl').val(),
+                                {
+                                    responsible: $('#responsibleModal').val(),
+                                    activity: $('.activityModal').val(),
+                                    activityId: $('#activityID').val()
+                                },
+                                function (data) {
+                                    alert(data);
+                                }
+                            );
+                            RefreshTable(".partialTable", $('#partialUrl').val(), dataValEdit, dataUrlEdit, dataValDelete, dataUrlDelete);
+                            $(this).dialog("close");
+                        }
+
+                    },
+                    "Cancelar": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $('.updateNormative').on("click", function () {
+                var procedure = $('#ID').val();
+                var selectedValues = $('#normativeID').chosen().val();
+                var url = $('#updateNormatives').val();
+                var data = { procedureID: procedure, selected: selectedValues };
+                updateDropdown(data, url, $('#normativeID'), $('.chosenS'));
+            });
+
+        });
+
+        $('.addDoc').on("click", function () {
+            $('.docTypePanel').dialog("open");
+        });
+
+        function updateDropdown(data, url, dropdownElement, chosenElement) {
+            var html = "";
+            var select = "";
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: JSON.stringify(data),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    if (data == undefined || data == "") {
+                    }
+                    else {
+                        $.each(data, function (key, row) {
+                            //fill the dropdown
+                            select = (row.Selected) ? ' selected = "true" ' : "";
+                            html +=
+                                '<option value="' + row.Value + '"' + select + '>'
+                                + row.Text +
+                                '</option>';
+                        });
+                        dropdownElement.html(html);
+                        chosenElement.trigger('liszt:updated');
+                    }
+                }
+            });
+        }
+
+    </script>
+}

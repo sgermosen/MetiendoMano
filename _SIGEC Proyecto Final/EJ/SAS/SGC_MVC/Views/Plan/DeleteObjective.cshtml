@@ -1,0 +1,92 @@
+﻿@using SGC_MVC.CustomCode
+@using SGC_MVC.Models
+
+@model SGC_MVC.Models.PlanObjective
+
+@{
+    ViewBag.Title = "Plan - Eliminar Objetivo";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Eliminar Documento de Base Legal</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>¿Esta seguro de que desea borrar esta base legal?</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap ignore">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "standard_form fluid_wrap" }))
+        {
+            <ul class="form_items_container col-lg-6 pl0">
+                <li>
+                    @Html.LabelFor(model => model.startDate)
+                    @Html.DisplayFor(model => model.startDate)
+                </li>
+
+                <li>
+                    @Html.LabelFor(model => model.endDate)
+                    @Html.DisplayFor(model => model.endDate)
+                </li>
+
+                <li>
+                    @Html.LabelFor(model => model.responsible)
+                    @Html.DisplayFor(model => model.Position.name)
+                </li>
+            </ul>
+            <ul class="form_items_container col-lg-6 pr0">
+                <li>
+                    @Html.LabelFor(model => model.planID)
+                    @Html.DisplayFor(model => model.Plan.name)
+                </li>
+
+                <li>
+                    @Html.LabelFor(model => model.actions)
+                    @Html.DisplayFormattedData(Model.actions)
+                </li>
+
+                <li>
+                    @Html.LabelFor(model => model.name)
+                    @Html.DisplayFor(model => model.name)
+                </li>
+            </ul>
+            <ul class="form_items_container col-lg-12 pl0">
+
+                    <li>
+                        <div class="col-lg-4 pr0 fr">
+                        <input type="button" class="button_add btstyles col-lg-5 fr addResource" value="Agregar" />
+                            </div>
+                        <table class="eis_table table partialTable">
+                            <thead>
+                                <tr>
+                                    <th>Infraestructura</th>
+                                    <th>Humanos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (ObjectiveResource item in Model.ObjectiveResources)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFormattedData(item.infrastructure)</td>
+                                        <td>@Html.DisplayFormattedData(item.humans)</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+            <ul class="form_items_container col-lg-10 pl0">
+                <li>
+                        <input type="submit" value="Eliminar" class="button_delete btstyles col-lg-2" />
+                        @Html.ActionLink("Cancelar", "Edit", new { id = Model.planID }, new { @class = "button_cancel btstyles col-lg-2" })
+                </li>
+            </ul>
+        }
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+

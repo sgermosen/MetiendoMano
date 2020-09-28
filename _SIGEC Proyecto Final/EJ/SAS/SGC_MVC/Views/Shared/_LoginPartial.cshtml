@@ -1,0 +1,50 @@
+@*<text>
+    Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+        {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        }
+    </text>*@
+@{
+    string imageUrl = "defaultImage.png";
+    SGC_MVC.Models.User usr = new SGC_MVC.Models.User();   
+   if (WebSecurity.IsAuthenticated)
+   {
+       SGC_MVC.Models.SASContext db = new SGC_MVC.Models.SASContext();
+       usr = db.Users.Find(WebSecurity.CurrentUserId);
+
+       imageUrl = (string.IsNullOrEmpty(usr.imageUrl)) ?
+           "defaultImage.png" : usr.imageUrl;
+   }
+}
+<div id="user_options" class="col-lg-8 fr pr0 pl0">
+    <ul class="user_options_items">
+        @if (Request.IsAuthenticated)
+        {
+            <li id="user_information" title = "Gestionar Cuenta">
+                <div id="user">
+                    <img src="~/Uploads/UserImages/@imageUrl" width="40" height="31" alt="Foto Usuario"  />
+                    <a href="#" id="user_drop_down_menu">User menú</a>
+                </div>
+                @Html.ActionLink(usr.name, "EditAccount", "Account", new { id = usr.ID }, new { @class = "username pt0" })
+            </li>
+            <li id="notifications" title = "Notificaciones"><a href="#" >(150)</a></li>
+            <li id="support" title = "Soporte"><a href="#" ></a></li>
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "fl" }))
+            {
+            @Html.AntiForgeryToken()
+            <li id="logout" title="Cerrar Sesión">
+                <a href="javascript:document.getElementById('logoutForm').submit()"></a>
+            </li>
+            }
+        }
+        else
+        {
+            <li id="logout" title="Iniciar Sesión">
+                @Html.ActionLink(" ", "Login", "Account", null, htmlAttributes: new { id = "loginLink", @class = "", title = "Iniciar Sesión" })
+            </li>
+        }
+    </ul>
+</div>
+<!--end user_options-->

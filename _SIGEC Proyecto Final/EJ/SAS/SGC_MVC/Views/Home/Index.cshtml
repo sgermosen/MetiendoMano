@@ -1,0 +1,272 @@
+﻿@using SGC_MVC.Helpers;
+@using SGC_MVC.Models;
+@{
+    string Label = new SGC_MVC.Helpers.MenuAuthorize().getMenuLabel(Request);
+    ViewBag.Title = Label+" - Inicio";
+}
+@section featured {
+    <div class="section_title fluid_wrap">
+        <div class="col-lg-8 pl0">
+            <h1 class="the_title">@Label</h1>
+        </div>
+        <div class="col-lg-4 pr0"><a class="section_add_button" href="#">Add Button</a></div>
+    </div>
+    <!--end section_title-->
+}
+
+
+<div id="dashboard_left_column" class="col-lg-12 pl0 pr0">
+    @*<div class="col-lg-4 drag_and_drop_container reset anuncios pl0 pr0 nonDatabaleStyle noArrow">
+        <div class="global">
+            <div class="item">
+                <div class="data_table_container ">
+                    <table id="" class="fluid_wrap fl dataTable2">
+                        <thead>
+                            <tr>
+                                <th class="drag_container_title title bdr0 bdl0">
+                                    <h2>Anuncios</h2>
+                                    <ul class="drag_container_buttons position">
+                                        <li><a href="#" class="setting">Settings</a></li>
+                                        <li><a href="#" class="add">Add</a></li>
+                                        <li><a href="#" class="close_this">Close</a></li>
+                                    </ul>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in (List<SGC_MVC.Models.Advertisement>)ViewBag.Advertisements)
+                            { 
+                                <tr class=" ">
+                                    <td>
+                                        <div class="info_container_anuncios fluid_wrap">
+                                            <h3>@item.name</h3>
+                                            <p>@item.description</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--end drag_container_pagination-->*@
+    @*</div>*@
+    <!--end drag_and_drop_container-->
+
+    <div class="col-lg-7 drag_and_drop_container reset doc_en_proceso pl0 pr0">
+        <div class="drag_container_title">
+            <h2>Estadísticas generales</h2>
+            <ul class="drag_container_buttons">
+                <li><a href="#" class="setting">Settings</a></li>
+                <li><a href="#" class="close_this">Close</a></li>
+            </ul>
+        </div>
+        <!--end drag_container_title-->
+
+        <div class="drag_container_the_content_area">
+            <div id="grafico">
+            </div>
+        </div>
+        <!--end drag_container_the_content_area-->
+    </div>
+
+    <div class="col-lg-7 drag_and_drop_container reset doc_en_proceso pl0 pr0 nonDatabaleStyle noArrow witdh7-col-to-7">
+        <div class="global">
+            <div class="item">
+                <div class="drag_container_title">
+                    <h2>Tareas Pendientes</h2>
+                    <ul class="drag_container_buttons">
+                        <li><a href="#" class="setting">Settings</a></li>
+                        <li><a href="#" class="add">Add</a></li>
+                        <li><a href="#" class="close_this">Close</a></li>
+                    </ul>
+                </div>
+                <!--end drag_container_title-->
+
+                <div class="drag_container_the_content_area">
+                    <div class="data_table_container ">
+                        <table id="" class="dataTable2 eis_table table ">
+                            <thead>
+                                <tr>
+                                    <th class="chk"></th>
+                                    <th class="">Tarea</th>
+                                    <th class="system">Sistema</th>
+                                    <th class="time">Tiempo</th>
+                                    <th class="indicator">Indicador</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in (List<SGC_MVC.Models.UserTask>)ViewBag.UserTasks)
+                                {
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" /></td>
+                                        <td>
+                                            @item.name
+                                        </td>
+                                        <td>
+                                            @item.Rule.name
+                                        </td>
+                                        <td>
+                                            @{
+                                    DateTime? from = item.fromDate;
+                                    TimeSpan maxDay = item.toDate.Value - item.fromDate.Value;
+                                    TimeSpan currDay = DateTime.Now - item.fromDate.Value;
+                                            }
+
+                                            @currDay.Days de @maxDay.Days
+                                        </td>
+                                        @if (currDay.Days < (maxDay.Days / 2))
+                                        {
+                                            <td class="indicatorimg" style="color: green; font-weight: 900;">
+                                                <img src="~/Images/indicator_green.png" /></td>
+                                        }
+                                        else if (currDay.Days >= (maxDay.Days / 2) && currDay.Days < (maxDay.Days - ((maxDay.Days / 2) / 2)))
+                                        {
+                                            <td class="indicatorimg" style="color: orange; font-weight: 900;">
+                                                <img src="~/Images/indicator_yellow.png" /></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="indicatorimg" style="color: red; font-weight: 900;">
+                                                <img src="~/Images/indicator_red.png" /></td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--end data_table_container-->
+                </div>
+            </div>
+        </div>
+        <!--end drag_container_the_content_area-->
+    </div>
+    <!--end drag_and_drop_container-->
+
+    @*<div class="col-lg-11 drag_and_drop_container reset doc_en_proceso pl0 pr0 nonDatabaleStyle">
+        <div class="global">
+            <div class="item">
+                <div class="data_table_container ">
+                    <table id="" class="fluid_wrap fl dataTable2">
+                        <thead>
+                            <tr>
+                                <th class="drag_container_title bdr0 bdl0">
+                                    <h2>Documentos en Proceso</h2>
+                                    <ul class="drag_container_buttons position">
+                                        <li><a href="#" class="setting">Settings</a></li>
+                                        <li><a href="#" class="close_this">Close</a></li>
+                                    </ul>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in (List<SGC_MVC.Models.Document>)ViewBag.Documents)
+                            {
+                                <tr class="info_container_documentos drag_container_the_content_area">
+                                    <td>
+                                        <h3>@item.title</h3>
+                                        <span>Tipo: @item.DocumentType.name</span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <!--end data_table-->
+                </div>
+            </div>
+        </div>
+        <!--end drag_container_pagination-->
+    </div>*@
+    <!--end drag_and_drop_container-->
+
+
+
+
+    @*<div class="global">
+        <div class="item ">
+            <div class="data_table_container ">
+                <table id="" class="dataTable2 fluid_wrap fl ">
+                    <thead>
+                        <tr>
+                            <th class="drag_container_title bdr0 bdl0">
+                                <h2>Otros Documentos</h2>
+                                <ul class="drag_container_buttons position">
+                                    <li><a href="#" class="setting">Settings</a></li>
+                                    <li><a href="#" class="close_this">Close</a></li>
+                                </ul>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--end drag_container_title-->
+                        @foreach (var item in (List<SGC_MVC.Models.Document>)ViewBag.OthersDocuments)
+                        {
+                            <tr class="info_container_documentos drag_container_the_content_area">
+                                <td>
+                                    <h3>@item.title</h3>
+                                    <span>Tipo: @item.DocumentType.name</span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <!-- end dataTable-->
+            </div>
+            <!--end data_table_container-->
+        </div>
+    </div>*@
+    <!--end drag_container_pagination-->
+</div>
+<!--end drag_and_drop_container-->
+
+<!--end drag_and_drop_container-->
+<!--end dashboard_left_column-->
+
+
+@section Scripts
+{
+    <script type="text/javascript" src="~/Scripts/DataTableClient.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+    <script type="text/javascript">
+        // Create and populate the data table.
+        google.load("visualization", "1", { packages: ["corechart"] });
+        google.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              ['Year', 'Sales', 'Expenses', 'Goals'],
+              ['2004', 1000, 400, 100],
+              ['2005', 1170, 460, 200],
+              ['2006', 660, 1120, 300],
+              ['2007', 1030, 540, 400]
+            ]);
+
+            var options = {
+                title: 'Company Performance'
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('grafico'));
+            chart.draw(data, options);
+        }
+
+
+        $(document).ready(function () {
+            $('#accordion').accordion({ heightStyle: 'content' });
+            $('#accordion2').accordion({ heightStyle: 'content' });
+            $('#accordion3').accordion({ heightStyle: 'content' });
+
+            $("#dashboard_left_column").sortable({
+                revert: true,
+                opacity: 0.5
+            });
+
+            $("#dashboard_right_column").sortable({
+                revert: true,
+                opacity: 0.5
+            });
+
+        });
+    </script>
+}

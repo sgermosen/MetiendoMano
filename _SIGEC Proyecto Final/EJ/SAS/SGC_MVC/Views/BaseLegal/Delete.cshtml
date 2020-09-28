@@ -1,0 +1,62 @@
+@using SGC_MVC.CustomCode
+@model SGC_MVC.Models.Document
+
+ @{ 
+ ViewBag.Title = "Eliminar Base legal";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Eliminar Documento de Base Legal</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>¿Esta seguro de que desea borrar esta base legal?</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap ignore">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "standard_form fluid_wrap" }))
+        {
+                        
+            <fieldset>
+                <legend>Datos del documento de base legal</legend>
+                <ul class="form_items_container col-lg-6 pl0">
+
+                    @Html.HiddenFor(model => model.ID)
+                    <li>
+                        @Html.HiddenFor(model => model.url)
+                        @if(!string.IsNullOrEmpty(Model.url)){
+                        <div class="form_items_container col-lg-10 pl0">
+                            @Html.ActionLink("Ver Documento", Path.GetFileName(Model.url), "Uploads", "", new { download = Model.url, @class = "button_generic btstyles col-lg-4" })
+                        </div>
+                        }
+                    </li>
+
+                    <li>
+                        @Html.LabelFor(model => model.title)
+                        @Html.DisplayFor(model => model.title)
+                    </li>
+
+                    <li>
+                        @Html.LabelFor(model => model.description)
+                        @Html.DisplayFor(model => model.description)
+                    </li>
+                </ul>
+            </fieldset>
+
+            <ul class="form_items_container col-lg-4 pl0">
+                <li>
+                    <p>
+                        <input type="submit" value="Eliminar" class="button_delete btstyles col-lg-5" />
+                        @Html.ActionLink("Cancelar", "Index", null, new { @class = "button_cancel btstyles col-lg-5" })
+                    </p>
+                </li>
+            </ul>
+        }
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+

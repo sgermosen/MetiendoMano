@@ -1,0 +1,54 @@
+﻿@using SGC_MVC.Models
+@using SGC_MVC.CustomCode
+@model Form
+
+@{
+    ViewBag.Title = "Delete";
+    Rule r = ViewBag.rule;
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Eliminar datos del formulario</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>¿Esta seguro que desea eliminar este formulario del sistema?</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        <ul class="form_items_container col-lg-6 pl0">
+            <li>
+                @Html.LabelFor(model => model.name)<br />
+                @Html.DisplayFor(model => model.name)
+            </li>
+            <li>
+                @Html.LabelFor(model => model.processID)<br />
+                @Html.DisplayFor(model => model.Process.name)
+            </li>
+            
+        </ul>
+        <ul class="form_items_container col-lg-6 pr0">
+            <li>
+                @Html.LabelFor(model => model.ruleID)<br />
+                @Html.DisplayFormattedData(r.code + " - " + r.name)
+            </li>
+        </ul>
+        <ul class="form_items_container col-lg-12 pl0">
+            @using (Html.BeginForm())
+            {
+                <li>
+                    <div class="form_items_container col-lg-4 pl0">
+
+                        <input type="submit" value="Eliminar" class="button_delete btstyles col-lg-5" />
+                        @Html.ActionLink("Regresar", "Index", null, new { @class="button_go_back btstyles col-lg-5" })
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->

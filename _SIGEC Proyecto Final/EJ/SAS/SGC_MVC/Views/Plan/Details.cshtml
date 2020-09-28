@@ -1,0 +1,102 @@
+﻿@using SGC_MVC.Models
+@using SGC_MVC.CustomCode
+
+@model SGC_MVC.Models.Plan
+
+@{
+    ViewBag.Title = "Plan - Detalles";
+    string logo = ViewBag.companyLogo;
+    ICollection<HistPlan> hps = ViewBag.histPlans;
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Informaci&oacute;n detalla del plan</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Datos del plan</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        <div class="documents_detail reset fluid_wrap">
+            <div class="detail_heading">
+                <div class="detail_img_container">
+                    <img src="~/Uploads/CompanyLogos/@logo" width="126" height="95" alt="Logotipo">
+                </div>
+                <ul class="column col-lg-7 pl0">
+                    <li><span class="about_title">Ficha del Plan</span></li>
+                    <li><span class="about_title">Nombre:</span>   <span class="the_info">@Model.name</span></li>
+                    <li><span class="about_title">Responsable:</span> <span class="the_info">@Model.Position.name</span></li>
+                </ul>
+                <ul class="column col-lg-3 pl0">
+                    @*<li><span class="about_title">Código:</span> <span class="the_info">PE-FP-001</span></li>*@
+                    <li><span class="about_title">Coódigo:</span>   <span class="the_info">@Model.code</span></li>
+                    <li><span class="about_title">Proceso asociado:</span> <span class="the_info">@Model.Process.name</span></li>
+                </ul>
+            </div>
+        </div>
+        <!--end documents_detail-->
+
+        <div class="detail_description_area fluid_wrap">
+            <div class="detail_title_container fluid_wrap">
+                <h3 class="detail_section_titles">Historial de Versiones</h3>
+            </div>
+            <table class="eis_table table">
+                <thead>
+                    <tr>
+                        @{ HistPlan M = new HistPlan(); }
+                        <th>@Html.DisplayNameFor(s => M.name)</th>
+                        <th>@Html.DisplayNameFor(m => M.version)</th>
+                        <th>@Html.DisplayNameFor(m => M.dateAdded)</th>
+                        <th>@Html.DisplayNameFor(m => M.createUser)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (hps.Count() == 0)
+                    {
+                        
+                        <tr>
+                            <td colspan="4">No hay registros para mostrar</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (HistPlan hp in hps)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFormattedData(hp.name)
+                            </td>
+                            <td>
+                                @Html.DisplayFormattedData(hp.version + ".0")
+                            </td>
+                            <td>
+                                @Html.DisplayFormattedData(hp.dateAdded.Value.ToString())
+                            </td>
+                            <td>
+                                @Html.DisplayFormattedData(hp.CreatedBy.name)
+                            </td>
+                        </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!--end detail_description_area-->
+
+        <ul class="form_items_container col-lg-6 pl0">
+
+            <li>
+                <div class="form_items_container col-lg-8">
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.ID }, new { @class = "button_generic btstyles col-lg-5" })
+                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "button_cancel btstyles col-lg-5" })
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->

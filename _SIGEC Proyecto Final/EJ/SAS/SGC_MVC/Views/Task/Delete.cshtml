@@ -1,0 +1,67 @@
+﻿@model SGC_MVC.Models.UserTask
+@using SGC_MVC.CustomCode; 
+ @{ 
+ ViewBag.Title = "Tareas - Eliminar";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Eliminar datos de Tarea</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>¿Esta seguro que desea eliminar los datos de esta Tarea?</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        <ul class="form_items_container col-lg-6 pl0">
+            <li>
+                @Html.LabelFor(model => model.name)
+                @Html.DisplayFor(model => model.name)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.description)<br />
+                @Html.DisplayFor(model => model.description)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.Rule.name)<br />
+                @Html.DisplayFor(model => model.Rule.name)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.fromDate)<br />
+                @Html.DisplayFor(model => model.fromDate)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.toDate)<br />
+                @Html.DisplayFor(model => model.toDate)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.User1.name)<br />
+                @Html.DisplayFor(model => model.User1.name)
+            </li>
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "standard_form fluid_wrap" }))
+            {
+                <li>
+                    <div class="form_items_container col-lg-8 pl0">
+                        <br />
+                        <p>
+                            <input type="submit" value="Eliminar" class="button_delete btstyles col-lg-5" />
+                            @Html.ActionLink("Cancelar", "Index", null, new { @class="button_cancel btstyles col-lg-5" })
+                        </p>
+                    </div>
+                </li>
+            }
+
+        </ul>
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->

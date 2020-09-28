@@ -1,0 +1,63 @@
+@model SGC_MVC.Models.Document
+@using SGC_MVC.CustomCode; 
+ @{ 
+ ViewBag.Title = "Documento - Eliminar";
+    List<SelectListItem> allRules = ViewBag.allRules;
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Eliminar datos del documento</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>¿Esta seguro que desea eliminar este documento del sistema?</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        <ul class="form_items_container col-lg-6 pl0">
+
+            <li>
+                @Html.LabelFor(model => model.DocumentType.name)<br />
+                @Html.DisplayFor(model => model.DocumentType.name)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.title)<br />
+                @Html.DisplayFor(model => model.title)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.description)<br />
+                @Html.DisplayFor(model => model.description)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.documentText)<br />
+                @Html.DisplayFor(model => model.documentText)
+            </li>
+
+            <li>
+                @Html.LabelFor(model => model.url)<br />
+                @Html.DisplayFor(model => model.url)
+            </li>
+
+            @using (Html.BeginForm())
+            {
+                <li>
+                    <div class="form_items_container col-lg-8 pl0">
+                        <br />
+                        <p>
+                            <input type="submit" value="Eliminar" class="button_delete btstyles col-lg-5" />
+                            @Html.ActionLink("Regresar", "Index", null, new { @class="button_go_back btstyles col-lg-5" })
+                        </p>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->

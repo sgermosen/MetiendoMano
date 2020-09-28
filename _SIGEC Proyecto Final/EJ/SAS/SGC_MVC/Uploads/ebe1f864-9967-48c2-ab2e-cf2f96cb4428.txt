@@ -1,0 +1,40 @@
+Taskbar Color Effects.
+
+Simple app to add Color, Background and Shadow Effects to the Windows 7 Taskbar.
+
+Adds a Notification Icon to the Taskbar to Load Settings or Exit the application.
+
+Custom Colors with Transparency
+Custom Images with Transparency
+Shadow with Transparency
+Location aware for Taskbar and adjusts colors, background images and shadow.
+
+The application uses embedded images which are sized within the application then extracted to be used as the Shadow. I have tried various ways that I thought were feasible but this way seemed the simplest to deal with.
+
+To create your own Shadow:
+
+According to where your Taskbar is located you can replace the following images: bottom.png, top.png, left.png and right.png
+
+Take note of each images size before replacing them as your images will need to be the same to display correctly.
+
+To give off the effect of a shadow you will need to create a transparent image that sort of fades away the same way the existing images do. Solid edges will result in the Shadow having solid edges.
+
+Color Effects for the Taskbar were originally done by the following people and credit definately goes out to them:
+
+Solo-Dev:  http://solo-dev.deviantart.com/     (The original creator of the Taskbar Effects Idea)
+yvidhiatama:  http://yvidhiatama.deviantart.com/
+
+I have written this application and added my own twist to the color effects such as Transparency as well as the Taskbar Shadow with Transparency.
+
+Created by L.W (Lee Whittington)
+http://leewhittington.deviantart.com/
+
+Created by me for The Windows Club
+http://www.thewindowsclub.com
+
+Disclaimer: By downloading and using Taskbar Color Effects you agree to all the following terms: 
+
+You may not redistribute Taskbar Color Effects for sale or claim as your own. Taskbar Color Effects is supplied AS-IS, as such the Publisher nor Author, assumes no responsibility for damages to users computer intentional or unintentional.
+You may not decompile or disassemble this product. 
+
+All product names, logos, and trademarks are acknowledged as the registered intellectual property of their respective owners. 

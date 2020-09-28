@@ -1,0 +1,200 @@
+@model SGC_MVC.Models.ViewModels.DocumentEditViewModel
+@using SGC_MVC.CustomCode; 
+ @{ 
+ ViewBag.Title = "Manual - Editar";
+    List<SelectListItem> allRules = ViewBag.allRules;
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Actualizar informaci&oacute;n del manual</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Datos del manual</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "policyForm", @class = "standard_form fluid_wrap" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                @Html.Hidden("document.validateComposite","Document(title,documentTypeID)&Nombre&Tipo")
+                <legend></legend>
+                <ul class="form_items_container col-lg-6 pl0">
+                    <li>
+                        @Html.LabelForR(model => model.document.title, "Titulo del manual")
+                        @Html.TextBoxFor(model => model.document.title, new { @class = "col-lg-12 form-control validateComposite" })
+                        @Html.ValidationMessageFor(model => model.document.title)
+                    </li>
+                    <li>
+                        <p>
+                            <input type="button" id="addContent" name="addContent" value="Contenido" class="button_add btstyles col-lg-3" />
+                        </p>
+                    </li>
+
+                    <li>
+                        @Html.Label("Agregar Capitulos:", new { style = "float:left; margin-top:22px;" })
+                        <input type="submit" value="Capitulo" style="float: right;" class="button_add btstyles col-lg-3 btnSubmit" />
+                        <table class="eis_table table dndTable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.document.EDT)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.document.title)
+                                    </th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.document.Document1)
+                                {
+                                    <tr id="@item.ID">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EDT)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.title)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Editar", "EditChild", new { id = item.ID }, new { @class = "edit_link button_link" })
+                                            @Html.ActionLink("Eliminar", "DeleteChild", new { id = item.ID }, new { @class = "delete_link button_link" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </li>
+
+                    @Html.Hidden("updateUrl", Url.Action("UpdateOrder", "Manual", new { parentId = @Model.document.ID }))
+                    <li>
+                        @Html.LabelForR(model => model.selectedRules)
+                        @Html.ListBoxFor(m => m.selectedRules, allRules, new { @class = "chosen form-control", multiple = "multiple"/*, style = "width: 450px;"*/})
+                        @Html.ValidationMessageFor(m => m.selectedRules)
+                    </li>
+
+                    @Html.HiddenFor(model => model.document.ID)
+                    @Html.HiddenFor(model => model.document.createUser)
+                    @Html.HiddenFor(model => model.document.createDate, new { @class = "ignore" })
+                    @Html.HiddenFor(model => model.document.updateDate, new { @class = "ignore" })
+                    @Html.HiddenFor(model => model.document.responsible)
+                    @Html.HiddenFor(model => model.document.version)
+                    @Html.HiddenFor(model => model.document.documentTypeID, new { @class="confirmateComposite" })
+                    @Html.HiddenFor(model => model.document.EDT)
+                    @Html.Hidden("submitVal")
+
+                    <li>
+                        <ul class="form_items_container col-lg-12 pr0">
+                            <li>
+                                <input type="submit" class="allSave button_save btstyles col-lg-3 btnSubmit" value="Guardar" />
+                                <input type="button" value="Nueva version" id="SvNewVersion" class="button_generic btstyles col-lg-3" />
+                                @Html.ActionLink("Cancelar", "Index", null, new { @class="button_cancel btstyles col-lg-3" })
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div id="contentPanel" class="dn">
+                    <br />
+                    @Html.LabelForR(model => model.document.documentText, "Inserte el contenido")
+                    <br />
+                    @Html.EditorFor(model => model.document.documentText)
+                </div>
+                <div id="dialog" class ="dn">
+                    <ul>
+                        <li>
+                            <label>Razon de nueva versi&oacute;n</label><br />
+                            @Html.TextAreaFor(model => model.changeReason)
+                            @Html.ValidationMessageFor(model => model.changeReason)
+                        </li>
+                    </ul>
+                </div>
+                <div id="postBack" class="dn"></div>
+            </fieldset>
+        }
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/DataTableClient.js"></script>
+    <script>
+        $(".chosen").chosen(/*{ maxSelectedOptions: 2 }*/);
+        $(".chosen-deselect").chosen({ allowSingleDeselect: true });
+        $(".chosen").chosen().change();
+        $(".chosen").trigger('liszt:updated');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#document_documentText').jqte();
+            $('#changeReason').jqte();
+            $('#SvNewVersion').on("click", function () {
+                $('#dialog').dialog("open");
+            });
+            $('.btnSubmit').on("click", function () {
+                $('#submitVal').val($(this).val());
+            });
+            $('#addContent').on("click", function () {
+                $('#contentPanel').dialog("open");
+            });
+            $('#dialog').dialog({
+                autoOpen: false,
+                width: 540,
+                height: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Guardar": function () {
+                        if (!$('#changeReason').val()) {
+                            alert('debe insertar una razon de nueva version');
+                            $(this).dialog("open");
+                        }
+                        else {
+                            $('.allSave').val("nueva version");
+                            $('.allSave').trigger("click");
+                            $(this).dialog("close");
+                        }
+
+                    },
+                    "Cancelar": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $('#contentPanel').dialog({
+                autoOpen: false,
+                width: 540,
+                height: 400,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Ok": function () {
+                        if (!$("#document_documentText").val()) {
+                            alert('debe insertar una descripcion para el documento, o presione cancel');
+                            $(this).dialog("open");
+                        }
+                        else {
+                            $(this).dialog("close");
+                        }
+
+                    },
+                    "Cancelar": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $('#policyForm').submit(function () {
+                $('#document_documentText').prependTo('#postBack');
+                if($('.allSave').val = "nueva version")
+                    $('#changeReason').prependTo('#postBack');
+            });
+        });
+    </script>
+}

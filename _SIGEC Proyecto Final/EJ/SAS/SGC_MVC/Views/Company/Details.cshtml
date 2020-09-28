@@ -1,0 +1,72 @@
+@model SGC_MVC.Models.Company
+@using SGC_MVC.CustomCode; 
+ @{ 
+ ViewBag.Title = "Compañia - Detalles";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Informaci&oacute;n detalla de la compa&ntilde;&iacute;a</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Datos de la compa&ntilde;&iacute;a</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        <fieldset>
+            <legend></legend>
+            <ul class="form_items_container col-lg-6 pl0">
+                <li>
+                    @Html.LabelFor(model => model.name)<br />
+                    @Html.DisplayFor(model => model.name)
+                </li>
+                <li>
+                    @Html.LabelFor(model => model.description)<br />
+                    @Html.DisplayFor(model => model.description)
+                </li>
+
+                <li>
+                    @Html.LabelFor(model => model.status)<br />
+                    @Html.DisplayFor(model => model.status)
+                </li>
+                <li>
+                    @Html.LabelFor(model => model.Rules)<br />
+                    @foreach (@SGC_MVC.Models.Rule r in Model.Rules)
+                    {
+                        @Html.Label(r.code + " - " + r.name)<br />
+                    }
+                </li>
+                <li>
+                    <div class="form_items_container col-lg-8 pl0">
+                        @Html.ActionLink("Editar", "Edit", new { id = Model.ID }, new { @class = "button_generic btstyles col-lg-5" })
+                        @Html.ActionLink("Regresar", "Index", null, new { @class = "button_go_back btstyles col-lg-5" })
+                    </div>
+                </li>
+            </ul>
+            <ul class="form_items_container col-lg-6 pl0">
+                <li>
+                    @Html.LabelFor(model => model.email)<br />
+                    @Html.DisplayFor(model => model.email)
+                </li>
+                <li>
+                    @Html.LabelFor(model => model.companyText)<br />
+                    @Html.DisplayFor(model => model.companyText)
+                </li>
+                <li>
+                    @Html.LabelFor(model => model.logo)<br />
+                    @Html.HiddenFor(model => model.logo)
+                    <a href="~/Uploads/CompanyLogos/@Model.logo" target="_blank">Ver</a>
+                </li>
+            </ul>
+            @*<ul class="form_items_container col-lg-12 pl0">
+                
+            </ul>*@
+        </fieldset>
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+

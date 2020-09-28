@@ -1,0 +1,138 @@
+@using SGC_MVC.CustomCode;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - SAS</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/themes/base/css")
+    @Styles.Render("~/bundles/jhtmlarea/css")
+    @Styles.Render("~/Content/chosen/css")
+    @Styles.Render("~/Content/DataTables-1.9.4/media/css/css")
+    @Styles.Render("~/Content/jqte/css")
+
+</head>
+<body>
+    <header>
+        @{ 
+            SGC_MVC.Models.SASContext db = new SGC_MVC.Models.SASContext();
+            SGC_MVC.Helpers.MenuAuthorize menu = new SGC_MVC.Helpers.MenuAuthorize();
+        }
+        <div id="header_wrap" class="fluid_wrap reset">
+            <div id="header" class="container">
+                <div class="col-lg-12">
+                    <div id="logotipo_container" class="col-lg-4 pl0">
+                        <a id="logotipo" href="#">
+                            <h1><span>Logotipo SAS</span></h1>
+                        </a>
+                    </div>
+                    <!--end logotipo_container-->
+                    @Html.Partial("_LoginPartial")
+                    <!--end user_options-->
+                </div>
+            </div>
+            <!--end header-->
+        </div>
+        <!--header_wrap-->
+
+        <div id="navigation_wrap" class="fluid_wrap reset">
+            <div id="navigation" class="container">
+                <div class="col-lg-12 menu">
+                    <ul>
+                        @foreach (SGC_MVC.Models.Menu t in db.Menus.OrderBy(d => d.noOrder))
+                        {
+                            <li><a href="#" id="btn-@t.ID" class="btnMenu">@t.name</a></li>   
+                        }
+                    </ul>
+                </div>
+                <!--end col-lg-12-->
+            </div>
+            <!--end navigation-->
+        </div>
+        <!--end navigation_top-->
+        <div id="navigation_spanded_wrap" class="fluid_wrap">
+            <div id='navigation_spanded' class="container">
+                <div class="col-lg-12">
+                    <div class="toggler fluid_wrap">
+
+                        @foreach (SGC_MVC.Models.Menu t in db.Menus.OrderBy(d => d.noOrder))
+                        {
+                            <div id="menu-@t.ID" class="hide dn">
+                                <ul class="fluid_wrap">
+                                    @foreach (SGC_MVC.Models.SubMenu tt in t.SubMenus.OrderBy(d => d.noOrder))
+                                    {
+                                        <li>@Html.AuthorizeActionLink(menu, tt.name, tt.View.Action.name, tt.View.Action.Controller.name.Replace("Controller", ""))</li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                    <!--end toggler-->
+                </div>
+                <!--end col-lg-12-->
+            </div>
+            <!--end navigation_spanded-->
+        </div>
+        <!--end navigation_spanded-->
+    </header>
+    <div id="body">
+        <div id="content_area_wrap" class="fluid_wrap reset">
+            <div id="content_area" class="container">
+                <div class="col-lg-12">
+                    @RenderSection("featured", required: false)
+                    <section class="content-wrapper main-content clear-fix">
+                        @RenderBody()
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div id="footer_wrap" class="fluid_wrap">
+            <div id="footer" class="container">
+                <div class="col-lg-12">
+                    <div id="copyright_footer" class="col-lg-4 pl0">
+                        <p>
+                            <img src="~/images/logotipo_footer.png" width="110" height="42" alt="Footer SAS - Logo" />
+                        </p>
+                        <p>Copyright 2013</p>
+                        <p>Powered by <a href="http://eisdr.com/" target="new_blank">Excellent Integrity Solutions</a></p>
+                    </div>
+                    <!--end copyright_footer-->
+
+                    <div id="footer_links" class="col-lg-8 pl0">
+                        <ul>
+                            <li><a href="#" class="terms_conditions">Términos y Condiciones</a></li>
+                            <li><a href="#" class="support">Soporte</a></li>
+                            <li><a href="#" class="contact">Contacto</a></li>
+                        </ul>
+                    </div>
+                    <!--end footer_links-->
+                </div>
+                <!--end col-lg-12-->
+            </div>
+            <!--end footer-->
+        </div>
+        <!--end footer_wrap-->
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/mega_menu.js"></script>
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/chosenjquery")
+    @Scripts.Render("~/bundles/jhtmlarea")
+    @Scripts.Render("~/bundles/datatables")
+    <script src="~/Scripts/DateValidationRules.js"></script>
+    <script src="~/Scripts/jquery-te-1.4.0.min.js"></script>
+    <script src="~/Scripts/FileExtensionsRules.js"> </script>
+    <script src="~/Scripts/FileSizeValidationRules.js"> </script>
+    <script src="~/Scripts/Layout.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,23 @@
+@{
+    ViewBag.Title = "Normas - Lista de normas";
+}
+
+<div id="container">
+    <h2>Normas y documentos</h2>
+    <table  class="eis_table table normalTable display">
+        <thead>
+            <tr>
+                <th>C&oacute;digo</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody> 
+        </tbody>
+    </table>
+</div>
+
+@Html.Hidden("serverSideProcessing", Url.Action("TableRequest","Rules"))
+
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/RulesScripts.js"></script>
+}

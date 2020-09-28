@@ -1,0 +1,43 @@
+﻿@model SGC_MVC.Models.SubMenu
+@using SGC_MVC.CustomCode; 
+ @{ 
+ ViewBag.Title = "Sub Menu - Detalles";
+}
+
+<h2>Detalles</h2>
+
+<fieldset>
+    <legend>Detalles de sub menu</legend>
+
+    <div >
+         @Html.DisplayNameFor(model => model.Menu.name)
+    </div>
+    <div >
+        @Html.DisplayFor(model => model.Menu.name)
+    </div>
+
+    <div >
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div >
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div >
+         @Html.DisplayNameFor(model => model.View.name)
+    </div>
+    <div >
+        @Html.DisplayFor(model => model.View.name)
+    </div>
+
+    <div >
+         @Html.DisplayNameFor(model => model.noOrder)
+    </div>
+    <div >
+        @Html.DisplayFor(model => model.noOrder)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id=Model.subMenuID }) |
+    @Html.ActionLink("Regresar al inicio", "Index")
+</p>

@@ -1,0 +1,68 @@
+@model PermissionsEditPartial
+@using SGC_MVC.Models;
+@using SGC_MVC.Models.ViewModels;
+
+@{
+
+}
+
+    <li>
+        <div class="accordion">
+            @foreach (SGC_MVC.Models.Controller c in Model.controllers)
+            {
+                if (string.IsNullOrEmpty(c.displayName))
+                {
+                    <h3 id="@c.ID" class="aHeader">@c.name</h3>
+                }
+                else
+                {
+                    <h3 id="@c.ID" class="aHeader">@c.displayName</h3>
+                }
+                <div class="action.div">
+                    @foreach (var action in c.Actions)
+                    {
+                        <label class="permissions fl" >
+                            @if (string.IsNullOrEmpty(c.displayName))
+                            {
+                                <input type="checkbox" name="actions" id="actions" value="@action.ID" @((Model.SelectedActions.Contains(action.ID) ? "checked" : ""))/> @action.name
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="actions" id="actions" value="@action.ID" @((Model.SelectedActions.Contains(action.ID) ? "checked" : ""))/> @action.displayName    
+                            }
+                        </label>
+                    }
+                </div>
+        
+            }
+
+        </div>
+    </li>
+
+    <li>
+        <div class="acc">
+            <h3 class="aHeader">Permisos por status</h3>
+            <div class="action.div">
+                @foreach (Status s in Model.statuses)
+                {
+                    <label class="checkbox">
+                        <input type="checkbox" name="statuses" id="statises" value="@s.ID" @((Model.SelectedStatuses.Contains(s.ID) ? "checked" : ""))/>@s.name
+                    </label>       
+        
+                }
+            </div>
+        </div>
+        <div class="acc">
+            <h3 class="aHeader">Permisos por departamentos</h3>
+            <div class="action.div">
+                @foreach (Department d in Model.departments)
+                {
+                    <label class="checkbox">
+                        <input type="checkbox" name="departments" id="departments" value="@d.ID" @((Model.SelectedDepartments.Contains(d.ID) ? "checked" : ""))/>
+                        @d.name
+                    </label>
+                }
+            </div>
+        </div>
+    </li>
+

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<SGC_MVC.Models.Menu>
+
+@{
+    string Label = new SGC_MVC.Helpers.MenuAuthorize().getMenuLabel(Request);
+    ViewBag.Title = Label + " - Inicio";
+}
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>@Label de la aplicación</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        <ul class="form_items_container col-lg-4 pr0 fr">
+            <li>
+                <p>
+                    @Html.ActionLink("Agregar", "Create", null, new { @class = "button_add btstyles col-lg-5 fr" })
+                </p>
+            </li>
+        </ul>
+        <table class="eis_table table dndTable" >
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.noOrder)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.name)
+                    </th>
+                    <th>
+                        Creado por
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.description)
+                    </th>
+                    <th>
+                        Opciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderBy(d => d.noOrder))
+                {
+                    <tr id="@item.ID">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.noOrder)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.username)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.description)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.ID }, new { @class = "edit_link button_link" })
+                            @Html.ActionLink("Ver Detalles", "Details", new { id = item.ID }, new { @class = "add_link button_link" })
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.ID }, new { @class = "delete_link button_link" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!--end drag_container_the_content_area-->
+    
+</div>
+<!--end drag_and_drop_container-->
+
+@Html.Hidden("updateUrl", Url.Action("UpdateOrder", "Menu"))
+
+
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/DataTableClient.js"></script>
+}

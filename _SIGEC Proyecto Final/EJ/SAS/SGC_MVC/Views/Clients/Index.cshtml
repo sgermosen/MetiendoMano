@@ -1,0 +1,83 @@
+﻿@model IEnumerable<SGC_MVC.Models.Entity>
+
+@{
+    string Label = new SGC_MVC.Helpers.MenuAuthorize().getMenuLabel(Request);
+    ViewBag.Title = Label + " - Inicio";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">@Label</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>@Label de la aplicación</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        <ul class="form_items_container col-lg-4 pr0 fr">
+            <li>
+                <p>
+                    @Html.ActionLink("Agregar", "Create", null, new { @class = "button_add btstyles col-lg-5 fr" })
+                </p>
+            </li>
+        </ul>
+
+        <table class="eis_table table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.phone)
+                    </th>
+                    <th>Opciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4">Cargando información desde el servidor.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+
+
+
+@section Scripts{
+    <script type="text/javascript">
+        myTable = $('.eis_table').dataTable({
+            'bProcessing': true,
+            "bServerSide": true,
+            "sPaginationType": "full_numbers",
+            "oLanguage":oLanguage,
+            'sAjaxSource':
+                "@Url.Action("data", "Home")"
+                +"?tableName=Entity" +
+                "&colums=name,address,phone" +
+                "&wherePlus=entityTypeID=1" +
+                "&companyRules=1" +
+                "&options=edit(Clients,edit);add(Clients,Details);delete(Clients,Delete)"
+        }).fnSetFilteringDelay(500);
+    </script>
+
+    <script src="~/Scripts/DataTableClient.js"></script>
+    <script src="~/Scripts/jquery.maskedinput.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var phoneMask = '(999) 999-9999';
+            $('.phoneData').mask(phoneMask);
+        });
+    </script>
+}

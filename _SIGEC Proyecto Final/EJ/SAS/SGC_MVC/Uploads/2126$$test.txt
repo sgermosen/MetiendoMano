@@ -1,0 +1,313 @@
+# dmidecode 2.9
+SMBIOS 2.4 present.
+24 structures occupying 1109 bytes.
+Table at 0x000EC360.
+
+Handle 0x0000, DMI type 0, 24 bytes
+BIOS Information
+	Vendor: Hewlett-Packard
+	Version: F.33
+	Release Date: 11/02/2008
+	ROM Size: 1024 kB
+	Characteristics:
+		PCI is supported
+		BIOS is upgradeable
+		BIOS shadowing is allowed
+		Boot from CD is supported
+		Selectable boot is supported
+		BIOS ROM is socketed
+		EDD is supported
+		Japanese floppy for NEC 9800 1.2 MB is supported (int 13h)
+		Japanese floppy for Toshiba 1.2 MB is supported (int 13h)
+		5.25"/360 KB floppy services are supported (int 13h)
+		5.25"/1.2 MB floppy services are supported (int 13h)
+		3.5"/720 KB floppy services are supported (int 13h)
+		3.5"/2.88 MB floppy services are supported (int 13h)
+		8042 keyboard services are supported (int 9h)
+		CGA/mono video services are supported (int 10h)
+		ACPI is supported
+		USB legacy is supported
+		Targeted content distribution is supported
+
+Handle 0x0001, DMI type 1, 27 bytes
+System Information
+	Manufacturer: Hewlett-Packard
+	Product Name: HP Pavilion dv4 Notebook PC
+	Version: 1
+	Serial Number: CND9020K33
+	UUID: 009841F2-CEC0-11DD-8C94-00235A1D8419
+	Wake-up Type: Power Switch
+	SKU Number: NB200UA#ABA
+	Family: 103C_5335KV
+
+Handle 0x0002, DMI type 2, 16 bytes
+Base Board Information
+	Manufacturer: Hewlett-Packard
+	Product Name: 30FB
+	Version: 01.82
+	Serial Number: CND9020K33
+	Asset Tag: Base Board Asset Tag
+	Features:
+		Board is a hosting board
+		Board is replaceable
+	Location In Chassis: Base Board Chassis Location
+	Chassis Handle: 0x0003
+	Type: Motherboard
+	Contained Object Handles: 0
+
+Handle 0x0003, DMI type 3, 22 bytes
+Chassis Information
+	Manufacturer: Hewlett-Packard
+	Type: Notebook
+	Lock: Not Present
+	Version: N/A
+	Serial Number: None
+	Asset Tag: Not Specified
+	Boot-up State: Safe
+	Power Supply State: Safe
+	Thermal State: Safe
+	Security Status: None
+	OEM Information: 0x0000010E
+	Height: Unspecified
+	Number Of Power Cords: 1
+	Contained Elements: 0
+
+Handle 0x0004, DMI type 9, 13 bytes
+System Slot Information
+	Designation: J6C1
+	Type: x16 PCI Express
+	Current Usage: Available
+	Length: Other
+	ID: 0
+	Characteristics:
+		PME signal is supported
+		Hot-plug devices are supported
+
+Handle 0x0005, DMI type 9, 13 bytes
+System Slot Information
+	Designation: J8C1
+	Type: x1 PCI Express
+	Current Usage: Available
+	Length: Other
+	ID: 0
+	Characteristics:
+		PME signal is supported
+		Hot-plug devices are supported
+
+Handle 0x0006, DMI type 9, 13 bytes
+System Slot Information
+	Designation: J7C1
+	Type: x1 PCI Express
+	Current Usage: Available
+	Length: Other
+	ID: 1
+	Characteristics:
+		PME signal is supported
+		Hot-plug devices are supported
+
+Handle 0x0007, DMI type 9, 13 bytes
+System Slot Information
+	Designation: J8D1
+	Type: x1 PCI Express
+	Current Usage: Available
+	Length: Other
+	ID: 2
+	Characteristics:
+		PME signal is supported
+		Hot-plug devices are supported
+
+Handle 0x0008, DMI type 9, 13 bytes
+System Slot Information
+	Designation: J8B1
+	Type: 32-bit PCI
+	Current Usage: Available
+	Length: Long
+	ID: 3
+	Characteristics:
+		5.0 V is provided
+		3.3 V is provided
+		Cardbus is supported
+		Modem ring resume is supported
+		PME signal is supported
+		SMBus signal is supported
+
+Handle 0x0009, DMI type 9, 13 bytes
+System Slot Information
+	Designation: J9B1
+	Type: 32-bit PCI
+	Current Usage: Available
+	Length: Long
+	ID: 4
+	Characteristics:
+		5.0 V is provided
+		3.3 V is provided
+		Cardbus is supported
+		Modem ring resume is supported
+		PME signal is supported
+		SMBus signal is supported
+
+Handle 0x000A, DMI type 10, 6 bytes
+On Board Device Information
+	Type: Video
+	Status: Enabled
+	Description: Video Graphics Controller
+
+Handle 0x000B, DMI type 11, 5 bytes
+OEM Strings
+	String 1: $HP$
+	String 2: ABA
+	String 3: ABS 70/71 79 7A 7B 7C
+	String 4: CNB1 01110002140E10000
+	String 5: String5 for Original Equipment Manufacturer
+
+Handle 0x000C, DMI type 15, 29 bytes
+System Event Log
+	Area Length: 32672 bytes
+	Header Start Offset: 0x0000
+	Data Start Offset: 0x0000
+	Access Method: General-purpose non-volatile data functions
+	Access Address: 0x0000
+	Status: Valid, Not Full
+	Change Token: 0x12345678
+	Header Format: OEM-specific
+	Supported Log Type Descriptors: 3
+	Descriptor 1: POST memory resize
+	Data Format 1: None
+	Descriptor 2: POST error
+	Data Format 2: POST results bitmap
+	Descriptor 3: Log area reset/cleared
+	Data Format 3: None
+
+Handle 0x000D, DMI type 32, 20 bytes
+System Boot Information
+	Status: No errors detected
+
+Handle 0x000E, DMI type 4, 35 bytes
+Processor Information
+	Socket Designation: Socket M2/S1G1
+	Type: Central Processor
+	Family: <OUT OF SPEC>
+	Manufacturer: AMD processor
+	ID: 31 0F 20 00 FF FB 8B 17
+	Version: AMD Turion(tm) X2 Dual-Core Mobile RM-72
+	Voltage: 1.4 V
+	External Clock: 200 MHz
+	Max Speed: 2100 MHz
+	Current Speed: 2100 MHz
+	Status: Populated, Enabled
+	Upgrade: Other
+	L1 Cache Handle: 0x000F
+	L2 Cache Handle: 0x0010
+	L3 Cache Handle: Not Provided
+	Serial Number: NotSupport
+	Asset Tag: FFFF
+	Part Number: FFFF
+
+Handle 0x000F, DMI type 7, 19 bytes
+Cache Information
+	Socket Designation: L1 Cache
+	Configuration: Enabled, Not Socketed, Level 1
+	Operational Mode: Write Back
+	Location: Internal
+	Installed Size: 256 KB
+	Maximum Size: 256 KB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Unified
+	Associativity: 2-way Set-associative
+
+Handle 0x0010, DMI type 7, 19 bytes
+Cache Information
+	Socket Designation: L2 Cache
+	Configuration: Enabled, Not Socketed, Level 2
+	Operational Mode: Write Back
+	Location: Internal
+	Installed Size: 1024 KB
+	Maximum Size: 1024 KB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Unified
+	Associativity: 16-way Set-associative
+
+Handle 0x0011, DMI type 16, 15 bytes
+Physical Memory Array
+	Location: System Board Or Motherboard
+	Use: System Memory
+	Error Correction Type: None
+	Maximum Capacity: 4 GB
+	Error Information Handle: Not Provided
+	Number Of Devices: 2
+
+Handle 0x0012, DMI type 17, 27 bytes
+Memory Device
+	Array Handle: 0x0011
+	Error Information Handle: Not Provided
+	Total Width: 64 bits
+	Data Width: 64 bits
+	Size: 2048 MB
+	Form Factor: SODIMM
+	Set: None
+	Locator: SODIMM 0
+	Bank Locator: BANK 0
+	Type: DDR2
+	Type Detail: Synchronous
+	Speed: 800 MHz (1.2 ns)
+	Manufacturer: Samsung
+	Serial Number: CE000000000000000208479446D833
+	Asset Tag: Unknown
+	Part Number: M4 70T5663QZ3-CF7 
+
+Handle 0x0013, DMI type 20, 19 bytes
+Memory Device Mapped Address
+	Starting Address: 0x00000000000
+	Ending Address: 0x0007FFFFFFF
+	Range Size: 2 GB
+	Physical Device Handle: 0x0012
+	Memory Array Mapped Address Handle: 0x0016
+	Partition Row Position: 1
+
+Handle 0x0014, DMI type 17, 27 bytes
+Memory Device
+	Array Handle: 0x0011
+	Error Information Handle: Not Provided
+	Total Width: 64 bits
+	Data Width: 64 bits
+	Size: 2048 MB
+	Form Factor: SODIMM
+	Set: None
+	Locator: SODIMM 1
+	Bank Locator: BANK 0
+	Type: DDR2
+	Type Detail: Synchronous
+	Speed: 800 MHz (1.2 ns)
+	Manufacturer: Samsung
+	Serial Number: CE000000000000000208479446D83E
+	Asset Tag: Unknown
+	Part Number: M4 70T5663QZ3-CF7 
+
+Handle 0x0015, DMI type 20, 19 bytes
+Memory Device Mapped Address
+	Starting Address: 0x00080000000
+	Ending Address: 0x000FFFFFFFF
+	Range Size: 2 GB
+	Physical Device Handle: 0x0014
+	Memory Array Mapped Address Handle: 0x0016
+	Partition Row Position: 1
+
+Handle 0x0016, DMI type 19, 15 bytes
+Memory Array Mapped Address
+	Starting Address: 0x00000000000
+	Ending Address: 0x000FFFFFFFF
+	Range Size: 4 GB
+	Physical Array Handle: 0x0011
+	Partition Width: 0
+
+Handle 0x0017, DMI type 127, 4 bytes
+End Of Table
+

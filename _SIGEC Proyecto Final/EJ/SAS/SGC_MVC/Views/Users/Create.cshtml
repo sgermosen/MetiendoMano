@@ -1,0 +1,135 @@
+﻿@model SGC_MVC.Models.User
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>User</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.status)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.status)
+            @Html.ValidationMessageFor(model => model.status)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.username)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.username)
+            @Html.ValidationMessageFor(model => model.username)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.password)
+            @Html.ValidationMessageFor(model => model.password)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.activeKey)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.activeKey)
+            @Html.ValidationMessageFor(model => model.activeKey)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.lastVisitAt)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.lastVisitAt)
+            @Html.ValidationMessageFor(model => model.lastVisitAt)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.superUser)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.superUser)
+            @Html.ValidationMessageFor(model => model.superUser)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.departmentID, "Department")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("departmentID", String.Empty)
+            @Html.ValidationMessageFor(model => model.departmentID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.companyID, "Company")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("companyID", String.Empty)
+            @Html.ValidationMessageFor(model => model.companyID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.createDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.createDate)
+            @Html.ValidationMessageFor(model => model.createDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.updateDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.updateDate)
+            @Html.ValidationMessageFor(model => model.updateDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.createUser, "User2")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("createUser", String.Empty)
+            @Html.ValidationMessageFor(model => model.createUser)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.positionID, "Position")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("positionID", String.Empty)
+            @Html.ValidationMessageFor(model => model.positionID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.imageUrl)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.imageUrl)
+            @Html.ValidationMessageFor(model => model.imageUrl)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

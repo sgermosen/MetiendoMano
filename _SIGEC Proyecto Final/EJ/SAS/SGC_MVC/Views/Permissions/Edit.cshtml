@@ -1,0 +1,62 @@
+@using SGC_MVC.Helpers;
+@using SGC_MVC.Models;
+@using SGC_MVC.CustomCode; 
+@model SGC_MVC.Models.ViewModels.PermissionsEditModel
+
+@{ 
+    ViewBag.Title = "Permisos - Editar";
+    List<SGC_MVC.Models.Controller> controllers = ViewBag.controllers;
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Actualizar informaci&oacute;n de los permisos por roles</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Roles y sus permisos</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "standard_form fluid_wrap" }))
+        {
+            @Html.ValidationSummary(true)
+            @Html.AntiForgeryToken()
+
+            <fieldset>
+                <legend></legend>
+
+                <ul class="form_items_container col-lg-12 pl0">
+                    <li>
+                        <div class="form_items_container col-lg-4 pl0">
+                            @Html.LabelForR(model => model.RoleId, "Rol a editar")
+                            @Html.DropDownListFor(model => model.RoleId, null, String.Empty, new { @class = "form-control col-lg-12 dropdown" })
+                            @Html.ValidationMessageFor(model => model.RoleId)
+                        </div>
+                    </li>
+
+                    @Html.Label("Menu a editar")
+
+                    <li>
+                        <div id="partial">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form_items_container col-lg-4 pl0">
+                        <input type="submit" value="Guardar Cambios" class="btstyles button_generic col-lg-5" />
+                            </div>
+                    </li>
+                    @Html.Hidden("actionUrl", Url.Action("GetMenus", "Permissions"))
+                </ul>
+            </fieldset>
+        }
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/PermissionsHandlers.js"></script>
+}

@@ -1,0 +1,135 @@
+﻿@using SGC_MVC.CustomCode
+@model SGC_MVC.Models.EditAccountModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Actualizar datos de usuario</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Datos del usuario</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "editForm", @class = "standard_form fluid_wrap" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <fieldset>
+                @Html.HiddenFor(model => model.company_id)
+                @Html.HiddenFor(model => model.imageUrl)
+                <legend></legend>
+                @Html.Hidden("validateUniq", "User&E-Mail")
+                <ul class="form_items_container col-lg-12 pl0">
+                    @if (!string.IsNullOrEmpty(ViewBag.Done))
+                    {
+                        <li>
+                            <h1 style="color: #17cf10 !important;">@ViewBag.Done</h1>
+                        </li>
+                    }
+                </ul>
+                <ul class="form_items_container col-lg-4 pl0">
+                    <li>
+                        @Html.LabelForR(m => m.UserName)
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </li>
+
+                    <li>
+                        @Html.LabelForR(m => m.name)
+                        @Html.TextBoxFor(m => m.name, new { @class = "col-lg-12 form-control" })
+                        @Html.ValidationMessageFor(m => m.name)
+                    </li>
+
+
+
+
+                    @*@Html.TextBoxFor(model => model.imageName, new { @class = "dn" })
+                                    < @Html.ValidationMessageFor(model => model.imageName)*@
+
+                    <li>
+                        @Html.Label("Roles para el usuario")
+                        @Html.ListBox("roles", null, new { @class = "chosen" })
+                    </li>
+                    <li>
+                        <input type="submit" value="Registrar" id="registerButton" class="button_save btstyles col-lg-5" />
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-4 pl0">
+                    <li>
+                        @Html.LabelForR(model => model.department_id, "Departamento")
+                        <div class="dropdown fluid_wrap">
+                            @Html.DropDownListFor(model => model.department_id, null, String.Empty, new { @class = "col-lg-12 form-control dropdown-select" })
+                            @Html.ValidationMessageFor(model => model.department_id)
+                        </div>
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.roles, "Puesto")
+                        <div class="dropdown fluid_wrap">
+                            @Html.DropDownListFor(model => model.roles, null, String.Empty, new { @class = "chosen col-lg-12 form-control dropdown-select", multiple="multiple" })
+                            @Html.ValidationMessageFor(model => model.position_id)
+                        </div>
+                    </li>
+                    <li>
+                        @Html.LabelForR(model => model.image, "Archivo para imagen de perfil")
+                        @Html.TextBoxFor(model => model.image, new { @type = "file" ,@class="fieldInput fl" })
+                        @Html.TextBox("Cargar","",new{id="filename",@readonly=true,@class="falseInputFile"})
+                        <button id="clearInput" class="eraseInput" >Quitar</button>
+                        <span class="filetrigger">Upload</span>
+                        @Html.ValidationMessageFor(model => model.image)
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-4 pl0">
+                    <li>
+                        <label class="checkbox">
+                            @Html.CheckBoxFor(model => model.passwordChanged) Cambiar Contraseña?
+                        </label>
+                        <label class="checkbox">
+                            @Html.CheckBoxFor(model => model.superUser) Super Usuario?
+                        </label>
+                    </li>
+                    <li class="pwd">
+                        @Html.LabelForR(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "col-lg-12 form-control", value = Model.Password })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </li>
+                    <li class="pwd">
+                        @Html.LabelForR(m => m.ConfirmPassword)
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "col-lg-12 form-control", value = Model.Password })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                    </li>
+                </ul>
+
+            </fieldset>
+        }
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+@section Scripts {
+    <script src="~/Scripts/FileSizeValidationRules.js"></script>
+    <script src="~/Scripts/FileExtensionsRules.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.pwd').toggle(this.readonly);
+            $(".chosen").chosen(/*{ maxSelectedOptions: 2 }*/);
+            $(".chosen-deselect").chosen({ allowSingleDeselect: true });
+            $(".chosen").chosen().change();
+            $(".chosen").trigger('liszt:updated');
+
+            $('#passwordChanged').on("change", function () {
+                $('.pwd').toggle(this.readonly);
+            });
+        });
+    </script>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

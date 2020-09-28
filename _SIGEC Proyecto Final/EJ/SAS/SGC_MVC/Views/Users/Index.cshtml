@@ -1,0 +1,115 @@
+﻿@model IEnumerable<SGC_MVC.Models.User>
+
+@{
+    string Label = new SGC_MVC.Helpers.MenuAuthorize().getMenuLabel(Request);
+    ViewBag.Title = Label + " - Inicio";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">@Label</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>@Label de la aplicación</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        <ul class="form_items_container col-lg-4 pr0 fr">
+            <li>
+                <p>
+                    @Html.ActionLink("Agregar", "Register", "Account", null, new { @class = "button_add btstyles col-lg-5 fr" })
+                </p>
+            </li>
+        </ul>
+        <table class="eis_table table normalTable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.username)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.lastVisitAt)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.superUser)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Department)
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.createDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.updateDate)
+                    </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.User2)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Position)
+                    </th>
+                    <th>
+                        Opciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.username)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.lastVisitAt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.superUser)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Department.name)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.createDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.updateDate)
+                        </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User2.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Position.name)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "EditAccount", "Account", new { id = item.ID }, new { @class = "edit_link button_link" })
+                            @Html.ActionLink("Ver Detalles", "Details", new { id = item.ID }, new { @class = "add_link button_link" })
+                            @*@Html.ActionLink("Eliminar", "Delete", new { id = item.ID }, new { @class = "delete_link button_link" })*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+@section Scripts{
+    <script src="~/Scripts/DataTableClient.js"></script>
+}

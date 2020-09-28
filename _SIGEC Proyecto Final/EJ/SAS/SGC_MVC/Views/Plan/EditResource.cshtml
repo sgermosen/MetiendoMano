@@ -1,0 +1,26 @@
+﻿@using SGC_MVC.CustomCode
+@model SGC_MVC.Models.ObjectiveResource
+
+@Html.HiddenFor(model => model.ID, new { @class = "ID" })
+
+<div>
+    <form class="standard_form fluid_wrap">
+        <fieldset>
+            <legend></legend>
+            <ul class="form_items_container col-lg-12 pl0">
+                <li>
+                    <label>Datos del recurso</label>
+                    <br />
+                </li>
+                <li>
+                    @Html.LabelForR(model => model.infrastructure)
+                    @Html.TextAreaFor(model => model.infrastructure, new { @class = "infrastructureModal col-lg-12 form-control textarea_level2" })
+                </li>
+                <li>
+                    @Html.LabelForR(model => model.humans)
+                    @Html.TextAreaFor(model => model.humans, new { @class = "humansModal col-lg-12 form-control textarea_level2" })
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+</div>

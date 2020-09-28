@@ -1,0 +1,44 @@
+@model SGC_MVC.Models.DocumentType
+@using SGC_MVC.CustomCode;
+@{ 
+    ViewBag.Title = "Tipo de documento - Detalles";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Informaci&oacute;n detalla del tipo de documento</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Datos del tipo de documento</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        <fieldset>
+            <legend></legend>
+            <ul class="form_items_container col-lg-6 pl0">
+                <li>
+                    @Html.LabelFor(model => model.name)<br />
+                    @Html.DisplayFor(model => model.name)
+                </li>
+
+                <li>
+                    @Html.LabelFor(model => model.description)<br />
+                    @Html.DisplayFor(model => model.description)
+                </li>
+                <li>
+                    <div class="form_items_container col-lg-8">
+                        @Html.ActionLink("Editar", "Edit", new { id=Model.ID }, new { @class = "button_generic btstyles col-lg-5" })
+                        @Html.ActionLink("Regresar", "Index", null, new { @class = "button_go_back btstyles col-lg-5" })
+                    </div>
+                </li>
+            </ul>
+        </fieldset>
+
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+

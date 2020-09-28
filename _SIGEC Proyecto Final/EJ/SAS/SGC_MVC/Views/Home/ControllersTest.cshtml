@@ -1,0 +1,15 @@
+@{
+    ViewBag.Title = "ControllersTest";
+    SGC_MVC.CustomCode.ControllerActionProvider cap = new SGC_MVC.CustomCode.ControllerActionProvider();
+}
+
+@foreach (string controller in cap.GetControllerNames())
+{
+    <h1>@controller</h1>
+    
+    foreach(string action in cap.GetActionNames(controller))
+    {
+       <h2>@action</h2> 
+    }
+    <br />
+}

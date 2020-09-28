@@ -1,0 +1,20 @@
+﻿@model SGC_MVC.Models.FormField
+
+<fieldset class="groupbox">
+    <legend>@Html.Label("Opciones de la pregunta")</legend>
+    <ul class="form_items_container col-lg-12 pl0">
+        <li>
+            <label class="checkbox">@Html.CheckBox("required", Model.required) Pregunta de respuesta obligatoria (opcional)</label>
+            @Html.TextBoxFor(model => model.requiredText, new { @class = "form-control col-lg-12" })
+        </li>
+        <li>
+            <label>Texto con una longitud especifica</label>
+            <label class ="inline">Entre&nbsp; &nbsp;</label>
+             @Html.TextBoxFor(model => model.rangeFrom, new { @class = "fl col-lg-3" })
+            <label class ="inline">&nbsp; &nbsp; y&nbsp; &nbsp;</label>
+             @Html.TextBoxFor(model => model.rangeTo, new { @class = "fl col-lg-3" })
+             @Html.ValidationMessageFor(model => model.rangeFrom)
+             @Html.ValidationMessageFor(model => model.rangeTo)
+        </li>
+    </ul>
+</fieldset>

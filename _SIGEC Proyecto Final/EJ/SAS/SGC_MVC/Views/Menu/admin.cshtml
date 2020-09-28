@@ -1,0 +1,128 @@
+﻿@model List<SGC_MVC.Models.SubMenu>
+@using SGC_MVC.Models;
+@using SGC_MVC.CustomCode; 
+ @{ 
+ ViewBag.Title = "admin";
+}
+
+@section featured {
+    <div class="section_title fluid_wrap">
+        <div class="col-lg-8 pl0">
+            <h1 class="the_title">Opciones del Menú</h1>
+        </div>
+    </div>
+    <!--end section_title-->
+}
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Administrar menú</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "policyForm", @class = "standard_form fluid_wrap" }))
+        {
+            @Html.ValidationSummary(true)
+            <div id="dashboard_left_column" class="col-lg-4 pl0 pr0">
+
+                <div class="col-lg-3 drag_and_drop_container reset pl0 pr0 nonDatabaleStyle noArrow fluid_wrap" style="z-index: 999">
+                    <div class="data_table_container ">
+                        <div class="drag_container_title">
+                            <h2>Sub Menus</h2>
+                        </div>
+
+                        <ul id="submenusdrag">
+
+                            @foreach (SubMenu submenu in Model)
+                            {
+                                <li class="draggable" id="@submenu.name">
+                                    <label class="ver">@submenu.name</label>
+                                    <input type="hidden" value="@submenu.ID" />
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dashboard_right_column" class="col-lg-8 pl3 pr0">
+                @{string menus = "";}
+                @foreach (Menu menu in ((List<Menu>)ViewBag.Menu).OrderBy(d => d.noOrder))
+                {
+                    <div class="col-lg-8 drag_and_drop_container reset doc_en_proceso pl0 pr0 nonDatabaleStyle witdh7-col-to-8 overID">
+                        <div class="drag_container_title">
+                            <h2>@menu.name</h2>
+                            @{ menus += "menu.menuID;"; }
+                        </div>
+                        <ul class="sortable menu-@menu.ID" id="@menu.ID">
+                            <li>-</li>
+                            @foreach (SubMenu submenu in menu.SubMenus)
+                            {
+                                <li style="display: list-item;">
+                                    <label>@submenu.name</label>
+                                    <input type="hidden" value="@submenu.ID" name="@string.Format("{0}-{1}", submenu.menuID, submenu.ID)">
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+                <input type="hidden" value="@menus" id="allmenu"/>
+            </div>
+
+            <div class="form_items_container col-lg-10 pl0">
+                <p>
+                    <input type="submit" value="Guardar Cambios" class="button_save btstyles col-lg-2" />
+                </p>
+            </div>
+                    
+        }
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+@section Scripts {
+    <script type="text/javascript">
+
+        function rideAll() {
+            var allmenu = $("#allmenu").val();
+            for (var a in allmenu.split(";")) {
+                if (a != "0") {
+                    $("#" + a).find('input').each(function () {
+                        $(this).attr("name", a + "-" + $(this).val());
+                    });
+                }
+            }
+        }
+        $(document).ready(function () {
+            rideAll();
+            var menuID = 0;
+
+            $(".overID").mouseover(function () {
+                menuID = $(this).find("ul").attr("id");//$(".the_title").html(menuID);
+            });
+
+            $(".draggable").draggable({
+                connectToSortable: ".sortable",
+                helper: "clone",
+                revert: "invalid",
+                start: function () {
+                    rideAll();
+                },
+                drag: function () {
+                    rideAll();
+                },
+                stop: function () {
+                    $("#" + menuID).find('input').each(function () {
+                        $(this).attr("name", menuID + "-" + $(this).val());
+                    });
+                    rideAll();
+                }
+            });
+
+            $(".sortable").sortable({
+                revert: true
+            });
+
+        });
+    </script>
+}

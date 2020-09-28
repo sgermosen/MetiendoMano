@@ -1,0 +1,116 @@
+﻿@model SGC_MVC.Models.User
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>User</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.status)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.username)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.password)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.password)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.activeKey)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.activeKey)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lastVisitAt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lastVisitAt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.superUser)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.superUser)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Department.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Department.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Company.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Company.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.createDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.createDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.updateDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.updateDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.User2.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User2.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Position.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Position.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.imageUrl)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.imageUrl)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

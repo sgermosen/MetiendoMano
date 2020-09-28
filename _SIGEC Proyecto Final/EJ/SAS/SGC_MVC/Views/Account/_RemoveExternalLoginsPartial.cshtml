@@ -1,0 +1,34 @@
+@model ICollection<SGC_MVC.Models.ExternalLogin>
+
+@if (Model.Count > 0)
+{
+    <h3>Inicios de sesi&otilde;n externa registrados</h3>
+    <table class="eis_table table normalTable">
+        <tbody>
+        @foreach (SGC_MVC.Models.ExternalLogin externalLogin in Model)
+        {
+            <tr>
+                <td>@externalLogin.ProviderDisplayName</td>
+                <td>
+                    @if (ViewBag.ShowRemoveButton)
+                    {
+                        using (Html.BeginForm("Disassociate", "Account"))
+                        {
+                            @Html.AntiForgeryToken()
+                            <fieldset>
+                                @Html.Hidden("provider", externalLogin.Provider)
+                                @Html.Hidden("providerUserId", externalLogin.ProviderUserId)
+                                <input type="submit" value="Remove" title="Quitar este @externalLogin.ProviderDisplayName credencial de su cuenta" />
+                            </fieldset>
+                        }
+                    }
+                    else
+                    {
+                        @: &nbsp;
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,149 @@
+@model IEnumerable<SGC_MVC.Models.Document>
+
+@{
+    string Label = new SGC_MVC.Helpers.MenuAuthorize().getMenuLabel(Request);
+    ViewBag.Title = Label + " - Inicio";
+    string rules = "";
+    SGC_MVC.Models.Document itemFilter = Model.FirstOrDefault();
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">@Label</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div id="filterPanel" class="dn">
+        <form class="standard_form fluid_wrap">
+            <fieldset>
+                <legend></legend>
+                <ul class="form_items_container col-lg-12">
+                    <li>
+                        @Html.LabelFor(model => itemFilter.title)
+                        <input type="text" value="" id="ftitle" class="col-lg-12 form-control" />
+                    </li>
+                    <li>
+                        @Html.LabelFor(model => itemFilter.version)
+                        <input type="text" value="" id="fVersion" class="col-lg-12 form-control" />
+                    </li>
+                    <li>
+                        @Html.DisplayName("Normas Aplicables")
+                        <input type="text" value="" id="fNormas" class="col-lg-12 form-control" />
+                    </li>
+                    <li>
+                        @Html.Label("Columnas Visibles")
+                    </li>
+                    <li>
+                        @Html.DisplayNameFor(model => model.title)
+                        <input type="checkbox" checked="checked" value="0" class="showColums" />
+                    </li>
+                    <li>
+                        @Html.DisplayNameFor(model => model.version)
+                        <input type="checkbox" checked="checked" value="1" class="showColums" />
+                    </li>
+                    <li>
+                        @Html.DisplayName("Normas Aplicables")
+                        <input type="checkbox" checked="checked" value="2" class="showColums" />
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+    </div>
+    <div class="drag_container_title">
+        <h2>@Label de la aplicación</h2>
+        <ul class="drag_container_buttons">
+            <li>
+                <a class="setting">Settings</a>
+            </li>
+        </ul>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        <ul class="form_items_container col-lg-4 pr0 fr">
+            <li>
+                <p>
+                    @Html.ActionLink("Agregar", "Create", null, new { @class = "button_add btstyles col-lg-5 fr" })
+                </p>
+            </li>
+        </ul>
+        <table class="eis_table table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.version)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Rules)
+                    </th>
+                    <th>
+                        Opciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4">Cargando información desde el servidor.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--end drag_container_the_content_area-->
+    
+</div>
+<!--end drag_and_drop_container-->
+
+@section Scripts {
+    <script type="text/javascript">
+        myTable = $('.eis_table').dataTable({
+            'bProcessing': true,
+            "bServerSide": true,
+            "sPaginationType": "full_numbers",
+            "oLanguage": oLanguage,
+            'sAjaxSource':
+                "@Url.Action("data", "Home")"
+                + "?tableName=vw_manual" +
+                "&colums=title,Version,Normas" +
+                "&wherePlus=ID=ID" +
+                "&companyRules=1" +
+                "&options=edit(Manual,Edit);add(Manual,Details);delete(Manual,Delete)",
+            "fnServerParams": function (aoData) {
+                var Fvalues = $("#ftitle").val() + "&" + $("#fVersion").val() + "&" + $("#fNormas").val();
+
+                aoData.push({ name: "ffColumns", value: "title(Like '%value%'),Version(Like '%value%'),Normas(Like '%value%')" });
+                aoData.push({ name: "ffValues", value: Fvalues });
+            }
+        }).fnSetFilteringDelay(500);
+
+        $('.setting').click(function () {
+            $('#filterPanel').dialog("open");
+        });
+
+        $('#filterPanel').dialog({
+            autoOpen: false, width: 540, height: 400,
+            resizable: false, modal: true, title: "Filtros",
+            buttons: {
+                "Ok": function () {
+                    myTable.fnDraw();
+                    $(".showColums").each(function (idx) {
+                        if (!$(this).prop("checked")) {
+                            fnShowHide(myTable, $(this).val(), false);
+                        } else {
+                            fnShowHide(myTable, $(this).val(), true);
+                        }
+                    })
+                    $(this).dialog("close");
+                },
+                "Cancelar": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+    </script>
+
+    <script src="~/Scripts/DataTableClient.js"></script>
+}

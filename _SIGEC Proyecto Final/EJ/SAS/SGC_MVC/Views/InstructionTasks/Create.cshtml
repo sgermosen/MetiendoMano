@@ -1,0 +1,62 @@
+﻿@model SGC_MVC.Models.Task
+@using SGC_MVC.CustomCode; 
+ @{ 
+ ViewBag.Title = "Tareas - Crear";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Registrar nueva tarea</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Datos de la tarea a registrar</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "standard_form fluid_wrap" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend></legend>
+                @Html.HiddenFor(model => model.workID)
+                @Html.HiddenFor(model => model.processID)
+                @Html.HiddenFor(model => model.ruleID)
+
+                <ul class="form_items_container col-lg-6 pl0">
+                    <li  >
+                        @Html.LabelForR(model => model.description)
+                        @Html.TextAreaFor(model => model.description, new { @class="form-control col-lg-12" })
+                        @Html.ValidationMessageFor(model => model.description)
+                    </li>
+
+                    <li  >
+                        @Html.LabelForR(model => model.howTo)
+                        @Html.TextAreaFor(model => model.howTo, new { @class="form-control col-lg-12" })
+                        @Html.ValidationMessageFor(model => model.howTo)
+                    </li>
+
+                    <li  >
+                        @Html.LabelForR(model => model.whyDo)
+                        @Html.TextAreaFor(model => model.whyDo, new { @class="form-control col-lg-12" })
+                        @Html.ValidationMessageFor(model => model.whyDo)
+                    </li>
+
+                    <li>
+                        <div class="form_items_container col-lg-8 pl0">
+                            <p>
+                                <input type="submit" value="Guardar" class="button_save btstyles col-lg-5" />
+                                @Html.ActionLink("Cancelar", "Edit", "InstructionWorks", new { id = Model.workID }, new { @class="button_cancel btstyles col-lg-5" })
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </fieldset>
+        }
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->

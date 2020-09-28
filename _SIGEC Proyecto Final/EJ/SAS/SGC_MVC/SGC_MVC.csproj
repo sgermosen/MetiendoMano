@@ -1,0 +1,1040 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{88941393-417C-4113-B7FB-B0C044D9FDA8}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SGC_MVC</RootNamespace>
+    <AssemblyName>SGC_MVC</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Calabonga.Mvc.PagedListExt">
+      <HintPath>..\packages\PagedListExt.Mvc4.1.2.1\lib\net45\Calabonga.Mvc.PagedListExt.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions">
+      <HintPath>..\packages\DataAnnotationsExtensions.1.1.0.0\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions.ClientValidation">
+      <HintPath>..\packages\DataAnnotationsExtensions.MVC3.1.1.0.0\lib\NETFramework40\DataAnnotationsExtensions.ClientValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcCheckBoxList">
+      <HintPath>..\packages\MvcCheckBoxList.1.4.4.4\lib\net45\MvcCheckBoxList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.16.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.3.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\packages\RazorJS.0.4.3\lib\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorJS">
+      <HintPath>..\packages\RazorJS.0.4.3\lib\RazorJS.dll</HintPath>
+    </Reference>
+    <Reference Include="Simple.ImageResizer">
+      <HintPath>..\packages\Simple.ImageResizer.2.0.1\lib\net40\Simple.ImageResizer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.2.0.0\lib\NETFramework40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.0.3.12153\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Start\WebSecurityConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BaseLegalController.cs" />
+    <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\DocTypeController.cs" />
+    <Compile Include="Controllers\DocumentController.cs" />
+    <Compile Include="Controllers\FormsController.cs" />
+    <Compile Include="Controllers\GlossaryController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstructionTasksController.cs" />
+    <Compile Include="Controllers\InstructionWorksController.cs" />
+    <Compile Include="Controllers\ManualController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\ObjectivesController.cs" />
+    <Compile Include="Controllers\PermissionsController.cs" />
+    <Compile Include="Controllers\PlanController.cs" />
+    <Compile Include="Controllers\PoliciesController.cs" />
+    <Compile Include="Controllers\ProceduresController.cs" />
+    <Compile Include="Controllers\ProcessController.cs" />
+    <Compile Include="Controllers\PurposeController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\RulesController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
+    <Compile Include="Controllers\SubMenuController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\UnauthorizeController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="CustomCode\CultureHelper.cs" />
+    <Compile Include="CustomCode\EISDataTables.cs" />
+    <Compile Include="CustomCode\ControllerActionProvider.cs" />
+    <Compile Include="CustomCode\CustomAuthorize.cs" />
+    <Compile Include="CustomCode\CustomValidations.cs" />
+    <Compile Include="CustomCode\FileSizeAttribute.cs" />
+    <Compile Include="CustomCode\FileTypesAttribute.cs" />
+    <Compile Include="CustomCode\Helper.cs" />
+    <Compile Include="CustomCode\IsMenuAttribute.cs" />
+    <Compile Include="CustomCode\IsViewAttribute.cs" />
+    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Action.cs" />
+    <Compile Include="Models\Advertisement.cs" />
+    <Compile Include="Models\Audit.cs" />
+    <Compile Include="Models\AuditAuditor.cs" />
+    <Compile Include="Models\AuditAuditorRole.cs" />
+    <Compile Include="Models\AuditMeeting.cs" />
+    <Compile Include="Models\AuditMeetingParticipant.cs" />
+    <Compile Include="Models\AuditPlan.cs" />
+    <Compile Include="Models\AuditPlanAuditor.cs" />
+    <Compile Include="Models\AuditPlanResponsible.cs" />
+    <Compile Include="Models\AuditProcess.cs" />
+    <Compile Include="Models\AuditStage.cs" />
+    <Compile Include="Models\AuditType.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Controller.cs" />
+    <Compile Include="Models\Dashboard.cs" />
+    <Compile Include="Models\DashboardItem.cs" />
+    <Compile Include="Models\DeashboardItem.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\DocumentStatu.cs" />
+    <Compile Include="Models\DocumentType.cs" />
+    <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\EntityType.cs" />
+    <Compile Include="Models\FieldType.cs" />
+    <Compile Include="Models\Form.cs" />
+    <Compile Include="Models\FormField.cs" />
+    <Compile Include="Models\FormFieldOption.cs" />
+    <Compile Include="Models\FormRecord.cs" />
+    <Compile Include="Models\Glossary.cs" />
+    <Compile Include="Models\HistDocument.cs" />
+    <Compile Include="Models\HistForm.cs" />
+    <Compile Include="Models\HistInstructionWork.cs" />
+    <Compile Include="Models\HistPlan.cs" />
+    <Compile Include="Models\HistPoll.cs" />
+    <Compile Include="Models\HistProcedure.cs" />
+    <Compile Include="Models\HistProcess.cs" />
+    <Compile Include="Models\HistRule.cs" />
+    <Compile Include="Models\Indicator.cs" />
+    <Compile Include="Models\Infrastructure.cs" />
+    <Compile Include="Models\InstructionWork.cs" />
+    <Compile Include="Models\Mapping\ActionMap.cs" />
+    <Compile Include="Models\Mapping\AdvertisementMap.cs" />
+    <Compile Include="Models\Mapping\AuditAuditorMap.cs" />
+    <Compile Include="Models\Mapping\AuditAuditorRoleMap.cs" />
+    <Compile Include="Models\Mapping\AuditMap.cs" />
+    <Compile Include="Models\Mapping\AuditMeetingMap.cs" />
+    <Compile Include="Models\Mapping\AuditMeetingParticipantMap.cs" />
+    <Compile Include="Models\Mapping\AuditPlanAuditorMap.cs" />
+    <Compile Include="Models\Mapping\AuditPlanMap.cs" />
+    <Compile Include="Models\Mapping\AuditPlanResponsibleMap.cs" />
+    <Compile Include="Models\Mapping\AuditPlanTypeMap.cs" />
+    <Compile Include="Models\Mapping\AuditProcessMap.cs" />
+    <Compile Include="Models\Mapping\AuditStageMap.cs" />
+    <Compile Include="Models\Mapping\AuditTypeMap.cs" />
+    <Compile Include="Models\Mapping\CategoryMap.cs" />
+    <Compile Include="Models\Mapping\CompanyMap.cs" />
+    <Compile Include="Models\Mapping\ControllerMap.cs" />
+    <Compile Include="Models\Mapping\DashboardItemMap.cs" />
+    <Compile Include="Models\Mapping\DashboardMap.cs" />
+    <Compile Include="Models\Mapping\DeashboardItemMap.cs" />
+    <Compile Include="Models\Mapping\DepartmentMap.cs" />
+    <Compile Include="Models\Mapping\DocumentMap.cs" />
+    <Compile Include="Models\Mapping\DocumentStatuMap.cs" />
+    <Compile Include="Models\Mapping\DocumentTypeMap.cs" />
+    <Compile Include="Models\Mapping\EntityMap.cs" />
+    <Compile Include="Models\Mapping\EntityTypeMap.cs" />
+    <Compile Include="Models\Mapping\FieldTypeMap.cs" />
+    <Compile Include="Models\Mapping\FormFieldMap.cs" />
+    <Compile Include="Models\Mapping\FormFieldOptionMap.cs" />
+    <Compile Include="Models\Mapping\FormMap.cs" />
+    <Compile Include="Models\Mapping\FormRecordMap.cs" />
+    <Compile Include="Models\Mapping\GlossaryMap.cs" />
+    <Compile Include="Models\Mapping\HistDocumentMap.cs" />
+    <Compile Include="Models\Mapping\HistFormMap.cs" />
+    <Compile Include="Models\Mapping\HistInstructionWorkMap.cs" />
+    <Compile Include="Models\Mapping\HistPlanMap.cs" />
+    <Compile Include="Models\Mapping\HistPollMap.cs" />
+    <Compile Include="Models\Mapping\HistProcedureMap.cs" />
+    <Compile Include="Models\Mapping\HistProcessMap.cs" />
+    <Compile Include="Models\Mapping\HistRuleMap.cs" />
+    <Compile Include="Models\Mapping\IndicatorMap.cs" />
+    <Compile Include="Models\Mapping\InfrastructureMap.cs" />
+    <Compile Include="Models\Mapping\InstructionWorkMap.cs" />
+    <Compile Include="Models\Mapping\MenuMap.cs" />
+    <Compile Include="Models\Mapping\ObjectiveResourceMap.cs" />
+    <Compile Include="Models\Mapping\OptionMap.cs" />
+    <Compile Include="Models\Mapping\PeriodMap.cs" />
+    <Compile Include="Models\Mapping\PlanMap.cs" />
+    <Compile Include="Models\Mapping\PlanObjectiveMap.cs" />
+    <Compile Include="Models\Mapping\PollMap.cs" />
+    <Compile Include="Models\Mapping\PositionMap.cs" />
+    <Compile Include="Models\Mapping\ProcedureActivityMap.cs" />
+    <Compile Include="Models\Mapping\ProcedureMap.cs" />
+    <Compile Include="Models\Mapping\ProcessDocumentMap.cs" />
+    <Compile Include="Models\Mapping\ProcessMap.cs" />
+    <Compile Include="Models\Mapping\ProcessTypeMap.cs" />
+    <Compile Include="Models\Mapping\QuestionMap.cs" />
+    <Compile Include="Models\Mapping\QuestionTypeMap.cs" />
+    <Compile Include="Models\Mapping\RuleMap.cs" />
+    <Compile Include="Models\Mapping\StatusMap.cs" />
+    <Compile Include="Models\Mapping\SubcategoryMap.cs" />
+    <Compile Include="Models\Mapping\SubMenuMap.cs" />
+    <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\Mapping\TaskMap.cs" />
+    <Compile Include="Models\Mapping\TemplateFieldMap.cs" />
+    <Compile Include="Models\Mapping\TemplateFieldTypeMap.cs" />
+    <Compile Include="Models\Mapping\TemplateMap.cs" />
+    <Compile Include="Models\Mapping\UserIndexColumMap.cs" />
+    <Compile Include="Models\Mapping\UserMap.cs" />
+    <Compile Include="Models\Mapping\UserTaskMap.cs" />
+    <Compile Include="Models\Mapping\ViewMap.cs" />
+    <Compile Include="Models\Mapping\vs_glossaryMap.cs" />
+    <Compile Include="Models\Mapping\vw_BaseLegalMap.cs" />
+    <Compile Include="Models\Mapping\vw_IndcicatorMap.cs" />
+    <Compile Include="Models\Mapping\vw_InstructionWorksMap.cs" />
+    <Compile Include="Models\Mapping\vw_manualMap.cs" />
+    <Compile Include="Models\Mapping\vw_objetivesMap.cs" />
+    <Compile Include="Models\Mapping\vw_PlanMap.cs" />
+    <Compile Include="Models\Mapping\vw_policiesMap.cs" />
+    <Compile Include="Models\Mapping\vw_ProcedureMap.cs" />
+    <Compile Include="Models\Mapping\vw_processMap.cs" />
+    <Compile Include="Models\Mapping\Webpages_MembershipMap.cs" />
+    <Compile Include="Models\Mapping\Webpages_OAuthMembershipMap.cs" />
+    <Compile Include="Models\Mapping\Webpages_RolesMap.cs" />
+    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\ObjectiveResource.cs" />
+    <Compile Include="Models\Option.cs" />
+    <Compile Include="Models\PartialAnnotations\action.cs" />
+    <Compile Include="Models\PartialAnnotations\category.cs" />
+    <Compile Include="Models\PartialAnnotations\company.cs" />
+    <Compile Include="Models\PartialAnnotations\company_rules.cs" />
+    <Compile Include="Models\PartialAnnotations\controller.cs" />
+    <Compile Include="Models\PartialAnnotations\department.cs" />
+    <Compile Include="Models\PartialAnnotations\document.cs" />
+    <Compile Include="Models\PartialAnnotations\document_type.cs" />
+    <Compile Include="Models\PartialAnnotations\entity.cs" />
+    <Compile Include="Models\PartialAnnotations\entity_type.cs" />
+    <Compile Include="Models\PartialAnnotations\FieldType.cs" />
+    <Compile Include="Models\PartialAnnotations\Form.cs" />
+    <Compile Include="Models\PartialAnnotations\FormField.cs" />
+    <Compile Include="Models\PartialAnnotations\general_company.cs" />
+    <Compile Include="Models\PartialAnnotations\glossary.cs" />
+    <Compile Include="Models\PartialAnnotations\HistDocument.cs" />
+    <Compile Include="Models\PartialAnnotations\HistForm.cs" />
+    <Compile Include="Models\PartialAnnotations\HistInstructionWork.cs" />
+    <Compile Include="Models\PartialAnnotations\HistPlan.cs" />
+    <Compile Include="Models\PartialAnnotations\HistProcedure.cs" />
+    <Compile Include="Models\PartialAnnotations\HistProcess.cs" />
+    <Compile Include="Models\PartialAnnotations\hist_rules.cs" />
+    <Compile Include="Models\PartialAnnotations\indicator.cs" />
+    <Compile Include="Models\PartialAnnotations\infrastructure.cs" />
+    <Compile Include="Models\PartialAnnotations\instructionWork.cs" />
+    <Compile Include="Models\PartialAnnotations\instruction_work_task.cs" />
+    <Compile Include="Models\PartialAnnotations\menu.cs" />
+    <Compile Include="Models\PartialAnnotations\objective.cs" />
+    <Compile Include="Models\PartialAnnotations\period.cs" />
+    <Compile Include="Models\PartialAnnotations\Plan.cs" />
+    <Compile Include="Models\PartialAnnotations\PlanObjective.cs" />
+    <Compile Include="Models\PartialAnnotations\PlanResource.cs" />
+    <Compile Include="Models\PartialAnnotations\procedure.cs" />
+    <Compile Include="Models\PartialAnnotations\ProcedureActivity.cs" />
+    <Compile Include="Models\PartialAnnotations\procedure_documents.cs" />
+    <Compile Include="Models\PartialAnnotations\procedure_information.cs" />
+    <Compile Include="Models\PartialAnnotations\process.cs" />
+    <Compile Include="Models\PartialAnnotations\ProcessDocument.cs" />
+    <Compile Include="Models\PartialAnnotations\process_entities.cs" />
+    <Compile Include="Models\PartialAnnotations\process_resources.cs" />
+    <Compile Include="Models\PartialAnnotations\rule.cs" />
+    <Compile Include="Models\PartialAnnotations\SASContext.cs" />
+    <Compile Include="Models\PartialAnnotations\status.cs" />
+    <Compile Include="Models\PartialAnnotations\subcategory.cs" />
+    <Compile Include="Models\PartialAnnotations\submenu.cs" />
+    <Compile Include="Models\PartialAnnotations\task.cs" />
+    <Compile Include="Models\PartialAnnotations\user.cs" />
+    <Compile Include="Models\PartialAnnotations\UserTask.cs" />
+    <Compile Include="Models\PartialAnnotations\webpages_Roles.cs" />
+    <Compile Include="Models\Period.cs" />
+    <Compile Include="Models\Plan.cs" />
+    <Compile Include="Models\PlanObjective.cs" />
+    <Compile Include="Models\Poll.cs" />
+    <Compile Include="Models\Position.cs" />
+    <Compile Include="Models\Procedure.cs" />
+    <Compile Include="Models\ProcedureActivity.cs" />
+    <Compile Include="Models\Process.cs" />
+    <Compile Include="Models\ProcessDocument.cs" />
+    <Compile Include="Models\ProcessType.cs" />
+    <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\QuestionType.cs" />
+    <Compile Include="Models\Rule.cs" />
+    <Compile Include="Models\SASContext.cs" />
+    <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\Subcategory.cs" />
+    <Compile Include="Models\SubMenu.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\Template.cs" />
+    <Compile Include="Models\TemplateField.cs" />
+    <Compile Include="Models\TemplateFieldType.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserIndexColum.cs" />
+    <Compile Include="Models\UserTask.cs" />
+    <Compile Include="Models\View.cs" />
+    <Compile Include="Models\ViewModels\CompanyViewModel.cs" />
+    <Compile Include="Models\ViewModels\DocumentInnerViewModel.cs" />
+    <Compile Include="Models\ViewModels\DocumentCreateViewModel.cs" />
+    <Compile Include="Models\ViewModels\DocumentEditViewModel.cs" />
+    <Compile Include="Models\ViewModels\FormViewModel.cs" />
+    <Compile Include="Models\ViewModels\GlossaryViewModel.cs" />
+    <Compile Include="Models\ViewModels\JqueryDataTableParamModel.cs" />
+    <Compile Include="Models\ViewModels\LegalBasisViewModel.cs" />
+    <Compile Include="Models\ViewModels\ManualViewModel.cs" />
+    <Compile Include="Models\ViewModels\ObjectivesIndexViewModel.cs" />
+    <Compile Include="Models\ViewModels\ObjectivesViewModel.cs" />
+    <Compile Include="Models\ViewModels\PlanViewModel.cs" />
+    <Compile Include="Models\ViewModels\PurposeEditViewModel.cs" />
+    <Compile Include="Models\ViewModels\PurposeViewModel.cs" />
+    <Compile Include="Models\ViewModels\SubDocumentEditViewModel.cs" />
+    <Compile Include="Models\vs_glossary.cs" />
+    <Compile Include="Models\vw_BaseLegal.cs" />
+    <Compile Include="Models\vw_Indcicator.cs" />
+    <Compile Include="Models\vw_InstructionWorks.cs" />
+    <Compile Include="Models\vw_manual.cs" />
+    <Compile Include="Models\vw_objetives.cs" />
+    <Compile Include="Models\vw_Plan.cs" />
+    <Compile Include="Models\vw_policies.cs" />
+    <Compile Include="Models\vw_Procedure.cs" />
+    <Compile Include="Models\vw_process.cs" />
+    <Compile Include="Models\Webpages_Membership.cs" />
+    <Compile Include="Models\Webpages_OAuthMembership.cs" />
+    <Compile Include="Models\Webpages_Roles.cs" />
+    <Compile Include="Old\CustomAuthorize.cs" />
+    <Compile Include="Helpers\MenuAuthorize.cs" />
+    <Compile Include="Models\ViewModels\PermissionsEditModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.es.resx</DependentUpon>
+    </Compile>
+    <Content Include="Scripts\autoNumeric.js" />
+    <Content Include="Scripts\Layout.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\chosen\chosen-sprite.png" />
+    <Content Include="Content\chosen\chosen.css" />
+    <Content Include="Content\DataTables-1.9.4\docs\media\css\doc.css" />
+    <Content Include="Content\DataTables-1.9.4\docs\media\css\shCore.css" />
+    <Content Include="Content\DataTables-1.9.4\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Content\DataTables-1.9.4\docs\media\images\arrow.jpg" />
+    <Content Include="Content\DataTables-1.9.4\docs\media\images\arrow.png" />
+    <Content Include="Content\DataTables-1.9.4\docs\media\images\extended.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\AutoFill\media\css\AutoFill.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\AutoFill\media\docs\media\css\doc.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\AutoFill\media\docs\media\css\shCore.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\AutoFill\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\AutoFill\media\docs\media\images\arrow.jpg" />
+    <Content Include="Content\DataTables-1.9.4\extras\AutoFill\media\docs\media\images\arrow.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\AutoFill\media\docs\media\images\extended.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\AutoFill\media\images\filler.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\ColReorder\media\css\ColReorder.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\ColReorder\media\docs\media\css\doc.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\ColReorder\media\docs\media\css\shCore.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\ColReorder\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\ColReorder\media\docs\media\images\arrow.jpg" />
+    <Content Include="Content\DataTables-1.9.4\extras\ColReorder\media\docs\media\images\arrow.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\ColReorder\media\docs\media\images\extended.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\ColReorder\media\images\insert.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\ColVis\media\css\ColVis.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\ColVis\media\css\ColVisAlt.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\ColVis\media\docs\media\css\doc.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\ColVis\media\docs\media\css\shCore.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\ColVis\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\ColVis\media\docs\media\images\arrow.jpg" />
+    <Content Include="Content\DataTables-1.9.4\extras\ColVis\media\docs\media\images\arrow.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\ColVis\media\docs\media\images\extended.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\ColVis\media\images\button.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\FixedColumns\docs\media\css\doc.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\FixedColumns\docs\media\css\shCore.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\FixedColumns\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\FixedColumns\docs\media\images\arrow.jpg" />
+    <Content Include="Content\DataTables-1.9.4\extras\FixedColumns\docs\media\images\arrow.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\FixedColumns\docs\media\images\extended.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\Scroller\media\css\dataTables.scroller.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\Scroller\media\docs\media\css\doc.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\Scroller\media\docs\media\css\shCore.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\Scroller\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\Scroller\media\docs\media\images\arrow.jpg" />
+    <Content Include="Content\DataTables-1.9.4\extras\Scroller\media\docs\media\images\arrow.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\Scroller\media\docs\media\images\extended.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\Scroller\media\images\loading-background.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\css\TableTools.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\css\TableTools_JUI.css" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\background.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\collection.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\collection_hover.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\copy.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\copy_hover.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\csv.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\csv_hover.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\pdf.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\pdf_hover.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\print.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\print_hover.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\xls.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\xls_hover.png" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\swf\copy_csv_xls.swf" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="Content\DataTables-1.9.4\media\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTables-1.9.4\media\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\DataTables-1.9.4\media\images\back_disabled.png" />
+    <Content Include="Content\DataTables-1.9.4\media\images\back_enabled.png" />
+    <Content Include="Content\DataTables-1.9.4\media\images\back_enabled_hover.png" />
+    <Content Include="Content\DataTables-1.9.4\media\images\favicon.ico" />
+    <Content Include="Content\DataTables-1.9.4\media\images\forward_disabled.png" />
+    <Content Include="Content\DataTables-1.9.4\media\images\forward_enabled.png" />
+    <Content Include="Content\DataTables-1.9.4\media\images\forward_enabled_hover.png" />
+    <Content Include="Content\DataTables-1.9.4\media\images\sort_asc.png" />
+    <Content Include="Content\DataTables-1.9.4\media\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables-1.9.4\media\images\sort_both.png" />
+    <Content Include="Content\DataTables-1.9.4\media\images\sort_desc.png" />
+    <Content Include="Content\DataTables-1.9.4\media\images\sort_desc_disabled.png" />
+    <Content Include="Content\eis_framework.css" />
+    <Content Include="Content\jHtmlArea\jHtmlArea.ColorPickerMenu.css" />
+    <Content Include="Content\jHtmlArea\jHtmlArea.css" />
+    <Content Include="Content\jHtmlArea\jHtmlArea.png" />
+    <Content Include="Content\jHtmlArea\jHtmlArea_Toolbar_Group_BG.png" />
+    <Content Include="Content\jHtmlArea\jHtmlArea_Toolbar_Group__Btn_Select_BG.png" />
+    <Content Include="Content\jqte\jquery-te-1.4.0.css" />
+    <Content Include="Content\jqte\jquery-te.png" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\themes\base\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.menu.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.spinner.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\jquery.ui.tooltip.css" />
+    <Content Include="Content\themes\base\minified\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.menu.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.spinner.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\add.png" />
+    <Content Include="Images\arrow_menu_down_white_menu.png" />
+    <Content Include="Images\arrow_menu_right_white_menu.png" />
+    <Content Include="Images\arrow_menu_up_white_menu.png" />
+    <Content Include="Images\arrow_pagination_left.png" />
+    <Content Include="Images\arrow_pagination_right.png" />
+    <Content Include="Images\arrow_user_dow.png" />
+    <Content Include="Images\bt-add.png" />
+    <Content Include="Images\button_add.png" />
+    <Content Include="Images\button_back.png" />
+    <Content Include="Images\button_delete.png" />
+    <Content Include="Images\button_save.png" />
+    <Content Include="Images\button_warning.png" />
+    <Content Include="Images\containers_title_bg.png" />
+    <Content Include="Images\footer_icon_contact.png" />
+    <Content Include="Images\footer_icon_document.png" />
+    <Content Include="Images\footer_icon_support.png" />
+    <Content Include="Images\gray.png" />
+    <Content Include="Images\green.png" />
+    <Content Include="Images\greenbt_add_file.png" />
+    <Content Include="Images\icon_act_add.png" />
+    <Content Include="Images\icon_act_back.png" />
+    <Content Include="Images\icon_act_delete.png" />
+    <Content Include="Images\icon_act_edit.png" />
+    <Content Include="Images\icon_act_house.png" />
+    <Content Include="Images\icon_button_add.png" />
+    <Content Include="Images\icon_container_add.png" />
+    <Content Include="Images\icon_container_close.png" />
+    <Content Include="Images\icon_container_settings.png" />
+    <Content Include="Images\icon_top_logut.png" />
+    <Content Include="Images\icon_top_mail.png" />
+    <Content Include="Images\icon_top_support.png" />
+    <Content Include="Images\indicator_green.png" />
+    <Content Include="Images\indicator_red.png" />
+    <Content Include="Images\indicator_yellow.png" />
+    <Content Include="Images\input_text_bg.png" />
+    <Content Include="Images\logotipo.png" />
+    <Content Include="Images\logotipo_footer.png" />
+    <Content Include="Images\red.png" />
+    <Content Include="Images\tables_th_bg.png" />
+    <Content Include="Images\titles_botton_line.png" />
+    <Content Include="Images\trash_ico.png" />
+    <Content Include="Images\user_picture.png" />
+    <Content Include="Images\yellow.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
+    <Content Include="Scripts\DataTableClient.js" />
+    <Content Include="Scripts\DataTables-1.9.4\docs\media\js\doc.js" />
+    <Content Include="Scripts\DataTables-1.9.4\docs\media\js\jquery.js" />
+    <Content Include="Scripts\DataTables-1.9.4\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\DataTables-1.9.4\docs\media\js\shCore.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\AutoFill\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\AutoFill\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\AutoFill\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\AutoFill\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\AutoFill\media\js\AutoFill.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\AutoFill\media\js\AutoFill.min.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\AutoFill\media\js\AutoFill.min.js.gz" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\ColReorder\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\ColReorder\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\ColReorder\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\ColReorder\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\ColReorder\media\js\ColReorder.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\ColReorder\media\js\ColReorder.min.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\ColReorder\media\js\ColReorder.min.js.gz" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\ColVis\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\ColVis\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\ColVis\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\ColVis\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\ColVis\media\js\ColVis.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\ColVis\media\js\ColVis.min.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\ColVis\media\js\ColVis.min.js.gz" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\FixedColumns\docs\media\js\doc.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\FixedColumns\docs\media\js\jquery.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\FixedColumns\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\FixedColumns\docs\media\js\shCore.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\FixedColumns\media\js\FixedColumns.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\FixedColumns\media\js\FixedColumns.min.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\FixedColumns\media\js\FixedColumns.min.js.gz" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\Scroller\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\Scroller\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\Scroller\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\Scroller\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\Scroller\media\js\dataTables.scroller.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\Scroller\media\js\dataTables.scroller.min.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\Scroller\media\js\dataTables.scroller.min.js.gz" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\TableTools\media\js\TableTools.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\TableTools\media\js\TableTools.min.js" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\TableTools\media\js\TableTools.min.js.gz" />
+    <Content Include="Scripts\DataTables-1.9.4\extras\TableTools\media\js\ZeroClipboard.js" />
+    <Content Include="Scripts\DataTables-1.9.4\media\js\jquery.dataTables.js" />
+    <Content Include="Scripts\DateValidationRules.js" />
+    <Content Include="Scripts\FileExtensionsRules.js" />
+    <Content Include="Scripts\FileSizeValidationRules.js" />
+    <Content Include="Scripts\HHHjquery-1.9.1.js" />
+    <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Context.tt" />
+    <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Entity.tt" />
+    <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Mapping.tt" />
+    <Content Include="Images\iconos.zip" />
+    <Content Include="includes\fonts\Lato-Bold.ttf" />
+    <Content Include="includes\fonts\Lato-Light.ttf" />
+    <Content Include="includes\fonts\Lato-Regular_0.ttf" />
+    <Content Include="includes\fonts\OpenSans-Bold.ttf" />
+    <Content Include="includes\fonts\OpenSans-Regular.ttf" />
+    <Content Include="includes\fonts\OpenSans-Semibold.ttf" />
+    <None Include="Properties\PublishProfiles\SAS.pubxml" />
+    <None Include="Properties\PublishProfiles\SAS2.pubxml" />
+    <EmbeddedResource Include="Properties\Resources.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.es.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Scripts\jHtmlArea-0.7.5-vsdoc.js" />
+    <Content Include="Scripts\jHtmlArea-0.7.5.js" />
+    <None Include="Scripts\jHtmlArea-0.7.5.min-vsdoc.js" />
+    <Content Include="Scripts\jHtmlArea-0.7.5.min.js" />
+    <Content Include="Scripts\jHtmlArea.ColorPickerMenu-0.7.0.js" />
+    <Content Include="Scripts\jHtmlArea.ColorPickerMenu-0.7.0.min.js" />
+    <Content Include="Scripts\jHtmlTemplating.js" />
+    <Content Include="Scripts\jquery-1.8.3.js" />
+    <Content Include="Scripts\jquery-te-1.4.0.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.min.js" />
+    <Content Include="Scripts\DataTables-1.9.4\media\js\jquery.dataTables.rowReordering.js" />
+    <Content Include="Scripts\jquery.mask.js" />
+    <Content Include="Scripts\jquery.mask.min.js" />
+    <Content Include="Scripts\jquery.maskedinput.js" />
+    <Content Include="Scripts\jquery.maskedinput.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\JqueryBrowser.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\mega_menu.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\PermissionsHandlers.js" />
+    <Content Include="Scripts\RulesScripts.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Content\DataTables-1.9.4\media\images\Sorting icons.psd" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\psd\printer.psd" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\psd\file_types.psd" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\psd\copy document.psd" />
+    <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\psd\collection.psd" />
+    <Content Include="Uploads\CompanyLogos\928b4a63-3fcf-4af8-b419-89e8e1119cad.png" />
+    <Content Include="Uploads\ev-trust.png" />
+    <Content Include="Uploads\UserImages\defaultImage.png" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Home\ControllersTest.cshtml" />
+    <Content Include="Views\Unauthorize\ErrorUnauthorized.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Roles\Details.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Delete.cshtml" />
+    <Content Include="Views\Permissions\Edit.cshtml" />
+    <Content Include="Views\Department\Index.cshtml" />
+    <Content Include="Views\Department\Details.cshtml" />
+    <Content Include="Views\Department\Create.cshtml" />
+    <Content Include="Views\Department\Edit.cshtml" />
+    <Content Include="Views\Department\Delete.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
+    <Content Include="Views\Company\Details.cshtml" />
+    <Content Include="Views\Company\Create.cshtml" />
+    <Content Include="Views\Company\Edit.cshtml" />
+    <Content Include="Views\Company\Delete.cshtml" />
+    <Content Include="Views\Permissions\GetMenus.cshtml" />
+    <Content Include="Views\Status\Index.cshtml" />
+    <Content Include="Views\Status\Details.cshtml" />
+    <Content Include="Views\Status\Create.cshtml" />
+    <Content Include="Views\Status\Edit.cshtml" />
+    <Content Include="Views\Status\Delete.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Rules\Index.cshtml" />
+    <Content Include="Views\Rules\Details.cshtml" />
+    <Content Include="Views\Rules\Create.cshtml" />
+    <Content Include="Views\Rules\Edit.cshtml" />
+    <Content Include="Views\Rules\Delete.cshtml" />
+    <Content Include="Views\Rules\RulesList.cshtml" />
+    <Content Include="Views\DocType\Index.cshtml" />
+    <Content Include="Views\DocType\Details.cshtml" />
+    <Content Include="Views\DocType\Create.cshtml" />
+    <Content Include="Views\DocType\Edit.cshtml" />
+    <Content Include="Views\DocType\Delete.cshtml" />
+    <Content Include="Views\Document\Index.cshtml" />
+    <Content Include="Views\Document\Details.cshtml" />
+    <Content Include="Views\Document\Create.cshtml" />
+    <Content Include="Views\Document\Edit.cshtml" />
+    <Content Include="Views\Document\Delete.cshtml" />
+    <Content Include="Views\BaseLegal\Create.cshtml" />
+    <Content Include="Views\BaseLegal\Index.cshtml" />
+    <Content Include="Views\BaseLegal\Edit.cshtml" />
+    <Content Include="Views\BaseLegal\Delete.cshtml" />
+    <Content Include="Views\Glossary\Index.cshtml" />
+    <Content Include="Views\Glossary\Details.cshtml" />
+    <Content Include="Views\Glossary\Create.cshtml" />
+    <Content Include="Views\Glossary\Edit.cshtml" />
+    <Content Include="Views\Glossary\Delete.cshtml" />
+    <Content Include="Views\Purpose\Index.cshtml" />
+    <Content Include="Views\Purpose\Edit.cshtml" />
+    <Content Include="Views\Shared\PartialDialog.cshtml" />
+    <Content Include="Views\Objectives\Create.cshtml" />
+    <Content Include="Views\Objectives\Index.cshtml" />
+    <Content Include="Views\Policies\Index.cshtml" />
+    <Content Include="Views\Policies\Create.cshtml" />
+    <Content Include="Views\Manual\Create.cshtml" />
+    <Content Include="Views\Manual\Delete.cshtml" />
+    <Content Include="Views\Manual\Details.cshtml" />
+    <Content Include="Views\Manual\Edit.cshtml" />
+    <Content Include="Views\Manual\Index.cshtml" />
+    <Content Include="Views\Policies\Edit.cshtml" />
+    <Content Include="Views\Manual\CreateChild.cshtml" />
+    <Content Include="Views\Manual\EditChild.cshtml" />
+    <Content Include="Views\Policies\EditChild.cshtml" />
+    <Content Include="Views\Policies\DeleteChild.cshtml" />
+    <Content Include="Views\Policies\CreateChild.cshtml" />
+    <Content Include="Views\Manual\DeleteChild.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\Menu\Details.cshtml" />
+    <Content Include="Views\Menu\Create.cshtml" />
+    <Content Include="Views\Menu\Edit.cshtml" />
+    <Content Include="Views\Menu\Delete.cshtml" />
+    <Content Include="Views\Task\Create.cshtml" />
+    <Content Include="Views\Task\CreateChildTask.cshtml" />
+    <Content Include="Views\Task\Delete.cshtml" />
+    <Content Include="Views\Task\Details.cshtml" />
+    <Content Include="Views\Task\Edit.cshtml" />
+    <Content Include="Views\Task\Index.cshtml" />
+    <Content Include="Views\Task\EditChildTask.cshtml" />
+    <Content Include="Views\Task\DeleteChildTask.cshtml" />
+    <Content Include="Views\Menu\EditChild.cshtml" />
+    <Content Include="Views\Menu\DeleteChild.cshtml" />
+    <Content Include="Views\Menu\CreateChild.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\SubMenu\Create.cshtml" />
+    <Content Include="Views\SubMenu\Delete.cshtml" />
+    <Content Include="Views\SubMenu\Details.cshtml" />
+    <Content Include="Views\SubMenu\Edit.cshtml" />
+    <Content Include="Views\SubMenu\Index.cshtml" />
+    <Content Include="Views\Menu\admin.cshtml" />
+    <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\Clients\Create.cshtml" />
+    <Content Include="Views\Clients\Edit.cshtml" />
+    <Content Include="Views\Clients\Delete.cshtml" />
+    <Content Include="Views\Clients\Details.cshtml" />
+    <Content Include="Views\InstructionWorks\Index.cshtml" />
+    <Content Include="Views\InstructionWorks\Details.cshtml" />
+    <Content Include="Views\InstructionWorks\Create.cshtml" />
+    <Content Include="Views\Process\Index.cshtml" />
+    <Content Include="Views\Process\Details.cshtml" />
+    <Content Include="Views\Process\Create.cshtml" />
+    <Content Include="Views\Process\Edit.cshtml" />
+    <Content Include="Views\Process\Delete.cshtml" />
+    <Content Include="Views\InstructionTasks\Create.cshtml" />
+    <Content Include="Views\InstructionTasks\Edit.cshtml" />
+    <Content Include="Views\InstructionTasks\Delete.cshtml" />
+    <Content Include="Views\InstructionWorks\Edit.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\InstructionWorks\Delete.cshtml" />
+    <Content Include="Views\Procedures\Index.cshtml" />
+    <Content Include="Views\Procedures\Details.cshtml" />
+    <Content Include="Views\Procedures\Create.cshtml" />
+    <Content Include="Views\Procedures\Edit.cshtml" />
+    <Content Include="Views\Procedures\Delete.cshtml" />
+    <Content Include="Views\Process\AssociatedDocuments.cshtml" />
+    <Content Include="Views\Procedures\EditActivity.cshtml" />
+    <Content Include="Views\Objectives\Edit.cshtml" />
+    <Content Include="Views\Objectives\Delete.cshtml" />
+    <Content Include="Views\Policies\Delete.cshtml" />
+    <Content Include="Views\Account\EditAccount.cshtml" />
+    <Content Include="Views\Objectives\Details.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Process\EditAssociatedDocument.cshtml" />
+    <Content Include="Views\Process\DeleteAssociatedDocuments.cshtml" />
+    <Content Include="Views\Plan\Index.cshtml" />
+    <Content Include="Views\Plan\Details.cshtml" />
+    <Content Include="Views\Plan\Create.cshtml" />
+    <Content Include="Views\Plan\Edit.cshtml" />
+    <Content Include="Views\Plan\Delete.cshtml" />
+    <Content Include="Views\Plan\EditResource.cshtml" />
+    <Content Include="Views\Forms\Index.cshtml" />
+    <Content Include="Views\Plan\AddObjective.cshtml" />
+    <Content Include="Views\Plan\EditObjective.cshtml" />
+    <Content Include="Views\Plan\DeleteObjective.cshtml" />
+    <Content Include="Views\Forms\Create.cshtml" />
+    <Content Include="Views\Forms\Edit.cshtml" />
+    <Content Include="Views\Forms\AddField.cshtml" />
+    <Content Include="Views\Forms\EditField.cshtml" />
+    <Content Include="Views\Forms\PartialNumericField.cshtml" />
+    <Content Include="Views\Forms\Delete.cshtml" />
+    <Content Include="Views\Forms\DeleteField.cshtml" />
+    <Content Include="Views\Forms\PartialEmailField.cshtml" />
+    <Content Include="Views\Forms\PartialSimpleTextField.cshtml" />
+    <Content Include="Views\Forms\PartialCommentField.cshtml" />
+    <Content Include="Views\Forms\PartialDateField.cshtml" />
+    <Content Include="Views\Forms\PartialDropDownField.cshtml" />
+    <Content Include="Views\Forms\PartialMultiSelectField.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>7722</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54004/SAS</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

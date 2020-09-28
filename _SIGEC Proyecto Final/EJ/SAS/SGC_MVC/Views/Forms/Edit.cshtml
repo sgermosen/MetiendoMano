@@ -1,0 +1,168 @@
+﻿@model SGC_MVC.Models.ViewModels.FormViewModel
+
+@{
+    ViewBag.Title = "Formularios - Editar";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <h1 class="the_title">Actualizar información de Formulario</h1>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2>Datos del Formulario</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "standard_form fluid_wrap", id ="formP" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                @Html.HiddenFor(model => model.ID)
+                @Html.HiddenFor(model => model.submitVal)
+                @Html.HiddenFor(model => model.fieldId)
+                @Html.Hidden("validateUniq", "Form&Nombre")
+                @Html.Hidden("postUrl", Url.Action("Edit", "Forms", null))
+                <legend></legend>
+                <ul class="form_items_container col-lg-6 pl0">
+
+                    <li>
+                        @Html.LabelFor(model => model.ruleID)
+                        @Html.DropDownListFor(model => model.ruleID, null, string.Empty, new { @class = "form-control col-lg-12 dropdown" })
+                        @Html.ValidationMessageFor(model => model.ruleID)
+                    </li>
+                    <li>
+                        @Html.LabelFor(model => model.name)
+                        @Html.TextBoxFor(model => model.name, new { @class = "form-control col-lg-12" })
+                        @Html.ValidationMessageFor(model => model.name)
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-6 pr0">
+                    <li>
+                        @Html.LabelFor(model => model.processID)
+                        @Html.DropDownListFor(model => model.processID, null, string.Empty, new { @class = "form-control col-lg-12 dropdown" })
+                        @Html.ValidationMessageFor(model => model.processID)
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-12 pl0">
+                    <li>
+                        @Html.LabelFor(model => model.FormFields)
+                        <div class="form_items_container col-lg-4 pr0 fr">
+                            <input type="submit" class="btnSubmit fr button_add btstyles col-lg-5" value="Agregar" />
+                        </div>
+                        <table class="eis_table table normalTable">
+                            <thead>
+                                @{SGC_MVC.Models.FormField t = new SGC_MVC.Models.FormField();}
+                                <tr>
+                                    <th>@Html.DisplayNameFor(m => t.noOrder)</th>
+                                    <th>@Html.DisplayNameFor(m => t.question)</th>
+                                    <th>@Html.DisplayNameFor(m => t.fieldTypeID)</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.FormFields)
+                                {
+            
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.noOrder)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.question)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.FieldType.GetName)</td>
+                                        <td>
+                                            @Html.ActionLink("Editar", "EditField", "Forms", new { id = item.ID }, new { id = "edit", @class = "edit_link button_link" })
+                                            @Html.ActionLink("Eliminar", "DeleteField", "Forms", new { id = item.ID }, new { id = "delete", @class = "delete_link button_link" })
+                                        </td>
+                                    </tr>
+                
+                                }
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+                <ul class="form_items_container col-lg-8 pl0">
+                    <li>
+                        <div class="form_items_container col-lg-10 pl0">
+                            <p>
+                                <input type="submit" value="Guardar" class="button_save btstyles col-lg-3 allSave" />
+                                <input type="button" value="Nueva version" id="SvNewVersion" class="button_generic btstyles col-lg-3" />
+                                @Html.ActionLink("Cancelar", "Index", null, new { @class = "button_cancel btstyles col-lg-3" })
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+                <div id="dialog" class ="dn">
+                    <ul>
+                        <li>
+                            <label>Razon de nueva versi&oacute;n</label><br />
+                            @Html.TextAreaFor(model => model.changeReason)
+                            @Html.ValidationMessageFor(model => model.changeReason)
+                        </li>
+                    </ul>
+                </div>
+                <div id="postBack"></div>
+            </fieldset>
+        }
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+@section Scripts{
+    <script src="~/Scripts/DataTableClient.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#changeReason').jqte();
+            $('.btnSubmit').on("click", function () {
+                $('#submitVal').val($(this).val());
+            });
+
+            $('#SvNewVersion').on("click", function () {
+                $('#dialog').dialog("open");
+            });
+
+            $('#dialog').dialog({
+                autoOpen: false,
+                width: 540,
+                height: 380,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Guardar": function () {
+                        if (!$('#changeReason').val()) {
+                            alert('debe insertar una razon de nueva version');
+                            $(this).dialog("open");
+                        }
+                        else {
+                            $('#submitVal').val("nueva version");
+                            $('.allSave').val("nueva version");
+                            $('#changeReason').prependTo($('#postBack'));
+                            $('.allSave').trigger("click");
+                            $(this).dialog("close");
+                        }
+
+                    },
+                    "Cancelar": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $('.button_link').on("click", function (event) {
+                event.preventDefault();
+                var id = event.target.id;
+                var href = $(this).attr("href");
+                $('#fieldId').val(href.substr(href.lastIndexOf('/') + 1));
+                if (id == "edit") {
+                    $('#submitVal').val("Actualizar Campo");
+                }
+                else {
+                    $('#submitVal').val("Eliminar Campo");
+                }
+                $('.standard_form').submit();
+            });
+        });
+    </script>
+}

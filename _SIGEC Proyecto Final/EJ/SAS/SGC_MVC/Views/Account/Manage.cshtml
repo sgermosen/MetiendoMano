@@ -1,0 +1,38 @@
+@model SGC_MVC.Models.LocalPasswordModel
+@using SGC_MVC.CustomCode; 
+ @{ 
+ ViewBag.Title = "Gestionar cuenta";
+}
+
+<div class="section_title fluid_wrap">
+    <div class="col-lg-8 pl0">
+        <hgroup class="title">
+            <h1>@ViewBag.Title.</h1>
+        </hgroup>
+    </div>
+    <div class="col-lg-4 pr0"></div>
+</div>
+<div class="drag_and_drop_container fluid_wrap reset">
+    <div class="drag_container_title">
+        <h2 class="message-success">@ViewBag.StatusMessage</h2>
+
+        <h2>Ha iniciado sesi&oacute;n como <strong>@User.Identity.Name</strong>.</h2>
+    </div>
+    <div class="drag_container_the_content_area drag_content_area_fluid_wrap">
+
+        @if (ViewBag.HasLocalPassword)
+        {
+            @Html.Partial("_ChangePasswordPartial")
+        }
+        else
+        { 
+            @Html.Partial("_SetPasswordPartial")
+        }
+
+    </div>
+    <!--end drag_container_the_content_area-->
+</div>
+<!--end drag_and_drop_container-->
+
+@section Scripts {
+}
