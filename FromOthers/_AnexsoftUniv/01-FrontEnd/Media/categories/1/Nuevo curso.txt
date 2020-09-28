@@ -1,0 +1,7 @@
+Cosas por explicar
+1- Arquitectura base
+2- WebPack
+3- Routing
+4- Common
+5- Unit Project
+6- Creacion de carpetas MEDIA

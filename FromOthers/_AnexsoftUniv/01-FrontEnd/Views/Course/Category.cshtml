@@ -1,0 +1,10 @@
+﻿@model Category
+
+<h1 class="page-header">
+    <icon name="@Model.Name"></icon> @ViewBag.Title
+</h1>
+
+@*@Html.Partial("Course/_Courses")*@
+
+<courses :category-id="@Model.Id"></courses>
+

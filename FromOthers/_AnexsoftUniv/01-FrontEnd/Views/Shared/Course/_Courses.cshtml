@@ -1,0 +1,31 @@
+﻿<div class="row">
+    @for (var i = 0; i < 12; i++)
+    {
+        <div class="col-md-4">
+            <div class="course">
+                <a href="~/course/1/curso-de-tecnologia-y-desarrollo-web">
+                    <img class="picture" src="~/Assets/images/courses/technology-course.jpg" alt="image course" />
+                </a>
+                <h2 class="title">
+                    <a href="~/course/1/curso-de-tecnologia-y-desarrollo-web">Curso de tecnología y desarrollo web</a>
+                </h2>
+                <span class="category">
+                    <i class="fa fa-briefcase"></i> Tecnología e innovación
+                </span>
+                <div class="statistics">
+                    <rating :value="5"></rating> -
+                    <i class="fa fa-users"></i> (200)
+                </div>
+                <span class="teacher">
+                    <i class="fa fa-user"></i> Por Eduardo Rodríguez
+                </span>
+                <p class="description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ...
+                </p>
+                <div class="price text-center text-success well">
+                    <price :value="150"></price>
+                </div>
+            </div>
+        </div>
+    }
+</div>

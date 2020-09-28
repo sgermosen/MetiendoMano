@@ -1,0 +1,30 @@
+﻿@model List<CourseCommentsLandingPage>
+
+<div class="panel panel-default comments">
+    <div class="panel-heading">
+        <h2>Comentarios <small>últimos 10</small></h2>
+    </div>
+    <ul class="list-group">
+        @if (Model.Count == 0)
+        {
+            <li class="list-group-item">
+                Este curso no tiene comentarios ni valoraciones aún ..
+            </li>
+        }
+
+        @foreach (var m in Model)
+        {
+            <li class="list-group-item">
+                <h4>
+                    <icon name="user"></icon> @m.User
+                    <small>
+                        <raiting :value="@m.Vote"></raiting> @m.DateForView
+                    </small>
+                </h4>
+                <p class="text-justify">
+                    @m.Comment
+                </p>
+            </li>
+        }
+    </ul>
+</div>

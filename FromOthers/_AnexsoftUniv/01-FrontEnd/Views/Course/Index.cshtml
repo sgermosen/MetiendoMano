@@ -1,0 +1,29 @@
+﻿@model CourseLandingPage
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<div class="course-promotion">
+    <div class="row">
+        @if (Model.Status != Enums.Status.Approved)
+        {
+            <div class="col-sm-12">
+                <div class="alert alert-info text-center">
+                    <icon name="frown-o"></icon> El curso aún no esta disponible
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-sm-8">
+                <header>
+                    @Html.Partial("Promotion/_Header", Model)
+                </header>
+                @Html.Partial("Promotion/_Lessons", Model.Lessons)
+                @Html.Partial("Promotion/_Comments", Model.Comments)
+            </div>
+            @Html.Partial("Promotion/_Side", Model)
+        }
+    </div>
+</div>

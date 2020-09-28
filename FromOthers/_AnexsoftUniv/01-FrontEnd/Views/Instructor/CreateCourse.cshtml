@@ -1,0 +1,13 @@
+﻿@model CourseBasicInformationViewModel
+@{
+    ViewBag.Title = "Nuevo curso";
+}
+<h1 class="page-header">
+    @ViewBag.Title <small>estas a punto de cambiar miles de vidas</small>
+</h1>
+
+@Html.Partial("Course/_BasicInformation", Model)
+
+@section scripts {
+    <script src="~/Assets/vue_components/dist/instructor.components.js"></script>
+}

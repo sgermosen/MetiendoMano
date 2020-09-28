@@ -1,0 +1,30 @@
+@inject ICurrentUserFactory _currentUser
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>AnexGram :)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="AnexGram es una red social para compartir fotografías." />
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link href="/bundle/css/app.83ea63905996bd05eaecce90ce3873a5.css" rel="stylesheet">
+    <link href="/bundle/css/app.83ea63905996bd05eaecce90ce3873a5.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.User = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(_currentUser.Get));
+        window.Api = {
+            url: '@SpaParameters.ApiUrl'
+        }
+    </script>
+    <script type="text/javascript" src="/bundle/js/manifest.bcbfecca3175c44ab3fd.js"></script>
+    <script type="text/javascript" src="/bundle/js/vendor.d60d31a965d197df57dd.js"></script>
+    <script type="text/javascript" src="/bundle/js/app.f0d0ba8b24cbf6e95feb.js"></script>
+</body>
+</html>

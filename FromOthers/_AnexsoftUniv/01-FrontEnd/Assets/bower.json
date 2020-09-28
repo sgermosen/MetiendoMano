@@ -1,0 +1,24 @@
+{
+  "name": "Base Project Assets",
+  "authors": [
+    "Anexsoft"
+  ],
+  "description": "Resource for client side",
+  "main": "",
+  "license": "MIT",
+  "homepage": "http://anexsoft.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "trumbowyg": "^2.6.0",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "fontawesome#^4.7.0",
+    "jquery": "^3.2.1",
+    "jquery.form.min": "http://malsup.github.io/min/jquery.form.min.js"
+  }
+}

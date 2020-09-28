@@ -1,0 +1,27 @@
+﻿@{ 
+    CurrentUser user = CurrentUserHelper.Get;
+}
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@if (Request.IsAuthenticated)
+{
+    <div class="jumbotron">
+        <h1>@Parameters.ProjectName</h1>
+        <p>Bienvenido <b>@user.Name</b>.<br />Hoy es un excelente día para seguir ¡<b>aprendiendo</b>!</p>
+        <p class="text-right"><i class="fa fa-thumbs-up"></i> Tu puedes ..</p>
+    </div>
+}
+else
+{
+    <welcome project="@Parameters.ProjectName"
+             link="@Url.Action("Register", "Account")"></welcome>
+}
+
+@*@Html.Partial("Course/_Courses")*@
+<courses></courses>
+
+@section scripts {
+    <script src="~/Assets/vue_components/dist/welcome.components.js"></script>
+}

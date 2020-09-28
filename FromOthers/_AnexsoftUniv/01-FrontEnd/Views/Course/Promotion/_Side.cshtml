@@ -1,0 +1,59 @@
+﻿@model CourseLandingPage
+
+<div class="col-sm-4">
+    <div class="side">
+        <img src="~/@Model.Image" class="img-responsive" alt="@Model.CategoryName" />
+
+        <span class="price">
+            <price :value="@Model.Price"></price>
+        </span>
+
+        @if (Request.IsAuthenticated)
+        {
+            <button class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#buy-course">
+                <i class="fa fa-shopping-cart"></i> Comprar
+            </button>
+        }
+        else
+        {
+            <a href="~/account/login" class="btn btn-success btn-lg btn-block">
+                <i class="fa fa-shopping-cart"></i> Comprar
+            </a>
+        }
+
+        <h3>Incluye:</h3>
+        <ul>
+            <li><i class="fa fa-credit-card"></i> Pago único</li>
+            <li><i class="fa fa-certificate"></i> Certificado de finalización</li>
+            <li><i class="fa fa-clock-o"></i> Acceso de por vida</li>
+            <li><i class="fa fa-paperclip"></i> @Model.Lessons.Count() lecciones</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Buy Course Modal -->
+<div class="modal fade" id="buy-course" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        @using (Html.BeginForm("Purchase", "Course", FormMethod.Post))
+        {
+            <input type="hidden" name="courseId" value="@Model.Id" />
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Confirmación de pago</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert-container"></div>
+                    Usted esta a punto de realizar una compra, este le descontará <b>$ @Model.Price</b> de su cuenta. <b>¿Está seguro de realizar esta compra?</b>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="submit"
+                            data-ajax="true"
+                            class="btn btn-success">
+                        <i class="fa fa-shopping-cart"></i> Comprar
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

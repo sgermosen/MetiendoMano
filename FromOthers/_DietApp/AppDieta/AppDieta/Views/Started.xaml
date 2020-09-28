@@ -1,0 +1,14 @@
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+            xmlns:local="clr-namespace:AppDieta;assembly=AppDieta" 
+            x:Class="AppDieta.Started"   >
+    <local:Alimentos Title="Alimentos" Icon="ic_swap_calls_black_18dp.png" x:Name="ItemsAlimentos"/>
+    <local:Consejos Title="Consejos" Icon="ic_forum_black_24dp.png" x:Name="ItemsConsejos"/>
+    <local:Recetas Title="Recetas" Icon="ic_receipt_black_24dp.png" x:Name="ItemsRecetas" />
+    <local:Cuidado Title="Cuidado" Icon="ic_star_rate_black_18dp.png" x:Name="ItemsCuidado" />
+    <local:Medicamentos Title="Medicamentos" Icon="ic_account_box_black_24dp.png" x:Name="ItemsMedicamentos" />
+    <local:Preguntas Title="Preguntas" Icon="ic_compare_arrows_black_18dp.png"  x:Name="ItemsPreguntas"/>
+    <!--<NavigationPage Title="Schedule" Icon="contacts.png">
+        <x:Arguments>
+        </x:Arguments>
+    </NavigationPage>-->
+</TabbedPage>

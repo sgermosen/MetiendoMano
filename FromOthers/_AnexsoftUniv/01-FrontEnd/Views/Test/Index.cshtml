@@ -1,0 +1,30 @@
+﻿@model TestViewModel
+
+<form action="~/test/save" method="post">
+    <div class="alert-container"></div>
+    <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" name="Name" class="form-control" />
+        <span data-key="Name" class="form-validation-failed"></span>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" name="Email" class="form-control" />
+        <span data-key="Email" class="form-validation-failed"></span>
+    </div>
+    <div class="form-group">
+        <label>Edad</label>
+        <input type="text" name="Age" class="form-control" />
+        <span data-key="Age" class="form-validation-failed"></span>
+    </div>
+    <button 
+        data-endrequest="hello"
+        data-ajax="true" type="submit" class="btn btn-default">Guardar</button>
+</form>
+
+<script>
+    function hello(r) {
+        console.log(r);
+    }
+</script>
+

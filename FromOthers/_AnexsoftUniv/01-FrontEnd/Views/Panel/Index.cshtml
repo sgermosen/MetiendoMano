@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Inicio";
+}
+<h1 class="page-header">@ViewBag.Title</h1>
+
+@Html.Partial("Partials/_Menu", Enums.PanelMenu.Home)
+
+<h2 class="page-header">Ingresos</h2>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Ingreso Total
+                <span class="badge pull-right">
+                    <i class="fa fa-line-chart"></i>
+                </span>
+            </div>
+            <widgetincome :month="false"></widgetincome>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Ingreso del mes actual
+                <span class="badge pull-right">
+                    <i class="fa fa-calendar"></i>
+                </span>
+            </div>
+            <widgetincome :month="true"></widgetincome>
+        </div>
+    </div>
+</div>
+
+<h2 class="page-header">Estadística</h2>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Variación Porcentual (Mes actual)
+                <span class="badge pull-right">
+                    <i class="fa fa-line-chart"></i>
+                </span>
+            </div>
+            <widgetvariance></widgetvariance>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Media aritmética (Por mes)
+                <span class="badge pull-right">
+                    <i class="fa fa-bar-chart"></i>
+                </span>
+            </div>
+            <widgetaverage></widgetaverage>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Assets/vue_components/dist/widget.components.js"></script>
+}

@@ -1,0 +1,199 @@
+﻿body {
+  padding-top: 90px;
+  padding-bottom: 20px;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+  white-space: normal;
+}
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+  max-width: 280px;
+}
+span.field-validation-error {
+  color: red;
+  font-weight: bold;
+}
+.voffset {
+  margin-top: 2px;
+}
+.voffset1 {
+  margin-top: 5px;
+}
+.voffset2 {
+  margin-top: 10px;
+}
+.voffset3 {
+  margin-top: 20px;
+}
+.voffset4 {
+  margin-top: 40px;
+}
+.voffset5 {
+  margin-top: 80px;
+}
+/* Bootstrap Overrides */
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('fonts/glyphicons-halflings-regular.eot');
+  src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('fonts/glyphicons-halflings-regular.woff') format('woff'), url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+.popover {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.navbar-inverse {
+  background-color: #ff4342;
+  border-color: #ff4342;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #fff;
+}
+.navbar-inverse .navbar-brand {
+  color: #fff;
+}
+.navbar-inverse .notifications {
+  position: relative;
+}
+.navbar-inverse .notifications .badge {
+  position: absolute;
+  top: 8px;
+  right: -1px;
+  background: #a80a0a;
+}
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: rgba(205, 40, 39, 0.55);
+}
+.dropdown-menu {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.navbar-inverse .navbar-nav > .dropdown > a .caret {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+.navbar-brand {
+  font-weight: 700;
+}
+body {
+  font-size: 17px;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-control {
+  font-size: 17px;
+  height: 44px;
+  -ms-border-radius: 9px;
+  border-radius: 9px;
+  transition: none;
+  -webkit-transition: none;
+}
+.form-control:focus {
+  box-shadow: none;
+}
+.btn {
+  /*font-size: 17px;
+    padding: 7px 20px;*/
+  -ms-border-radius: 9px;
+  border-radius: 9px;
+}
+/* Page-level styles */
+.gigs {
+  list-style: none;
+}
+.gigs > li {
+  position: relative;
+  margin-bottom: 50px;
+}
+.gigs > li .date {
+  background: red;
+  color: white;
+  text-align: center;
+  width: 60px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+}
+.gigs > li .date .month {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 2px 6px;
+}
+.gigs > li .date .day {
+  background: #f7f7f7;
+  color: #333;
+  font-size: 20px;
+  padding: 6px 12px;
+}
+.gigs > li .details {
+  position: absolute;
+  top: 0;
+  left: 70px;
+}
+.gigs > li .details .artist {
+  font-weight: bold;
+  display: block;
+}
+.gigs > li .details .genre {
+  font-size: 14px;
+  display: block;
+  margin-bottom: 4px;
+}
+.gigs > li .actions {
+  font-size: 15px;
+  display: none;
+}
+.gigs > li:hover .actions {
+  display: block;
+}
+.popover-notifications .popover-content {
+  padding: 0;
+}
+.popover-notifications ul.notifications {
+  list-style: none;
+  padding-left: 0;
+}
+.popover-notifications ul.notifications > li {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+.popover-notifications ul.notifications > li:last-child {
+  border-bottom: none;
+}
+.popover-notifications ul.notifications .highlight {
+  font-weight: bold;
+}
+#searchGigs {
+  width: 400px;
+}
+#searchGigs input {
+  max-width: none;
+}
+/*# sourceMappingURL=site.css.map */

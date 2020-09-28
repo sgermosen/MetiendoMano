@@ -1,0 +1,26 @@
+﻿@model Course
+<div class="row">
+    <div class="col-sm-6">
+        <div class="thumbnail">
+            <img id="courseImage" src="~/@Model.Image1" alt="@Model.Name" />
+        </div>
+    </div>
+    <div class="col-sm-6">
+        @using (Html.BeginForm("AddImage", "Instructor", FormMethod.Post))
+        {
+            <div class="alert-container"></div>
+            <input type="hidden" value="@Model.Id" name="id" />
+            <div class="form-group">
+                <label>Imagen <span class="required">*</span></label>
+                <input type="file" name="file" class="form-control" />
+                <span class="help-block">Solo se aceptan imágenes válidas en formato jpg, gif, png y que no exceda de los 900 x 473 pixeles.</span>
+            </div>
+
+            <div class="text-right">
+                <button type="submit" class="btn btn-default" data-ajax="true" data-endrequest="refreshImage">
+                    Guardar
+                </button>
+            </div>
+        }
+    </div>
+</div>

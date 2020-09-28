@@ -1,0 +1,32 @@
+﻿@model UserBasicInformationViewModel
+
+@{
+    ViewBag.Title = "Actualizar datos";
+}
+
+<h1 class="page-header">
+    @ViewBag.Title
+</h1>
+
+@using (Html.BeginForm("Update", "Account", FormMethod.Post))
+{
+    <div class="alert-container"></div>
+
+    @Html.HiddenFor(x => x.Id)
+
+    <div class="form-group">
+        <label>Nombre</label>
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        <span data-key="Name" class="form-validation-failed"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Apellido</label>
+        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+        <span data-key="LastName" class="form-validation-failed"></span>
+    </div>
+
+    <button data-ajax="true" type="submit" class="btn btn-default">
+        Guardar
+    </button>
+}

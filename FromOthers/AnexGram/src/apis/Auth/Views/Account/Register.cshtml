@@ -1,0 +1,42 @@
+﻿@model RegisterViewModel
+
+<div class="login-page">
+    <div class="page-header">
+        <h1>Nuevo usuario</h1>
+    </div>
+    @Html.Partial("_ValidationSummary")
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Datos del nuevo usuario</h3>
+                </div>
+                <div class="panel-body">
+                    <form asp-route="Register">
+                        <fieldset>
+                            <div class="form-group">
+                                <label asp-for="Name">Nombre</label>
+                                <input class="form-control" placeholder="Nombre" asp-for="Name" autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Lastname">Apellido</label>
+                                <input class="form-control" placeholder="Lastname" asp-for="Lastname">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Email"></label>
+                                <input class="form-control" placeholder="Email" asp-for="Email">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Password"></label>
+                                <input type="password" class="form-control" placeholder="Password" asp-for="Password" autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" name="button" type="submit" value="login">Registrar</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

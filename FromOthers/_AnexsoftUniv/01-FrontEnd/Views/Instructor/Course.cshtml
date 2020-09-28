@@ -1,0 +1,43 @@
+﻿@model CourseBasicInformationViewModel
+
+@{
+    ViewBag.Title = Model.Course.Name;
+}
+<h1 class="page-header">
+    @ViewBag.Title
+</h1>
+
+<div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#information" aria-controls="information" role="tab" data-toggle="tab">Información básica</a></li>
+        <li role="presentation"><a href="#image" aria-controls="image" role="tab" data-toggle="tab">Imagen</a></li>
+        <li role="presentation"><a href="#lessons" aria-controls="lessons" role="tab" data-toggle="tab">Lecciones</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="information">
+            @Html.Partial("Course/_BasicInformation", Model)
+        </div>
+        <div role="tabpanel" class="tab-pane" id="image">
+            @Html.Partial("Course/_Image", Model.Course)
+        </div>
+        <div role="tabpanel" class="tab-pane" id="lessons">
+            @Html.Partial("Course/_Lessons", Model.Course)
+        </div>
+    </div>
+</div>
+@section header {
+    <link href="~/Assets/bower_components/trumbowyg/dist/ui/trumbowyg.min.css" rel="stylesheet" />
+}
+
+@section scripts {
+    <script src="~/Assets/bower_components/trumbowyg/dist/trumbowyg.min.js"></script>
+    <script src="~/Assets/vue_components/dist/instructor.components.js"></script>
+    <script>
+        function refreshImage(r) {
+            $("#courseImage").attr('src', App.helpers.url.base() + r.Result);
+        }
+    </script>
+}

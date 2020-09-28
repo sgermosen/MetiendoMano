@@ -1,0 +1,40 @@
+﻿@model CourseBasicInformationViewModel
+
+@using (Html.BeginForm("SaveCourse", "Instructor", FormMethod.Post))
+{
+    <input type="hidden" name="Id" value="@Model.Course.Id" />
+    <div class="alert-container"></div>
+    <div class="form-group">
+        <label>Categoría <span class="required">*</span></label>
+        <select class="form-control" name="CategoryId">
+            @foreach (var c in Model.Categories)
+            {
+                <option 
+                    @(Model.Course.CategoryId == c.Id ? "selected" : "")
+                    value="@c.Id">@c.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Nombre <span class="text-danger">*</span></label>
+        <input type="text" name="Name" class="form-control" value="@Model.Course.Name" />
+        <span data-key="Name" class="form-validation-failed"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Descripción <span class="required">*</span></label>
+        <textarea name="Description" class="form-control">@Model.Course.Description</textarea>
+        <span data-key="Description" class="form-validation-failed"></span>
+    </div>
+
+    <comission
+        :comission="@(Parameters.TeacherComission / 100.00)"
+        :value="@Model.Course.Price"></comission>
+
+    <div class="text-right">
+        <button type="submit" data-ajax="true" class="btn btn-default">
+            Guardar
+        </button>
+    </div>
+}

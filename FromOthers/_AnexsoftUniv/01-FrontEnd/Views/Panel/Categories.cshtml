@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Categorías";
+}
+<h1 class="page-header">
+    <button id="category-new" type="button" class="btn btn-default pull-right btn-sm">
+        <i data-toggle="tooltip" data-placement="top" title="Nueva categoría" class="fa fa-plus"></i>
+    </button>
+    @ViewBag.Title
+</h1>
+
+@Html.Partial("Partials/_Menu", Enums.PanelMenu.Categories)
+
+<div id="list"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="category-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("CategorySave", "Panel", FormMethod.Post))
+            {
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Categoría</h4>
+                </div>
+                <div class="modal-body">
+                    <category url="@Url.Action("GetCategory", "Panel")"></category>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="submit"
+                            data-reset="true"
+                            data-ajax="true"
+                            class="btn btn-primary">
+                        Guardar
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script src="~/Assets/vue_components/dist/category.components.js"></script>
+<script>
+$(document).ready(function () {
+    let conf = {
+        class: 'table-striped table-bordered',
+        columnas: [
+            { leyenda: 'Icon', columna: 'Icon', style: 'width:40px;' },
+            { leyenda: 'Nombre', columna: 'Name' },
+            { leyenda: 'Cursos', style: 'width:100px;', columna: 'Courses' },
+            { leyenda: 'Alumnos', style: 'width:100px;', columna: 'Students' },
+            { leyenda: 'Eliminar', style: 'width:40px;' },
+            { leyenda: 'Editar', style: 'width:40px;' }
+        ],
+        modelo: [
+            {
+                propiedad: 'Icon', formato: function (tr, obj, value) {
+                    return '<i class="fa fa-' + value + '"></i>';
+                }
+            },
+            { propiedad: 'Name' },
+            { propiedad: 'Courses' },
+            { propiedad: 'Students' },
+            {
+                propiedad: 'Id', formato: function (tr, obj, value) {
+                    return '<button value="' + value + '" type="button" class="btn btn-danger category-delete"><i class="fa fa-trash"></i></button>';
+                }
+            },
+            {
+                propiedad: 'Id', formato: function (tr, obj, value) {
+                    return '<button value="' + value + '" type="button" class="btn btn-primary category-edit"><i class="fa fa-edit"></i></button>';
+                }
+            },
+        ],
+        url: '@Url.Action("GetCategories", "Panel")',
+        limite: 20,
+        paginable: true,
+        columna: 'Name',
+        columna_orden: 'ASC'
+    };
+
+    let grid = $("#list").anexGrid(conf);
+
+    grid.tabla().on('click', '.category-edit', function() {
+        let value = $(this).val();
+        $("#category-edit").modal('show');
+        $Vm.$emit('categorySelectedID', value);
+    })
+
+    grid.tabla().on('click', '.category-delete', function () {
+        let value = $(this).val();
+
+        if (!confirm('Esta seguro de eliminar este registro?')) return;
+
+        $.post('@Url.Action("DeleteCategory", "Panel")', {
+            id: value
+        }, function(r) {
+            if (!r.Response) {
+                alert(r.Message)
+            } else {
+                grid.refrescar();
+            }
+        }, 'json')
+    })
+
+    $("#category-new").click(function() {
+        $("#category-edit").modal('show');
+        $Vm.$emit('categorySelectedID', 0);
+    })
+})
+</script>
+}

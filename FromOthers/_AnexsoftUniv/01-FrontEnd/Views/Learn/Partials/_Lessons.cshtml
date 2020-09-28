@@ -1,0 +1,23 @@
+﻿@model LessonLandingPage
+    
+<h3>Temario</h3>
+<ul class="list-group">
+    @foreach (var m in Model.Lessons)
+    {
+        <li class="list-group-item @(Model.Id == m.Id ? "active" : "")">
+            <div class="row">
+                <div class="col-xs-9 col-sm-10">
+                    <b>#@(Model.Lessons.IndexOf(m) + 1)</b> <a href="~/learn/@m.CourseId/@m.Id">@m.Name</a>
+                </div>
+                @if (m.Learned)
+                {
+                    <div class="col-xs-3 col-sm-2 text-right">
+                        <span class="badge">
+                            <i class="fa fa-check"></i>
+                        </span>
+                    </div>
+                }
+            </div>
+        </li>
+    }
+</ul>

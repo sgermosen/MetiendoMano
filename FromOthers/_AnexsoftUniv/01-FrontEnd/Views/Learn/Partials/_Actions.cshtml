@@ -1,0 +1,16 @@
+﻿@model LessonLandingPage
+
+
+<h3>Acciones disponibles</h3>
+
+@using (Html.BeginForm("MarkAsLearned", "Learn", FormMethod.Post))
+{
+    <input type="hidden" name="lessonId" value="@Model.Id" />
+    <input type="hidden" name="courseId" value="@Model.CourseId" />
+
+    <div class="alert-container"></div>
+
+    <button data-ajax="true" type="submit" class="btn btn-success btn-block btn-lg">
+        Marcar como aprendido <i class="fa fa-check"></i>
+    </button>
+}

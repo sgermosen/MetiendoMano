@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Usuarios";
+}
+<h1 class="page-header">@ViewBag.Title</h1>
+
+@Html.Partial("Partials/_Menu", Enums.PanelMenu.Users)
+
+@*<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th style="width:200px;">Correo</th>
+            <th style="width:300px;">Roles</th>
+            <th class="text-right" style="width:150px;">Cursos inscritos</th>
+            <th class="text-right" style="width:150px;">Cursos creados</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (var i = 1; i < 20; i++)
+        {
+            <tr>
+                <td>Usuario @i</td>
+                <td>@i-user@anexu.com</td>
+                <td>User, Teacher, Student</td>
+                <td class="text-right">@(i * 3)</td>
+                <td class="text-right">@(i * 2)</td>
+            </tr>
+        }
+    </tbody>
+</table>*@
+
+<div id="list"></div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var conf = {
+                class: 'table-striped table-bordered',
+                columnas: [
+                    { leyenda: 'Nombre', columna: 'FullName' },
+                    { leyenda: 'Correo', style: 'width:200px;', columna: 'Email' },
+                    { leyenda: 'Roles', style: 'width:200px;' },
+                    { leyenda: 'Cursos inscritos', style: 'width:150px;', columna: 'CoursesTaken' },
+                    { leyenda: 'Cursos creados', style: 'width:150px;', columna: 'CoursesCreated' },
+                ],
+                modelo: [
+                    { propiedad: 'FullName' },
+                    { propiedad: 'Email' },
+                    {
+                        propiedad: 'Roles', formato: function (tr, obj, value) {
+                             return value.join(', ');
+                        }
+                    },
+                    { propiedad: 'CoursesTaken' },
+                    { propiedad: 'CoursesCreated' },
+                ],
+                url: '@Url.Action("GetUsers", "Panel")',
+                limite: 20,
+                paginable: true,
+                columna: 'FullName',
+                columna_orden: 'ASC'
+            };
+
+            $("#list").anexGrid(conf);
+        })
+    </script>
+}

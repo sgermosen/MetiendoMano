@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="ArtNews.Views.Templates.RelatedContentTemplate">
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="RelatedContentTitleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="DarkGray" />
+                <Setter Property="FontSize" Value="{StaticResource FontSize12}" />
+                <Setter Property="Margin" Value="0, 6, 0, 0" />
+            </Style>
+
+            <Style x:Key="RelatedContentSubtitleStyle" TargetType="Label">
+                <Setter Property="MaxLines" Value="1" />
+                <Setter Property="FontSize" Value="{StaticResource FontSize12}" />
+                <Setter Property="Margin" Value="0, 0, 0, 6" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid
+            RowSpacing="0"
+            HeightRequest="150"
+            Padding="0, 0, 6, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ffimageloading:CachedImage
+                Grid.Row="0"
+                Aspect="AspectFill"
+                Source="{Binding Banner}"/>
+            <Label 
+                Grid.Row="1"
+                Text="ARTICL"
+                Style="{StaticResource RelatedContentTitleStyle}"/>
+            <Label
+                Grid.Row="2"
+                Text="{Binding Name}"
+                Style="{StaticResource RelatedContentSubtitleStyle}"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

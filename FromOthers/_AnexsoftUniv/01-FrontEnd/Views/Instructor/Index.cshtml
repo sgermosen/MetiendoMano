@@ -1,0 +1,57 @@
+﻿@model List<InstructorCourseForGridView>
+@{
+    ViewBag.Title = "Instructor";
+}
+<h1 class="page-header">
+    @ViewBag.Title
+</h1>
+
+<instructorwidget 
+    :user-id="'@CurrentUserHelper.Get.UserId'"
+    :url="'@Url.Action("GetWidget", "Instructor")'">
+</instructorwidget>
+
+<div class="list-group list-group-courses padding-top">
+    @foreach (var m in Model)
+    {
+        <div class="list-group-item income-report">
+            <div class="row">
+                <div class="col-sm-2">
+                    <a href="~/instructor/course/@m.Id">
+                        <img class="img-responsive" src="~/@m.Image" alt="@m.Name" />
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <h4><a href="~/instructor/course/@m.Id">@m.Name</a></h4>
+                    <p class="text-justify">@m.Description</p>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <div class="income">
+                        <h5>Total ingreso</h5>
+                        <span class="description">
+                            <price :value="@m.Total"></price>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <div class="income">
+                        <h5>Ingreso del mes</h5>
+                        <span class="description">
+                            <price :value="@m.TotalPerMonth"></price>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <div class="income last">
+                        <h5>Total de estudiantes</h5>
+                        <span class="description">@m.Students</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="~/Assets/vue_components/dist/instructor.components.js"></script>
+}

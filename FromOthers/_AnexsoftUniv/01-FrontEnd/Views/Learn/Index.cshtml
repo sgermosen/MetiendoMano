@@ -1,0 +1,37 @@
+﻿@model LessonLandingPage
+
+@{
+    ViewBag.Title = Model.CourseName;
+}
+<h1 class="page-header">@ViewBag.Title</h1>
+
+<div class="row learning">
+    <div class="col-sm-8">
+        @Html.Partial("Partials/_Page", Model)
+    </div>
+    <div class="col-sm-4">
+        @if (!Model.Learned)
+        {
+            @Html.Partial("Partials/_Actions", Model)
+        }
+
+        @Html.Partial("Partials/_Lessons", Model)
+    </div>
+</div>
+
+@section scripts {
+<script>
+$(document).ready(function () {
+    @if (Model.HasVideo)
+    {
+        <text>
+        $(".learning .video-target").html(App.helpers.video.getYoutubeVideo({
+            id: '@Model.Video',
+            autoplay: 0,
+            controls: 1
+        }));
+        </text>
+    }
+})
+</script>
+}

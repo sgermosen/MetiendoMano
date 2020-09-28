@@ -1,0 +1,74 @@
+﻿@if (Request.IsAuthenticated)
+{
+    var user = CurrentUserHelper.Get;
+
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li class="special-link">
+                <a href="@Url.Action("index", "studying")"><i class="fa fa-book"></i> Mis cursos</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-university"></i> Instructor <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    @if (user.IsTeacher())
+                    {
+                        <li>
+                            <a href="@Url.Action("Index", "instructor")">
+                                Panel de instructor
+                            </a>
+                        </li>
+                    }
+                    <li>
+                        <a href="@Url.Action("CreateCourse", "Instructor")">
+                            Crear un curso
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user"></i> Mi cuenta <span id="userCredits" class="badge">--</span> <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    @if (user.IsAdmin())
+                    {
+                        <li>
+                            <a href="@Url.Action("index", "panel")">
+                                Panel de adminstración
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                    }
+                    <li>
+                        <a href="@Url.Action("Get", "Account")">
+                            Actualizar mis datos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ChangePassword", "Manage")">
+                            Actualizar contraseña
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="javascript:document.getElementById('logoutForm').submit()">
+                            Finalizar sesión
+                        </a>
+                    </li>
+                </ul>
+            </li>            
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

@@ -1,0 +1,38 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                @Parameters.ProjectName <i class="fa fa-angle-up"></i> 
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <menucategory :data="@Parameters.CategoryList"></menucategory>
+            @*<li>
+                <a href="~/category/1/negocios">
+                    <i class="fa fa-briefcase"></i> Negocios
+                </a>
+            </li>
+            <li>
+                <a href="~/category/1/development">
+                    <i class="fa fa-code"></i> Desarrollo y tecnología
+                </a>
+            </li>
+            <li>
+                <a href="~/category/1/marketing">
+                    <i class="fa fa-bar-chart"></i> Marketing
+                </a>
+            </li>
+            <li>
+                <a href="~/category/1/design">
+                    <i class="fa fa-pencil"></i> Diseño
+                </a>
+            </li>*@
+            @Html.Partial("Account/_LoginPartial")
+        </div>
+    </div>
+</div>

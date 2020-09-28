@@ -1,0 +1,14 @@
+﻿@model Enums.PanelMenu
+
+<div class="btn-group btn-group-justified" role="group">
+    @foreach (var m in PanelMenuViewModel.GetAll(Model).OrderBy(x => x.Order))
+    {
+        <div class="btn-group" role="group">
+            <a href="@m.Href" class="btn btn-@(m.Selected ? "success" : "default")">
+                <i class="fa @m.Icon"></i> @m.Name
+            </a>
+        </div>
+    }
+</div>
+
+<hr />

@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Cursos";
+}
+<h1 class="page-header">@ViewBag.Title</h1>
+
+@Html.Partial("Partials/_Menu", Enums.PanelMenu.Courses)
+
+<div id="list"></div>
+
+@section Scripts {
+<script>
+    $(document).ready(function () {
+        let options = [];
+
+        for (var k in Enums.Status) {
+            options.push({
+                value: Enums.Status[k].value,
+                description: Enums.Status[k].description
+            });
+        }
+
+        let conf = {
+            class: 'table-striped table-bordered',
+            columnas: [
+                { leyenda: 'Nombre', columna: 'Name' },
+                { leyenda: 'Instructor', style: 'width:300px;', columna: 'Instructor' },
+                { leyenda: 'Alumnos', style: 'width:100px;', columna: 'Students' },
+                { leyenda: 'Lecciones', style: 'width:100px;', columna: 'Lessons' },
+                { leyenda: 'Estado', style: 'width:200px;', columna: 'Status' },
+            ],
+            modelo: [
+                { propiedad: 'Name' },
+                { propiedad: 'Instructor' },
+                { propiedad: 'Students' },
+                { propiedad: 'Lessons' },
+                {
+                    propiedad: 'Status', formato: function (tr, obj, value) {
+                        let div = $('<div />'),
+                            select = $('<select data-id="' + obj.Id + '" class="form-control input-xs course-status" />');
+
+                        options.forEach(function (x) {
+                            let o = $('<option value="' + x.value + '" />');
+                            o.text(x.description);
+
+                            if (x.value === value) {
+                                o.attr('selected', true);
+                            }
+
+                            select.append(o);
+                        })
+
+                        div.append(select);
+                        return div.html();
+                    }
+                },
+            ],
+            url: '@Url.Action("GetCourses", "Panel")',
+        limite: 20,
+        paginable: true,
+        columna: 'Name',
+        columna_orden: 'ASC'
+    };
+
+    let grid = $("#list").anexGrid(conf);
+
+    grid.tabla().on('change', '.course-status', function () {
+        debugger;
+        let value = $(this).val(),
+            courseId = $(this).data('id');
+
+        if (!confirm('Esta seguro cambiar el estado actual?')) return;
+
+        $.post('@Url.Action("ChangeStatusByCourse", "Panel")', {
+            id: courseId,
+            status: value
+        }, function(r) {
+            if (!r.Response) {
+                alert(r.Message)
+            } else {
+                grid.refrescar();
+            }
+        }, 'json')
+    })
+})
+</script>
+}

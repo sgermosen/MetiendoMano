@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArtNews.Views.AuthorView"
+             xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="{StaticResource WhiteColor}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="AuthorNameStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource BodoniFLFRoman}" />
+                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="FontSize" Value="{StaticResource FontSize36}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="MaxLines" Value="2" />
+                <Setter Property="Margin" Value="0, 0, 0, 6" />
+            </Style>
+
+            <Style x:Key="AuthorDatesStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource BodoniFLFRoman}" />
+                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="FontSize" Value="{StaticResource FontSize16}" />
+            </Style>
+
+            <Style x:Key="AuthorDescriptionStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource BodoniFLFRoman}" />
+                <Setter Property="TextColor" Value="{StaticResource GrayColor}" />
+                <Setter Property="FontSize" Value="{StaticResource FontSize14}" />
+                <Setter Property="Margin" Value="0, 6" />
+            </Style>
+            
+            <Style x:Key="HighlightPaintinStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource BodoniFLFRoman}" />
+                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0, 6" />
+            </Style>
+            
+            <Style x:Key="MoreStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource BodoniFLFRoman}" />
+                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="FontSize" Value="{StaticResource FontSize14}" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0, 6" />
+            </Style>
+            
+            <Style x:Key="HighlightStyle" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="WidthRequest" Value="200" />
+            </Style>
+
+            <Style x:Key="ArtItemFavStyle" TargetType="Image">
+                <Setter Property="HeightRequest" Value="36" />
+                <Setter Property="WidthRequest" Value="36" />
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="Margin" Value="12" />
+            </Style>
+
+            <Style x:Key="ArtItemTitleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
+                <Setter Property="Margin" Value="6, 0" />
+            </Style>
+
+            <Style x:Key="ArtItemNumberStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="{StaticResource FontSize12}" />
+                <Setter Property="Opacity" Value="0.7" />
+                <Setter Property="Margin" Value="6, 0, 6, 12" />     
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Order="Primary"
+            Icon="share_icon.png"
+            Text="Share" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid
+            RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid         
+                Padding="20"
+                RowSpacing="0"
+                Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label 
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="{Binding Author.Name}"
+                    Style="{StaticResource AuthorNameStyle}"/>
+                <Label 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="1"
+                    Text="{Binding Author.Dates}"
+                    Style="{StaticResource AuthorDatesStyle}"/>
+                <Label 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="2"
+                    Text="{Binding Author.Description}"
+                    Style="{StaticResource AuthorDescriptionStyle}"/>
+            </Grid>
+            <Grid
+                Padding="20, 0"
+                ColumnSpacing="0"
+                Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label 
+                    Grid.Column="0"
+                    Text="Highlight Paintin"
+                    Style="{StaticResource HighlightPaintinStyle}"/>
+                <StackLayout
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    HorizontalOptions="End">
+                    <Label 
+                        Text="More"
+                        Style="{StaticResource MoreStyle}"/>
+                    <Label
+                        Text=">"
+                        Style="{StaticResource MoreStyle}"/>
+                </StackLayout>
+            </Grid>
+            <ScrollView 
+                Grid.Row="2"
+                Orientation="Horizontal"
+                HorizontalScrollBarVisibility="Default"
+                VerticalScrollBarVisibility="Never">
+                <StackLayout  
+                    x:Name="Highlights"
+                    Padding="20, 0, 0, 36"
+                    Orientation="Horizontal"
+                    BindableLayout.ItemsSource="{Binding Author.Highlights}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                x:Name="HighlightTemplate"
+                                RowSpacing="0"
+                                Style="{StaticResource HighlightStyle}">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Tapped="OnHighlightTapped"/>
+                                </Grid.GestureRecognizers>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <ffimageloading:CachedImage 
+                                    Grid.Row="0"
+                                    Grid.RowSpan="3"
+                                    Aspect="AspectFill"
+                                    Source="{Binding Banner}"
+                                    sharedTransitions:Transition.Group="Banner"
+                                    sharedTransitions:Transition.Name="{Binding NumberText}" />
+                                <Label
+                                    Grid.Row="1"
+                                    Text="{Binding Name}"
+                                    Style="{StaticResource ArtItemTitleStyle}"/>
+                                <Label
+                                    Grid.Row="2"
+                                    Text="{Binding NumberText}"
+                                    Style="{StaticResource ArtItemNumberStyle}"/>
+                                <Image 
+                                    Aspect="AspectFit"
+                                    Source="heart_icon.png"
+                                    Style="{StaticResource ArtItemFavStyle}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

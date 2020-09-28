@@ -1,0 +1,13 @@
+{
+  "name": "jquery.form.min",
+  "_cacheHeaders": {
+    "Last-Modified": "Sun, 03 May 2015 16:16:14 GMT",
+    "Content-Length": "6263",
+    "Content-Type": "application/javascript; charset=utf-8"
+  },
+  "main": "index.js",
+  "_source": "http://malsup.github.io/min/jquery.form.min.js",
+  "_target": "*",
+  "_originalSource": "http://malsup.github.io/min/jquery.form.min.js",
+  "_direct": true
+}

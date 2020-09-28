@@ -1,0 +1,33 @@
+﻿@model List<CourseLessonsLandingPage>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2>Temario <small>@Model.Count() lecciones</small></h2>
+    </div>
+    <ul class="list-group">
+        @if (Model.Count == 0)
+        {
+            <li class="list-group-item">
+                Este curso no contiene lecciones disponibles ..
+            </li>
+        }
+
+        @foreach (var m in Model)
+        {
+        <li class="list-group-item">
+            <b>#@(Model.IndexOf(m) + 1)</b> @m.Name
+
+            <span class="badge">
+                @if (m.Video)
+                {
+                    <i data-toggle="tooltip" data-placement="top" title="Video" class="fa fa-youtube-play"></i>
+                }
+                else
+                {
+                    <i data-toggle="tooltip" data-placement="top" title="Lectura" class="fa fa-book"></i>
+                }
+            </span>
+        </li>
+        }
+    </ul>
+</div>

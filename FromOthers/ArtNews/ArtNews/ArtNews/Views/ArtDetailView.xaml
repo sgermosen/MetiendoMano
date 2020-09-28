@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArtNews.Views.ArtDetailView"
+             xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+             xmlns:xamanimation="clr-namespace:Xamanimation;assembly=Xamanimation"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:templates="clr-namespace:ArtNews.Views.Templates"
+             BackgroundColor="{StaticResource WhiteColor}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <xamanimation:StoryBoard
+                x:Key="ArtItemContentAnimation"
+                Target="{x:Reference ArtItemContent}">
+                <xamanimation:TranslateToAnimation TranslateY="0" Duration="300"/>
+                <xamanimation:FadeInAnimation  />
+            </xamanimation:StoryBoard>
+
+            <Style x:Key="ArtItemTitleStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource BodoniFLFRoman}" />
+                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="FontSize" Value="{StaticResource FontSize26}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0, 24, 0, 6" />
+            </Style>
+
+            <Style x:Key="ArtItemSubtitleStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource BodoniFLFRoman}" />
+                <Setter Property="TextColor" Value="{StaticResource GrayColor}" />
+                <Setter Property="FontSize" Value="{StaticResource FontSize12}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0, 0, 0, 6" />
+            </Style>
+
+            <Style x:Key="BriefIntroducctionStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource BodoniFLFRoman}" />
+                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0, 0, 0, 6" />
+            </Style>
+
+            <Style x:Key="BriefIntroducctionTextStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource BodoniFLFRoman}" />
+                <Setter Property="TextColor" Value="{StaticResource GrayColor}" />
+                <Setter Property="FontSize" Value="{StaticResource FontSize14}" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Triggers>
+        <EventTrigger Event="Appearing">
+            <xamanimation:BeginAnimation     
+                Animation="{StaticResource ArtItemContentAnimation}" />
+        </EventTrigger>
+    </ContentPage.Triggers>
+    <ContentPage.Content>
+        <ScrollView
+            Orientation="Vertical">
+            <Grid
+                RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="320" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <!-- HEADER -->
+                <Grid
+                    Grid.Row="0">
+                    <ffimageloading:CachedImage
+                        Aspect="AspectFill"
+                        Source="{Binding ArtItem.Banner}"
+                        sharedTransitions:Transition.Name="{Binding ArtItem.NumberText}" />
+                </Grid>
+                <!-- CONTENT -->
+                <StackLayout
+                    x:Name="ArtItemContent"
+                    Grid.Row="1"
+                    Opacity="0"
+                    TranslationY="300">
+                    <!-- MAIN INFO -->
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto " />
+                        </Grid.RowDefinitions>
+                        <Label 
+                            Grid.Row="0"
+                            Text="{Binding ArtItem.Name}"
+                            Style="{StaticResource ArtItemTitleStyle}"/>
+                        <Label
+                            Grid.Row="1"
+                            Text="Egg Tempera | 175x287.5cm | 1 4 8 5"
+                            Style="{StaticResource ArtItemSubtitleStyle}"/>
+                        <Label 
+                            Grid.Row="2"
+                            Text="{Binding ArtItem.Author}"
+                            Style="{StaticResource ArtItemSubtitleStyle}"/>
+                    </Grid>
+                    <!-- SEPARATOR -->
+                    <Grid 
+                        BackgroundColor="{StaticResource GrayColor}"
+                        HeightRequest="1"
+                        Margin="12, 6"/>
+                    <!-- BRIEF INTRODUCCTION -->
+                    <StackLayout
+                        Padding="20">
+                        <Label
+                            Text="Brief introducction"
+                            Style="{StaticResource BriefIntroducctionStyle}"/>
+                        <Label
+                            Text="{Binding ArtItem.BriefIntroducction}"
+                            Style="{StaticResource BriefIntroducctionTextStyle}"/>
+                    </StackLayout>
+                    <!-- ART APPRECIATION -->
+                    <StackLayout
+                        Padding="20">
+                        <Label
+                            Text="Art appreciation"
+                            Style="{StaticResource BriefIntroducctionStyle}"/>
+                        <Label
+                            Text="{Binding ArtItem.ArtAppreciation}"
+                            Style="{StaticResource BriefIntroducctionTextStyle}"/>
+                    </StackLayout>
+                    <!-- RELATED CONTENT -->
+                    <Grid
+                        Padding="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="300" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Text="Related Content"
+                            Style="{StaticResource BriefIntroducctionStyle}"/>
+                        <CollectionView
+                            Grid.Row="1"
+                            ItemsSource="{Binding ArtItem.Related}"
+                            SelectionMode="None"
+                            InputTransparent="True">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout 
+                                    Orientation="Vertical" 
+                                    Span="2"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <templates:RelatedContentTemplate />
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

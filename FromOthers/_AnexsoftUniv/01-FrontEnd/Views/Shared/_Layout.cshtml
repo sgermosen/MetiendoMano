@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title - @Parameters.ProjectName</title>
+    <meta name="description" content="@ViewBag.Description" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="~/Assets/images/favicon.ico" />
+    <link href="~/Assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assets/css/bootstrap-theme.min.css" rel="stylesheet" />    
+    <link href="~/Assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Assets/css/style.css" rel="stylesheet" />
+
+    @RenderSection("header", required: false)
+</head>
+<body>
+    <div id="app">
+            @Html.Partial("_Menu")
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+
+            <footer id="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p class="remove-margin-bottom">
+                                &copy; @DateTime.Now.Year - <b>@Parameters.ProjectName</b> @Parameters.ProjectVersion powered by <a href="http://anexsoft.com" target="_blank">Anexsoft</a>
+                                <span class="slogan">Buscamos ser la primera plataforma lider en español de enseñanza online.</span>
+                                <span class="slogan">Material desarrollado para el Curso de <b>ASP.NET MVC 5 + VueJS</b> hecho por <a href="http://anexsoft.com" target="_blank">Anexsoft</a> y <a href="mailto:eduardo@anexsoft.com">Eduardo Rodríguez</a>.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 links">
+                            <i class="fa fa-link"></i>
+                            <a href="#">¿Quiénes somos?</a> -
+                            <a href="#">FAQ</a> -
+                            <a href="#">Conviértete en instructor</a> -
+                            <a href="#">Casos de éxito</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+    </div>
+
+    <!-- App Variable Project -->
+    <script>
+        var App = {
+            helpers: {
+                url: {
+                    base () {
+                        return '@Url.Content("~")';
+                    },
+                    redirect (url) {
+                        window.location.href = App.helpers.url.base() + url;
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- jQuery & Boostrap -->
+    <script src="~/Assets/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="~/Assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/Assets/bower_components/jquery.form.min/index.js"></script>
+    <script src="~/Assets/js/jquery.anexgrid.min.js"></script>
+
+    <!-- Application Js -->
+    <script src="~/Assets/js/enums.js"></script>
+    <script src="~/Assets/js/application.js"></script>
+
+    <!-- Vue Global Component -->
+    <script src="~/Assets/vue_components/dist/global.components.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
