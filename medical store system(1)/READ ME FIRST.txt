@@ -1,0 +1,65 @@
+www.freestudentprojects.com
+Pharmaceutical Distribution Management System release notes
+	
+[March 2009 - 2010]
+================================================
+REQUIREMENTS
+================================================
+•Hardware Requirement
+
+The project on Pharmaceutical Distribution Management System has the following hardware requirements:
+Hard Disk: Minimum 40GB HDD
+
+CPU Type: Pentium processor IV
+
+256 MB RAM
+
+•Software Requirement
+
+Operating Systems Windows XP (Professional edition) or higher operating system
+
+Front End: VB.net
+
+Back End:  Microsoft SQL Server 2000
+
+Microsoft Visual Studio to design Pages
+
+Microsoft Paint Utility to design images
+
+Microsoft Word for documentation
+
+================================================
+INSTALLATION
+================================================
+
+1. Install Visual Studio setUp.exe file and vs_setup.exe file
+
+2. Install SQL server 2000 (recomended) on your machine.
+
+3. Copy project folder in the D:\  directory
+
+4. Establish database connectivity as illustrated below:
+    
+   4.1 Attach the 'stock' database present in 'Back end' folder 
+       with 'local windows NT server'
+
+   4.2 Configure database
+
+================================================
+EXECUTION
+================================================
+
+1. Press F5 to run the system
+
+3. A SplashScreen page of Pharmaceutical Distribution Management System will be displayed.
+
+4. Perform the operation you intend to carry out.
+
+================================================
+SUPPORT
+================================================
+
+  To get technical support for Pharmaceutical Distribution Management System, please mail at:
+ 
+  jayakumbhar@ymail.com
+

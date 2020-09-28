@@ -1,0 +1,527 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C18A88B0-3F6F-487D-9CDF-C33B561B7C49}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>PDMS.My.MyApplication</StartupObject>
+    <RootNamespace>PDMS</RootNamespace>
+    <AssemblyName>PDMS</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <ApplicationIcon>User.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>PDMS.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>PDMS.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="adminmain.Designer.vb">
+      <DependentUpon>adminmain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="adminmain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="billtnsdet.Designer.vb">
+      <DependentUpon>billtnsdet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="billtnsdet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chngpass.Designer.vb">
+      <DependentUpon>chngpass.vb</DependentUpon>
+    </Compile>
+    <Compile Include="chngpass.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrystalReport1.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReport2.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReport3.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport3.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReport5.vb">
+      <SubType>Component</SubType>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport5.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReport6.vb">
+      <SubType>Component</SubType>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport6.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="custmed.Designer.vb">
+      <DependentUpon>custmed.vb</DependentUpon>
+    </Compile>
+    <Compile Include="custmed.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="custmedrep.Designer.vb">
+      <DependentUpon>custmedrep.vb</DependentUpon>
+    </Compile>
+    <Compile Include="custmedrep.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="custmeddet.Designer.vb">
+      <DependentUpon>custmeddet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="custmeddet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmabout.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.designer.vb">
+      <DependentUpon>FrmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module1.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="purchaserep.Designer.vb">
+      <DependentUpon>purchaserep.vb</DependentUpon>
+    </Compile>
+    <Compile Include="purchaserep.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="stkreturn.Designer.vb">
+      <DependentUpon>stkreturn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="stkreturn.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="stkreturnrep.Designer.vb">
+      <DependentUpon>stkreturnrep.vb</DependentUpon>
+    </Compile>
+    <Compile Include="stkreturnrep.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="salesrep.Designer.vb">
+      <DependentUpon>salesrep.vb</DependentUpon>
+    </Compile>
+    <Compile Include="salesrep.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen1.Designer.vb">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="stkpurchase.Designer.vb">
+      <DependentUpon>stkpurchase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="stkpurchase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="stkretdet.Designer.vb">
+      <DependentUpon>stkretdet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="stkretdet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="billing.Designer.vb">
+      <DependentUpon>billing.vb</DependentUpon>
+    </Compile>
+    <Compile Include="billing.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="stockdet.Designer.vb">
+      <DependentUpon>stockdet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="stockdet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="supplier.Designer.vb">
+      <DependentUpon>supplier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="supplier.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="supplierdetail.Designer.vb">
+      <DependentUpon>supplierdetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="supplierdetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="adminmain.resx">
+      <DependentUpon>adminmain.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="billtnsdet.resx">
+      <DependentUpon>billtnsdet.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="chngpass.resx">
+      <DependentUpon>chngpass.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport2.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport3.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport5.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport5.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport6.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport6.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="custmed.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>custmed.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="custmedrep.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>custmedrep.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="custmeddet.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>custmeddet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmabout.resx">
+      <DependentUpon>frmabout.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="purchaserep.resx">
+      <DependentUpon>purchaserep.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="stkreturn.resx">
+      <DependentUpon>stkreturn.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="stkreturnrep.resx">
+      <DependentUpon>stkreturnrep.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="salesrep.resx">
+      <DependentUpon>salesrep.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen1.resx">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="stkpurchase.resx">
+      <DependentUpon>stkpurchase.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="stkretdet.resx">
+      <DependentUpon>stkretdet.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="billing.resx">
+      <DependentUpon>billing.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="stockdet.resx">
+      <DependentUpon>stockdet.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="supplier.resx">
+      <DependentUpon>supplier.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="supplierdetail.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>supplierdetail.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payroll_03.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\about.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payroll_01.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payroll_08.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payroll_09.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="280.ico" />
+    <Content Include="Resources\accept.png" />
+    <Content Include="Resources\Add 3.jpg" />
+    <Content Include="Resources\Add.jpg" />
+    <Content Include="Resources\add.png" />
+    <Content Include="Resources\Back24.png" />
+    <Content Include="Resources\bdo_norm_big.gif" />
+    <Content Include="Resources\book rough.gif" />
+    <Content Include="Resources\cdrom.gif" />
+    <Content Include="Resources\Copy24.png" />
+    <Content Include="Resources\Cut24.png" />
+    <Content Include="Resources\Delete 3.jpg" />
+    <Content Include="Resources\Delete 4.jpg" />
+    <Content Include="Resources\Delete 6.jpg" />
+    <Content Include="Resources\Delete.jpg" />
+    <Content Include="Resources\Delete24.png" />
+    <Content Include="Resources\Down24.png" />
+    <Content Include="Resources\dvd.gif" />
+    <Content Include="Resources\Edit 2.jpg" />
+    <Content Include="Resources\Edit.jpg" />
+    <Content Include="Resources\Exit24.png" />
+    <Content Include="Resources\Export24.png" />
+    <Content Include="Resources\facs.gif" />
+    <Content Include="Resources\File_1.png" />
+    <Content Include="Resources\Find 2.jpg" />
+    <Content Include="Resources\find.gif" />
+    <Content Include="Resources\Find.jpg" />
+    <Content Include="Resources\Find24.png" />
+    <Content Include="Resources\Forward24.png" />
+    <Content Include="Resources\FPatient.jpg" />
+    <Content Include="Resources\free_icon_business_179.jpg" />
+    <Content Include="Resources\Help.jpg" />
+    <Content Include="Resources\Help24.png" />
+    <Content Include="Resources\Home24.png" />
+    <Content Include="Resources\Import24.png" />
+    <Content Include="Resources\large_magnify.gif" />
+    <Content Include="Resources\Minus24.png" />
+    <Content Include="Resources\Move First.jpg" />
+    <Content Include="Resources\Move Last.jpg" />
+    <Content Include="Resources\Move Next.jpg" />
+    <Content Include="Resources\MoveFirst.jpg" />
+    <Content Include="Resources\Movenext.jpg" />
+    <Content Include="Resources\MPatient.jpg" />
+    <Content Include="Resources\new.GIF" />
+    <Content Include="Resources\new.jpg" />
+    <Content Include="Resources\New24.png" />
+    <Content Include="Resources\norm1.bmp" />
+    <Content Include="Resources\nuke_sky.jpg" />
+    <Content Include="Resources\Open24.png" />
+    <Content Include="Resources\paint.gif" />
+    <Content Include="Resources\Paste24.png" />
+    <Content Include="Resources\Patient Edit.jpg" />
+    <Content Include="Resources\Patient Find.jpg" />
+    <Content Include="Resources\Plus24.png" />
+    <Content Include="Resources\Print-preveiw24.png" />
+    <Content Include="Resources\Print-properties24.png" />
+    <Content Include="Resources\Print24.png" />
+    <Content Include="Resources\Properties24.png" />
+    <Content Include="Resources\Redo24.png" />
+    <Content Include="Resources\Refresh24.png" />
+    <Content Include="Resources\report.png" />
+    <Content Include="Resources\resultset_first.png" />
+    <Content Include="Resources\resultset_last.png" />
+    <Content Include="Resources\resultset_next.png" />
+    <Content Include="Resources\resultset_previous.png" />
+    <Content Include="Resources\Save-all24.png" />
+    <Content Include="Resources\Save-as24.png" />
+    <Content Include="Resources\Save.jpg" />
+    <Content Include="Resources\Save24.png" />
+    <Content Include="Resources\Scan.jpg" />
+    <Content Include="Resources\Search24.png" />
+    <Content Include="Resources\Stop24.png" />
+    <Content Include="Resources\stude.gif" />
+    <Content Include="Resources\Tool.png" />
+    <Content Include="Resources\trash_32.gif" />
+    <Content Include="Resources\trash_48.gif" />
+    <Content Include="Resources\Undo24.png" />
+    <Content Include="Resources\Up24.png" />
+    <Content Include="Resources\View.jpg" />
+    <Content Include="User.ico" />
+    <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Resources\300_64580.jpg" />
+    <None Include="Resources\Move Next1.jpg" />
+    <None Include="Resources\Move Previous.jpg" />
+    <None Include="Resources\MovePrevious.jpg" />
+    <None Include="Resources\Register.png" />
+    <None Include="Resources\untitled.JPG" />
+    <None Include="Resources\Trader Joes inside a store in Virginia.jpg" />
+    <None Include="Resources\19.gif" />
+    <None Include="Resources\17.gif" />
+    <None Include="Resources\3.gif" />
+    <None Include="Resources\1.gif" />
+    <None Include="Resources\2.gif" />
+    <None Include="Resources\dance.gif" />
+    <None Include="Resources\fgfzb.jpg" />
+    <None Include="Resources\MCE2.jpg" />
+    <None Include="Resources\32.jpg" />
+    <None Include="Resources\79786850.tmjoYjfD.jpg" />
+    <None Include="Resources\Reports.ico" />
+    <None Include="Resources\Patient Delete.jpg" />
+    <None Include="Resources\Patient Add.jpg" />
+    <None Include="Resources\Find 3.jpg" />
+    <None Include="Resources\users2.ico" />
+    <None Include="Resources\Reports2.ico" />
+    <None Include="Resources\Delete 5.jpg" />
+    <None Include="Resources\oAccess.ico" />
+    <None Include="Resources\2.ico" />
+    <None Include="Resources\Add 1.jpg" />
+    <None Include="Resources\INFO.ICO" />
+    <None Include="Resources\Edit 3.jpg" />
+    <None Include="Resources\calc.jpg" />
+    <None Include="Resources\Refresh.jpg" />
+    <None Include="Resources\Delete 2.jpg" />
+    <None Include="Resources\Print.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
