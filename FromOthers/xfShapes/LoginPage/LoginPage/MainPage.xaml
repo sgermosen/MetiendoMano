@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="LoginPage.MainPage">
+
+    <Grid BackgroundColor="#E5EBEE">
+        <MediaElement Source="ms-appx:///yoga2.mp4" ShowsPlaybackControls="False" 
+                      IsLooping="True" Aspect="AspectFill" AutoPlay="True" 
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+        <BoxView Opacity="0.3" BackgroundColor="#00C2FF"/>
+        <Grid HeightRequest="520" Margin="30">
+            <Path Fill="White" Aspect="Uniform" HorizontalOptions="Center"
+                  Data="M30.6,172.838V696.314L348.157,426.72Z" Opacity="0.5"/>
+            <Path Fill="White" StrokeThickness="1" Aspect="Uniform" HorizontalOptions="Center"
+                  Data="M30.6,172.838V650.665L320.465,404.581Z" Opacity="0.8"/>
+            <Path Stroke="#00C2FF" StrokeThickness="1" Aspect="Uniform" HorizontalOptions="Center"
+                  Data="M30.6,172.838V605.512L293.073,382.682Z" />
+            <StackLayout Spacing="20" VerticalOptions="CenterAndExpand" Margin="50,0">
+                <Label Text="LOG IN" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
+                <StackLayout Spacing="10">
+                    <Grid WidthRequest="160" Padding="10,0" BackgroundColor="#F6F6F6" HorizontalOptions="Start">
+                        <Entry Placeholder="Username" FontSize="12"/>
+                    </Grid>
+                    <Grid WidthRequest="160" Padding="10,0" BackgroundColor="#F6F6F6" HorizontalOptions="Start">
+                        <Entry Placeholder="Password" FontSize="12"/>
+                    </Grid>
+                </StackLayout>
+                <Grid HorizontalOptions="Start" HeightRequest="33" WidthRequest="33">
+                    <Ellipse Stroke="#00c2ff" StrokeThickness="3" Aspect="Uniform" HeightRequest="33" WidthRequest="33" HorizontalOptions="Start"/>
+                    <Path Fill="#00c2ff" Rotation="90" Aspect="Uniform" StrokeLineCap="Round" StrokeLineJoin="Round"
+                          Data="M15.6099294,11.0552456 L12.3765961,7.82357897 C12.2574176,7.70409826 12.0779382,7.66830385 11.9220434,7.73292537 C11.7661485,7.7975469 11.6646275,7.94982156 11.6649294,8.11857897 L11.6649294,21.2502456 C11.6649294,22.4008389 10.7321893,23.333579 9.58159609,23.333579 C8.43100286,23.333579 7.49826276,22.4008389 7.49826276,21.2502456 L7.49826276,8.11857897 C7.49789351,7.95055217 7.39663523,7.79918973 7.24146862,7.73471909 C7.08630201,7.67024846 6.90759527,7.70528741 6.78826276,7.82357897 L3.55492943,11.0552456 C2.74169013,11.8684849 1.42316875,11.8684849 0.609929471,11.0552456 C-0.203309806,10.2420063 -0.203309826,8.92348493 0.609929427,8.11024563 L8.10992943,0.610245632 C8.50036143,0.219527336 9.03007272,0 9.58242943,0 C10.1347861,0 10.6644974,0.219527336 11.0549294,0.610245632 L18.5549294,8.11024563 C19.3681687,8.92348493 19.3681687,10.2420063 18.5549294,11.0552456 C17.7416901,11.8684849 16.4231687,11.8684849 15.6099294,11.0552456 L15.6099294,11.0552456 Z" HorizontalOptions="Center"/>
+                </Grid>
+            </StackLayout>
+            <StackLayout VerticalOptions="End" HorizontalOptions="End" Margin="0,0,0,30">
+                <Frame Padding="0" BackgroundColor="Transparent" BorderColor="White" HeightRequest="36" 
+                       WidthRequest="150" CornerRadius="18" HorizontalOptions="End">
+                    <StackLayout Orientation="Horizontal" Spacing="10" VerticalOptions="Center" Margin="15,0">
+                        <Path Fill="#06F" StrokeThickness="1" Aspect="Uniform"
+                            Data="M10.363,9.838l.486-3.165H7.812V4.619A1.583,1.583,0,0,1,9.6,2.909h1.381V.214A16.838,16.838,0,0,0,8.526,0C6.025,0,4.39,1.516,4.39,4.26V6.673H1.609V9.838H4.39V17.49H7.812V9.838Z" />
+                        <Label Text="With Facebook" TextColor="White" FontSize="12"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Padding="0" BackgroundColor="Transparent" BorderColor="White" HeightRequest="36" WidthRequest="150" CornerRadius="18" HorizontalOptions="End">
+                    <StackLayout Orientation="Horizontal" Spacing="10" VerticalOptions="Center" Margin="15,0">
+                        <Path Fill="#8a0000" StrokeThickness="1" Aspect="Uniform"
+                            Data="M15.742,8.75A7.429,7.429,0,0,1,8,16.563a8,8,0,0,1,0-16,7.693,7.693,0,0,1,5.365,2.094L11.187,4.75C8.339,2,3.042,4.066,3.042,8.563A5.011,5.011,0,0,0,8,13.614a4.326,4.326,0,0,0,4.542-3.448H8V7.414h7.616A7.013,7.013,0,0,1,15.742,8.75Z" />
+                        <Label Text="With Google" TextColor="White" FontSize="12"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>
