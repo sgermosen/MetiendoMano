@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 	xmlns="http://xamarin.com/schemas/2014/forms" 
+				xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+				x:Class="CapitolTrackMobile.ReportCategoryPage"
+				xmlns:local="clr-namespace:CapitolTrackMobile;assembly=CapitolTrackMobile"
+				Title="Category Name"
+>
+	<ContentPage.Content>
+        <ListView x:Name="reportList" RowHeight="56">
+        	<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+					 	<RelativeLayout>
+          					<Label Text="{Binding ReportName}"
+								VerticalTextAlignment="Center"
+								FontSize="15"
+          					  	RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0,Constant=0}"
+          					  	RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0, Constant=20}"
+          					  	RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=.65,Constant=0}"
+          					  	RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0,Constant=30}" />
+          					<Label Text="{Binding ReportLastEditDate}"
+								FontSize="12"
+								TextColor="#777"
+								VerticalTextAlignment="Center"
+          					  	RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=,Constant=0}"
+          					  	RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.65, Constant=0}"
+          					  	RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=0.2,Constant=0}"
+          					  	RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0,Constant=30}" />
+							<Label Text="&gt;"
+								RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=,Constant=0}"
+          					  	RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.85, Constant=0}"
+          					  	RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=0.15,Constant=0}"
+          					  	RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0,Constant=30}" 
+								VerticalTextAlignment="Center"
+								HorizontalTextAlignment="Center"
+								FontSize="12"
+								TextColor="#777"/>
+							<RelativeLayout>
+							<Label Text="{Binding ReportDescricption}"
+								FontSize="12"
+								TextColor="#777"
+          					  	RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0,Constant=30}"
+          					  	RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0, Constant=20}"
+          					  	RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1,Constant=0}"
+          					  	RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0,Constant=20}" />
+							</RelativeLayout>
+    					</RelativeLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</ContentPage.Content>
+</ContentPage>

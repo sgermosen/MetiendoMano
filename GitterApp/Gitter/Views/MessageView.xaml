@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gitter.Views.MessageView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+  <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="15,10,15,10">
+    <!--<BoxView Color="Silver" HeightRequest="0.5" HorizontalOptions="FillAndExpand" />-->
+
+    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+      <Image x:Name="Avatar" WidthRequest="40" HeightRequest="40" />
+      <Label HorizontalOptions="StartAndExpand" Text="{Binding Sender}" Font="Medium" TextColor="Gray" />
+      <Label HorizontalOptions="End" Text="{Binding Sent}" Font="Small" TextColor="Gray" />
+    </StackLayout>
+
+    <Label Text="{Binding Text}" Font="Medium" />
+  
+  </StackLayout>
+</ContentView>

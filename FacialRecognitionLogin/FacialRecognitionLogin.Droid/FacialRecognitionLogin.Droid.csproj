@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{E6440B95-8DFC-4214-8B9A-2DFFBBA88635}</ProjectGuid>
+        <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+        <OutputType>Library</OutputType>
+        <RootNamespace>FacialRecognitionLogin.Droid</RootNamespace>
+        <AssemblyName>FacialRecognitionLogin.Droid</AssemblyName>
+        <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
+        <AndroidApplication>True</AndroidApplication>
+        <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+        <AndroidResgenClass>Resource</AndroidResgenClass>
+        <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+        <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+        <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+        <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+        <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
+        <LangVersion>8.0</LangVersion>
+        <Nullable>enable</Nullable>
+        <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug</OutputPath>
+        <DefineConstants>DEBUG;</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <AndroidLinkMode>None</AndroidLinkMode>
+        <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+        <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
+        <AndroidTlsProvider>btls</AndroidTlsProvider>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release</OutputPath>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <AndroidManagedSymbols>true</AndroidManagedSymbols>
+        <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
+        <AndroidTlsProvider>btls</AndroidTlsProvider>
+        <AotAssemblies>true</AotAssemblies>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="System" />
+        <Reference Include="System.Xml" />
+        <Reference Include="System.Core" />
+        <Reference Include="Mono.Android" />
+        <Reference Include="Java.Interop" />
+        <Reference Include="System.Numerics" />
+        <Reference Include="System.Numerics.Vectors" />
+        <Reference Include="System.IO.Compression" />
+        <Reference Include="System.Net.Http" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+        <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+        <PackageReference Include="Microsoft.Azure.CognitiveServices.Vision.Face" Version="2.5.0-preview.1" />
+        <PackageReference Include="Xamarin.Forms" Version="4.5.0.187-pre2" />
+        <PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="4.1.0-pre2" />
+        <PackageReference Include="Xamarin.Essentials" Version="1.4.0-pre2" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="MainActivity.cs" />
+        <Compile Include="Resources\Resource.designer.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="CustomRenderers\StyledEntryRenderer.cs" />
+        <Compile Include="CustomRenderers\FontAwesomeIconRenderer.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="Resources\AboutResources.txt" />
+        <None Include="Properties\AndroidManifest.xml" />
+        <None Include="Assets\AboutAssets.txt" />
+    </ItemGroup>
+    <ItemGroup>
+        <AndroidResource Include="Resources\layout\Tabbar.axml" />
+        <AndroidResource Include="Resources\layout\Toolbar.axml" />
+        <AndroidResource Include="Resources\values\styles.xml" />
+        <AndroidResource Include="Resources\drawable\icon.png" />
+        <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
+        <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
+        <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+        <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
+        <AndroidResource Include="Resources\drawable-hdpi\xamarin_logo.png" />
+        <AndroidResource Include="Resources\drawable-xhdpi\xamarin_logo.png" />
+        <AndroidResource Include="Resources\drawable-xxhdpi\xamarin_logo.png" />
+        <AndroidResource Include="Resources\xml\file_paths.xml" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\FacialRecognitionLogin\FacialRecognitionLogin.csproj">
+            <Project>{8121B909-FB59-458F-BD2F-764D8BAD1636}</Project>
+            <Name>FacialRecognitionLogin</Name>
+        </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="CustomRenderers\" />
+    </ItemGroup>
+    <ItemGroup>
+        <AndroidAsset Include="Assets\FontAwesome.ttf" />
+    </ItemGroup>
+    <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+</Project>

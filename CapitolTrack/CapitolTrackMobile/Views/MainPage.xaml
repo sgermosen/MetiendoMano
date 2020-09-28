@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			xmlns:local="clr-namespace:CapitolTrackMobile;assembly=CapitolTrackMobile"  
+			x:Class="CapitolTrackMobile.MainPage">
+
+	
+<NavigationPage Title="Reports" Icon="reports.png">
+		<x:Arguments>
+			<local:ReportsPage />
+		</x:Arguments>
+	</NavigationPage>
+	<NavigationPage Title="Search" Icon="search.png">
+		<x:Arguments>
+			<local:SearchPage />
+		</x:Arguments>
+	</NavigationPage>
+	<NavigationPage Title="Calendar" Icon="calendar.png">
+		<x:Arguments>
+			<local:CalendarPage />
+		</x:Arguments>
+	</NavigationPage>
+	<NavigationPage Title="Members" Icon="members.png">
+		<x:Arguments>
+			<local:MembersPage />
+		</x:Arguments>
+	</NavigationPage>
+	<local:MorePage />
+</TabbedPage> 

@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FacebookUICloneXF"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="FacebookUICloneXF.MainPage"
+             BackgroundColor="White">
+
+    <Grid>
+        <ScrollView Margin="0,80,0,0" x:Name="MyScrollView"  Scrolled="MyScrollView_Scrolled"   >
+
+            <StackLayout VerticalOptions="Fill"  >
+                <ListView ItemSelected="ListOfPost_OnItemSelected"  x:Name="ListOfPost" HasUnevenRows="True"  BackgroundColor="#dcdee3"   RowHeight="210" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell  >
+
+                                <ViewCell.View >
+                                    <Frame BackgroundColor="White" Margin="0,5">
+                                        <StackLayout>
+                                            <StackLayout Orientation="Horizontal" >
+                                                <forms:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
+                                                  WidthRequest="30" HeightRequest="30"
+                                                  Source = "{Binding PersonProfilePicture}">
+                                                    <forms:CachedImage.Transformations>
+                                                        <transformations:CircleTransformation BorderSize="3" BorderHexColor="#ffffff"/>
+                                                    </forms:CachedImage.Transformations>
+                                                </forms:CachedImage>
+                                                <StackLayout Spacing="-2" Margin="5,0,0,0" Orientation="Vertical">
+                                                    <Label Text="{Binding PersonName}" FontAttributes="Bold"></Label>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="{Binding Date}" FontSize="10"></Label>
+                                                        <forms:CachedImage    Source = "publicicon"/>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                            <Label Text="{Binding Description}"></Label>
+                                            <StackLayout Orientation="Horizontal">
+                                                <forms:CachedImage  Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"  Source = "counticons"/>
+                                                <Label Text="{Binding PostLikes}"></Label>
+                                                <Label Text="{Binding PostLikes}" IsVisible="False"></Label>
+                                            </StackLayout>
+                                            <BoxView Color="LightGray" HeightRequest="1" HorizontalOptions="Fill"></BoxView>
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill"   >
+                                                <Grid HorizontalOptions="FillAndExpand"  VerticalOptions="Center"  Margin="0,5,0,0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Orientation="Horizontal"   HorizontalOptions="Center"  VerticalOptions="Center">
+                                                        <StackLayout.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+                                                        </StackLayout.GestureRecognizers>
+                                                        <Label Text="false" IsVisible="False" FontSize="14"></Label>
+                                                        <forms:CachedImage WidthRequest="20" HeightRequest="20"  Source = "likeicon"/>
+                                                        <Label TextColor="Black" Text="Like" FontSize="14"></Label>
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Column="1" Orientation="Horizontal"    HorizontalOptions="Center"  VerticalOptions="Center">
+                                                        <StackLayout.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="CommentSection_OnTapped"></TapGestureRecognizer>
+                                                        </StackLayout.GestureRecognizers>
+                                                        <forms:CachedImage  WidthRequest="20" HeightRequest="20" Source = "commenticon"/>
+                                                        <Label TextColor="Black" Text="Comment" FontSize="14"></Label>
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Column="2" Orientation="Horizontal"   HorizontalOptions="Center"  VerticalOptions="Center">
+
+                                                        <forms:CachedImage  WidthRequest="20" HeightRequest="20" Source = "messageicon"/>
+                                                        <Label TextColor="Black" Text="Message" FontSize="14"></Label>
+                                                    </StackLayout>
+                                                </Grid>
+
+
+
+
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </StackLayout>
+        </ScrollView>
+
+        <StackLayout Orientation="Vertical" x:Name="FullTopBar" BackgroundColor="Transparent" Spacing="0" HeightRequest="80" VerticalOptions="Start">
+            <StackLayout Orientation="Horizontal" x:Name="SearchBar" VerticalOptions="Start" BackgroundColor="#2f68dd" HeightRequest="40">
+                <forms:CachedImage HorizontalOptions="Center" VerticalOptions="Center" Margin="10,2" Source = "takepictureicon"/>
+                <SearchBar  WidthRequest="250" BackgroundColor="#2f68dd" VerticalOptions="Center" HorizontalOptions="FillAndExpand"  FontSize="10"  Margin="5" Placeholder="Search"  />
+                <forms:CachedImage HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0" Source = "messengericon" />
+            </StackLayout>
+            <StackLayout>
+                <Grid   VerticalOptions="Start" BackgroundColor="White" HeightRequest="40" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="DoAnimaton_OnTapped" Command="{Binding TopBarMenuCommand}" CommandParameter="0"></TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
+                        <forms:CachedImage   HorizontalOptions="Center" VerticalOptions="Center"  Source = "{Binding MenuIconone}"/>
+
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="DoAnimaton_OnTapped" Command="{Binding TopBarMenuCommand}" CommandParameter="1"></TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
+                        <forms:CachedImage  HorizontalOptions="Center" VerticalOptions="Center"  Source = "{Binding MenuIcontwo}"/>
+
+
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="DoAnimaton_OnTapped" Command="{Binding TopBarMenuCommand}" CommandParameter="2"></TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
+                        <forms:CachedImage  HorizontalOptions="Center" VerticalOptions="Center"  Source = "{Binding MenuIconthree}"/>
+
+                    </Grid>
+
+                    <Grid Grid.Column="3">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="DoAnimaton_OnTapped" Command="{Binding TopBarMenuCommand}" CommandParameter="3"></TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
+                        <forms:CachedImage  HorizontalOptions="Center" VerticalOptions="Center"  Source = "{Binding MenuIconfour}"/>
+
+                    </Grid>
+
+                    <Grid Grid.Column="4">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="DoAnimaton_OnTapped" Command="{Binding TopBarMenuCommand}" CommandParameter="4"></TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
+                        <forms:CachedImage  HorizontalOptions="Center" VerticalOptions="Center"  Source = "{Binding MenuIconfive}"/>
+
+                    </Grid>
+         
+
+
+                </Grid>
+
+            </StackLayout>
+        </StackLayout>
+
+        <Grid x:Name="CommentSection" BackgroundColor="White" TranslationY="1000">
+           <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Start" Margin="10">
+               <forms:CachedImage   HorizontalOptions="Center" VerticalOptions="Center"  Source = "counticons"/>
+               <Label Text="null"></Label>
+               <forms:CachedImage   HorizontalOptions="Center" VerticalOptions="Center"  Source = "righticon"/>
+            </StackLayout>
+            <Grid VerticalOptions="Start" HorizontalOptions="End" Margin="10">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CommentSection_OnTapped"></TapGestureRecognizer>
+                </Grid.GestureRecognizers>
+                <forms:CachedImage WidthRequest="25" HeightRequest="25"  HorizontalOptions="Center" VerticalOptions="Center"  Source = "closeicon"/>
+            </Grid>
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

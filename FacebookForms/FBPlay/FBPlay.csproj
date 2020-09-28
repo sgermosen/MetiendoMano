@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C1E0223D-5586-40D1-B774-17D5EAA47B44}</ProjectGuid>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <UseMSBuildEngine>true</UseMSBuildEngine>
+    <OutputType>Library</OutputType>
+    <RootNamespace>FBPlay</RootNamespace>
+    <AssemblyName>FBPlay</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App.xaml">
+      <LogicalName>App.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\Wall\HomeWallPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <LogicalName>HomeWallPage.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\Wall\PostView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <LogicalName>PostView.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\Menu\FriendsList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <LogicalName>FriendsList.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\Wall\WhatOnYourMind.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <LogicalName>WhatOnYourMind.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\Wall\LottieAnimationView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\PostPages\AnimationPostPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\PostPages\PanDemoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\PostPages\PinchDemoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\PostPages\PostPageTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\PostPages\CameraViewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <LogicalName>CameraViewPage.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\Wall\PostViewNoImage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <LogicalName>PostViewNoImage.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LottieAnimations\9squares-AlBoardman.json">
+      <LogicalName>9squares-AlBoardman.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LottieAnimations\HamburgerArrow.json">
+      <LogicalName>HamburgerArrow.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LottieAnimations\LottieLogo1.json">
+      <LogicalName>LottieLogo1.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LottieAnimations\MotionCorpse-Jrcanest.json">
+      <LogicalName>MotionCorpse-Jrcanest.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LottieAnimations\PinJump.json">
+      <LogicalName>PinJump.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LottieAnimations\TwitterHeart.json">
+      <LogicalName>TwitterHeart.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LottieAnimations\vcTransition1.json">
+      <LogicalName>vcTransition1.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LottieAnimations\Watermelon.json">
+      <LogicalName>Watermelon.json</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controls\AdvancedListView.cs" />
+    <Compile Include="Controls\GifImageView.cs" />
+    <Compile Include="Areas\Wall\FeedContentGenerator.cs" />
+    <Compile Include="Areas\Wall\FeedItemViewModel.cs" />
+    <Compile Include="Areas\Wall\HomeWallPage.xaml.cs">
+      <DependentUpon>HomeWallPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Wall\PostView.xaml.cs">
+      <DependentUpon>PostView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Wall\HomeWallViewModel.cs" />
+    <Compile Include="Controls\InstrumentedGrid.cs" />
+    <Compile Include="Areas\Menu\FriendsList.xaml.cs">
+      <DependentUpon>FriendsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\DynamicResources.cs" />
+    <Compile Include="Resources\IDynamicResources.cs" />
+    <Compile Include="Areas\Menu\FriendListViewModel.cs" />
+    <Compile Include="Areas\Menu\FriendListCellViewModel.cs" />
+    <Compile Include="Areas\Wall\MessageViewDataTemplateSelector.cs" />
+    <Compile Include="Effects\CustomSearchBarEffects.cs" />
+    <Compile Include="Areas\Wall\WhatOnYourMind.xaml.cs">
+      <DependentUpon>WhatOnYourMind.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Effects\NoBorderEntryEffectiOS.cs" />
+    <Compile Include="Behaviors\NameValidationBehavior.cs" />
+    <Compile Include="Areas\Wall\LottieAnimationView.xaml.cs">
+      <DependentUpon>LottieAnimationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\PostPages\AnimationPostPage.xaml.cs">
+      <DependentUpon>AnimationPostPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PanContainer.cs" />
+    <Compile Include="Areas\PostPages\PanDemoPage.xaml.cs">
+      <DependentUpon>PanDemoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PinchToZoomContainer.cs" />
+    <Compile Include="Areas\PostPages\PinchDemoPage.xaml.cs">
+      <DependentUpon>PinchDemoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\PostPages\PostPageTemplate.xaml.cs">
+      <DependentUpon>PostPageTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\DoubleExtensions.cs" />
+    <Compile Include="Areas\PostPages\AnimationView.cs" />
+    <Compile Include="Controls\CameraView.cs" />
+    <Compile Include="Areas\PostPages\CameraViewPage.xaml.cs">
+      <DependentUpon>CameraViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Wall\PostViewNoImage.xaml.cs">
+      <DependentUpon>PostViewNoImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Wall\LottieAnimationViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\packages\Xamarin.Forms.2.3.3.180\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform">
+      <HintPath>..\packages\Xamarin.Forms.2.3.3.180\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\packages\Xamarin.Forms.2.3.3.180\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="FreshEssentials">
+      <HintPath>..\packages\FreshEssentials.2.1.2\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\FreshEssentials.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.7\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.7\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.7\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Lottie.Forms">
+      <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.1.0.0.4\lib\portable-net45+sl5+wp8+win8\Lottie.Forms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
+    <Folder Include="Areas\" />
+    <Folder Include="Areas\Wall\" />
+    <Folder Include="Areas\Menu\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Effects\" />
+    <Folder Include="Behaviors\" />
+    <Folder Include="Areas\PostPages\" />
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
+</Project>

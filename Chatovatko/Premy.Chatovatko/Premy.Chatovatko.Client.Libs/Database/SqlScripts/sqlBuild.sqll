@@ -1,0 +1,90 @@
+CREATE TABLE `main`.`settings` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `user_public_id` INT NOT NULL, --user public id
+  `private_certificate` VARCHAR NOT NULL,
+  `user_name` VARCHAR NOT NULL,
+  `server_name` VARCHAR NOT NULL,
+  `server_address` VARCHAR NOT NULL,
+  `server_public_certificate` VARCHAR NOT NULL,
+  `client_id` INT NOT NULL,
+  `last_unique_id` BIGINT NOT NULL);
+
+  ---------------------------------------
+  CREATE TABLE IF NOT EXISTS `main`.`contacts` (
+  `public_id` INTEGER PRIMARY KEY,
+  `user_name` VARCHAR NOT NULL,
+  `public_certificate` VARCHAR NOT NULL,
+  `trusted` TINYINT NOT NULL,
+  `send_aes_key` BLOB NULL,
+  `receive_aes_key` BLOB NULL,
+  `blob_messages_id` INT NULL REFERENCES `blob_messages` (id)
+    ON DELETE CASCADE
+	ON UPDATE CASCADE,
+  `alarm_permission` TINYINT NOT NULL,
+  `nick_name` VARCHAR NULL);
+  CREATE UNIQUE INDEX `fk_contact_blob_messages_id_idx` ON contacts (`blob_messages_id` ASC);
+
+  ---------------------------------------
+  CREATE TABLE IF NOT EXISTS `main`.`blob_messages` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `public_id` INT NULL,
+  `sender_id` INT NOT NULL REFERENCES contacts(public_id)
+    ON DELETE NO ACTION
+	ON UPDATE NO ACTION,
+  `do_delete` TINYINT NOT NULL,
+  `failed` TINYINT NOT NULL);
+
+  CREATE INDEX `fk_blob_messages_contacts2_idx` ON blob_messages (`sender_id` ASC);
+  CREATE UNIQUE INDEX `fk_blob_messages_public_id_idx` ON blob_messages (`public_id` ASC);
+    
+
+  -------------------------------------
+  CREATE TABLE IF NOT EXISTS `main`.`alarms` (
+  `id` INTEGER PRIMARY KEY,
+  `time` DATETIME NOT NULL,
+  `text` MEDIUMTEXT NOT NULL,
+  `blob_messages_id` INT NOT NULL REFERENCES `blob_messages` (id)
+    ON DELETE CASCADE
+	ON UPDATE CASCADE);
+
+  CREATE UNIQUE INDEX `fk_alarms_blob_messages_id_idx` ON alarms (`blob_messages_id` ASC);
+
+  -------------------------------------
+  CREATE TABLE IF NOT EXISTS `main`.`messages_thread` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `name` VARCHAR NOT NULL,
+  `onlive` TINYINT NOT NULL,
+  `archived` TINYINT NOT NULL,
+  `with_user` INT NOT NULL REFERENCES `contacts` (`public_id`),
+  `blob_messages_id` INT NOT NULL REFERENCES `blob_messages` (id)
+    ON DELETE CASCADE
+	ON UPDATE CASCADE,
+  `public_id` BIGINT NOT NULL);
+
+  CREATE UNIQUE INDEX `fk_mess_thr_blob_mess_id_idx` ON messages_thread (`blob_messages_id` ASC);
+  CREATE INDEX `fk_mess_thr_with_user_id_idx` ON messages_thread (`with_user` ASC, `name`);
+  CREATE UNIQUE INDEX `fk_mess_thr_public_id_idx` ON messages_thread (`public_id`);
+  
+  --------------------------------------
+  CREATE TABLE IF NOT EXISTS `main`.`messages` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `id_messages_thread` INT NOT NULL REFERENCES `messages_thread` (public_id) 
+   ON DELETE RESTRICT
+   ON UPDATE CASCADE,
+  `text` MEDIUMTEXT NOT NULL,
+  `date` DATETIME NOT NULL,
+  `attechment` BLOB NULL,
+  `blob_messages_id` INT NOT NULL REFERENCES `blob_messages` (id)
+    ON DELETE CASCADE
+	ON UPDATE CASCADE);
+
+  CREATE UNIQUE INDEX `fk_messages_blob_messages1_idx` on messages (`blob_messages_id` ASC);
+  CREATE INDEX `fk_messages_messages_thread1_idx` on messages (`id_messages_thread` ASC);
+
+  -------------------------------------
+  CREATE TABLE IF NOT EXISTS `main`.`to_send_messages` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `recepient_id` INT NOT NULL REFERENCES `contacts` (`public_id`),
+  `blob` BLOB NOT NULL,
+  `blob_messages_id` INT NULL REFERENCES `blob_messages` (id),
+  `priority` INT NOT NULL);

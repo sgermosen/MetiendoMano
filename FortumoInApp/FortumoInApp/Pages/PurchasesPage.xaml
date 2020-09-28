@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Name="mainView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:InApp;assembly=InApp"
+             x:Class="InApp.Pages.PurchasesPage"
+             Title="Purchases"
+             Icon="contacts.png"
+             BackgroundColor="White"
+             BindingContext="{x:Static local:App.ViewModel}">
+
+  <StackLayout Spacing="0"
+               VerticalOptions="FillAndExpand">
+
+    <ContentView Padding="10, 36, 0, 5">
+      <Label Text="Purchases"
+             TextColor="#AAAAAA"/>
+    </ContentView>
+
+    <BoxView Color="Gray"
+             HeightRequest="1"/>
+
+    <ListView x:Name="ThePurchases"
+              VerticalOptions="FillAndExpand"
+              BackgroundColor="Transparent"
+              HasUnevenRows="True"
+              ItemsSource="{Binding Purchases}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout>
+              <StackLayout Padding ="10, 5, 10, 5"
+                           Orientation="Horizontal"
+                           HorizontalOptions="FillAndExpand">
+                <StackLayout HorizontalOptions="FillAndExpand">
+                  <Label Text="{Binding ProductId}"
+                         FontSize="Large"
+                         TextColor="Black"/>
+                </StackLayout>
+                </StackLayout>
+              </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+
+  </StackLayout>
+
+</ContentPage>

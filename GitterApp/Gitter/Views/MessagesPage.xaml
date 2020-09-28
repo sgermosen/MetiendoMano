@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:local="clr-namespace:Gitter.Views;assembly=Gitter"
+              x:Class="Gitter.Views.MessagesPage">
+  <CarouselPage.Children>
+    <ContentPage>
+      <StackLayout Orientation="Vertical">
+        <Label Text="Messages" Font="Large" HorizontalOptions="End" TextColor="Silver" />
+
+        <ListView x:Name="MessagesListView" ItemsSource="{Binding Messages}" HasUnevenRows="True">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <local:MessageView ViewModel="{Binding}" />
+              </ViewCell>
+            </DataTemplate>
+         </ListView.ItemTemplate>
+        </ListView>
+
+        <Entry x:Name="MessageTextEntry" Placeholder="Type Message" />
+      </StackLayout>
+    </ContentPage>
+
+    <ContentPage>
+      <StackLayout Orientation="Vertical" Padding="5">
+        <Label Text="User" Font="Large" HorizontalOptions="End" TextColor="Silver" />
+
+        <ListView x:Name="UsersListView" ItemsSource="{Binding Users}" HasUnevenRows="True">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <local:UserView ViewModel="{Binding}" />
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+      </StackLayout>
+    </ContentPage>
+  </CarouselPage.Children>
+</CarouselPage>

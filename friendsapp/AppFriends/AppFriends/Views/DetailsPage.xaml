@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppFriends.Views.DetailsPage">
+  <ScrollView Padding="10">
+    <StackLayout Spacing="10">
+      <Image Source="{Binding Image}" HeightRequest="200" WidthRequest="200" />
+      <Label Text="{Binding CompleteName}" FontSize="24" />
+      <Label Text="{Binding Age, StringFormat='{0} anos'}" TextColor="Red" />
+      <Label Text="{Binding Description}" />
+      <Button Text="Facebook Page" x:Name="ButtonFacebookPage" />
+    </StackLayout>
+  </ScrollView>
+</ContentPage>

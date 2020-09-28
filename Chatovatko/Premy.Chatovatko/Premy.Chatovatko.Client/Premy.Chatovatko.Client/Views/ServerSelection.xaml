@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Premy.Chatovatko.Client.Views.ServerSelection"
+             xmlns:local="clr-namespace:Premy.Chatovatko.Client.Images;assembly=Premy.Chatovatko.Client">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="0,10,0,0" Spacing="10">
+                <Image Source="{local:ImageResource Premy.Chatovatko.Client.Images.logo1.png}" Margin="20" HeightRequest="100" />
+                <Label Text="Enter address and password (if required) of server, you want to connect to:" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="40, 0, 40, 0"/>
+                <StackLayout HorizontalOptions="CenterAndExpand" >
+                    <Entry x:Name="serverAddressEntry" Text="51.144.234.233" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" WidthRequest="200"/>
+                    <Entry x:Name="passwordEntry" IsPassword="True" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" WidthRequest="200"/>
+                </StackLayout>
+                
+                <Label Text="If you are using this certificate first time, please enter new username." 
+                       HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="40, 0, 40, 0"/>
+                <Label Text="Username must be 4 chars at least long and can't be longer than 45 chars. It must match regex ^[a-zA-Z][-a-zA-Z0-9_]+$." 
+                       HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="40, 0, 40, 0"/>                
+                <Entry x:Name="userNameEntry" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" WidthRequest="200"/>
+                <Button VerticalOptions="End" HorizontalOptions="CenterAndExpand" x:Name="ConfirmButton" Text="Confirm" Pressed="Confirm"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

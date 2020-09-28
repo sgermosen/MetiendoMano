@@ -1,0 +1,3 @@
+Scaffold-DbContext "Data Source=C:/chatovatko/sql/client.db" Microsoft.EntityFrameworkCore.Sqlite -OutputDir Models -Force
+
+Scaffold-DbContext "Server=localhost; database=chatovatko;UID=chatovatko;password=4CPaBBp8D8ascWb" Pomelo.EntityFrameworkCore.MySql -OutputDir Models -Force

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Premy.Chatovatko.Client.Views.ThreadsList"
+             Title="Thread list">
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem Text="Add"
+                     x:Name="addThread"
+                     Icon="add.png"
+                     Clicked="addThread_Clicked"/>
+
+        <ToolbarItem Text="Settings"
+                     x:Name="settingsTlb"
+                     Icon="settings.png"
+                     Clicked="settings_Clicked"/>
+
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        
+            <StackLayout>
+            <ScrollView>
+                <ListView ItemsSource="{Binding MessagesThreads}"
+                  HasUnevenRows="True"
+                  ItemTapped="OnThreadTapped"
+                  BackgroundColor="#f5f5f5">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal"
+                                                 HorizontalOptions="StartAndExpand">
+
+                                    <Label Text="{Binding Name}"
+                                               Margin="10" />
+                                </StackLayout>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

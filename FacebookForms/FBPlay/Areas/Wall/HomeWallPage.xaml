@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:FBPlay;assembly=FBPlay" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="FBPlay.HomeWallPage">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<DataTemplate x:Key="WhatsOnYourMindTemplate" >
+				<ViewCell>
+					<ContentView>
+                        <ContentView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FakeCommand}" ></TapGestureRecognizer>
+                        </ContentView.GestureRecognizers>
+					    <local:WhatOnYourMind ></local:WhatOnYourMind>
+					</ContentView>
+				</ViewCell>
+			</DataTemplate>
+		    <DataTemplate x:Key="FeedItemTemplate">
+                <ViewCell>
+					<ContentView>
+						<ContentView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FakeCommand}" ></TapGestureRecognizer>
+                        </ContentView.GestureRecognizers>
+                        <local:PostView Margin="0,5"></local:PostView>
+					</ContentView>
+                </ViewCell>
+            </DataTemplate>
+			<DataTemplate x:Key="FeedItemNoImageTemplate">
+                <ViewCell>
+                    <ContentView>
+                        <ContentView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FakeCommand}" ></TapGestureRecognizer>
+                        </ContentView.GestureRecognizers>
+                        <local:PostViewNoImage Margin="0,5"></local:PostViewNoImage>
+                    </ContentView>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="LottieTemplate">
+                <ViewCell>
+                    <ContentView>
+                        <ContentView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FakeCommand}" ></TapGestureRecognizer>
+                        </ContentView.GestureRecognizers>
+                        <local:LottieAnimationView Margin="0,5"></local:LottieAnimationView>
+                    </ContentView>
+                </ViewCell>
+            </DataTemplate>
+			
+			<local:HomeWallListDataTemplateSelector x:Key="homeWallListTemplateSelector"
+                WhatsOnYourMindTemplate="{StaticResource WhatsOnYourMindTemplate}"
+                FeedItemTemplate="{StaticResource FeedItemTemplate}"
+				FeedItemNoImageTemplate="{StaticResource FeedItemNoImageTemplate}"
+				LottieTemplate="{StaticResource LottieTemplate}" />
+    
+		</ResourceDictionary>
+	</ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+		
+		<ContentView Grid.RowSpan="2" >
+		    <local:FriendsList x:Name="friendList" 
+					HorizontalOptions="Start" WidthRequest="300"			        
+				></local:FriendsList>
+		</ContentView>
+		
+        <Grid x:Name="header" BackgroundColor="{StaticResource BlueHeaderColor}" >
+            <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource BlueHeaderColor}">
+				<SearchBar HorizontalOptions="FillAndExpand" Placeholder="Search" BackgroundColor="{StaticResource BlueHeaderColor}">
+					<SearchBar.Effects>
+						<local:CustomSearchBarEffects PlaceHolderBackgroundColor="{StaticResource BlueHeaderColor}"/>
+					</SearchBar.Effects>
+				</SearchBar>
+				<Image Source="friendlisticon.png" HeightRequest="40" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="FriendListTapped" ></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+				</Image>
+            </StackLayout>
+        </Grid>
+        
+        <local:AdvancedListView BackgroundColor="#D7DBDF" HasUnevenRows="true" TranslationY="60" Grid.RowSpan="2" 			x:Name="myListView" 
+				ItemsSource="{Binding Items}" ItemTemplate="{StaticResource homeWallListTemplateSelector}" 
+				SeparatorVisibility="None"
+				> 
+        </local:AdvancedListView>
+
+		<!--<BoxView x:Name="panContainer" Grid.RowSpan="2" BackgroundColor="Transparent" >
+            <BoxView.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="Handle_PanUpdated" ></PanGestureRecognizer>
+            </BoxView.GestureRecognizers>
+		</BoxView>-->
+		
+    </Grid>
+</ContentPage>

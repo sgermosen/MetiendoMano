@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Premy.Chatovatko.Client.Views.Settings">
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem Text="Close"
+                     x:Name="close"
+                     Icon="close.png"
+                     Clicked="close_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="Export private certificate to documents" x:Name="exportButton" Pressed="exportButton_Pressed"/>
+            <Button Text="Delete database" x:Name="deleteDatabaseButton" Pressed="deleteDatabaseButton_Pressed"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

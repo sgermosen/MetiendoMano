@@ -1,0 +1,3 @@
+ConnectionString=Server=localhost; database=chatovatko;UID=chatovatko;password=4CPaBBp8D8ascWb
+CertAddress=/mnt/c/keys/private.p12
+ServerName=TaRDIS development Linux

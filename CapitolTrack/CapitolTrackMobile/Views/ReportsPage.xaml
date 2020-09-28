@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 x:Class="CapitolTrackMobile.ReportsPage"
+			 Icon="reports.png"
+			 Title="Report Categories">
+	<ContentPage.Content>
+		<StackLayout>
+			<SearchBar Text="Search" />
+			<Button Text="Pretending to click on Report Category" Clicked="ReportCategoryClicked" />
+			<ListView  x:Name="listView">
+            <ListView.ItemTemplate>                  
+                <DataTemplate>
+                    <TextCell Text="{Binding ReportCategoryTitle}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+			
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

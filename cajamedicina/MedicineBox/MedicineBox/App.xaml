@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MedicineBox.App" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
+  <Application.Resources>
+    <!-- Application resource dictionary -->
+    <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <vm:ViewModelLocator d4p1:Key="Locator" d:IsDataSource="True" xmlns:d4p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="clr-namespace:MedicineBox.ViewModel" />
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

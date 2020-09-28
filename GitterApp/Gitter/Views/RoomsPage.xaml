@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:local="clr-namespace:Gitter.Views;assembly=Gitter"
+                  x:Class="Gitter.Views.RoomsPage">
+  <MasterDetailPage.Master>
+    <!-- have to set the title property of the masters content page, otherwise
+         you will get an exception. -->
+    <ContentPage Title="Rooms">
+      <StackLayout Orientation="Vertical" Padding="5,0,5,5">
+        <Label Text="Rooms" Font="Large" HorizontalOptions="End" TextColor="Silver" />
+
+        <ListView ItemsSource="{Binding Rooms}" HasUnevenRows="true" SelectedItem="{Binding Path=SelectedRoom, Mode=TwoWay}">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <local:RoomView ViewModel="{Binding}" />
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+      </StackLayout>
+    </ContentPage>
+  </MasterDetailPage.Master>
+  
+  <MasterDetailPage.Detail>
+    <local:MessagesPage ViewModel="{Binding}" />
+  </MasterDetailPage.Detail>
+</MasterDetailPage>

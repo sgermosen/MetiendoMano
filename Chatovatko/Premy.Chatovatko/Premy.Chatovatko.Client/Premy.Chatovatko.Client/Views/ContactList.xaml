@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Premy.Chatovatko.Client.Views.ContactList"
+             Title="Contact list"
+             xmlns:local="clr-namespace:Premy.Chatovatko.Client.Images;assembly=Premy.Chatovatko.Client">
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem Text="Search user"
+                     x:Name="searchUser"
+                     Icon="search.png"
+                     Clicked="searchUser_Clicked"/>
+
+        <ToolbarItem Text="Settings"
+                     x:Name="settingsTlb"
+                     Icon="settings.png"
+                     Clicked="settings_Clicked"/>
+
+
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <ListView ItemsSource="{Binding Contacts}"
+                  HasUnevenRows="True"
+                  ItemTapped="OnContactTapped"
+                  BackgroundColor="#f5f5f5">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal"
+                                                 HorizontalOptions="StartAndExpand">
+
+                                    <Label Text="{Binding ShowName}"
+                                               Margin="10" />
+                                </StackLayout>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

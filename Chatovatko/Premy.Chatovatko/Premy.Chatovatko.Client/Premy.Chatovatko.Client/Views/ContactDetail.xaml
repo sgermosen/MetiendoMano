@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Premy.Chatovatko.Client.Views.ContactDetail"
+             NavigationPage.HasBackButton="True"
+             NavigationPage.HasNavigationBar="True"
+             Title="Contact detail">
+    <ContentPage.ToolbarItems>
+        
+        <ToolbarItem Text="Discard"
+                     x:Name="discardUser"
+                     Icon="close.png"
+                     Clicked="DiscardChanges"/>
+
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="30" Spacing="20">
+                <StackLayout>
+                    <Label Text="UserName"/>
+                    <Entry x:Name="userNameEntry" IsEnabled="False" MinimumWidthRequest="200"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="NickName"/>
+                    <Entry x:Name="nickNameEntry" MinimumWidthRequest="200"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Trusted"/>
+                    <Switch x:Name="trustedSwitch" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Alarm permission"/>
+                    <Switch x:Name="alarmSwitch" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="PublicId:"/>
+                    <Label x:Name="publicIdLabel"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Certificate sha-256:"/>
+                    <Label x:Name="sha256Label"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Receive AES key"/>
+                    <Label x:Name="receiveAesLabel"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Send AES key"/>
+                    <Label x:Name="sendAesLabel"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

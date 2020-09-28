@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Premy.Chatovatko.Client.Views.SearchUser"
+             Title="Search user">
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem Text="Close"
+                     x:Name="close"
+                     Icon="close.png"
+                     Clicked="close_Clicked"/>
+        
+        <ToolbarItem Text="Start"
+                     x:Name="start"
+                     Icon="checkmark.png"
+                     Clicked="start_Clicked"/>
+
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="30" Spacing="10">
+                <Label Text="Fill one of these please:"/>
+                <StackLayout>
+                    <Label Text="UserName:"/>
+                    <Entry x:Name="userNameEntry"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="PublicId:"/>
+                    <Entry x:Name="publicIdEntry"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

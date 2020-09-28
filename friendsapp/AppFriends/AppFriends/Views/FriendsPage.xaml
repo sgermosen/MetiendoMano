@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppFriends.Views.FriendsPage"
+             xmlns:VM="clr-namespace:AppFriends.ViewModels"
+             Title="Friends App">
+  <ContentPage.BindingContext>
+    <VM:FriendsViewModel/>
+  </ContentPage.BindingContext>
+  <StackLayout
+        Spacing="0">
+    <Button Text="Sincronizar" Command="{Binding GetFriendsCommand}" />
+    <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="Black" />
+    <ListView x:Name="ListViewFriends" ItemsSource="{Binding Friends}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ImageCell
+              Text="{Binding Name}"
+              Detail="{Binding Age, StringFormat='{0} anos'}"
+              ImageSource="{Binding Image}">
+          </ImageCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

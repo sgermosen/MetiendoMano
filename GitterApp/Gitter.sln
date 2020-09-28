@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gitter", "Gitter\Gitter.csproj", "{BAC77C4B-9F24-4394-A86D-F1DDFFBCF7C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gitter.Android", "Gitter.Android\Gitter.Android.csproj", "{ED318AFB-A43C-4840-AB72-3032ED6EE576}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gitter.Tests", "Gitter.Tests\Gitter.Tests.csproj", "{274A9743-5C45-4EDC-A27A-D9601278D08A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAC77C4B-9F24-4394-A86D-F1DDFFBCF7C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAC77C4B-9F24-4394-A86D-F1DDFFBCF7C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAC77C4B-9F24-4394-A86D-F1DDFFBCF7C5}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{BAC77C4B-9F24-4394-A86D-F1DDFFBCF7C5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BAC77C4B-9F24-4394-A86D-F1DDFFBCF7C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAC77C4B-9F24-4394-A86D-F1DDFFBCF7C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAC77C4B-9F24-4394-A86D-F1DDFFBCF7C5}.Release|ARM.ActiveCfg = Release|Any CPU
+		{BAC77C4B-9F24-4394-A86D-F1DDFFBCF7C5}.Release|x86.ActiveCfg = Release|Any CPU
+		{ED318AFB-A43C-4840-AB72-3032ED6EE576}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED318AFB-A43C-4840-AB72-3032ED6EE576}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED318AFB-A43C-4840-AB72-3032ED6EE576}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{ED318AFB-A43C-4840-AB72-3032ED6EE576}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{ED318AFB-A43C-4840-AB72-3032ED6EE576}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ED318AFB-A43C-4840-AB72-3032ED6EE576}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED318AFB-A43C-4840-AB72-3032ED6EE576}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED318AFB-A43C-4840-AB72-3032ED6EE576}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{ED318AFB-A43C-4840-AB72-3032ED6EE576}.Release|ARM.ActiveCfg = Release|Any CPU
+		{ED318AFB-A43C-4840-AB72-3032ED6EE576}.Release|x86.ActiveCfg = Release|Any CPU
+		{274A9743-5C45-4EDC-A27A-D9601278D08A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{274A9743-5C45-4EDC-A27A-D9601278D08A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{274A9743-5C45-4EDC-A27A-D9601278D08A}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{274A9743-5C45-4EDC-A27A-D9601278D08A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{274A9743-5C45-4EDC-A27A-D9601278D08A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{274A9743-5C45-4EDC-A27A-D9601278D08A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{274A9743-5C45-4EDC-A27A-D9601278D08A}.Release|ARM.ActiveCfg = Release|Any CPU
+		{274A9743-5C45-4EDC-A27A-D9601278D08A}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C372BB89-2539-402F-8BA8-997D57E8E824}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Gitter.Android\Gitter.Android.csproj
+	EndGlobalSection
+EndGlobal

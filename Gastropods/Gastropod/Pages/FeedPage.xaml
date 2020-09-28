@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Gastropods"
+             x:Class="Gastropod.FeedPage">
+    <ContentPage.Content>
+        <CollectionView x:Name="ItemsListView" 
+                        ItemsSource="{Binding Items}" 
+                        VerticalOptions="FillAndExpand">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout 
+                    Orientation="Vertical"
+                    Span="2"
+                />
+            </CollectionView.ItemsLayout>
+            <CollectionView.EmptyView>
+                <StackLayout>
+                    <Label 
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        Text="Loading Papers"/>
+                </StackLayout>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <ContentView Padding="10" HeightRequest="200">
+                        <Frame HasShadow="false"
+                               OutlineColor="#2f2f2f"
+                               Padding="0"
+                               CornerRadius="2">
+                            <Grid BackgroundColor="#f2f2f2">
+                                
+                                <Image Source="{Binding Image}"
+                                       Aspect="AspectFill"/>
+                                
+                                <BoxView BackgroundColor="#000000"
+                                         Opacity="0.4"/>
+                                
+                                <Label Text="{Binding Text}"
+                                       Margin="15"
+                                       TextColor="White"
+                                       VerticalOptions="End"
+                                       VerticalTextAlignment="End"
+                                       LineBreakMode="NoWrap" 
+                                       FontSize="18" />
+                            </Grid>
+                        </Frame>
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>

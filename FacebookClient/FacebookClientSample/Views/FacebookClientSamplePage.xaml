@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:FacebookClientSample" x:Class="FacebookClientSample.FacebookClientSamplePage">
+    <ContentPage.Content>
+        <StackLayout Spacing="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Silver">
+             <Button Text="Login With Facebook" BackgroundColor="#819FF7"  VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Command="{Binding FillPrincipalDataCommand}"></Button>  
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Name="mainView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:InApp;assembly=InApp"
+             x:Class="InApp.Pages.ShopPage"
+             Title="Shop"
+             Icon="accounts.png"
+             BackgroundColor="White"
+             BindingContext="{x:Static local:App.ViewModel}">
+  
+  <StackLayout Spacing="0"
+               VerticalOptions="FillAndExpand">
+
+    <ContentView Padding="10, 36, 0, 5">
+      <Label Text="Products"
+             TextColor="#AAAAAA"/>
+    </ContentView>
+    
+    <BoxView Color="Gray" 
+             HeightRequest="1"/>
+
+    <ListView x:Name="TheProducts"
+              VerticalOptions="FillAndExpand"
+              BackgroundColor="Transparent"
+              ItemsSource="{Binding Products}"
+              HasUnevenRows="True">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell Height="120">
+            <StackLayout>
+              
+              <StackLayout Padding ="10, 5, 10, 5"
+                           Orientation="Horizontal"
+                           HorizontalOptions="FillAndExpand">
+              
+                <StackLayout HorizontalOptions="FillAndExpand">
+                  <Label Text="{Binding Title}" 
+                         FontSize="Large"
+                         TextColor="Black"/>
+                  <Label Text="{Binding Description}"
+                         FontSize="Medium"
+                         TextColor="#666"/>
+                  <Label Text="Restore"
+                         TextColor="Blue">
+                    <Label.GestureRecognizers>
+                      <TapGestureRecognizer Command="{Binding Source={x:Static local:App.ViewModel}, Path=RestoreCommand}"
+                                            CommandParameter="{Binding}" />
+                    </Label.GestureRecognizers>
+                  </Label>
+                </StackLayout>
+
+                <StackLayout>
+                  <Image HeightRequest ="50"
+                         WidthRequest="50"
+                         Aspect="AspectFill"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         Source="{Binding IconSource}"/>
+                  <Button Text="Buy"
+                          TextColor="White"
+                          FontSize="Small"
+                          HorizontalOptions="End"
+                          BackgroundColor="Green"
+                          Command="{Binding Source={x:Static local:App.ViewModel}, Path=PurchaseCommand}"
+                          CommandParameter="{Binding}"/>
+                  </StackLayout>
+              
+              </StackLayout>
+
+              <BoxView Color="Gray">
+                <BoxView.HeightRequest>
+                  <OnPlatform x:TypeArguments="x:Double"
+                              iOS="0"
+                              Android="1"/>
+                </BoxView.HeightRequest>
+              </BoxView>
+              
+            </StackLayout>            
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+
+  </StackLayout>
+
+</ContentPage>

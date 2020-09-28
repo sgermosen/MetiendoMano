@@ -1,0 +1,16 @@
+>Prolog
+There are 2 TCP connection. The first one is control connection and the second one is for data. Each connection is encrypted by TLS 1.2.
+Control connection uses UTF-8. Each transmision is terminated by "<EOF>" sequence. Client is master and server slave.
+Data connection is purely binary.
+
+>Beginning of connection
+Firsts, client connects to server at the port 8471. After TLS handshake, the server sends to client port for data connection. 
+After than client connects to selected port and do TLS handshake on data port.
+
+Now, there are two opened TLS streams. It's time for authentication or registration.
+If client wants to register new user, it will send "register" command. If not, client will send "login".
+
+> Registration
+After server receives "register" command, it will wait for new username in control connection. If new username is ok, server sends back "OK".
+If not, server sends back reason.
+When the username is successfully selected, server waits for the client's public key.

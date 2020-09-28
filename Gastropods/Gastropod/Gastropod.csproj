@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
+    <PackageReference Include="LiveXAML" Version="2.1.72" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="FlyoutHeader.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="FlyoutHeader.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Images\photo.png" />
+    <None Remove="Images\shells_01.jpg" />
+    <None Remove="Images\shell_01.jpg" />
+    <None Remove="Images\snail_01.jpg" />
+    <None Remove="ViewModels\CameraViewModel.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\photo.png" />
+    <EmbeddedResource Include="Images\shells_01.jpg" />
+    <EmbeddedResource Include="Images\shell_01.jpg" />
+    <EmbeddedResource Include="Images\snail_01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Styles\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\CameraPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pages\LoginPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="AppShell.xaml.cs">
+      <DependentUpon>AppShell.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

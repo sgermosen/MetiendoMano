@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Premy.Chatovatko.Client.Views.CertificateSelection"
+             xmlns:local="clr-namespace:Premy.Chatovatko.Client.Images;assembly=Premy.Chatovatko.Client">
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="0,10,0,0" Spacing="0">
+                
+                <Image Source="{local:ImageResource Premy.Chatovatko.Client.Images.logo1.png}" Margin="20" HeightRequest="100" />
+                <Label Text="Generating certificate&#10;Tip: Backup your certificate from settings for later usage."
+                HorizontalOptions="CenterAndExpand" Margin="40, 40, 40, 0" x:Name="generatingLabel"/>
+                <Label Text="Loading file"
+                HorizontalOptions="CenterAndExpand" Margin="40, 40, 40, 0" x:Name="loadingFileLabel"/>
+                <ActivityIndicator x:Name="activityIndicator" Color="#00AEED" Margin="10"/>
+                <Label Text="Welcome to Chatovatko!&#10;&#10;It is nessesary to have X509 certificate. Do you want to use an own certificate (*.p12), or do you want to generate a new one?"
+                HorizontalOptions="CenterAndExpand" Margin="40, 40, 40, 0" x:Name="introLabel"/>
+                <StackLayout VerticalOptions="EndAndExpand" Padding="50, 0, 50, 50" x:Name="buttonLayout">
+                    <Button Text="Load from file" Pressed="LoadFromFile"/>
+                    <Button Text="Generate" Pressed="Generate"/>
+                </StackLayout>
+            </StackLayout>
+            
+        </ScrollView>
+
+    </ContentPage.Content>
+    
+</ContentPage>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Premy.Chatovatko.Client.Views.Loading"
+             xmlns:local="clr-namespace:Premy.Chatovatko.Client.Images;assembly=Premy.Chatovatko.Client">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="0,10,0,0" Spacing="0">
+
+                <Image Source="{local:ImageResource Premy.Chatovatko.Client.Images.logo1.png}" Margin="20" HeightRequest="100" />
+                <Label Text="Wait please"
+                HorizontalOptions="CenterAndExpand" Margin="40, 40, 40, 0" x:Name="waitLabel"/>
+                <ActivityIndicator x:Name="activityIndicator" Color="#00AEED" Margin="10" IsVisible="True" IsRunning="True"/>
+                
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

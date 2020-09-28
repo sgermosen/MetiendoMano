@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gitter.Views.UserView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+  <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Vertical" Padding="0,5,0,5">
+s
+    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+      <Image HorizontalOptions="Start" VerticalOptions="FillAndExpand" x:Name="Avatar" WidthRequest="40" HeightRequest="40" />
+
+      <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="0,0,0,10">
+        <Label HorizontalOptions="StartAndExpand" VerticalOptions="Start" Text="{Binding DisplayName}" Font="Medium" />
+        <Label HorizontalOptions="StartAndExpand" VerticalOptions="Start" Text="{Binding UserName}" Font="Small" TextColor="Gray" />
+      </StackLayout>
+    </StackLayout>
+
+  </StackLayout>
+</ContentView>

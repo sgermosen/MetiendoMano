@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Premy.Chatovatko.Client.Views.ServerVerification"
+             xmlns:local="clr-namespace:Premy.Chatovatko.Client.Images;assembly=Premy.Chatovatko.Client">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="0,10,0,0" Spacing="10">
+                <Image Source="{local:ImageResource Premy.Chatovatko.Client.Images.logo1.png}" Margin="20" HeightRequest="100" />
+                <Label Text="Do you trust this server?" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="40, 0, 40, 0" x:Name="textLabel"/>
+                <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                    <Button Text="No" Pressed="NotTrusted"/>
+                    <Button Text="Yes" Pressed="Trusted"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
