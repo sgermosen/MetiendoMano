@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[11],{103:function(n,o,e){HTMLDocument.prototype.ready=new Promise((function(n){return"loading"!==document.readyState?n():(document.addEventListener("DOMContentLoaded",(function(){return n()})),null)})),document.ready.then((function(){window.clipboard||window.Clipboard||navigator.clipboard||navigator.Clipboard||e.e(74).then(e.bind(null,236)).then((function(n){window.clipboard=n}))}))}},[[103,38]]]);
+//# sourceMappingURL=clipboardCopy-8826d4697d53137984d3.chunk.js.map
