@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 xmlns:controls="clr-namespace:LineDietXF.Controls"
+			 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"             
+			 x:Class="LineDietXF.Views.DailyInfoPage"
+             BackgroundColor="{DynamicResource PrimaryFillColor}"
+             Icon="scale">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="AddEntry" 
+                     Icon="plus"
+                     Command="{Binding AddEntryCommand}" />
+    </ContentPage.ToolbarItems>
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- top half -->
+        <StackLayout Grid.Row="0"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Center"
+                     Padding="20,10"
+                     Spacing="10">
+            <!-- NOTE:: the font size is dynamicly bound to MainLabelFontSize as weight in stones is much longer (ex: "15st 9.4lb" instead of "219.4" -->
+            <Label HorizontalOptions="Center" 
+				   Style="{StaticResource ThinLabelStyle}"
+ 				   FontSize="{Binding MainLabelFontSize}"
+				   Text="{Binding TodaysWeight}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddEntryCommand}" NumberOfTapsRequired="1" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label HorizontalOptions="Center" 
+                   Style="{StaticResource ThinLabelStyle}"
+                   Text="{Binding HowToEatText}"
+                   FontSize="Medium">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddEntryCommand}" NumberOfTapsRequired="1" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+
+        <!-- bottom half -->
+        <Grid Grid.Row="1"
+              BackgroundColor="{StaticResource SlightDimmingOverlayColor}">
+            <StackLayout VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         Padding="20,10">
+                <Label XAlign="Center"
+                       Margin="0,0,0,10"
+				       Style="{StaticResource ThinLabelStyle}"
+				       Text="{Binding TodaysMessage}"/>
+                <Button Text="Enter Weight"
+                        Style="{StaticResource BoxButtonStyle}"
+                        IsVisible="{Binding IsEnterWeightButtonVisible}"
+                        Command="{Binding AddEntryCommand}" />
+                <Button Text="Set Goal"
+                        Style="{StaticResource BoxButtonStyle}"
+                        IsVisible="{Binding IsSetGoalButtonVisible}"
+                        Command="{Binding SetGoalCommand}" />
+            </StackLayout>
+        </Grid>
+
+        <!-- loading overlay -->
+        <controls:LoadingIndicator Grid.RowSpan="2"                                                 
+                                   IsVisible="{Binding IsBusy}" />
+    </Grid>
+</ContentPage>

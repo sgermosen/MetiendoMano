@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="LineDietXF.Views.AboutPage"
+             BackgroundColor="{StaticResource GrayFillColor}"
+             Title="About Line Diet">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Close" 
+                     Icon="close"
+                     Command="{Binding CloseCommand}" />
+    </ContentPage.ToolbarItems>
+    <Grid RowSpacing="0">
+        <ScrollView HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+            <Grid ColumnSpacing="10">
+                <Grid.Padding>
+                    <OnPlatform x:TypeArguments="Thickness"
+                                    iOS="10,40,10,0"
+                                    Android="10,20,10,0"
+                                    WinPhone="10,20,10,0" />
+                </Grid.Padding>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="StartAndExpand"
+                        Source="smartypantslogo" />
+                <Label Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="StartAndExpand"
+                        Style="{StaticResource ThinLabelStyle}"
+                        Text="Line Diet was originally created by @SmartyP and is an open source project on Github. Please consider checking out my other creations at SmartyPantsCoding.com." />
+
+                <Button Grid.Row="1"
+                        Grid.ColumnSpan="2" 
+                        Style="{StaticResource BoxButtonStyle}"
+                        Command="{Binding VisitSmartyPNetCommand}"
+                        Text="More about @SmartyP" />
+                <Button Grid.Row="2"
+                        Grid.ColumnSpan="2" 
+                        Style="{StaticResource BoxButtonStyle}"
+                        Command="{Binding VisitSPCWebsiteCommand}"
+                        Text="SmartyPantsCoding.com" />
+                <Button Grid.Row="3"
+                        Grid.ColumnSpan="2" 
+                        Style="{StaticResource BoxButtonStyle}"
+                        Command="{Binding VisitGithubCommand}"
+                        Text="Line Diet on Github" />
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>

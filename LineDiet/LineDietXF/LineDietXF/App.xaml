@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+						xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+						xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity"
+						xmlns:cvt="clr-namespace:LineDietXF.Converters"
+						x:Class="LineDietXF.App">
+  <Application.Resources>
+    <ResourceDictionary>
+
+      <!-- converters -->
+      <cvt:WeightValueConverter x:Key="WeightCvt" />
+      <cvt:DateValueConverter x:Key="DateCvt" />
+      <cvt:CheckmarkVisibilityConverter x:Key="CheckmarkVisCvt" />      
+      <cvt:InverseBooleanConverter x:Key="InverseBoolConverter" />
+      <cvt:WeightListingFontSizeConverter x:Key="WeightListingFontSizeCvt" />
+
+      <!-- dynamic colors -->
+      <Color x:Key="PrimaryResultColor">#808080</Color>
+      <Color x:Key="PrimaryFillColor">#808080</Color>
+
+      <!-- static colors -->
+      <Color x:Key="OverlayColor">#28000000</Color>
+      <Color x:Key="DimmingOverlayColor">#88000000</Color>
+      <Color x:Key="SlightDimmingOverlayColor">#14000000</Color>
+      <Color x:Key="GrayFillColor">#808080</Color>
+      <Color x:Key="LightGrayColor">#c0c0c0</Color>
+      <Color x:Key="FieldFillColor">#33ffffff</Color>
+      <Color x:Key="ButtonFillColor">#66ffffff</Color>
+      <Color x:Key="ButtonTextColor">#ffffff</Color>
+      <Color x:Key="EntryPlaceholderColor">#66ffffff</Color>
+      <Color x:Key="LoadingOverlayColor">#44000000</Color>
+
+      <!-- label styles -->
+      <OnPlatform x:Key="ThinFontFamilyStyle"
+                  x:TypeArguments="x:String"
+                  iOS="HelveticaNeue-Thin"
+                  Android="sans-serif-thin"
+                  WinPhone="" />
+
+      <OnPlatform x:Key="BoldFontFamilyStyle"
+                  x:TypeArguments="x:String"
+                  iOS="HelveticaNeue-Medium"
+                  Android="sans-serif-bold"
+                  WinPhone="" />
+
+      <OnPlatform x:Key="NormalFontFamilyStyle"
+                  x:TypeArguments="x:String"
+                  iOS="HelveticaNeue"
+                  Android="sans-serif"
+                  WinPhone="" />
+
+      <Style x:Key="TitleLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="{DynamicResource BoldFontFamilyStyle}" />
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="FontSize" Value="32" />
+      </Style>
+
+      <Style x:Key="SubtitleLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="{DynamicResource NormalFontFamilyStyle}" />
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="FontSize" Value="Medium" />
+      </Style>
+
+      <Style x:Key="ThinLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="{DynamicResource ThinFontFamilyStyle}" />
+        <Setter Property="TextColor" Value="White"/>
+      </Style>
+
+      <Style x:Key="FieldLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="{DynamicResource ThinFontFamilyStyle}" />
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="FontSize" Value="Small" />
+        <Setter Property="Margin" Value="0,6,0,0" />
+      </Style>
+
+      <Style x:Key="SettingsMenuLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="{DynamicResource ThinFontFamilyStyle}" />
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryResultColor}"/>
+        <Setter Property="FontSize" Value="28"/>
+      </Style>
+     
+      <!-- button styles -->      
+      <Style x:Key="BoxButtonStyle" TargetType="Button">
+        <Setter Property="BorderRadius" Value="0" />
+        <Setter Property="BackgroundColor" Value="{StaticResource ButtonFillColor}" />
+        <Setter Property="FontFamily" Value="{DynamicResource NormalFontFamilyStyle}" />
+        <Setter Property="TextColor" Value="{StaticResource ButtonTextColor}" />
+        <Setter Property="Margin" Value="0,0,0,6" />
+      </Style>
+
+      <!-- Android buttons are inset a bit and don't line up with entry fields, so the ButtonWrappingPanel helps them align
+           NOTE:: Initially this was done on the BoxButtonStyle, however it was noticed that if there were multiple buttons that
+           only the first would align. This issue appeared after adding the weight field wrapping grids for showing/hiding different
+           weight fields for kg/pounds VS stones. Instead applying the margin on a wrapping StackLayout for the buttons works fine. -->
+      <OnPlatform x:Key="ButtonWrappingPanelMargin"
+                  x:TypeArguments="Thickness"
+                  iOS="0,20,0,8"
+                  Android="-4,20,-4,8"
+                  WinPhone="0,20,0,8" />
+
+      <Style x:Key="ButtonWrappingPanel" TargetType="StackLayout">
+        <Setter Property="Margin" Value="{StaticResource ButtonWrappingPanelMargin}" />
+      </Style>
+
+      <!-- entry styles -->
+      <Style x:Key="WeightEntryStyle" TargetType="Entry">
+        <Setter Property="BackgroundColor" Value="{StaticResource FieldFillColor}" />
+        <Setter Property="TextColor" Value="{StaticResource ButtonTextColor}" />
+        <Setter Property="Keyboard" Value="Numeric" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource EntryPlaceholderColor}" />
+      </Style>
+
+      <Style x:Key="DateEntryStyle" TargetType="DatePicker">
+        <Setter Property="BackgroundColor" Value="{StaticResource FieldFillColor}" />
+        <Setter Property="TextColor" Value="White" />
+      </Style>
+      
+      <!-- ActivityIndicator style -->
+      <Style x:Key="LoadingStyle" TargetType="ActivityIndicator">
+        <Setter Property="Color" Value="White" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HeightRequest" Value="48" />
+        <Setter Property="WidthRequest" Value="48" />
+      </Style>
+
+    </ResourceDictionary>
+  </Application.Resources>
+</prism:PrismApplication>

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LineDietXF.Views.SetGoalPage"
+             xmlns:controls="clr-namespace:LineDietXF.Controls"
+             BackgroundColor="{StaticResource GrayFillColor}"
+             Title="Set Weight Loss Goal">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Close" 
+                     Icon="close"
+                     Command="{Binding CloseCommand}" />
+    </ContentPage.ToolbarItems>
+    <Grid RowSpacing="0">
+        <ScrollView HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+            <StackLayout Orientation="Vertical"
+                         HorizontalOptions="Fill">
+                <StackLayout.Padding>
+                    <OnPlatform x:TypeArguments="Thickness"
+                                iOS="10,40,10,0"
+                                Android="10,20,10,0"
+                                WinPhone="10,20,10,0" />
+                </StackLayout.Padding>
+                <Label Style="{StaticResource SubtitleLabelStyle}"
+                       Text="Pick your goal weight, and the date you'd like to achieve it by. Make sure your goal is reasonable." />
+
+                <!-- start date -->
+                <Label Text="Start Date" 
+                       Margin="0, 20, 0, 0"
+                       Style="{StaticResource FieldLabelStyle}"/>
+                <DatePicker Style="{StaticResource DateEntryStyle}"
+                            Date="{Binding StartDate}"/>
+
+                <!-- start weight section (shows different fields for stones unit type) -->
+                <Label Text="{Binding StartWeightLabel}" 
+                       Style="{StaticResource FieldLabelStyle}"/>
+                <Grid IsVisible="{Binding ShowStonesEntryFields, Converter={StaticResource InverseBoolConverter}}">
+                    <Entry Style="{StaticResource WeightEntryStyle}"
+                           Text="{Binding StartWeight}"
+                           Placeholder="Enter starting weight (ex: 180.0)"/>
+                </Grid>
+                <Grid IsVisible="{Binding ShowStonesEntryFields}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Entry Style="{StaticResource WeightEntryStyle}"
+                           Text="{Binding StartWeightStones}"
+                           Placeholder="Stones (ex: 10)"/>
+                    <Entry Grid.Column="1" 
+                           Style="{StaticResource WeightEntryStyle}"
+                           Text="{Binding StartWeightStonePounds}"
+                           Placeholder="Pounds (ex: 12.2)"/>
+                </Grid>
+
+                <!-- goal date -->
+                <Label Text="Goal Date"
+                       Style="{StaticResource FieldLabelStyle}"/>
+                <DatePicker Style="{StaticResource DateEntryStyle}"
+                            Date="{Binding GoalDate}"/>
+
+                <!-- goal weight section (shows different fields for stones unit type) -->
+                <Label Text="{Binding GoalWeightLabel}"
+                       Style="{StaticResource FieldLabelStyle}"/>
+                <Grid IsVisible="{Binding ShowStonesEntryFields, Converter={StaticResource InverseBoolConverter}}">
+                    <Entry Style="{StaticResource WeightEntryStyle}"
+                           Text="{Binding GoalWeight}"
+                           Placeholder="Enter goal weight (ex: 160.0)"/>
+                </Grid>
+                <Grid IsVisible="{Binding ShowStonesEntryFields}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Entry Style="{StaticResource WeightEntryStyle}"
+                           Text="{Binding GoalWeightStones}"
+                           Placeholder="Stones (ex: 10)"/>
+                    <Entry Grid.Column="1" 
+                           Style="{StaticResource WeightEntryStyle}"
+                           Text="{Binding GoalWeightStonePounds}"
+                           Placeholder="Pounds (ex: 12.2)"/>
+                </Grid>                
+
+                <!-- bottom buttons -->
+                <StackLayout Style="{StaticResource ButtonWrappingPanel}">
+                    <Button Text="Set Goal"
+                            Style="{StaticResource BoxButtonStyle}"
+                            Command="{Binding SaveCommand}"/>
+                    <Button Text="Cancel"
+                            Style="{StaticResource BoxButtonStyle}"
+                            Command="{Binding CloseCommand}"/>
+                </StackLayout>
+                
+            </StackLayout>
+        </ScrollView>
+
+        <!-- loading overlay -->
+        <controls:LoadingIndicator IsVisible="{Binding IsBusy}" />        
+        
+    </Grid>
+</ContentPage>

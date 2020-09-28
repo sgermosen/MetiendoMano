@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"     
+             xmlns:ctrls="clr-namespace:LineDietXF.Controls"
+             xmlns:views="clr-namespace:LineDietXF.Views"
+			 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"       
+             x:Class="LineDietXF.Views.GettingStartedPage"
+             BackgroundColor="{StaticResource LightGrayColor}"
+             Title="Getting Started">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Close" 
+                     Icon="close"
+                     Command="{Binding CloseCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <!-- Main Content area -->
+    <Grid>
+
+        <!-- carousel area -->
+        <Grid>
+            <ctrls:CarouselLayout x:Name="SubPageCarousel"			
+								  HorizontalOptions="FillAndExpand"
+								  VerticalOptions="FillAndExpand"
+								  ItemsSource="{Binding CarouselItems}"
+								  SelectedItem="{Binding SelectedCarouselItem}">
+                <ctrls:CarouselLayout.ItemTemplate>
+                    <DataTemplate>
+                        <views:CarouselItemView />
+                    </DataTemplate>
+                </ctrls:CarouselLayout.ItemTemplate>
+            </ctrls:CarouselLayout>
+
+            <ctrls:PagerIndicatorDots DotSize="5"
+                                      DotColor="White"
+                                      HorizontalOptions="Center"
+                                      VerticalOptions="End"
+                                      ItemsSource="{Binding CarouselItems}"
+                                      SelectedItem="{Binding SelectedCarouselItem}">
+                <ctrls:PagerIndicatorDots.Padding>
+                    <OnPlatform x:TypeArguments="Thickness" 
+                		        iOS="0,0,0,14"
+                				Android="0,0,0,4"
+                				WinPhone="0,0,0,4" />
+                </ctrls:PagerIndicatorDots.Padding>
+            </ctrls:PagerIndicatorDots>
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

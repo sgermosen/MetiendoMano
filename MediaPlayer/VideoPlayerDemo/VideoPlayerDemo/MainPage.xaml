@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:VideoPlayerDemo"
+             xmlns:xamarians="clr-namespace:Xamarians.MediaPlayer;assembly=Xamarians.MediaPlayer"
+             x:Class="VideoPlayerDemo.MainPage">
+
+    <xamarians:VideoPlayer AutoPlay="True" Source="http://techslides.com/demos/sample-videos/small.mp4" Error="VideoPlayer_Error" 
+                           Prepared="VideoPlayer_Prepared" Completed="VideoPlayer_Completed">
+
+    </xamarians:VideoPlayer>
+
+</ContentPage>

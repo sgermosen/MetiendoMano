@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:ExpensesPredictor.Mobile.Converters;assembly=ExpensesPredictor.Mobile"
+             x:Class="ExpensesPredictor.Mobile.App">
+  <Application.Resources>
+<ResourceDictionary>
+  <converters:NegatedBoolConverter x:Key="NegatedBoolConverter" />
+  <Style x:Key="NormalLabelStyle" TargetType="Label">
+    <Setter Property="FontAttributes" Value="Bold"/>
+  </Style>
+  <Style x:Key="ErrorLabelStyle" TargetType="Label" BaseResourceKey="NormalLabelStyle">
+    <Setter Property="TextColor" Value="Red"/>
+  </Style>
+</ResourceDictionary>
+  </Application.Resources>
+</Application>

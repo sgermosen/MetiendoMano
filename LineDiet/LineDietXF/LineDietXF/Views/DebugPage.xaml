@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:controls="clr-namespace:LineDietXF.Controls"
+             prism:ViewModelLocator.AutowireViewModel="True"		
+			 x:Class="LineDietXF.Views.DebugPage"
+             BackgroundColor="{StaticResource GrayFillColor}"
+             Title="Debug Page">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Close" 
+                     Icon="close"
+                     Command="{Binding CloseCommand}" />
+    </ContentPage.ToolbarItems>
+    <Grid>
+        <StackLayout>
+            <StackLayout.Padding>
+                <OnPlatform x:TypeArguments="Thickness"
+                                iOS="0,40,0,0"
+                                Android="0,0,0,0"
+                                WinPhone="0,0,0,0" />
+            </StackLayout.Padding>
+            <Button Style="{StaticResource BoxButtonStyle}"
+				Text="Turn Gray (clear data)"
+				Command="{Binding TurnGrayCommand}"/>
+            <Button Style="{StaticResource BoxButtonStyle}"
+				Text="Turn Green"
+				Command="{Binding TurnGreenCommand}"/>
+            <Button Style="{StaticResource BoxButtonStyle}"
+				Text="Turn Red"
+				Command="{Binding TurnRedCommand}"/>
+            <Button Style="{StaticResource BoxButtonStyle}"
+                Text="Test Ending a Goal"
+                Command="{Binding TestEndingAGoalCommand}" />
+            <Button Style="{StaticResource BoxButtonStyle}"
+                Text="Test Real Data Set"
+                Command="{Binding TestRealDataSetCommand}" />
+            <Button Style="{StaticResource BoxButtonStyle}"
+                Text="Test Large Data Set"
+                Command="{Binding TestLargeDataSetCommand}" />            
+        </StackLayout>
+
+        <!-- loading overlay -->
+        <controls:LoadingIndicator IsVisible="{Binding IsBusy}" />
+    </Grid>
+</ContentPage>

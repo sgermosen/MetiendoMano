@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<abstract:ViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ExpensesPredictor.Mobile"
+             xmlns:viewModels="clr-namespace:ExpensesPredictor.Mobile.ViewModels;assembly=ExpensesPredictor.Mobile"
+             xmlns:abstract="clr-namespace:ExpensesPredictor.Mobile.Views.Abstract;assembly=ExpensesPredictor.Mobile"
+             x:Class="ExpensesPredictor.Mobile.MainPage"
+             Title="Expenses Predictor">
+  <ContentPage.BindingContext>
+    <viewModels:MainViewModel x:Name="ViewModel"/>      
+  </ContentPage.BindingContext>
+<ContentPage.ToolbarItems>
+  <ToolbarItem  Text="New Expense" AutomationId="TlbNewExpense"
+                Order="Primary"
+                Command="{Binding AddExpenseCommand}">
+    <ToolbarItem.Icon>
+      <OnPlatform x:TypeArguments="FileImageSource"
+                  iOS="{x:Null}" Android ="NewExpensive.png"/>
+    </ToolbarItem.Icon>
+  </ToolbarItem>
+</ContentPage.ToolbarItems>
+  <Grid 
+    VerticalOptions="FillAndExpand" 
+    HorizontalOptions="FillAndExpand">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <ListView IsVisible="{Binding AnyExpense}" ItemsSource="{Binding Expenses}"
+              IsRefreshing="{Binding IsLoading}"
+              RowHeight="90"
+              AutomationId="LstExpenses">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <ViewCell.ContextActions>
+              <MenuItem Text="Edit" Command="{Binding EditExpenseCommand,Source={x:Reference ViewModel}}"
+                        CommandParameter="{Binding .}" AutomationId="BtnEdit"/>
+              <MenuItem Text="Delete" Command="{Binding DeleteExpenseCommand,Source={x:Reference ViewModel}}"
+                        IsDestructive="True" AutomationId="BtnDelete"
+                        CommandParameter="{Binding .}"/>
+            </ViewCell.ContextActions>
+            <Grid Padding="5" VerticalOptions="CenterAndExpand">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <Image Grid.RowSpan="2" Source="Check.png"/>
+              <Label Text="{Binding Title}" Grid.Column="1" 
+                     AutomationId="LblTitle" FontSize="Medium" FontAttributes="Bold"/>
+              <Label Text="{Binding Amount,StringFormat='{0:c}'}" Grid.Column="1" Grid.Row="1"/>
+            </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    <StackLayout Grid.Row="1" IsVisible="{Binding AnyExpense,Converter={StaticResource NegatedBoolConverter}}"
+                 MinimumHeightRequest="120" VerticalOptions="CenterAndExpand" Padding="5">
+      <Label AutomationId="LblNoExpenses" Text="There is no expenses registered." VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"
+        HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
+    </StackLayout>
+    <StackLayout Grid.Row="2" Padding="5" VerticalOptions="CenterAndExpand" 
+                 BackgroundColor="Teal">
+      <Label AutomationId="LblTotal" Text="{Binding TotalEstimatedForThisMonth,StringFormat='Total estimated for this month: {0:c}'}"
+             FontSize="Large" FontAttributes="Bold" MinimumHeightRequest="120"
+             VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"
+             TextColor="White" />
+    </StackLayout>
+</Grid>
+</abstract:ViewBase>

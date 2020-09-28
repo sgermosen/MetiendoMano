@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="26">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="25">
+            <objects>
+                <viewController id="26" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="23"/>
+                        <viewControllerLayoutGuide type="bottom" id="24"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="27">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="62" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" id="30" translatesAutoresizingMaskIntoConstraints="NO" translucent="NO" userInteractionEnabled="NO">
+                                        <rect key="frame" x="0.0" y="21" width="600" height="44"/>
+                                        <items>
+                                            <navigationItem id="31"/>
+                                        </items>
+                                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1"/>
+                                        <color key="barTintColor" colorSpace="calibratedRGB" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1"/>
+                                    </navigationBar>
+                                    <view contentMode="scaleToFill" id="38" translatesAutoresizingMaskIntoConstraints="NO" userInteractionEnabled="NO">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
+                                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1"/>
+                                        <constraints>
+                                            <constraint id="75" firstItem="38" firstAttribute="height" constant="20"/>
+                                        </constraints>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                                        </accessibility>
+                                    </view>
+                                </subviews>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint id="92" firstItem="38" firstAttribute="trailing" secondItem="62" secondAttribute="trailing"/>
+                                    <constraint id="93" firstItem="38" firstAttribute="leading" secondItem="62" secondAttribute="leading"/>
+                                    <constraint id="94" firstItem="38" firstAttribute="top" secondItem="62" secondAttribute="top"/>
+                                    <constraint id="95" firstItem="30" firstAttribute="top" secondItem="38" secondAttribute="bottom"/>
+                                    <constraint id="96" firstItem="30" firstAttribute="trailing" secondItem="62" secondAttribute="trailing"/>
+                                    <constraint id="97" firstItem="30" firstAttribute="leading" secondItem="62" secondAttribute="leading"/>
+                                </constraints>
+                            </view>
+                            <tabBar contentMode="scaleToFill" id="39" translatesAutoresizingMaskIntoConstraints="NO" userInteractionEnabled="NO" opaque="NO">
+                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
+                                <items/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1"/>
+                                <color key="barTintColor" colorSpace="calibratedRGB" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1"/>
+                            </tabBar>
+                        </subviews>
+                        <constraints>
+                            <constraint id="59" firstItem="39" firstAttribute="trailing" secondItem="27" secondAttribute="trailing"/>
+                            <constraint id="60" firstItem="39" firstAttribute="leading" secondItem="27" secondAttribute="leading"/>
+                            <constraint id="61" firstItem="39" firstAttribute="bottom" secondItem="27" secondAttribute="bottom"/>
+                            <constraint id="85" firstItem="62" firstAttribute="trailing" secondItem="27" secondAttribute="trailing"/>
+                            <constraint id="86" firstItem="62" firstAttribute="leading" secondItem="27" secondAttribute="leading"/>
+                            <constraint id="87" firstItem="62" firstAttribute="top" secondItem="27" secondAttribute="top"/>
+                            <constraint id="88" firstItem="62" firstAttribute="bottom" secondItem="39" secondAttribute="bottom"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="28" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-726" y="335"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrowup763.png" width="28" height="14"/>
+        <image name="checkmarkmod977.png" width="28" height="28"/>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="Icon-72.png" width="72" height="72"/>
+        <image name="Icon-76.png" width="76" height="76"/>
+        <image name="Icon-Small-40.png" width="40" height="40"/>
+        <image name="Icon-Small-50.png" width="50" height="50"/>
+        <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="Icon.png" width="57" height="57"/>
+        <image name="linechart858.png" width="28" height="14"/>
+        <image name="linechart858_unselected.png" width="28" height="14"/>
+        <image name="menuitem854.png" width="26" height="16"/>
+        <image name="menuitem854_unselected.png" width="26" height="16"/>
+        <image name="plus746.png" width="28" height="28"/>
+        <image name="pluscircle746.png" width="28" height="28"/>
+        <image name="scale754.png" width="28" height="28"/>
+        <image name="scale754_unselected.png" width="28" height="28"/>
+        <image name="scaleicon.png" width="23" height="23"/>
+        <image name="scaleicon_unselected.png" width="23" height="23"/>
+    </resources>
+</document>

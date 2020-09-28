@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 xmlns:controls="clr-namespace:LineDietXF.Controls"
+			 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"                          
+			 x:Class="LineDietXF.Views.MenuPage"
+			 BackgroundColor="White"             
+             Icon="menu">
+    <Grid>
+        <ListView x:Name="MenuListView"
+				  ItemsSource="{Binding MenuEntries}"
+				  SelectedItem="{Binding SelectedMenuItem, Mode=OneWayToSource}"
+                  ItemSelected="MenuListView_ItemSelected"
+				  SeparatorVisibility="None"			
+				  BackgroundColor="White"
+				  RowHeight="50">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="16,4"
+							  VerticalOptions="Center">
+                            <Label Style="{StaticResource SettingsMenuLabelStyle}"
+								   Text="{Binding Name}"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- loading overlay -->
+        <controls:LoadingIndicator IsVisible="{Binding IsBusy}" />
+    </Grid>
+</ContentPage>

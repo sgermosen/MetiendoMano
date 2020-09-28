@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LineDietXF.Views.WeightEntryPage"
+             xmlns:controls="clr-namespace:LineDietXF.Controls"
+             BackgroundColor="{StaticResource GrayFillColor}"
+             Title="Enter Weight">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Close" 
+                     Icon="close"
+                     Command="{Binding CloseCommand}" />
+    </ContentPage.ToolbarItems>
+    <Grid RowSpacing="0">
+        <ScrollView HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+            <StackLayout Orientation="Vertical"
+                         HorizontalOptions="Fill">
+                <StackLayout.Padding>
+                    <OnPlatform x:TypeArguments="Thickness"
+                                iOS="10,40,10,0"
+                                Android="10,20,10,0"
+                                WinPhone="10,20,10,0" />
+                </StackLayout.Padding>
+                <Label Text="Date"                        
+                       Style="{StaticResource FieldLabelStyle}"/>
+                <DatePicker Date="{Binding Date}"
+                            Style="{StaticResource DateEntryStyle}"/>
+
+                <!-- weight section (shows different fields for stones unit type) -->
+                <Label Text="{Binding WeightLabel}" 
+                       Style="{StaticResource FieldLabelStyle}"/>
+                <Grid IsVisible="{Binding ShowStonesEntryFields, Converter={StaticResource InverseBoolConverter}}">
+                    <Entry Style="{StaticResource WeightEntryStyle}"
+                           Text="{Binding Weight}"
+                           Placeholder="Enter weight (ex: 123.4)"/>
+                </Grid>
+                <Grid IsVisible="{Binding ShowStonesEntryFields}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Entry Style="{StaticResource WeightEntryStyle}"
+                           Text="{Binding WeightStones}"
+                           Placeholder="Stones (ex: 10)"/>
+                    <Entry Grid.Column="1" 
+                           Style="{StaticResource WeightEntryStyle}"
+                           Text="{Binding WeightStonePounds}"
+                           Placeholder="Pounds (ex: 12.2)"/>
+                </Grid>
+
+                <!-- bottom buttons -->
+                <StackLayout Style="{StaticResource ButtonWrappingPanel}">
+                    <Button Text="Save"
+                            Style="{StaticResource BoxButtonStyle}"
+                            Command="{Binding SaveCommand}"/>
+                    <Button Text="Cancel"
+                            Style="{StaticResource BoxButtonStyle}"
+                            Command="{Binding CloseCommand}"/>
+                </StackLayout>
+                
+            </StackLayout>
+        </ScrollView>
+
+        <!-- loading overlay -->
+        <controls:LoadingIndicator IsVisible="{Binding IsBusy}" />
+        
+    </Grid>
+</ContentPage>

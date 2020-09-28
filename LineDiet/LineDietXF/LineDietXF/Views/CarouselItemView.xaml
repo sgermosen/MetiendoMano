@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LineDietXF.Views.CarouselItemView">
+
+    <Grid>
+        <Grid BackgroundColor="{StaticResource GrayFillColor}"
+              RowSpacing="6"
+              Margin="28"
+              Padding="12" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label Style="{StaticResource TitleLabelStyle}"
+                   FontSize="24"
+                   Text="{Binding TitleText}"
+                   HorizontalOptions="Fill"
+                   XAlign="Center"/>
+            <Image Grid.Row="1" 
+                   Source="{Binding ImageSource}" />
+            <Label Grid.Row="2"
+                   Style="{StaticResource ThinLabelStyle}"
+                   FontSize="Medium"
+                   Text="{Binding BodyText}"
+                   HorizontalOptions="Fill"
+                   XAlign="Center"/>
+        </Grid>
+    </Grid>
+</ContentView>

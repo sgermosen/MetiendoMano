@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<style name="MyTheme" parent="MyTheme.Base">
+	</style>
+
+  <style name="MyTheme.Splash" parent ="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowBackground">@drawable/splash_screen</item>
+    <item name="android:windowNoTitle">true</item>
+  </style>
+
+  <!-- NOTE:: PrimaryColor matches dark gray, and AccentColor matches light green in constants-->
+  <color name="PrimaryColor">#404040</color>
+  <color name="DarkPrimaryColor">#000000</color>
+  <color name="AccentColor">#00d423</color>
+  <color name="ListViewSelected">#44000000</color>
+  <color name="ListViewHighlighted">#44000000</color>
+
+  <!-- Base theme applied no matter what API -->
+	<style name="MyTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+    
+		<!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
+		<item name="windowNoTitle">true</item>
+		<!--We will be using the toolbar so no need to show ActionBar-->
+		<item name="windowActionBar">false</item>
+
+    <!-- NOTE:: Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette -->
+		<!-- colorPrimary is used for the default action bar background -->
+    <!-- colorPrimaryDark is used for the status bar -->
+    <!-- colorAccent is used for various accents in controls (ex: selected text area in a text field, header fill on date picker, underline color in nav bar context menu, etc.) -->
+    <!-- NOTE:: You can also set colorControlNormal, colorControlActivated colorControlHighlight and colorSwitchThumbNormal. -->
+		<item name="colorPrimary">@color/PrimaryColor</item>
+		<item name="colorPrimaryDark">@color/DarkPrimaryColor</item>
+		<item name="colorAccent">@color/AccentColor</item>
+
+    <!-- Style the row selection for listviews to show a slight dimming-->
+    <item name="android:colorPressedHighlight">@color/ListViewSelected</item>
+    <item name="android:colorLongPressedHighlight">@color/ListViewHighlighted</item>
+    <item name="android:colorFocusedHighlight">@color/ListViewSelected</item>
+    <item name="android:colorActivatedHighlight">@color/ListViewSelected</item>
+    <item name="android:activatedBackgroundIndicator">@color/ListViewSelected</item>
+
+    <item name="windowActionModeOverlay">true</item>
+		<item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
+	</style>
+  
+	<style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+		<item name="colorAccent">@color/AccentColor</item>
+	</style>
+</resources>

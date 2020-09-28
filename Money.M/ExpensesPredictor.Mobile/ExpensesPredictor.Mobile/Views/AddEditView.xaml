@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<abstract:ViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstract="clr-namespace:ExpensesPredictor.Mobile.Views.Abstract;assembly=ExpensesPredictor.Mobile"
+             xmlns:converters="clr-namespace:ExpensesPredictor.Mobile.Converters;assembly=ExpensesPredictor.Mobile"
+             xmlns:behaviors="clr-namespace:ExpensesPredictor.Mobile.Behaviors;assembly=ExpensesPredictor.Mobile"
+             xmlns:effects="clr-namespace:ExpensesPredictor.Mobile.Effects;assembly=ExpensesPredictor.Mobile"
+             xmlns:controls="clr-namespace:ExpensesPredictor.Mobile.Controls;assembly=ExpensesPredictor.Mobile"
+             x:Class="ExpensesPredictor.Mobile.Views.AddEditView"
+             Title="{Binding Title}">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:BoolToTextConverter x:Key="RequiredConverter"
+                                      TrueText=""
+                                      FalseText="This field is required."/>
+      <converters:BoolToTextConverter x:Key="AmountConverter"
+                                TrueText=""
+                                FalseText="This field requires a positive numeric value."/>
+      <converters:BoolToStyleConverter x:Key="ValidToStyleConverter"
+                                       TrueStyle="{StaticResource NormalLabelStyle}"
+                                       FalseStyle="{StaticResource ErrorLabelStyle}"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <StackLayout Padding="5">
+    <Label Text="Title:" FontSize="Medium"/>
+    <Entry Placeholder="Enter the title" Text="{Binding Expense.Title}" AutomationId="TxtTitle">
+      <Entry.Behaviors>
+        <behaviors:RequiredBehavior x:Name="TitleValidator"/>
+      </Entry.Behaviors>
+    </Entry>
+    <Label Text="{Binding Source={x:Reference TitleValidator},Path=IsValid,Converter={StaticResource RequiredConverter}}"
+           Style="{Binding Source={x:Reference TitleValidator},Path=IsValid,Converter={StaticResource ValidToStyleConverter}}"
+           IsVisible="{Binding  Source={x:Reference TitleValidator},Path=IsValid,Converter={StaticResource NegatedBoolConverter}}"/>
+
+    <Label Text="Description:"  FontSize="Medium"/>
+    <Entry Placeholder="Enter the description" Text="{Binding Expense.Description}" AutomationId="TxtDescription"/>
+
+    <Label Text="Amount:"  FontSize="Medium"/>
+    <Entry Placeholder="Enter the amount" Text="{Binding Expense.Amount}" AutomationId="TxtAmount">
+      <Entry.Behaviors>
+        <behaviors:RequiredBehavior x:Name="AmountRequiredValidator"/>
+        <behaviors:AmountValidatorBehavior x:Name="AmountValidator"/>
+      </Entry.Behaviors>
+      <Entry.Effects>
+        <effects:NumericInputKeyboardEffect />
+      </Entry.Effects>
+    </Entry>
+    <Label Text="{Binding Source={x:Reference AmountValidator},Path=IsValid,Converter={StaticResource AmountConverter}}"
+           Style="{Binding Source={x:Reference AmountValidator},Path=IsValid,Converter={StaticResource ValidToStyleConverter}}"
+           IsVisible="{Binding Source={x:Reference AmountValidator},Path=IsValid,Converter={StaticResource NegatedBoolConverter}}"/>
+    <Label Text="{Binding Source={x:Reference AmountRequiredValidator},Path=IsValid,Converter={StaticResource RequiredConverter}}"
+           Style="{Binding Source={x:Reference AmountRequiredValidator},Path=IsValid,Converter={StaticResource ValidToStyleConverter}}"/>
+    
+    <Label Text="Frecuency:" FontSize="Medium"/>
+    <controls:BindablePicker ItemsSource="{Binding Frecuencies}" AutomationId="PckFrecuencies"
+                             SelectedItem="{Binding Frecuency}">
+      <controls:BindablePicker.Behaviors>
+        <behaviors:RequiredOptionBehavior x:Name="FrecuencyValidator" />
+      </controls:BindablePicker.Behaviors>
+    </controls:BindablePicker>
+    <Label Text="{Binding Source={x:Reference FrecuencyValidator},Path=IsValid,Converter={StaticResource RequiredConverter}}"
+          Style="{Binding Source={x:Reference FrecuencyValidator},Path=IsValid,Converter={StaticResource ValidToStyleConverter}}"/>
+
+
+    <Button Text="Save Expense" Command="{Binding RegisterCommand}" AutomationId="BtnSave"
+            CommandParameter="{Binding Expense}"/>
+  </StackLayout>
+</abstract:ViewBase>

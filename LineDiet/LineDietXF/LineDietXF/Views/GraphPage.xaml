@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 xmlns:controls="clr-namespace:LineDietXF.Controls"
+			 xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
+             xmlns:converters="clr-namespace:LineDietXF.Converters"
+			 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"                          
+			 x:Class="LineDietXF.Views.GraphPage"
+             x:Name="GraphRootElement"
+             BackgroundColor="{DynamicResource PrimaryFillColor}"             
+             Icon="graph">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="AddEntry" 
+                     Icon="plus"
+                     Command="{Binding AddEntryCommand}" />
+    </ContentPage.ToolbarItems>
+    <Grid x:Name="RootGrid" 
+          RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Graph -->
+        <oxy:PlotView x:Name="MainGraph" 
+					  Grid.Row="0"
+					  Model="{Binding PlotModel}"
+					  Margin="4,4,4,0"/>
+
+        <!-- bottom half -->
+        <Grid x:Name="BottomAreaGrid" 
+              Grid.Row="1"
+              BackgroundColor="{StaticResource SlightDimmingOverlayColor}">
+
+            <!-- Weight listing (only shown if weight entries exist) -->
+            <ListView x:Name="WeightEntryListView"				  
+				      ItemsSource="{Binding LatestWeightEntries}"
+                      SelectedItem="{Binding SelectedWeight, Mode=OneWayToSource}"
+				      ItemSelected="WeightEntryListView_ItemSelected"
+				      SeparatorVisibility="None"				  
+                      BackgroundColor="Transparent"
+                      CachingStrategy="RecycleElement"
+                      IsVisible="{Binding IsWeightListingVisible}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Command="{Binding Path=BindingContext.DeleteEntryCommand, Source={x:Reference GraphRootElement}}" 
+                                          CommandParameter="{Binding .}"
+                                          Text="Delete"
+                                          IsDestructive="True"/>
+                            </ViewCell.ContextActions>
+                            <Grid Padding="10,4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="32" />
+                                </Grid.ColumnDefinitions>
+                                <Label FontSize="{Binding ., Converter={StaticResource WeightListingFontSizeCvt}}"
+								       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+								       Style="{StaticResource ThinLabelStyle}"
+								       Text="{Binding Date, Converter={StaticResource DateCvt}}"/>
+                                <Label Grid.Column="1" 
+								       Style="{StaticResource ThinLabelStyle}"
+								       FontSize="{Binding ., Converter={StaticResource WeightListingFontSizeCvt}}"
+			   					       HorizontalOptions="End"
+                                       VerticalOptions="Center"
+								       Text="{Binding ., Converter={StaticResource WeightCvt}}"/>
+                                <Image Grid.Column="2" 
+								       Source="checkmark"
+								       Aspect="AspectFit"
+								       Margin="6"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+								       IsVisible="{Binding ., Converter={StaticResource CheckmarkVisCvt}}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- No weight entries placeholder (if no weights entered) -->
+            <Grid IsVisible="{Binding IsWeightListingVisible, Converter={StaticResource InverseBoolConverter}}">
+                <Label HorizontalOptions="Center"
+                       VerticalOptions="Center" 
+                       XAlign="Center"
+                       Style="{StaticResource ThinLabelStyle}"
+                       Text="{Binding PlaceholderText}"
+                       FontSize="Medium" />
+            </Grid>
+            
+        </Grid> <!-- BottomAreaGrid -->
+
+        <!-- loading overlay -->
+        <controls:LoadingIndicator x:Name="LoadingIndicator" 
+                                   Grid.RowSpan="2"                                                 
+                                   IsVisible="{Binding IsBusy}" />
+
+    </Grid> <!-- RootGrid -->
+</ContentPage>

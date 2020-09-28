@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<controls:LogoPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+    xmlns:controls="clr-namespace:KickassUI.Runkeeper.Controls;assembly=KickassUI.Runkeeper"
+    x:Class="KickassUI.Runkeeper.Pages.StartPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="icon_settings.png" />
+        <ToolbarItem Icon="icon_add.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Title>
+        <OnPlatform x:TypeArguments="x:String">
+            <On Platform="iOS" Value="Start" />
+        </OnPlatform>
+    </ContentPage.Title>
+	<ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- The map control -->
+            <controls:RunkeeperMap x:Name="mapView" Grid.Row="0" IsShowingUser="true" MapType="Street" />
+
+            <!-- Map buttons for signal strength, connection etc. -->
+            <StackLayout Grid.Row="0" Orientation="Horizontal" VerticalOptions="Start">
+                <Image HeightRequest="40" Margin="10,25,10,10" Source="signal.png" VerticalOptions="Start" HorizontalOptions="Start">
+                    <Image.IsVisible>
+                        <OnPlatform x:TypeArguments="x:Boolean">
+                          <On Platform="iOS" Value="true" />
+                          <On Platform="Android" Value="false" />
+                        </OnPlatform>
+                    </Image.IsVisible>
+                </Image>
+                <Image HeightRequest="40" HorizontalOptions="EndAndExpand" Margin="10,25,10,10" Source="connection.png">
+                    <Image.IsVisible>
+                        <OnPlatform x:TypeArguments="x:Boolean">
+                          <On Platform="iOS" Value="true" />
+                          <On Platform="Android" Value="false" />
+                        </OnPlatform>
+                    </Image.IsVisible>
+                </Image>
+            </StackLayout>
+
+            <!-- 4 buttons to setup your activity -->
+
+            <!-- The iOS version uses a custom button and renderer -->
+            <Grid Grid.Row="1" ColumnSpacing="1" RowSpacing="1" BackgroundColor="#e0e0e0"> 
+                <Grid.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean">
+                        <On Platform="iOS" Value="true" />
+                        <On Platform="Android" Value="false" />
+                    </OnPlatform>
+                </Grid.IsVisible>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <controls:StartButton Grid.Row="0" Grid.Column="0" HeightRequest="55" BackgroundColor="White" TextColor="#555555" FontSize="18" LabelFontSize="13" BorderRadius="0" Image="icon_shoe.png" Label="Activity" LabelColor="#999999" Text="Running" />
+                <controls:StartButton Grid.Row="0" Grid.Column="1" HeightRequest="55" BackgroundColor="White" TextColor="#555555" FontSize="18" LabelFontSize="13" BorderRadius="0" Image="icon_clipboard.png" Label="Workout" LabelColor="#999999" Text="None" />
+                <controls:StartButton Grid.Row="1" Grid.Column="0" HeightRequest="55" BackgroundColor="White" TextColor="#555555" FontSize="18" LabelFontSize="13" BorderRadius="0" Image="icon_headphones.png" Label="Music" LabelColor="#999999" Text="None" />
+                <controls:StartButton Grid.Row="1" Grid.Column="1" HeightRequest="55" BackgroundColor="White" TextColor="#555555" FontSize="18" LabelFontSize="13" BorderRadius="0" Image="icon_speaker.png" Label="Audio Stats" LabelColor="#999999" Text="5 min" />
+           </Grid> 
+            
+           <!-- The Android version doesn't use buttons. Just to show you can also do this another way. -->
+           <ContentView BackgroundColor="Transparent" Grid.Row="1" Margin="5,0,5,0">
+               <ContentView.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean">
+                        <On Platform="iOS" Value="false" />
+                        <On Platform="Android" Value="true" />
+                    </OnPlatform>
+                </ContentView.IsVisible>
+                <Grid ColumnSpacing="1" RowSpacing="1" Margin="5" BackgroundColor="#e0e0e0"> 
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" HeightRequest="70" BackgroundColor="White">
+                        <Image Source="icon_shoe.png" VerticalOptions="Center" Margin="10,0,0,0" />
+                        <StackLayout VerticalOptions="Center">
+                            <Label Text="Activity" TextColor="#888888" FontSize="16"  />
+                            <Label Text="Running" TextColor="#555555" FontSize="16" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HeightRequest="70" BackgroundColor="White">
+                        <Image Source="icon_clipboard.png" VerticalOptions="Center" Margin="10,0,0,0" />
+                        <StackLayout VerticalOptions="Center">
+                            <Label Text="Workout" TextColor="#888888" FontSize="16"  />
+                            <Label Text="None" TextColor="#555555" FontSize="16" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0" HeightRequest="70" BackgroundColor="White">
+                        <Image Source="icon_headphones.png" VerticalOptions="Center" Margin="10,0,0,0" />
+                        <StackLayout VerticalOptions="Center">
+                            <Label Text="Music" TextColor="#888888" FontSize="16"  />
+                            <Label Text="Select" TextColor="#555555" FontSize="16" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1" HeightRequest="70" BackgroundColor="White">
+                        <Image Source="icon_speaker.png" VerticalOptions="Center" Margin="10,0,0,0" />
+                        <StackLayout VerticalOptions="Center">
+                            <Label Text="Audio Stats" TextColor="#888888" FontSize="16"  />
+                            <Label Text="Time" TextColor="#555555" FontSize="16" />
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </ContentView>
+
+            <!-- Start button -->
+            <ContentView BackgroundColor="Transparent" Grid.Row="2">
+                <ContentView.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="0" />
+                        <On Platform="Android" Value="5,2,5,5" />
+                    </OnPlatform>
+                </ContentView.Margin>
+                <Button HeightRequest="70" BackgroundColor="#ffb636" BorderRadius="0" TextColor="#ffffff" Text="Go Running">
+                    <Button.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                          <On Platform="iOS" Value="24" />
+                          <On Platform="Android" Value="20" />
+                        </OnPlatform>
+                    </Button.FontSize>
+                </Button>
+            </ContentView>
+        </Grid>
+	</ContentPage.Content>
+</controls:LogoPage>

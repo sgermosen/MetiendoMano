@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Full page loading indicator overlay -->
+<!-- NOTE:: We request a specific height and width to ensure the space is reserved on Android (otherwise if initially hidden it won't be visible when re-shown) -->
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="LineDietXF.Controls.LoadingIndicator"
+      HorizontalOptions="Fill"
+      VerticalOptions="Fill"
+      RowSpacing="0"
+      BackgroundColor="{StaticResource LoadingOverlayColor}">
+    <ActivityIndicator Style="{StaticResource LoadingStyle}" 
+                       IsRunning="{Binding IsBusy}"
+                       IsVisible="{Binding IsBusy}"/>
+</Grid>
