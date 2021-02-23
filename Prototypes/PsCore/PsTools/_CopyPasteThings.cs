@@ -17,6 +17,7 @@
         //</section>
 
         #endregion
+
         #region Checkbox Razor
         //<div class="form-group">
         //    @Html.LabelFor(model => model.Undefined,  new { @class = "control-label col-md-2" })
