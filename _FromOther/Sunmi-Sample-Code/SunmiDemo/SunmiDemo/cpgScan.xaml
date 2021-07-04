@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SunmiDemo.cpgScan"
+             xmlns:viewModel="clr-namespace:SunmiDemo.ViewModel">
+
+    <ContentPage.BindingContext>
+        <viewModel:MainViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+
+            <!--<Label Text="Barcode Scanning" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>-->
+            <Button x:Name="btnPrint" Text="Print" Command="{Binding PrintCommand}"/>
+            <Button x:Name="btnLineFeed" Text="Line Feed" Command="{Binding LFCommand}" />
+            <Label x:Name="lblBarcode"/>
+            <Entry x:Name="ntrLaserBarcode" Placeholder="Laser Scanning" HorizontalTextAlignment="Center" />
+            <Button x:Name="btnCameraScan" Text="Camera Scan" HorizontalOptions="CenterAndExpand" Clicked="BtnCameraScan_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
