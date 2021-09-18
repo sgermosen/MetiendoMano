@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="470 -283 1440 1067" style="enable-background:new 470 -283 1440 1067;" xml:space="preserve">
+<style type="text/css">
+	.st0{clip-path:url(#SVGID_2_);fill:#4C792D;}
+	.st1{clip-path:url(#SVGID_2_);fill:url(#SVGID_3_);}
+	.st2{clip-path:url(#SVGID_2_);}
+	.st3{fill:#69A62A;}
+	.st4{fill:#7CB82F;}
+	.st5{fill:#92C749;}
+	.st6{clip-path:url(#SVGID_2_);fill:#B0D775;}
+	.st7{clip-path:url(#SVGID_2_);fill:url(#SVGID_4_);}
+</style>
+<g>
+	<defs>
+		<rect id="SVGID_1_" x="465.3" y="-283" width="1449.5" height="1083.5"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	<path class="st0" d="M465.3,718.4v448.1h1449.5V621.3C1469.9,565.6,1017.8,906.2,465.3,718.4z"/>
+	
+		<radialGradient id="SVGID_3_" cx="1059.7169" cy="1118.6091" r="973.9257" gradientTransform="matrix(0.9998 2.168576e-002 -1.022165e-002 0.4712 11.6832 568.4926)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:0.5"/>
+		<stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0"/>
+	</radialGradient>
+	<path class="st1" d="M465.3,718.4v448.1h1449.5V621.3C1469.9,565.6,1017.8,906.2,465.3,718.4z"/>
+	<g class="st2">
+		
+			<image style="overflow:visible;opacity:0.45;" width="1510" height="413" xlink:href="8B9C5100.png"  transform="matrix(1 0 0 1 435 400)">
+		</image>
+		<g>
+			<path class="st3" d="M1914.7,621.3V438.6C1283.9,336.9,1065,798.9,465.3,706.3v12.1C1017.8,906.2,1469.9,565.6,1914.7,621.3z"/>
+		</g>
+	</g>
+	<g class="st2">
+		
+			<image style="overflow:visible;opacity:0.45;" width="1510" height="533" xlink:href="8B9C5101.png"  transform="matrix(1 0 0 1 435 223)">
+		</image>
+		<g>
+			<path class="st4" d="M1914.7,438.6v-4.9c-426.7-152.2-940,101-1449.5-187.6v460.1C1065,798.9,1283.9,336.9,1914.7,438.6z"/>
+		</g>
+	</g>
+	<g class="st2">
+		
+			<image style="overflow:visible;opacity:0.45;" width="1510" height="314" xlink:href="8B9C5107.png"  transform="matrix(1 0 0 1 435 157)">
+		</image>
+		<g>
+			<path class="st5" d="M1914.7,433.7V241.9C1330.1,36,1026.2,432.7,465.3,231.8v14.3C974.8,534.7,1488.1,281.5,1914.7,433.7z"/>
+		</g>
+	</g>
+	<path class="st6" d="M1914.7,241.9V-283H465.3v514.8C1026.2,432.7,1330.1,36,1914.7,241.9z"/>
+	<radialGradient id="SVGID_4_" cx="517.799" cy="-183.3483" r="850.0554" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:0.5"/>
+		<stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0"/>
+	</radialGradient>
+	<path class="st7" d="M1914.7,241.9V-283H465.3v514.8C1026.2,432.7,1330.1,36,1914.7,241.9z"/>
+</g>
+</svg>

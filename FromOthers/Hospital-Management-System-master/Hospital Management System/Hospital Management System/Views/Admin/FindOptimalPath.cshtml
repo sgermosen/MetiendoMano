@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "Optimal Path";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Optimal Path Finder</h2>
+
+
+<input id="origin-input" class="controls" type="text"
+       placeholder="Enter an origin location">
+
+<input id="destination-input" class="controls" type="text"
+       placeholder="Enter a destination location">
+
+<div id="map"></div>
+
+<div id="distance">
+    <p>Calculated Distance: <span id="distance-show"></span></p>
+</div>
+
+<script>
+  function initMap() {
+	var map = new google.maps.Map(document.getElementById('map'), {
+	  mapTypeControl: false,
+	  center: { lat: 31.520000, lng: 74.37000 },
+	  zoom: 12
+	});
+
+	new AutocompleteDirectionsHandler(map);
+  }
+
+  function AutocompleteDirectionsHandler(map) {
+	this.map = map;
+	this.originPlaceId = null;
+	this.destinationPlaceId = null;
+	this.travelMode = 'DRIVING';
+	var originInput = document.getElementById('origin-input');
+	var destinationInput = document.getElementById('destination-input');
+	this.directionsService = new google.maps.DirectionsService;
+	this.directionsDisplay = new google.maps.DirectionsRenderer;
+	this.directionsDisplay.setMap(map);
+/*
+	var originAutocomplete = new google.maps.places.Autocomplete(
+		originInput, {placeIdOnly: true});
+	var destinationAutocomplete = new google.maps.places.Autocomplete(
+		destinationInput, {placeIdOnly: true});
+
+	this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+	this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
+
+	this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+	this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
+	*/
+  }
+
+  AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
+	var me = this;
+	autocomplete.bindTo('bounds', this.map);
+	autocomplete.addListener('place_changed', function() {
+	  var place = autocomplete.getPlace();
+	  if (!place.place_id) {
+		window.alert("Please select an option from the dropdown list.");
+		return;
+	  }
+	  if (mode === 'ORIG') {
+		me.originPlaceId = place.place_id;
+	  } else {
+		me.destinationPlaceId = place.place_id;
+	  }
+	  me.route();
+	});
+
+  };
+
+  AutocompleteDirectionsHandler.prototype.route = function() {
+	if (!this.originPlaceId || !this.destinationPlaceId) {
+	  return;
+	}
+	var me = this;
+
+	this.directionsService.route({
+	  origin: {'placeId': this.originPlaceId},
+	  destination: {'placeId': this.destinationPlaceId},
+	  travelMode: this.travelMode
+	}, function(response, status) {
+	  if (status === 'OK') {
+		me.directionsDisplay.setDirections(response);
+		var dis = document.getElementById('distance-show');
+		dis.innerHTML = response.routes[0].legs[0].distance.value/1000 + " km";
+	  } else {
+		window.alert('Directions request failed due to ' + status);
+	  }
+	});
+  };
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_kow2ummNLyc3c-c_jvMBujFB54UVypY&libraries=places&callback=initMap"
+        async defer></script>

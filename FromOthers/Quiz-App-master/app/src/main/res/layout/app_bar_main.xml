@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.design.widget.AppBarLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/appBar"
+    android:background="#fff"
+    android:elevation="10dp"
+    app:elevation="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:subtitleTextColor="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:collapseIcon="@drawable/if_icon_111_search_314384"
+        app:theme="@style/ToolbarTheme"
+        android:layout_gravity="right"
+        app:popupTheme="@style/MainActionBar.Popup"
+        >
+
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:clickable="true"
+            android:id="@+id/notify_layout"
+            android:layout_gravity="right"
+
+            >
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:clickable="true"
+                android:layout_marginTop="2dp"
+                android:id="@+id/image"
+                android:tint="@color/white"
+                android:src="@drawable/ic_notifications_black_24dp" />
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/red_badge"
+                android:visibility="visible"
+                >
+
+                <!-- Menu Item Image -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:src="@drawable/circle" />
+
+                <!-- Badge Count -->
+                <TextView
+                    android:id="@+id/actionbar_notifcation_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="3"
+                    android:textStyle="bold"
+                    style="@style/Base.TextAppearance.AppCompat.Large"
+                    android:textSize="12sp"
+                    android:textColor="#fff" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <android.support.v7.widget.SearchView
+            android:id="@+id/search_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/SearchViewTheme"
+            android:layout_gravity="right"
+
+            />
+    </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+
+</android.support.design.widget.AppBarLayout>

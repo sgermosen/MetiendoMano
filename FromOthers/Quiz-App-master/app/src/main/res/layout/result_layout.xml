@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/backgroundwin"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="You Scored"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:id="@+id/title_score"
+        fontPath="fonts/airbnb.ttf"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="100/79000"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:id="@+id/total_score"
+        android:layout_below="@+id/title_score"
+        fontPath="fonts/airbnb.ttf"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:id="@+id/home"
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
+            android:background="@color/gray_quiz"
+            fontPath="fonts/airbnb.ttf"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="again!"
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
+            android:background="@color/gray_quiz"
+            fontPath="fonts/airbnb.ttf"
+            />
+    </LinearLayout>
+</RelativeLayout>

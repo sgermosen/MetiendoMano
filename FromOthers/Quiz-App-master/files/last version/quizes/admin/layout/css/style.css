@@ -1,0 +1,795 @@
+    /* Start Main Rulez */
+    
+    body{
+        background-color: #F4F4F4;
+        font-size: 15px;
+        height: 100%;
+    }
+
+html {
+	height: 100%;
+}
+
+
+.btn-sub {
+	
+	color: #ffb90b;
+    background-color: #4d4141;
+    border-color: #ffb90b;
+	
+	
+}
+
+.btn-sub:focus{
+	
+	color: #ffb90b;
+    background-color: #363030;
+    border-color: #ffb90b;
+	
+}
+
+.btn-sub:active:focus {
+	
+	color: #ffb90b;
+    background-color: #363030;
+    border-color: #ffb90b;
+	box-shadow: none;
+	
+}
+
+
+.btn-sub:hover{
+	
+	color: #ffb90b;
+    background-color: #363030;
+    border-color: #ffb90b;
+	
+	
+}
+
+
+	.bg {
+		
+		height: 10%;
+		background-color:#2c3e50;
+		
+		
+
+
+	}
+    
+    .asterisk {
+        font-size: 30px;
+        position: absolute;
+        right: 149px;
+        top: 290px;
+        color: #be3e3e;
+    }
+    
+    /* End Main Rulez */
+    
+    
+    /* Start Register and Login Form */
+
+
+	.login-panel-box {
+		
+		
+		margin-top:60px;
+		
+	}
+
+	.login-panel-box .panel-body {
+
+		padding-bottom: 0;
+	}
+
+	.login-panel-box .panel-danger {
+		
+		
+		border-color: #2c3e50 !important;
+
+
+
+	}
+
+	.login-panel-box .panel-danger>.panel-heading {
+		
+		
+		color: #ff5050;
+		background-color: #ff5050;
+		border-color: #2c3e50 !important;
+
+
+
+	}
+
+	
+
+
+	 .title {
+
+		text-align: center;
+		margin-top:-56px;
+		margin-bottom: 5px; 
+		color: #2ec35f;
+    	font-size: 27px;
+
+	}
+
+	.sub-title {
+		
+		margin: 5px 0 ;
+		color: #357da1;
+    	font-size: 20px;
+
+	}
+
+
+	.login {
+
+		width: 300px;
+		margin: 100px auto;
+		margin-top: 35px;
+
+
+	}
+
+	.login input {
+		
+		margin-bottom:5px;
+
+	}
+
+	 .login .btn {
+        color: #ff5050;
+		background-color: #222222;
+		border-color: #ffb90b;
+
+    }
+
+	.login .btn:active {
+		
+		background-color: #e14646;
+		border-color: #FFF !important;
+	
+	}
+
+	.login .btn:hover {
+		
+		background-color: #222222;
+		border-color: #FFF !important;
+	
+	}
+
+
+    
+    
+    /* End Login Form */ 
+
+
+
+	/* Starting Exams Page */
+
+
+	.main-table {
+	-webkit-box-shadow: 0 3px 10px #CCC;
+	-moz-box-shadow: 0 3px 10px #CCC;
+	box-shadow: 0 3px 10px #CCC;
+	}
+
+	.main-table td {
+		background-color: #FFF;
+		vertical-align: middle !important;
+	}
+
+	.main-table tr:first-child td { /* You Can Use Thead */
+		background-color: #ffb90b;
+		color: #222;
+	}
+
+	.main-table .btn {
+		padding: 3px 10px;
+	}
+
+	 .dropdown-menu {
+		background-color: #222222 !important ;
+		
+	}
+
+	.dropdown-menu li a:hover {
+			background-color: #ffb90b !important ;
+
+	}
+
+.dropdown-menu li a {
+	color:#02264a;
+}
+
+	
+
+	/* Ending Exams Page */
+
+
+
+
+
+
+
+	/*Starting Home Page*/ 
+
+
+
+	 /*Nav Tabs*/
+
+	ul.nav.nav-tabs {
+		
+		background-color: #363030;
+
+	}
+
+	.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #222;
+    cursor: default;
+    background-color: #e14646;
+    border: 1px solid #ddd;
+    border-bottom-color: #ffb90b;
+	}
+
+	a {
+    color: #ffb90b;
+    text-decoration: none;
+	}
+
+	.nav-tabs>li>a:hover {
+    	border-color: #ffb90b #ffb90b #ffb90b;
+		text-decoration: none;
+		background-color: #ffb90b;
+		color:#363030;
+		
+	}
+
+
+	.sel-home {
+		
+		background-color: #2c3e50 ;
+		color:#b53d3d;
+		font-size: 17px;
+
+	}
+
+
+	/*Starting Buttons*/ 
+
+
+	
+	.starting {
+
+		color: #2ecc71 !important;
+		background-color: #2c3e50 !important;
+		border-color: #2c3e50 !important;
+		margin-top: 5px;
+		margin-bottom: 5px;
+
+	}
+
+		
+
+    
+
+	.starting:active {
+		
+		background-color: #34495e !important;
+		border-color: #FFF !important;
+	
+	}
+
+	.starting:hover {
+		
+		background-color: #34495e !important;
+		border-color: #FFF !important;
+	
+	}
+
+	#go-btn {
+		
+		color: #FFF !important ;
+		width:170px;
+
+
+	}
+
+
+
+/*	End of Starting Buttons*/
+
+
+
+
+
+
+
+
+
+
+	/*Ending Home Page*/ 
+
+
+ /*Starting Questions Page */ 
+
+
+	.ques {
+
+		background-color: #f39c12 ;
+		color: #2c3e50;
+
+	}
+
+	.ques-ans {
+		
+		background-color: #FFF ;
+		color: #2c3e50;
+		font-size: 20px;
+		
+
+	}
+
+
+	
+
+
+
+
+
+ /*End Questions Page */ 
+
+
+
+    
+    
+    
+    
+    /*Start Bootstrap Edit*/
+    
+    
+    .navbar-inverse{
+        
+        background-color:#e14646;
+        
+    }
+    
+    .navbar {
+        border-radius: 0;
+        margin-bottom: 0;
+    }
+    
+    .navbar-brand {
+        font-size:1em;
+        
+        
+    }
+    
+    .navbar .nav {
+        margin-left: 25px;
+    }
+    
+    .navbar-inverse .navbar-nav>li>a {
+        color: #000;
+    }
+    
+    
+    
+    
+    .nav > li > a ,
+    .navbar-brand {
+        padding: 15px 12px ;
+        padding-bottom: 14px;
+    }
+    
+    
+    
+    .navbar-inverse .navbar-brand {
+        padding: 15px 12px ;
+        background-color:  #222222;
+       
+        
+    }
+    
+    .navbar-inverse .navbar-nav .brand-left {
+        background-color: #222222;
+		color: #9d9d8d;
+        padding: 17px;
+    }
+    
+    .navbar-inverse .navbar-nav >.open >a,
+    .navbar-inverse .navbar-nav >.open >a:hover,
+    .navbar-inverse .navbar-nav >.open >a:focus,
+    .dropdown-menu{
+        background-color: #ffb90b;
+		
+        
+    }
+
+	.navbar-inverse .navbar-nav>li>a {
+    	color: #1f00000;
+	}
+    
+    .dropdown-menu {
+        
+       
+        min-width: 188px;
+        padding: 0;
+        font-size: 15px;
+        color:
+        border: none;
+        border-radius: 0;
+            
+        
+    }
+    
+    .dropdown-menu > li > a {
+        color: #fff;
+        padding: 15px 15px;
+    }
+    
+    .dropdown-menu > li > a:hover,
+    .dropdown-menu > li > a:focus{
+        background-color: #0e803e;
+    }
+    
+    .form-control {
+        position: relative ;
+    }
+    
+   
+    
+    
+    
+    
+    
+    /*End Bootstrap Edit*/
+    
+    
+  /* Start Dashboard Page */
+
+
+
+.home-stats h1 {
+	margin-bottom: 30px;
+	color:#222;
+}
+
+.home-stats .stat {
+	padding: 20px;
+	font-size: 15px;
+	color: #FFF;
+	border-radius: 10px;
+	position: relative;
+	overflow: hidden;
+}
+
+.home-stats .stat i {
+    position: absolute;
+    font-size: 80px;
+    top: 35px;
+    left: 30px;
+}
+
+.home-stats .stat .info {
+	float: right;
+}
+
+.home-stats .stat a {
+	color: #FFF;
+}
+
+.home-stats .stat a:hover {
+	text-decoration: none;
+}
+
+.home-stats .stat span {
+	display: block;
+	font-size: 60px;
+}
+
+.home-stats .st-members {
+	background-color: #3498db;
+}
+
+.home-stats .st-pending {
+	background-color: #c0392b;
+}
+
+.home-stats .st-items {
+	background-color: #d35400;
+}
+
+.home-stats .st-comments {
+	background-color: #8e44ad;
+}
+
+.latest .panel .panel-heading {
+	color: #333;
+    background-color: #ffb90b;
+    border-color: #ffb90b;
+}
+
+.latest .panel .panel-body{
+	
+}
+
+.latest {
+	margin-top: 30px;
+}
+
+.latest .toggle-info {
+	color: #222;
+	cursor: pointer
+}
+
+.latest .toggle-info:hover {
+	color: #444;
+}
+
+.latest-users {
+	margin-bottom: 0;
+}
+
+.latest-users li {
+	padding: 10px;
+	overflow: hidden;
+}
+
+.latest-users li:nth-child(odd) {
+	background-color: #EEE;
+}
+
+.latest-users .btn-success,
+.latest-users .btn-info {
+	padding: 2px 8px;
+}
+
+.latest-users .btn-info {
+	margin-right: 5px;
+}
+
+
+/* End Dashboard Page */
+
+    
+    /*Start Exams Page*/
+
+   .question-stats .stat {
+	color :#FFF ;
+	padding: 20px ;
+	font-size: 20px;
+	text-align: center;
+	border-radius : 10px;
+	margin-top:20px;
+
+	}
+
+
+
+	.question-stats .stat a {
+	color : #ffb90b ;
+	qzAtext-decoration: none ;
+
+	}
+    .question-stats .stat a:hover {
+        
+        text-decoration: none ;
+    }
+    
+    .question-stats .stat span {
+        display: block ;
+        font-size: 20px;
+    }
+    
+    .question-stats .st-add-question {
+        background-color : #8e44ad ;
+    }
+    .question-stats .st-view-question {
+        background-color : #363030 ;
+    }
+    .question-stats .st-add-question {
+        background-color : #363030 ;
+    }
+
+	#exams-table {
+		
+		font-size: 18px;
+		color:#2c3e50;
+
+	}
+    
+    
+#duration-span {
+	color:#27ae60;
+	font-size: 20px;
+}
+
+
+        /*View Questions in Exam*/
+
+            #exams-has-questions-table tr:first-child td {
+
+                 
+                    background-color: #FFF;
+                    color: rgb(95, 31, 31);
+                
+
+            }
+
+
+        /* End View Questions in Exam*/
+    
+    
+    
+    
+    /*End Exams Page*/
+    
+    
+    /*Start Category Page*/
+    
+    .categories .panel-body {
+        padding:0;
+    }
+    
+    
+    
+    .categories .option a {
+        color:#888 ;
+        text-decoration: none;
+       
+        
+    }
+    
+    .categories .option span {
+        color:#888 ;
+        cursor:pointer;
+        
+        
+    }
+    
+    .categories .option .active {
+        color : #F00 ;
+    }
+    
+    .categories .cat h3 {
+        cursor: pointer ;
+    }
+    
+    .categories hr {
+        margin-top:0;
+        margin-bottom:0 ;
+    }
+    
+    .categories .cat {
+        padding :15px;
+        position: relative ;
+        overflow: hidden ;
+    }
+    
+    .categories .cat:hover {
+        background-color:#EEE;
+    }
+    
+    .categories .cat:hover .hidden-btns {
+        right :10px ;
+    }
+    
+    .categories .cat .hidden-btns {
+        -webkit-transition: all .5s ease-in-out ;
+        -moz-transition: all .5s ease-in-out ;
+        transition : all .5s ease-in-out ;
+        position: absolute ;
+        top:15px;
+        right: -120px; 
+    }
+    
+    .categories .cat .hidden-btns a {
+        
+        margin-right:5px;
+        
+       
+        
+    }
+    
+    
+    .categories .cat h3 {
+        
+        margin: 0;
+        font-weight: bold;
+        color: #966d25;
+        
+    }
+    
+    .categories .cat .full-view {
+        margin-bottom: 5px;
+    }
+    
+    
+    .categories .cat .full-view p {
+        margin-top: 18px;
+        margin-bottom: 18px;
+        color:#707070;
+    }
+    
+    .categories .cat:last-of-type ~ hr { /* Last Cat hr hidden*/
+        display: none ;
+    }
+    
+   
+    
+    .categories .cat .visability {
+        background-color:#e67e22 ;
+        color:#FFF ;
+        padding :5px 15px ;
+        margin-right:6px;
+        border-radius: 6px;
+    }
+    
+    .categories .cat .commenting {
+        
+        background-color:#2c3e50 ;
+        color:#FFF ;
+        padding :5px 15px ;
+        margin-right:6px;
+        border-radius: 6px;
+        
+        
+    }
+    
+    .categories .cat .advertising {
+        
+        background-color:#c0392b ;
+        color:#FFF ;
+        padding :5px 15px ;
+        margin-right:6px;
+        border-radius: 6px;
+        
+        
+    }
+    
+    
+    
+    
+    
+    /*End Category Page*/
+
+
+
+
+.stu-res {
+	float: right;
+	color:#e14646;
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

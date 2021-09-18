@@ -1,0 +1,133 @@
+<resources>
+    <string name="app_name">Cinema Ticket</string>
+    <string name="server_client_id">675073510766-l4hq8gaup27alf05garq6t9vm9pt9o2q.apps.googleusercontent.com</string>
+    <string name="facebook_app_id" translatable="false">291351844854044</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb291351844854044</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="team_name">Cinema Ticket</string>
+    <string name="username"><b>Username</b></string>
+    <string name="password"><b>Password</b></string>
+
+    <string name="string_0">YOU ARE...</string>
+    <string name="admin_choice">Admin</string>
+    <string name="user_choice">User</string>
+
+    <string name="slogan">Enjoy the best cinema ever</string>
+    <string name="string_7">Remember Me</string>
+    <string name="string_1">Forgot password?</string>
+    <string name="string_2">Don\'t have an account?</string>
+    <string name="string_3">Sign Up</string>
+
+    <string name="user_sign_up">Sign Up</string>
+    <string name="admin_signup">Admin Sign Up</string>
+    <string name="full_name"><b>Full Name</b></string>
+    <string name="id_work">Work ID</string>
+    <string name="email"><b>Email</b></string>
+    <string name="retype_password"><b>Retype Password</b></string>
+    <string name="string_4">Or sign in with...</string>
+    <string name="string_5">Already have an account?</string>
+    <string name="string_6">Sign In</string>
+    <string name="btn_create">CREATE ACCOUNT</string>
+    <string name="btn_sign_in">SIGN IN</string>
+    <string name="btn_sign_out">SIGN OUT</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="terms_privacy">Khi đăng ký tôi đã xem xét và đồng ý với Điều khoản sử dụng và Chính sách bảo mật của Cinema Ticket.</string>
+
+    //Message
+    <string name="signin_success">Sign-in Successfully</string>
+    <string name="signin_cancel">Sign-in Canceled</string>
+    <string name="signin_error">Sign-in Failed</string>
+    <string name="signup_success">Sign-up Successfully</string>
+    <string name="is_updating">Updating...</string>
+    <string name="profile_updated">Profile updated</string>
+
+    //Error
+    <string name="fullname_empty">Full Name cannot be blank</string>
+    <string name="email_empty">Email cannot be blank</string>
+    <string name="email_invalid">Invalid Email</string>
+    <string name="password_empty">Password cannot be blank</string>
+    <string name="password_length">"Password must be at least 6 characters long"</string>
+    <string name="retype_empty">Retype password cannot be blank</string>
+    <string name="retype_match">Retype and password do not match</string>
+    <string name="terms_confirm">Please read and confirm our Terms and Privacy</string>
+    <string name="mail_fail">Mail was not sent due to some problems.</string>
+
+    //Forgot Password
+    <string name="forgot_password">Please enter your email connected with the account you created. We\'ll send a link to reset your password. </string>
+    <string name="btn_send">SEND</string>
+    <string name="mail_sent">Mail has been sent. Please check your mail to recover password.</string>
+
+    //User's Information (Profile Detail's Tab)
+    <string name="user_fullname">Full Name</string>
+    <string name="user_email">Email</string>
+    <string name="user_balance">Balance</string>
+    <string name="user_birthday">Birthday</string>
+    <string name="user_format_birthday">dd/mm/yyyy</string>
+    <string name="user_gender">Gender</string>
+    <string name="user_gender_male">Male</string>
+    <string name="user_gender_female">Female</string>
+    <string name="user_gender_other">Other</string>
+    <string name="user_phonenumber">Phone Number</string>
+    <string name="user_address">Address</string>
+    <string name="btn_save">SAVE</string>
+    <string name="confirm_dialog_title">Confirm</string>
+    <string name="confirm_dialog_description">Do you want to save changes ?</string>
+    <string name="confirm_dialog_yes">YES</string>
+    <string name="confirm_dialog_cancel">CANCEL</string>
+
+    <string name="trending">Trending</string>
+    <string name="cinema">Cinema</string>
+    <string name="my_profile">My Profile</string>
+    <string name="home">Home</string>
+    <string name="now_showing">Now showing</string>
+    <string name="up_coming">Up coming</string>
+    <string name="book">Book</string>
+    <string name="content_string" translatable="false">Trở lại sau 6 năm, anh chàng hậu đậu Ralph và người bạn đồng hành Vanelllope rời khỏi thế giới game thùng nhỏ bé để khám phá thế giới Internet rộng lớn. Mục đích duy nhất của cả hai là tìm cách cứu lấy trò chơi Sugar Rush của Vanellope khỏi nguy cơ bị huỷ hoại. Thế nhưng, Vanellope nhận ra đây mới chính là nơi dành cho cô, trong khi đó Ralph lại lo sợ liệu anh có đánh mất người bạn duy nhất của mình</string>
+    <string name="book_now">Book now</string>
+    <string name="director_string">"Director: "</string>
+    <string name="cast_string">"Casts: "</string>
+    <string name="address_string">"Address: "</string>
+    <string name="hotline_string">"Hotline: "</string>
+    <string name="sign_in_or_sign_up_to_do_more_work">Sign in or sign up to do more work</string>
+
+    <string name="profile_detail">Account Information</string>
+    <string name="control_center_for_admin">Control Center ( for admin )</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="choose_movies_for_now_showing">Choose Movies for Now Showing</string>
+    <string name="choose_movies_for_up_coming">Choose Movies for Up Coming</string>
+    <string name="loading">Sending…</string>
+    <string name="load_live">Updating live data…</string>
+    <string name="choose_cinemas_for_showing">Choose Cinemas for Showing</string>
+    <string name="save_change">SAVE CHANGE</string>
+    <string name="add_new_movie">Add new movie</string>
+    <string name="all_movies">All Movies</string>
+    <string name="alert_leaving">Everything will be deleted after you leave !</string>
+    <string name="ok_i_know">Ok, I know</string>
+    <string name="auto_id">( Auto-generated ID )</string>
+    <string name="creating_new_id">Creating new ID …</string>
+    <string name="fail_to_create_id">Unable to create ID, please refresh the data</string>
+    <string name="note_youtube_link" translatable="false"><![CDATA[* Valid youtube link format should be like\nhttps://www.youtube.com/watch?v=abc_xyz, or\nhttps://youtu.be/abc_xyz]]></string>
+    <string name="check" translatable="false">Check</string>
+    <string name="youtube_pattern_id" translatable="false"><![CDATA[(?<=watch\\?v=|/videos/|embed\\/|youtu.be\\/|\\/v\\/|\\/e\\/|watch\\?v%3D|watch\\?feature=player_embedded&v=|%2Fvideos%2F|embed%‌​2F|youtu.be%2F|%2Fv%2F)[^#\\&\\?\\n]*]]></string>
+    <string name="autoplay_youtube_pattern" translatable="false">\?autoplay=1</string>
+    <string name="sending_data">Sending data …</string>
+    <string name="choose_feature_movies">Choose Feature movies</string>
+    <string name="choose_up_coming_movies">Choose Up Coming movies</string>
+    <string name="choose_now_showing_movies">Choose Now Showing movies</string>
+    <string name="exist_movie_alert">Using a Movie ID which already exists will update that movie</string>
+    <string name="all_cinemas">All Cinemas</string>
+    <string name="choose_showing_cinemas">Choose Showing Cinemas</string>
+    <string name="add_new_cinema">Add new cinema</string>
+    <string name="cinema_management">Cinema Management</string>
+    <string name="detail">Detail</string>
+    <string name="booking">Booking</string>
+    <string name="exist_cinema_alert">Using a Cinema ID which already exists will replace that cinema</string>
+    <string name="address">Address : %s</string>
+    <string name="add_update_show_times">Add/Update Show Times</string>
+    <string name="screen">Screen</string>
+    <string name="your_balanced_is">Your balanced is </string>
+    <string name="it_is_not_enough">₫, it\'s not enough</string>
+
+</resources>

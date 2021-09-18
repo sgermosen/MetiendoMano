@@ -1,0 +1,135 @@
+﻿@model Hospital_Management_System.CollectionViewModels.CollectionOfAll
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Dashboard</li>
+    </ol>
+</div><!--/.row-->
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Dashboard</h1>
+    </div>
+</div><!--/.row-->
+
+<div class="panel panel-container">
+    <div class="row">
+        <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+            <div class="panel panel-teal panel-widget border-right">
+                <div class="row no-padding">
+                    <em class="fa fa-xl fa-building color-blue"></em>
+                    <div class="large count">@Model.Departments.Count()</div>
+                    <div class="text-muted">Departments</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+            <div class="panel panel-blue panel-widget border-right">
+                <div class="row no-padding">
+                    <em class="fa fa-xl fa-user-md color-orange"></em>
+                    <div class="large count">@Model.Doctors.Count()</div>
+                    <div class="text-muted">Doctors</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+            <div class="panel panel-orange panel-widget border-right">
+                <div class="row no-padding">
+                    <em class="fa fa-xl fa-user color-teal"></em>
+                    <div class="large">@Model.Patients.Count()</div>
+                    <div class="text-muted">Patients</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+            <div class="panel panel-red panel-widget ">
+                <div class="row no-padding">
+                    <em class="fa fa-xl fa-ambulance color-red"></em>
+                    <div class="large count">@Model.Ambulances.Count()</div>
+                    <div class="text-muted">Ambulances</div>
+                </div>
+            </div>
+        </div>
+    </div><!--/.row-->
+    <div class="row">
+        <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+            <div class="panel panel-teal panel-widget border-right">
+                <div class="row no-padding">
+                    <em class="fa fa-xl fa-pencil-square color-red"></em>
+                    <div class="large count">@Model.ActiveAppointments.Count()</div>
+                    <div class="text-muted">Active Appointments</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+            <div class="panel panel-blue panel-widget border-right">
+                <div class="row no-padding">
+                    <em class="fa fa-xl fa-pencil-square color-teal"></em>
+                    <div class="large count">@Model.PendingAppointments.Count()</div>
+                    <div class="text-muted">pending Appointments</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+            <div class="panel panel-blue panel-widget border-right">
+                <div class="row no-padding">
+                    <em class="fa fa-xl fa-medkit color-orange"></em>
+                    <div class="large count">@Model.Medicines.Count()</div>
+                    <div class="text-muted">Medicines</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+            <div class="panel panel-blue panel-widget border-right">
+                <div class="row no-padding">
+                    <em class="fa fa-xl fa-car color-blue"></em>
+                    <div class="large count">@Model.AmbulanceDrivers.Count()</div>
+                    <div class="text-muted">Ambulance Drivers</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default ">
+            <div class="panel-heading">
+                Announcement
+                <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
+            </div>
+            <div class="panel-body timeline-container">
+                <ul class="timeline">
+                    @foreach (var list in Model.Announcements)
+                    {
+                        if (list.AnnouncementFor == "Doctor")
+                        {
+                            <li>
+                                <div class="timeline-badge"><em class="glyphicon glyphicon-pushpin"></em></div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4 class="timeline-title">@list.Announcements</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    }
+                    
+                </ul>
+            </div>
+        </div>
+    </div><!--/.col-->
+</div><!--/.row-->
+

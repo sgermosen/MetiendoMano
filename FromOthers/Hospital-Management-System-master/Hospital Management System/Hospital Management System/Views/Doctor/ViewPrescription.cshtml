@@ -1,0 +1,309 @@
+﻿@model Hospital_Management_System.Models.Prescription
+@{
+    Layout = null;
+}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css" media="all" />
+    <link rel="stylesheet" href="~/Content/resume.css">
+</head>
+<body>
+<div id="doc2" class="yui-t7">
+    <div id="inner">
+
+        <div id="hd">
+            <div class="yui-gc">
+                <div class="yui-u first">
+                    <h2>Hospital Management System</h2>
+                    <br>
+                    <h3>Address:</h3>
+                    <h3>Contact:</h3>
+                    <h3>Date: @(Model.PrescriptionAddDate.ToShortDateString())</h3>
+                </div>
+
+                <div class="yui-u">
+                    <div class="contact-info">
+                    </div><!--// .contact-info -->
+                </div>
+            </div><!--// .yui-gc -->
+        </div><!--// hd -->
+
+        <div id="bd">
+            <div id="yui-main">
+                <div class="yui-b">
+
+                    <div class="yui-gf">
+                        <div class="yui-u first">
+                            <h2>Doctor Profile</h2>
+                        </div>
+                        <div class="yui-u">
+                            <p class="enlarge">
+                                Name: @Model.DoctorName
+                            </p>
+                            <p class="enlarge">
+                                Specialization: @Model.DoctorSpecialization
+                            </p>
+                        </div>
+                    </div><!--// .yui-gf -->
+
+                    <div class="yui-gf">
+                        <div class="yui-u first">
+                            <h2>Patient Profile</h2>
+                        </div>
+                        <div class="yui-u">
+                            <p class="enlarge">
+                                Name: @Model.PatientName
+                            </p>
+                            @if (Model.PatientAge != null)
+                            {
+                                <p class="enlarge">
+                                    Age:
+                                </p>
+                            }
+                            @if (Model.PatientGender != null)
+                            {
+                                <p class="enlarge">
+                                    Gender: @Model.PatientGender
+                                </p>
+                            }
+                            
+                        </div>
+                    </div><!--// .yui-gf -->
+
+                    <div class="yui-gf">
+                        <div class="yui-u first">
+                            <h2>Medical Tests</h2>
+                        </div>
+                        <div class="yui-u">
+
+                            <div class="talent">
+                                @if (@Model.MedicalTest1 != null)
+                                {
+                                    <h2>@Model.MedicalTest1</h2>
+                                }
+                            </div>
+
+                            <div class="talent">
+                                @if (@Model.MedicalTest2 != null)
+                                {
+                                    <h2>@Model.MedicalTest2</h2>
+                                }
+                            </div>
+
+                            <div class="talent">
+                                @if (@Model.MedicalTest3 != null)
+                                {
+                                    <h2>@Model.MedicalTest3</h2>
+                                }
+                            </div>
+                            <div class="talent">
+                                @if (@Model.MedicalTest4 != null)
+                                {
+                                    <h2>@Model.MedicalTest4</h2>
+                                }
+                            </div>
+                        </div>
+                    </div><!--// .yui-gf -->
+
+                    <div class="yui-gf">
+
+                        <div class="yui-u first">
+                            <h2>Prescription</h2>
+                        </div><!--// .yui-u -->
+
+                        <div class="yui-u">
+
+                            
+                                @if (@Model.Medicine1 != null)
+                                {
+                                    <div class="job">
+                                        <h2>Medicine: @Model.Medicine1</h2>
+                                        <h4>
+                                            @if (@Model.Morning1)
+                                            {
+                                                @("Morning" + " -")
+                                            }
+                                            @if (@Model.Afternoon1)
+                                            {
+                                                @("Afternoon" + " -")
+                                            }
+                                            @if (@Model.Evening1)
+                                            {
+                                                @("Evening")
+                                            }
+                                        </h4>
+                                        <br />
+                                    </div>
+                                }
+                                        
+
+                            
+                                @if (@Model.Medicine2 != null)
+                                {
+                                    <div class="job">
+                                        <h2>Medicine: @Model.Medicine2</h2>
+                                        <h4>
+                                            @if (@Model.Morning2)
+                                            {
+                                                @("Morning" + " -")
+                                            }
+                                            @if (@Model.Afternoon2)
+                                            {
+                                                @("Afternoon" + " -")
+                                            }
+                                            @if (@Model.Evening2)
+                                            {
+                                                @("Evening")
+                                            }
+                                        </h4>
+                                        <br />
+                                    </div>
+                                }
+                                        
+
+                            
+                                @if (@Model.Medicine3 != null)
+                                {
+                                    <div class="job">
+                                        <h2>Medicine: @Model.Medicine3</h2>
+                                        <h4>
+                                            @if (@Model.Morning3)
+                                            {
+                                                @("Morning" + " -")
+                                            }
+                                            @if (@Model.Afternoon3)
+                                            {
+                                                @("Afternoon" + " -")
+                                            }
+                                            @if (@Model.Evening3)
+                                            {
+                                                @("Evening")
+                                            }
+                                        </h4>
+                                        <br />
+                                    </div>
+                                }
+                                        
+
+                            
+                                @if (@Model.Medicine4 != null)
+                                {
+                                    <div class="job">
+                                        <h2>Medicine: @Model.Medicine4</h2>
+                                        <h4>
+                                            @if (@Model.Morning4)
+                                            {
+                                                @("Morning" + " -")
+                                            }
+                                            @if (@Model.Afternoon4)
+                                            {
+                                                @("Afternoon" + " -")
+                                            }
+                                            @if (@Model.Evening4)
+                                            {
+                                                @("Evening")
+                                            }
+                                        </h4>
+                                        <br />
+                                    </div>
+                                }
+                                        
+
+                            
+                                @if (@Model.Medicine5 != null)
+                                {
+                                    <div class="job">
+                                        <h2>Medicine: @Model.Medicine5</h2>
+                                        <h4>
+                                            @if (@Model.Morning5)
+                                            {
+                                                @("Morning" + " -")
+                                            }
+                                            @if (@Model.Afternoon5)
+                                            {
+                                                @("Afternoon" + " -")
+                                            }
+                                            @if (@Model.Evening5)
+                                            {
+                                                @("Evening")
+                                            }
+                                        </h4>
+                                        <br />
+                                    </div>
+                                }
+                                        
+
+                            
+                                @if (@Model.Medicine6 != null)
+                                {
+                                    <div class="job">
+                                        <h2>Medicine: @Model.Medicine6</h2>
+                                        <h4>
+                                            @if (@Model.Morning6)
+                                            {
+                                                @("Morning" + " -")
+                                            }
+                                            @if (@Model.Afternoon6)
+                                            {
+                                                @("Afternoon" + " -")
+                                            }
+                                            @if (@Model.Evening6)
+                                            {
+                                                @("Evening")
+                                            }
+                                        </h4>
+                                        <br />
+                                    </div>
+                                }
+                                        
+
+                            
+                                @if (@Model.Medicine7 != null)
+                                {
+                                    <div class="job">
+                                        <h2>Medicine: @Model.Medicine7</h2>
+                                        <h4>
+                                            @if (@Model.Morning7)
+                                            {
+                                                @("Morning" + " -")
+                                            }
+                                            @if (@Model.Afternoon7)
+                                            {
+                                                @("Afternoon" + " -")
+                                            }
+                                            @if (@Model.Evening7)
+                                            {
+                                                @("Evening")
+                                            }
+                                        </h4>
+                                        <br />
+                                    </div>
+                                }
+                                        
+                        </div><!--// .yui-u -->
+                    </div><!--// .yui-gf -->
+
+
+                    <div class="yui-gf last">
+                        <div class="yui-u first">
+                            <h2>Check Up After</h2>
+                        </div>
+                        <div class="yui-u">
+                            <h2>@(Model.CheckUpAfterDays + " Days")</h2>
+                        </div>
+                    </div><!--// .yui-gf -->
+
+
+                </div><!--// .yui-b -->
+            </div><!--// yui-main -->
+        </div><!--// bd -->
+
+        <div id="ft">
+            <p>Doctor Timing: @(Model.DoctorTiming)</p>
+        </div><!--// footer -->
+
+    </div><!-- // inner -->
+
+
+</div>
+</body>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+  x:Class="Timeline.MainPage"
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:local="clr-namespace:Timeline"
+  BackgroundColor="White">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:NotBooleanConverter x:Key="NotBooleanConverter" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <ListView
+    x:Name="timelineListView"
+    ItemTapped="timelineListView_ItemTapped"
+    ItemsSource="{Binding .}"
+    RowHeight="75"
+    SeparatorVisibility="None">
+
+    <ListView.Header>
+      <StackLayout Padding="20,40,0,30">
+        <Label Style="{StaticResource PageHeaderLabel}" Text="Class Schedule" />
+        <Label Style="{StaticResource SubHeaderLabel}" Text="8 Mar 2017" />
+      </StackLayout>
+    </ListView.Header>
+
+    <ListView.Footer>
+      <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="64" />
+          <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Image Grid.RowSpan="2" Aspect="AspectFill" HorizontalOptions="Fill" VerticalOptions="Start" Source="YogaImage.png" />
+        <Image Aspect="Fill" Grid.RowSpan="2" HorizontalOptions="Fill" Source="FadeToWhite.png" />
+      </Grid>
+    </ListView.Footer>
+
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <Grid ColumnSpacing="0" RowSpacing="0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="100" />
+              <ColumnDefinition Width="30" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label HorizontalOptions="Center" Style="{StaticResource ClassTimeLabel}" Text="{Binding ClassTime, StringFormat='{0:H:mm}'}" />
+
+            <Label
+              Grid.Column="2"
+              Margin="20,0"
+              Style="{StaticResource ClassNameLabel}"
+              Text="{Binding ClassName}" />
+
+            <Label
+              Grid.Row="1"
+              Grid.Column="2"
+              Margin="20,0"
+              Style="{StaticResource ClassInstructorLabel}"
+              Text="{Binding Instructor}" />
+
+            <BoxView
+              Grid.RowSpan="2"
+              Grid.Column="1"
+              BackgroundColor="{StaticResource TimelineColor}"
+              HorizontalOptions="Center"
+              IsVisible="{Binding IsLast, Converter={local:NotBooleanConverter}}"
+              VerticalOptions="Fill"
+              WidthRequest="3" />
+
+            <Image Grid.Column="1" Source="Bullet.png" />
+
+          </Grid>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+</ContentPage>

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Hospital_Management_System.Models.Prescription>
+
+@{
+    ViewBag.Title = "ListOfPrescription";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Prescription</li>
+        <li class="active">List of Prescriptions</li>
+    </ol>
+</div>
+
+<h2>List Of Prescription</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddPrescription", null, new { @class = "btn btn-primary" })
+</p>
+<table id="table_id" class="table">
+    <thead>
+    <tr>
+        <th>
+            Patient UserName
+        </th>
+        <th>
+            Patient Name
+        </th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PatientName)
+                </td>
+                <td>
+                    <a href="@Url.Action("EditPrescription", new {id = item.Id})" class="fa fa-pencil-square-o" style="font-size: 19px"></a> |
+                    <a href="@Url.Action("ViewPrescription", new {id = item.Id})" class="fa fa-book" style="font-size: 19px; color: lightblue"></a> |
+                    <a href="@Url.Action("DeletePrescription", new {id = item.Id})" class="fa fa-trash" style="font-size: 19px; color: red"></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#table_id").dataTable();
+        });
+    </script>
+}

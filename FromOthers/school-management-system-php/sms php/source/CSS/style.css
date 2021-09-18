@@ -1,0 +1,28 @@
+.divtopcorner{
+    position:absolute;
+    top:0px;
+    right: 150px;
+    color:black;
+    text-align:center;
+    padding:5px;
+  }
+.header{
+    color:black;
+    text-align:center;
+    padding:5px;
+  }
+.manulist{
+    display:inline;
+    left:100px;
+}
+.menulista {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px 4px 0 0;
+}
+
+.menulista:hover {
+    background-color: orange;
+}

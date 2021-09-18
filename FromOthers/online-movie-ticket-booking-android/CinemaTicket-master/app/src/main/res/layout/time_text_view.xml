@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:id="@+id/show_time_textView"
+    android:layout_width="60dp"
+    android:layout_height="25dp"
+    android:layout_gravity="center_vertical"
+    android:background="@drawable/round_ripple_drawable_dark"
+    android:gravity="center"
+    android:text="13:15"
+    android:textColor="@android:color/black"
+    android:textStyle="bold"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

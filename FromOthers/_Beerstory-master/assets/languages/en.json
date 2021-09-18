@@ -1,0 +1,107 @@
+{
+    "page": {
+        "beers": {
+            "name": "Beers",
+            "empty": "No beer added for the moment."
+        },
+        "bars": {
+            "name": "Bars",
+            "empty": "No bar added for the moment."
+        },
+        "history": {
+            "name": "History",
+            "empty": "Nothing in your history for the moment.",
+            "clearConfirm": "Are you sure you want to clear your history ?",
+            "quantity": "{prefix}{quantity} cl",
+            "total": "Total :"
+        },
+        "search": "Search..."
+    },
+    "formDialog": {
+        "success": "{element} added with success.",
+        "beer": "Beer",
+        "bar": "Bar"
+    },
+    "barDialog": {
+        "name": {
+            "label": "Bar name :",
+            "hint": "Name"
+        },
+        "address": {
+            "label": "Bar address :",
+            "hint": "Address"
+        },
+        "added": "Bar added with success."
+    },
+    "beerDialog": {
+        "edit": "Edit beer",
+        "barcode": "Scan barcode",
+        "image": {
+            "gallery": "From photo gallery",
+            "camera": "From camera",
+            "remove": "Remove image"
+        },
+        "name": {
+            "label": "Beer name :",
+            "hint": "Name"
+        },
+        "degrees": {
+            "label": "Beer degrees :",
+            "hint": "Degrees"
+        },
+        "rating": {
+            "label": "Beer rating :"
+        },
+        "tags": {
+            "label": "Beer tags :",
+            "hint": "Enter a tag",
+            "empty": "No tag"
+        },
+        "prices": {
+            "label": "Beer prices :",
+            "hint": "Price (50cl)",
+            "empty": "No price",
+            "noBar": "No bar",
+            "add": "Add price"
+        },
+        "added": "Beer added with success."
+    },
+    "historyEntryDialog": {
+        "beer": {
+            "label": "Beer :"
+        },
+        "quantity": {
+            "label": "Quantity :",
+            "hint": "Quantity (in cl)",
+            "empty": "No quantity",
+            "quantities": {
+                "bottle": "Bottle / Can (33cl)",
+                "halfPint": "Half-pint (50cl)",
+                "pint": "Pint (100cl)",
+                "custom": "Custom"
+            }
+        },
+        "times": {
+            "label": "Times drunk :"
+        },
+        "moreThanQuantity": {
+            "label": "More than current quantity ?"
+        }
+    },
+    "successDialog": {
+        "history": "View history",
+        "close": "Close"
+    },
+    "error": {
+        "addBeerFirst": "You must add a beer in the app first.",
+        "notFilled": "You must fill this field.",
+        "invalidNumber": "Please enter a valid number.",
+        "openFoodFactsNotFound": "Cannot find your beer on OpenFoodFacts servers using this barcode.",
+        "openFoodFactsGenericError": "An error occurred while finding your beer on OpenFoodFacts.\nPlease try again later."
+    },
+    "action": {
+        "edit": "Edit entry",
+        "delete": "Delete entry",
+        "more": "More"
+    }
+}

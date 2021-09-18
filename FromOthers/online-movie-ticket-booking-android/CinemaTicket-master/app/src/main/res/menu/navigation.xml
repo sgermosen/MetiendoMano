@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_trending"
+        android:icon="@drawable/trending_up"
+        app:showAsAction="ifRoom"
+        android:title="@string/trending"/>
+
+    <item
+        android:id="@+id/navigation_cinema"
+        android:icon="@drawable/popcorn"
+        app:showAsAction="ifRoom"
+        android:title="@string/cinema"/>
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/account_circle"
+        app:showAsAction="ifRoom"
+        android:title="@string/my_profile"/>
+
+</menu>

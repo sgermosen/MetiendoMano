@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Hospital_Management_System.Models.Patient>
+
+@{
+    ViewBag.Title = "ListOfPatients";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Patient</li>
+        <li class="active">List of Patients</li>
+    </ol>
+</div>
+
+<h2>List Of Patients</h2>
+
+<table id="table_id" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BloodGroup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contact)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BloodGroup)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    <a href="@Url.Action("EditPatient", new {id = item.Id})" class="fa fa-pencil-square-o" style="font-size: 19px"></a> |
+                    <a href="@Url.Action("DeletePatient", new {id = item.ApplicationUserId})" class="fa fa-trash" style="font-size: 19px; color: red"></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#table_id").dataTable();
+        });
+    </script>
+}

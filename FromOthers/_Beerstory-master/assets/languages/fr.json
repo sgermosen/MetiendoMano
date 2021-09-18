@@ -1,0 +1,108 @@
+{
+    "page": {
+        "beers": {
+            "name": "Bières",
+            "empty": "Pas de bière enregistrée pour le moment."
+        },
+        "bars": {
+            "name": "Bars",
+            "empty": "Pas de bar enregistré pour le moment"
+        },
+        "history": {
+            "name": "Historique",
+            "empty": "Rien dans votre historique pour le moment.",
+            "clearConfirm": "Voulez-vous vraiment vider votre historique ?",
+            "quantity": "{prefix}{quantity} cl",
+            "total": "Total :"
+        },
+        "search": "Rechercher..."
+    },
+    "formDialog": {
+        "success": "{element} ajouté avec succès.",
+        "beer": "Bière",
+        "bar": "Bar"
+    },
+    "barDialog": {
+        "name": {
+            "label": "Nom du bar :",
+            "hint": "Nom"
+        },
+        "address": {
+            "label": "Adresse du bar :",
+            "hint": "Addresse"
+        },
+        "added": "Bar ajouté avec succès."
+    },
+    "beerDialog": {
+        "edit": "Modifier la bière",
+        "barcode": "Scanner code-barre",
+        "image": {
+            "gallery": "Depuis la galerie",
+            "camera": "Depuis l'appareil photo",
+            "remove": "Enlever l'image"
+        },
+        "name": {
+            "label": "Nom de la bière :",
+            "hint": "Nom"
+        },
+        "degrees": {
+            "label": "Degré de la bière :",
+            "hint": "Degré"
+        },
+        "rating": {
+            "label": "Avis sur la bière :"
+        },
+        "tags": {
+            "label": "Tags de la bière :",
+            "hint": "Entrez un tag",
+            "empty": "Pas de tag"
+        },
+        "prices": {
+            "label": "Prix de la bière :",
+            "hint": "Prix (50cl)",
+            "empty": "Pas de prix",
+            "noBar": "Pas de bar",
+            "add": "Ajouter un prix"
+        },
+        "added": "Bière ajouté avec succès."
+    },
+    "historyEntryDialog": {
+        "beer": {
+            "label": "Bière :"
+        },
+        "quantity": {
+            "label": "Quantité :",
+            "hint": "Quantité (in cl)",
+            "empty": "Pas de quantité",
+            "quantities": {
+                "bottle": "Bouteille / Canette (33cl)",
+                "halfPint": "Demi-pinte (50cl)",
+                "pint": "Pinte (100cl)",
+                "custom": "Personnalisée"
+            }
+        },
+        "times": {
+            "label": "Nombre de fois bue :"
+        },
+        "moreThanQuantity": {
+            "label": "Plus que la quantité actuelle ?"
+        }
+    },
+    "successDialog": {
+        "history": "Voir l'historique",
+        "close": "Fermer"
+    },
+    "error": {
+        "addBeerFirst": "Vous devez d'abord ajouter une bière dans l'application.",
+        "notFilled": "Vous devez remplir ce champ.",
+        "invalidNumber": "Veuillez entrer un nombre valide.",
+        "unableLoad": "Impossible de charger les données.\nVeuillez redémarrer l'application.",
+        "openFoodFactsNotFound": "Impossible de trouver votre bière sur les serveurs d'OpenFoodFacts serveurs avec ce code-barre.",
+        "openFoodFactsGenericError": "Une erreur est survenue en cherchant votre bière sur OpenFoodFacts.\nVeuillez réessayer plus tard."
+    },
+    "action": {
+        "edit": "Éditer l'entrée",
+        "delete": "Supprimer l'entrée",
+        "more": "Plus"
+    }
+}

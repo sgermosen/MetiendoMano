@@ -1,0 +1,88 @@
+﻿@model Hospital_Management_System.CollectionViewModels.AppointmentCollection
+
+@{
+    ViewBag.Title = "AddAppointment";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Appointment</li>
+        <li class="active">Add Appointment</li>
+    </ol>
+</div>
+
+<h2>Add Appointment</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Appointment.PatientId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Appointment.PatientId, new SelectList(Model.Patients, "Id", "FullName"), "Select Patient", new { @id = "dropdown1", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Appointment.PatientId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Appointment.AppointmentDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Appointment.AppointmentDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Appointment.AppointmentDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Appointment.Problem, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Appointment.Problem, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Appointment.Problem, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Appointment.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.Appointment.Status, new { @style = "margin-top:10px" })
+                @Html.ValidationMessageFor(model => model.Appointment.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @if (Model.Appointment.Status)
+    {
+        @Html.ActionLink("Back to List", "ActiveAppointments")
+    }
+    else
+    {
+        @Html.ActionLink("Back to List", "Index")
+    }
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function() {
+            $("#dropdown1").chosen();
+        });
+    </script>
+}

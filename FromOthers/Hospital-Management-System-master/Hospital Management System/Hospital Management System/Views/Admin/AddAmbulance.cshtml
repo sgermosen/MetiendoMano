@@ -1,0 +1,82 @@
+﻿@using Hospital_Management_System.Models
+@model Hospital_Management_System.CollectionViewModels.AmbulanceCollection
+
+@{
+    ViewBag.Title = "AddAmbulance";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Ambulance</li>
+        <li class="active">Add Ambulance</li>
+    </ol>
+</div>
+
+<h2>Add Ambulance</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ambulance.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ambulance.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ambulance.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ambulance.AmbulanceId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ambulance.AmbulanceId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ambulance.AmbulanceId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @{
+            var list = new List<Ambulance>
+            {
+                new Ambulance {AmbulanceStatus = "Free"},
+                new Ambulance {AmbulanceStatus = "Busy"}
+            };
+        }
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ambulance.AmbulanceStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Ambulance.AmbulanceStatus, new SelectList(list, "AmbulanceStatus", "AmbulanceStatus"), "Select Status", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Ambulance.AmbulanceStatus, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ambulance.AmbulanceDriverId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Ambulance.AmbulanceDriverId, new SelectList(Model.AmbulanceDrivers, "Id", "Name"), "Select Driver", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Ambulance.AmbulanceDriverId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "ListOfAmbulances")
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

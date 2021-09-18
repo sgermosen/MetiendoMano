@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/black"
+    android:focusable="true"
+    android:clickable="true">
+<android.support.design.widget.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/black">
+    <android.support.design.widget.CollapsingToolbarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="66dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
+
+                <View
+                    android:id="@+id/movie_panel"
+                    android:layout_width="0dp"
+                    android:layout_height="162dp"
+                    android:background="@drawable/black_rounded_big"
+                    app:layout_constraintBottom_toBottomOf="@id/image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/image" />
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/image"
+                    android:layout_width="117dp"
+                    android:layout_height="165dp"
+                    android:padding="14dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/madagasca"
+                    app:riv_corner_radius="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="Madagascar 2"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/next"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/image"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/genre"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="Cartoon / Adventure"
+                    android:textColor="@color/text_not_focus"
+                    app:layout_constraintEnd_toStartOf="@+id/next"
+                    app:layout_constraintStart_toEndOf="@+id/image"
+                    app:layout_constraintTop_toBottomOf="@+id/title" />
+
+                <TextView
+                    android:id="@+id/duration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="VN | 89 min"
+                    android:textColor="@color/text_not_focus"
+
+                    app:layout_constraintEnd_toStartOf="@+id/next"
+                    app:layout_constraintStart_toEndOf="@+id/image"
+                    app:layout_constraintTop_toBottomOf="@+id/genre" />
+
+                <ImageView
+                    android:id="@+id/star"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginLeft="8dp"
+
+                    app:layout_constraintBottom_toBottomOf="@+id/rate"
+                    app:layout_constraintStart_toEndOf="@+id/image"
+                    app:layout_constraintTop_toTopOf="@+id/rate"
+                    app:srcCompat="@drawable/icon_star" />
+
+                <TextView
+                    android:id="@+id/rate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="4.5"
+                    android:textColor="#FF0B19"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/image"
+                    app:layout_constraintEnd_toStartOf="@+id/next"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/star"
+                    app:layout_constraintTop_toBottomOf="@+id/duration"
+                    app:layout_constraintVertical_bias="0.6" />
+
+                <ImageView
+                    android:id="@+id/next"
+                    android:layout_width="35dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+
+                    app:layout_constraintBottom_toBottomOf="@id/image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/image"
+                    app:layout_constraintVertical_bias="0.57"
+                    app:srcCompat="@drawable/ic_navigate_next_black_24dp"
+                    android:tint="@color/setting_label_color"
+                    android:padding="4dp"
+                    android:alpha="0.7"/>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/date_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/image"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="6dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_gravity="bottom"
+                    android:overScrollMode="never"
+                    android:layout_marginStart="20dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_date_booking"
+                    />
+            </android.support.constraint.ConstraintLayout>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_collapseMode="pin"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:background="@android:color/black">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="56dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/booking"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:textSize="22sp"
+                    android:layout_gravity="center"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
+            </FrameLayout>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.CollapsingToolbarLayout>
+
+</android.support.design.widget.AppBarLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/cinema_recycle_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                tools:listitem="@layout/item_cinema_booking"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+        <TextView
+            android:id="@+id/error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Showtimes for this movie :(("
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textColor="#666"
+            android:visibility="gone"
+            />
+    </FrameLayout>
+</android.support.design.widget.CoordinatorLayout>

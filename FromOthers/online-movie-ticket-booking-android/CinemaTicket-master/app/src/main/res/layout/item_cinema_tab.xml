@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View
+        android:id="@+id/panel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/txt_address"
+
+        android:background="@drawable/black_rounded"
+       android:layout_margin="5dp" />
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/img"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitXY"
+        app:riv_corner_radius="4dp"
+        android:layout_marginStart="15dp"
+        android:padding="5dp"
+        android:elevation="6dp"/>
+    <TextView
+        android:id="@+id/txt_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:text="CGV thu duc"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="15dp"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        app:layout_constraintStart_toEndOf="@id/img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_vertical"
+        android:textColor="#FFF"
+        android:textSize="18sp" />
+    <ImageView
+        android:id="@+id/phone"
+        android:layout_width="13dp"
+        android:layout_height="15dp"
+        app:layout_constraintStart_toStartOf="@id/txt_name"
+        app:layout_constraintTop_toBottomOf="@id/txt_name"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/icons8_phone_48"/>
+    <TextView
+        android:id="@+id/txt_hotline"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="#CFD8DC"
+        android:layout_marginEnd="10dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/phone"
+        app:layout_constraintTop_toTopOf="@id/phone"
+       />
+    <ImageView
+        android:id="@+id/location"
+        android:layout_width="13dp"
+        android:layout_height="15dp"
+        app:layout_constraintStart_toStartOf="@id/txt_name"
+        app:layout_constraintTop_toBottomOf="@id/txt_hotline"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/icons8_place_marker_480"/>
+
+    <TextView
+        android:id="@+id/txt_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="#CFD8DC"
+        android:paddingBottom="10dp"
+        android:paddingStart="5dp"
+        android:layout_marginEnd="10dp"
+        android:paddingEnd="5dp"
+        android:maxLines="3"
+        android:ellipsize="end"
+        app:layout_constraintStart_toEndOf="@id/location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/location" />
+</android.support.constraint.ConstraintLayout>

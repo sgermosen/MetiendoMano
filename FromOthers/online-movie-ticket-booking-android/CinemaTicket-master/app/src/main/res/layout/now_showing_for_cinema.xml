@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/black"
+    android:clickable="true"
+    android:animateLayoutChanges="true"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/back_button"
+        android:layout_width="65dp"
+        android:layout_height="75dp"
+        android:paddingTop="28dp"
+        android:paddingBottom="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back_button" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/back_button"
+        android:paddingStart="65dp"
+        android:paddingEnd="65dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:background="@drawable/round_support_touch"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/a_white"/>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_layout"
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        app:layout_constraintTop_toBottomOf="@id/back_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimaryDark"
+            tools:listitem="@layout/item_movie_nowshowing_tab"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <TextView
+        android:id="@+id/errorMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/setting_label_color"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/swipe_layout"
+        app:layout_constraintBottom_toBottomOf="@id/swipe_layout"
+        app:layout_constraintStart_toStartOf="@id/swipe_layout"
+        app:layout_constraintEnd_toEndOf="@id/swipe_layout"
+        android:text="Oops, something went wrong :("
+        android:textSize="18sp"
+        android:gravity="center"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/noMovie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/setting_label_color"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/swipe_layout"
+        app:layout_constraintBottom_toBottomOf="@id/swipe_layout"
+        app:layout_constraintStart_toStartOf="@id/swipe_layout"
+        app:layout_constraintEnd_toEndOf="@id/swipe_layout"
+        android:text="There is no movie to show!"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:visibility="gone" />
+</android.support.constraint.ConstraintLayout>

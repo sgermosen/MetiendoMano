@@ -1,0 +1,216 @@
+
+examination system for Android™
+
+#Welcome 
+Welcome to examination's open source Android app! Come on in, take your shoes
+off, stay a while explore how examination's 's native squad has built and
+continues to build the app, _discover_ our implementation of [RxJava](https://github.com/ReactiveX/RxJava) in logic-
+filled [view models](https://github.com/mohamedebrahim96/MET-Quiz),
+and maybe even create an issue or two.
+
+
+
+#Purpose of the Project
+- Attempting all the quizzes will be easy for everyone.
+- Access to the quiz for the revision even after the 3 months challenge. 
+- Easy to manage quizzes and keeping the track of all attempted quizzes.
+- Android Resources: Useful resources related to Android based on a search keyword
+- replace using paper.
+
+#Getting Started
+Follow these instructions to build and run the project without data; note that
+the app will be blank.
+
+1. Clone this repository from git hub link (https://github.com/mohamedebrahim96/MET-Quiz)
+
+ 
+
+2. Download the appropriate [JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+for your system. We are currently on JDK 8.
+3. [Install Android Studio](https://developer.android.com/sdk/index.html).
+4. `cd` into the project repo and run `Quize` to your Android
+   development environment. Keep an eye on the output to see if   any manual steps
+   are required.
+5. Import the project. Open Android Studio, click `Open an existing Android
+   Studio project` and select the project. Gradle will build the project.
+6. Run the app. Click `Run > Run 'app'`. After the project builds you'll be
+   prompted to build or launch an emulator.
+
+#Application Requirements
+Basic authentication & Details -
+1) Splash Screen
+2) Login Screen
+We intend to keep only Google login for authenticating users as of now.
+=====================================================
+3) Sign up
+One time screen after the user authenticates. This screen will take user details. The fields will include:
+card number
+email
+password
+first Name
+last Name
+Photo/Select Avatar
+=====================================================
+4) Home Screen
+There will be a list of all the quizzes and each quiz item will contain the following information:
+Screen title
+Student's Name
+Exam
+settings
+results
+barcode Fragment
+=====================================================
+5)Results
+Overall Score.
+Number of quizzes attempted.
+Attempted Quizzes history & score.
+Course Notes / External resources.
+
+
+#Contributing
+We intend for this project to be an educational resource: we are excited to share our wins, mistakes, and methodology of Android development as we work in the open. Our primary focus is to continue improving the app for our users in line with our roadmap.
+
+The best way to submit feedback and report bugs is to open a Github issue. Please be sure to include your operating system, device, version number, and steps to reproduce reported bugs. Keep in mind that all participants will be expected to follow our code of conduct.
+
+
+#App Architecture
+This app follows Model-View-Presenter (MVP) architecture pattern. MVP is one of the widely used architectural patterns for android apps and offers the following advantages:
+
+Readable and maintainable code
+Clear separation of concerns
+Modular code which provides high degree of decoupling
+More testable code
+Code which is fun to work with
+That is exactly what we want. An android app that has clean, maintainable, testable and robust code.
+
+Model-View-Presenter basics
+Model-View-Presenter (MVP) is a derivation of Model-View-Controller (MVC) architectural pattern and is mostly used for building user interfaces. It consists of 3 components
+
+Model - Responsible for maintaining state of the data in the application. It is usually an interface that acts as abstraction between actual data (from remote or local) and presenter. There is usually one model layer per android app.
+Presenter - Acts as a bridge between Model and the View. Responsible for retrieving data from Model, formatting the data and passing it to the View. Ideally presenter should not contain any android dependencies to enable isolated unit testing. Presenter is also responsible for accepting actions from view and taking actions on model accordingly.
+View - View is passive. View should be kept as dumb as possible. Meaning it should not contain any business logic and should act based on Presenter's instructions. Responsible for displaying data passed on by presenter and routing user actions to presenter.
+View is kept independent of business logic. Basically view acts as an obedient slave that follows Presenter's instruction.
+
+MVP architecture
+
+ 
+
+Model, View and Presenter communicate with each other via interfaces to keep implementation logic separate. This makes the components loosely coupled and makes the code maintainable. Testing each separate layer becomes very easy with MVP, as the components talk to each other via interfaces. To test View, presenter can be mocked, to test View and Presenter, data or model layer can be mocked. Yes, it takes a little extra effort to implement this in apps, but the benefits we get surpasses the effort required by a huge margin.
+
+Implementation
+In Android, activities and fragments are Views. Activity and fragment implement the View interface and contain a reference to Presenter. Presenter instructs the view what data to be displayed based on interaction with Model. Many a times Model is confused with Model class or POJOs, Model signifies model layer, whereas Model class and POJOs are simple classes that represent the structure of the data.
+
+Model - In this app, we have a single interface that represents data or Model Layer (DataHandler.java). This is the single point of interaction for the layer. The implementation of this layer (AppDataHandler.java) is responsible for communicating with various data sources like remote database, local SQLite database, Shared Preferences etc. This encapsulates all the app data and state behind the model layer.
+View & Presenter - There is one view and one presenter interface per screen, there is one contract that keeps related interfaces together. For example, for Sign In there is a contract called SignInContract.java that has 2 nested interface View and Presenter. SignInActivity.java, implements SignInContract.View interface while SignInPresenter.java implements the SignInContract.Presenter interface.
+Here is the visual representation of Quiz App Architecture
+
+ 
+
+
+Data flow
+As clear from the above picture, the state is hidden inside the Model layer. Data transfers from Model layer to Presenter and eventually View. Presenter should not care whether the data is coming from internet or from local cache, neither should View. This business logic (Where data should come from?), is a part of Model layer.
+
+Backend
+For quiz app we are using firebase as backend. User information, quizzes, discussions etc. are all part of firebase realtime database. None of the firebase dependencies propagates beyond model layer. So the View and the Presenter need not know where the data is coming from.
+
+
+
+
+#Updates log
+april 29, 2018
+Reorganized Secret Chats documentation: moved Handling Sequence Numbers to a separate document, added section on updating secret chat layers.
+mar 9, 2018
+    Added Layer 18.
+Sep 26, 2017
+     Added Layer 17.
+Aug 29, 2017
+     New article on Perfect Forward Secrecy. Added Layer 15 and   Layer 16.
+Apr 4, 2014
+     Added La
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#License
+ 
+
+
+
+

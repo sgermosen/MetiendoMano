@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SocialNetwork.MainPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:SocialNetwork" BackgroundColor="{StaticResource BackgroundColor}">
+
+    <ScrollView>
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="AUTO" />
+            </Grid.RowDefinitions>
+
+            <!--  header background  -->
+            <Image Aspect="AspectFill" Source="HeaderBackground.png" />
+            <Image Aspect="Fill" Margin="0,-1,0,-1" Source="CurvedMask.png" VerticalOptions="End" />
+
+            <!--  profile image  -->
+            <Image HeightRequest="100" HorizontalOptions="Center" Source="ProfilePic.png" TranslationY="50" VerticalOptions="End" WidthRequest="100" />
+
+            <!--  Profile Name  -->
+            <StackLayout Grid.Row="1" Padding="0,50,0,00" HorizontalOptions="Center">
+                <Label Style="{StaticResource ProfileNameLabel}" Text="Clementine" />
+                <Label Margin="0,-5" Style="{StaticResource ProfileTagLabel}" Text="Hipster Coffee Drinker" />
+            </StackLayout>
+
+            <!--  Social Stats Section  -->
+            <Grid Grid.Row="2" Margin="0,30" ColumnSpacing="0" RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout>
+                    <Label Style="{StaticResource StatsNumberLabel}" Text="33" />
+                    <Label Style="{StaticResource StatsCaptionLabel}" Text="Likes" />
+                </StackLayout>
+
+                <StackLayout Grid.Column="1">
+                    <Label Style="{StaticResource StatsNumberLabel}" Text="94" />
+                    <Label Style="{StaticResource StatsCaptionLabel}" Text="Following" />
+                </StackLayout>
+
+                <StackLayout Grid.Column="2">
+                    <Label Style="{StaticResource StatsNumberLabel}" Text="957" />
+                    <Label Style="{StaticResource StatsCaptionLabel}" Text="Followers" />
+                </StackLayout>
+            </Grid>
+
+            <!--  profile description  -->
+                <Label Margin="20,0" Grid.Row="3" Style="{StaticResource MainBodyLabel}" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada ultricies arcu nec egestas. Nam porta fermentum aliquam. Nullam tincidunt odio purus." />
+
+            <!--  follow button  -->
+            <Button Grid.Row="4" Margin="20" Style="{StaticResource FollowButton}" Text="Follow" />
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

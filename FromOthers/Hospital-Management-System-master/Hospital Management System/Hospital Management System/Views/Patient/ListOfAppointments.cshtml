@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Hospital_Management_System.Models.Appointment>
+
+@{
+    ViewBag.Title = "ListOfAppointments";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Appointment</li>
+        <li class="active">List of Appointment</li>
+    </ol>
+</div>
+
+<h2>List Of Appointments</h2>
+
+<h4>Description:</h4>
+<h5>1. &nbsp; You Have to wait until your Appointment is Approved.</h5>
+<h5>2. &nbsp;If Status is Checked then your Appointment is Done with Doctor.</h5>
+<h5>3.&nbsp;If Appointment is not Approved then Again Request for Appointment.</h5>
+<br />
+<p>
+    @Html.ActionLink("Create New", "AddAppointment", null, new { @class = "btn btn-primary" })
+</p>
+<table id="table_id" class="table">
+    <thead>
+    <tr>
+        <th>
+            Doctor Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppointmentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Problem)
+        </th>
+        <th>
+            Appointment Id
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doctor.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Problem)
+            </td>
+            @if (item.Status)
+            {
+                <td>
+                    @Html.DisplayFor(m => item.Id)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @("Not Approved")
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a id="dlt-link" href="@Url.Action("DeleteAppointment", new {id = item.Id})" class="fa fa-trash" style="font-size: 19px; color: red"></a>
+            </td>
+        </tr>
+    }
+    </tbody>
+
+</table>
+
+@section scripts {
+    <script>
+        $(document).ready(function() {
+            $("#table_id").dataTable();
+        });
+    </script>
+}

@@ -1,0 +1,67 @@
+﻿@using Hospital_Management_System.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+
+<section class="section-form" id="contact">
+    <div class="row">
+        <h2>@ViewBag.Title.</h2>
+    </div>
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col span-1-of-4">
+            
+            </div>
+            <div class="col span-2-of-4">
+                <div class="plan-box">
+                    <div>
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div>
+                            <label for="name">Name<span style="color: red; font-weight: bold">*</span></label>
+                            @Html.TextBoxFor(m => m.Email, new { @placeholder="Your Email", id="name" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label for="password">Password<span style="color: red; font-weight: bold">*</span></label>
+                            @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", id = "password" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            
+                        </div>
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                        <br />
+                        <p>
+                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                        </p>
+                        <br />
+                        <p>
+                            @Html.ActionLink("Register as a new user", "Register")
+                        </p>
+                    </div>
+                
+                    <div style="text-align: center !important">
+                        <input type="submit" value="Log in" class="btn btn-ghost">
+                    </div>
+                </div>
+            </div>
+            <div class="col span-1-of-4">
+           
+            </div>
+        </div>
+        <div style="text-align: center" class="row">
+            @Html.ActionLink("Back to Home", "Index", "Home")
+        </div>
+    }
+    
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

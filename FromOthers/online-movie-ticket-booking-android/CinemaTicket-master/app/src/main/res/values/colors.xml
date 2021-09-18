@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@android:color/white</color>
+    <color name="colorPrimaryDark">@android:color/black</color>
+    <color name="colorAccent">#D43732</color>
+    <color name="a_white">#F5F5F5</color>
+    <item name="FlatWhite" type="color">#F5F5F5</item>
+    <color name="focus_color">#FF0B19</color>
+    <color name="panel_background">#090909</color>
+    <color name="main_background">#212121</color>
+    <color name="text_not_focus">#bbb</color>
+
+    <color name="heavy_red">#AE2120</color>
+    <color name="quite_red">#D43732</color>
+    <color name="quite_green">#559E74</color>
+    <color name="heavy_gray">#947062</color>
+    <color name="quite_gray">#B27F71</color>
+    <color name="quite_dark">#1c1c1c</color>
+
+    <color name="gold">#FFE200</color>
+    <color name="heavy_gold">#FFAA00</color>
+    <color name="yellow">#FF7D00</color>
+    <color name="heavy_yellow">#FF3300</color>
+    <color name="pink">#FF0042</color>
+    <color name="pink_light_1">#ff0057</color>
+    <color name="setting_label_color">#B8B8B8</color>
+    <color name="success_stroke_color">#A5DC86</color>
+    <color name="FlatRed">#FF3B30</color>
+    <color name="FlatGreen">#4CD964</color>
+    <color name="FlatOrange">#FF9500</color>
+    <color name="FlatYellow">#FFCC00</color>
+    <color name="FlatTealBlue">#5AC8FA</color>
+    <color name="FlatPurple">#5856D6</color>
+    <color name="FlatPink">#FF2D55</color>
+    <color name="FlatBlue">#007AFF</color>
+
+    <color name="HeavyOrange">#AF8700</color>
+    <color name="HeavyRed">#770000</color>
+    <color name="HeavyTealBlue">#0058AA</color>
+    <color name="HeavyYellow">#802D00</color>
+    <color name="HeavyGreen">#005800</color>
+    <color name="HeavyBlue">#00218B</color>
+    <color name="HeavyPurple">#162EA6</color>
+    <color name="HeavyPink">#B60024</color>
+</resources>

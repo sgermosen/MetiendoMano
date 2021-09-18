@@ -1,0 +1,109 @@
+﻿@using Hospital_Management_System.Models
+@model Hospital_Management_System.Models.Schedule
+
+@{
+    ViewBag.Title = "EditSchedule";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Schedule</li>
+        <li class="active">Edit Schedule</li>
+    </ol>
+</div>
+
+<h2>Edit Schedule</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        
+        @{
+            var days = new List<Schedule>
+            {
+                new Schedule {AvailableStartDay = "Monday"},
+                new Schedule {AvailableStartDay = "Tuesday"},
+                new Schedule {AvailableStartDay = "Wednesday"},
+                new Schedule {AvailableStartDay = "Thursday"},
+                new Schedule {AvailableStartDay = "Friday"},
+                new Schedule {AvailableStartDay = "Saturday"},
+                new Schedule {AvailableStartDay = "Sunday"}
+            };
+
+            var status = new List<Schedule>
+            {
+                new Schedule {Status = "Active"},
+                new Schedule {Status = "Inactive"}
+            };
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AvailableStartDay, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.AvailableStartDay, new SelectList(days, "AvailableStartDay", "AvailableStartDay"), "Select Start Day", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AvailableStartDay, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AvailableEndDay, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.AvailableEndDay, new SelectList(days, "AvailableStartDay", "AvailableStartDay"), "Select End Day", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AvailableEndDay, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AvailableStartTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AvailableStartTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AvailableStartTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AvailableEndTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AvailableEndTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AvailableEndTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TimePerPatient, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TimePerPatient, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TimePerPatient, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Status, new SelectList(status, "Status", "Status"), "Select Status", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Detail", "Index")
+</div>

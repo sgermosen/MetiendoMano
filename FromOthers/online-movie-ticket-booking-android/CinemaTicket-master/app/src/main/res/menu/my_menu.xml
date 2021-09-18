@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:title="Line One"
+    android:id="@+id/line1"
+    />
+    <item
+        android:title="Line Two"
+        android:id="@+id/line2"
+        />
+    <item
+        android:title="Line Three"
+        android:id="@+id/line3"
+        />
+    <item
+        android:title="Line Four"
+        android:id="@+id/line4"
+        />
+</menu>

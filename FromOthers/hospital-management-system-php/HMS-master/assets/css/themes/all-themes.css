@@ -1,0 +1,174 @@
+﻿.theme-red .color-bg, .theme-red .morphsearch.open, .theme-red .wizard .steps .current a, .theme-red .dropdown-menu li a:hover, .theme-red .profile-page .profile-sub-header .box-list ul li a:hover, .theme-red .fc .fc-toolbar, .theme-red .blog-page .single-blog-post .img-holder .date-box { background: linear-gradient(60deg, #ff3366, #ff6666); }
+.theme-red .navbar-brand { color: #fff; }
+.theme-red .navbar-brand:hover { color: #fff; }
+.theme-red .navbar-brand:active { color: #fff; }
+.theme-red .navbar-brand:focus { color: #fff; }
+.theme-red .nav > li > a { color: #fff; }
+.theme-red .nav > li > a:hover { background-color: transparent; }
+.theme-red .nav > li > a:focus { background-color: transparent; }
+.theme-red .nav .open > a { background-color: transparent; }
+.theme-red .nav .open > a:hover { background-color: transparent; }
+.theme-red .nav .open > a:focus { background-color: transparent; }
+.theme-red .bars { color: #fff; }
+.theme-red .sidebar .menu .list li.active { background-color: transparent; }
+.theme-red .sidebar .menu .list li.active >:first-child i, .theme-red .sidebar .menu .list li.active >:first-child span, .theme-red .morphsearch .dummy-column h2 { color: #ff3366; }
+.theme-red .sidebar .menu .list .toggled { background-color: transparent; }
+.theme-red .sidebar .menu .list .ml-menu { background-color: transparent; }
+.theme-red .sidebar .legal .copyright a { color: #ff3366 !important; }
+.theme-red .nav-tabs>li>a:before, .theme-red .input-group .form-line:after { border-bottom: 2px solid #ff3366; }
+/**/
+
+.theme-purple .color-bg, .theme-purple .morphsearch.open, .theme-purple .wizard .steps .current a, .theme-purple .dropdown-menu li a:hover, .theme-purple .profile-page .profile-sub-header .box-list ul li a:hover, .theme-purple .fc .fc-toolbar, .theme-purple .blog-page .single-blog-post .img-holder .date-box { background:linear-gradient(45deg, #da22ff, #9733ee); }
+.theme-purple .navbar-brand { color: #fff; }
+.theme-purple .navbar-brand:hover { color: #fff; }
+.theme-purple .navbar-brand:active { color: #fff; }
+.theme-purple .navbar-brand:focus { color: #fff; }
+.theme-purple .nav > li > a { color: #fff; }
+.theme-purple .nav > li > a:hover { background-color: transparent; }
+.theme-purple .nav > li > a:focus { background-color: transparent; }
+.theme-purple .nav .open > a { background-color: transparent; }
+.theme-purple .nav .open > a:hover { background-color: transparent; }
+.theme-purple .nav .open > a:focus { background-color: transparent; }
+.theme-purple .bars { color: #fff; }
+.theme-purple .sidebar .menu .list li.active { background-color: transparent; }
+.theme-purple .sidebar .menu .list li.active >:first-child i, .theme-purple .sidebar .menu .list li.active >:first-child span, .theme-purple .morphsearch .dummy-column h2 { color: #9c27b0; }
+.theme-purple .sidebar .menu .list .toggled { background-color: transparent; }
+.theme-purple .sidebar .menu .list .ml-menu { background-color: transparent; }
+.theme-purple .sidebar .legal .copyright a { color: #9c27b0 !important; }
+.theme-purple .nav-tabs>li>a:before, .theme-purple .input-group .form-line:after { border-bottom: 2px solid #be3af0; }
+/**/
+.theme-blue .color-bg, .theme-blue .morphsearch.open, .theme-blue .wizard .steps .current a, .theme-blue .dropdown-menu li a:hover, .theme-blue .profile-page .profile-sub-header .box-list ul li a:hover, .theme-blue .fc .fc-toolbar, .theme-blue .blog-page .single-blog-post .img-holder .date-box { background:linear-gradient(45deg, #2193b0, #6dd5ed); }
+.theme-blue .navbar-brand { color: #fff; }
+.theme-blue .navbar-brand:hover { color: #fff; }
+.theme-blue .navbar-brand:active { color: #fff; }
+.theme-blue .navbar-brand:focus { color: #fff; }
+.theme-blue .nav > li > a { color: #fff; }
+.theme-blue .nav > li > a:hover { background-color: transparent; }
+.theme-blue .nav > li > a:focus { background-color: transparent; }
+.theme-blue .nav .open > a { background-color: transparent; }
+.theme-blue .nav .open > a:hover { background-color: transparent; }
+.theme-blue .nav .open > a:focus { background-color: transparent; }
+.theme-blue .bars { color: #fff; }
+.theme-blue .sidebar .menu .list li.active { background-color: transparent; }
+.theme-blue .sidebar .menu .list li.active >:first-child i, .theme-blue .sidebar .menu .list li.active >:first-child span, .theme-blue .morphsearch .dummy-column h2 { color: #2193b0; }
+.theme-blue .sidebar .menu .list .toggled { background-color: transparent; }
+.theme-blue .sidebar .menu .list .ml-menu { background-color: transparent; }
+.theme-blue .sidebar .legal .copyright a { color: #2193b0 !important; }
+.theme-blue .nav-tabs>li>a:before, .theme-blue .input-group .form-line:after { border-bottom: 2px solid #2193b0; }
+/**/
+.theme-cyan .color-bg, .theme-cyan .morphsearch.open, .theme-cyan .wizard .steps .current a, .theme-cyan .profile-page .profile-sub-header .box-list ul li a:hover, .theme-cyan .fc .fc-toolbar, .theme-cyan .blog-page .single-blog-post .img-holder .date-box { background:linear-gradient(45deg, #49cdd0, #ab9ae5); }
+.theme-cyan .navbar-brand { color: #fff; }
+.theme-cyan .navbar-brand:hover { color: #fff; }
+.theme-cyan .navbar-brand:active { color: #fff; }
+.theme-cyan .navbar-brand:focus { color: #fff; }
+.theme-cyan .nav > li > a { color: #fff; }
+.theme-cyan .nav > li > a:hover { background-color: transparent; }
+.theme-cyan .nav > li > a:focus { background-color: transparent; }
+.theme-cyan .nav .open > a { background-color: transparent; }
+.theme-cyan .nav .open > a:hover { background-color: transparent; }
+.theme-cyan .nav .open > a:focus { background-color: transparent; }
+.theme-cyan .bars { color: #fff; }
+.theme-cyan .sidebar .menu .list li.active { background-color: transparent; }
+.theme-cyan .sidebar .menu .list li.active >:first-child i, .theme-cyan .sidebar .menu .list li.active >:first-child span, .theme-cyan .morphsearch .dummy-column h2 { color: #49cdd0; }
+.theme-cyan .sidebar .menu .list .toggled { background-color: transparent; }
+.theme-cyan .sidebar .menu .list .ml-menu { background-color: transparent; }
+.theme-cyan .sidebar .legal .copyright a { color: #ab9ae5 !important; }
+.theme-cyan .nav-tabs>li>a:before, .theme-cyan .input-group .form-line:after, .theme-cyan .nav-tabs .nav-link.active { border-bottom: 2px solid #ab9ae5 !important; }
+/**/
+.theme-green .color-bg, .theme-green .morphsearch.open, .theme-green .wizard .steps .current a, .theme-green .dropdown-menu li a:hover, .theme-green .profile-page .profile-sub-header .box-list ul li a:hover, .theme-green .fc .fc-toolbar, .theme-green .blog-page .single-blog-post .img-holder .date-box { background: linear-gradient(45deg, #02aab0, #00cdac); }
+.theme-green .navbar-brand { color: #fff; }
+.theme-green .navbar-brand:hover { color: #fff; }
+.theme-green .navbar-brand:active { color: #fff; }
+.theme-green .navbar-brand:focus { color: #fff; }
+.theme-green .nav > li > a { color: #fff; }
+.theme-green .nav > li > a:hover { background-color: transparent; }
+.theme-green .nav > li > a:focus { background-color: transparent; }
+.theme-green .nav .open > a { background-color: transparent; }
+.theme-green .nav .open > a:hover { background-color: transparent; }
+.theme-green .nav .open > a:focus { background-color: transparent; }
+.theme-green .bars { color: #fff; }
+.theme-green .sidebar .menu .list li.active { background-color: transparent; }
+.theme-green .sidebar .menu .list li.active >:first-child i, .theme-green .sidebar .menu .list li.active >:first-child span, .theme-green .morphsearch .dummy-column h2 { color: #00cdac; }
+.theme-green .sidebar .menu .list .toggled { background-color: transparent; }
+.theme-green .sidebar .menu .list .ml-menu { background-color: transparent; }
+.theme-green .sidebar .legal .copyright a { color: #00cdac !important; }
+.theme-green .nav-tabs>li>a:before, .theme-green .input-group .form-line:after { border-bottom: 2px solid #00cdac; }
+ .theme-green .morphsearch .form-group .form-control::placeholder {
+ color: #fff;
+}
+/**/
+.theme-deep-orange .color-bg, .theme-deep-orange .morphsearch.open, .theme-deep-orange .wizard .steps .current a, .theme-deep-orange .dropdown-menu li a:hover, .theme-deep-orange .profile-page .profile-sub-header .box-list ul li a:hover, .theme-deep-orange .fc .fc-toolbar, .theme-deep-orange .blog-page .single-blog-post .img-holder .date-box { background: linear-gradient(60deg, #f83600, #fe8c00); }
+.theme-deep-orange .navbar-brand { color: #fff; }
+.theme-deep-orange .navbar-brand:hover { color: #fff; }
+.theme-deep-orange .navbar-brand:active { color: #fff; }
+.theme-deep-orange .navbar-brand:focus { color: #fff; }
+.theme-deep-orange .nav > li > a { color: #fff; }
+.theme-deep-orange .nav > li > a:hover { background-color: transparent; }
+.theme-deep-orange .nav > li > a:focus { background-color: transparent; }
+.theme-deep-orange .nav .open > a { background-color: transparent; }
+.theme-deep-orange .nav .open > a:hover { background-color: transparent; }
+.theme-deep-orange .nav .open > a:focus { background-color: transparent; }
+.theme-deep-orange .bars { color: #fff; }
+.theme-deep-orange .sidebar .menu .list li.active { background-color: transparent; }
+.theme-deep-orange .sidebar .menu .list li.active >:first-child i, .theme-deep-orange .sidebar .menu .list li.active >:first-child span, .theme-deep-orange .morphsearch .dummy-column h2 { color: #FF5722; }
+.theme-deep-orange .sidebar .menu .list .toggled { background-color: transparent; }
+.theme-deep-orange .sidebar .menu .list .ml-menu { background-color: transparent; }
+.theme-deep-orange .sidebar .legal .copyright a { color: #FF5722 !important; }
+.theme-deep-orange .nav-tabs>li>a:before, .theme-deep-orange .input-group .form-line:after { border-bottom: 2px solid #fe8c00; }
+/**/
+.theme-blue-grey .color-bg, .theme-blue-grey .morphsearch.open, .theme-blue-grey .wizard .steps .current a, .theme-blue-grey .dropdown-menu li a:hover, .theme-blue-grey .profile-page .profile-sub-header .box-list ul li a:hover, .theme-blue-grey .fc .fc-toolbar, .theme-blue-grey .blog-page .single-blog-post .img-holder .date-box { background: linear-gradient(60deg, #385871, #4f7ca0); }
+.theme-blue-grey .navbar-brand { color: #fff; }
+.theme-blue-grey .navbar-brand:hover { color: #fff; }
+.theme-blue-grey .navbar-brand:active { color: #fff; }
+.theme-blue-grey .navbar-brand:focus { color: #fff; }
+.theme-blue-grey .nav > li > a { color: #fff; }
+.theme-blue-grey .nav > li > a:hover { background-color: transparent; }
+.theme-blue-grey .nav > li > a:focus { background-color: transparent; }
+.theme-blue-grey .nav .open > a { background-color: transparent; }
+.theme-blue-grey .nav .open > a:hover { background-color: transparent; }
+.theme-blue-grey .nav .open > a:focus { background-color: transparent; }
+.theme-blue-grey .bars { color: #fff; }
+.theme-blue-grey .sidebar .menu .list li.active { background-color: transparent; }
+.theme-blue-grey .sidebar .menu .list li.active >:first-child i, .theme-blue-grey .sidebar .menu .list li.active >:first-child span, .theme-blue-grey .morphsearch .dummy-column h2 { color: #4f7ca0; }
+.theme-blue-grey .sidebar .menu .list .toggled { background-color: transparent; }
+.theme-blue-grey .sidebar .menu .list .ml-menu { background-color: transparent; }
+.theme-blue-grey .sidebar .legal .copyright a { color: #4f7ca0 !important; }
+.theme-blue-grey .nav-tabs>li>a:before, .theme-blue-grey .input-group .form-line:after { border-bottom: 2px solid #4f7ca0; }
+/**/
+.theme-black .color-bg, .theme-black .morphsearch.open, .theme-black .wizard .steps .current a, .theme-black .dropdown-menu li a:hover, .theme-black .profile-page .profile-sub-header .box-list ul li a:hover, .theme-black .fc .fc-toolbar, .theme-black .blog-page .single-blog-post .img-holder .date-box { background: #000; }
+.theme-black .navbar-brand { color: #fff; }
+.theme-black .navbar-brand:hover { color: #fff; }
+.theme-black .navbar-brand:active { color: #fff; }
+.theme-black .navbar-brand:focus { color: #fff; }
+.theme-black .nav > li > a { color: #fff; }
+.theme-black .nav > li > a:hover { background-color: transparent; }
+.theme-black .nav > li > a:focus { background-color: transparent; }
+.theme-black .nav .open > a { background-color: transparent; }
+.theme-black .nav .open > a:hover { background-color: transparent; }
+.theme-black .nav .open > a:focus { background-color: transparent; }
+.theme-black .bars { color: #fff; }
+.theme-black .sidebar .menu .list li.active { background-color: transparent; }
+.theme-black .sidebar .menu .list li.active >:first-child i, .theme-black .sidebar .menu .list li.active >:first-child span, .theme-black .morphsearch .dummy-column h2 { color: #000; }
+.theme-black .sidebar .menu .list .toggled { background-color: transparent; }
+.theme-black .sidebar .menu .list .ml-menu { background-color: transparent; }
+.theme-black .sidebar .legal .copyright a { color: #000 !important; }
+.theme-black .nav-tabs>li>a:before, .theme-black .input-group .form-line:after { border-bottom: 2px solid #000; }
+/**/
+.theme-blush .color-bg, .theme-blush .morphsearch.open, .theme-blush .wizard .steps .current a, .theme-blush .dropdown-menu li a:hover, .theme-blush .profile-page .profile-sub-header .box-list ul li a:hover, .theme-blush .fc .fc-toolbar, .theme-blush .blog-page .single-blog-post .img-holder .date-box { background:linear-gradient(45deg, #DD5E89, #f7bb97); }
+.theme-blush .navbar-brand { color: #fff; }
+.theme-blush .navbar-brand:hover { color: #fff; }
+.theme-blush .navbar-brand:active { color: #fff; }
+.theme-blush .navbar-brand:focus { color: #fff; }
+.theme-blush .nav > li > a { color: #fff; }
+.theme-blush .nav > li > a:hover { background-color: transparent; }
+.theme-blush .nav > li > a:focus { background-color: transparent; }
+.theme-blush .nav .open > a { background-color: transparent; }
+.theme-blush .nav .open > a:hover { background-color: transparent; }
+.theme-blush .nav .open > a:focus { background-color: transparent; }
+.theme-blush .bars { color: #fff; }
+.theme-blush .sidebar .menu .list li.active { background-color: transparent; }
+.theme-blush .sidebar .menu .list li.active >:first-child i, .theme-blush .sidebar .menu .list li.active >:first-child span, .theme-blush .morphsearch .dummy-column h2 { color: #F15F79; }
+.theme-blush .sidebar .menu .list .toggled { background-color: transparent; }
+.theme-blush .sidebar .menu .list .ml-menu { background-color: transparent; }
+.theme-blush .sidebar .legal .copyright a { color: #F15F79 !important; }
+.theme-blush .nav-tabs>li>a:before, .theme-blush .input-group .form-line:after { border-bottom: 2px solid #B24592; }

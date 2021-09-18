@@ -1,0 +1,55 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:padding="10dp"
+    android:gravity="center"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fff"
+        >
+        <TextView
+            style="@style/Base.TextAppearance.AppCompat.Large"
+            fontPath="fonts/airbnb.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="192.168."
+            android:id="@+id/ip"
+            android:textSize="16sp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
+            android:id="@+id/edittext_ip2"
+            android:layout_toRightOf="@+id/ip"
+            android:inputType="numberDecimal"
+            android:hint="255.255"
+            fontPath="fonts/airbnb.ttf"
+            android:textSize="16sp"
+            style="@style/Base.TextAppearance.AppCompat.Large"
+            />
+        <Button
+            android:id="@+id/button_ip_2"
+            android:layout_width="90dp"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:background="@drawable/grediant_button"
+            android:layout_margin="10dp"
+            android:checked="true"
+            android:text="Change IP"
+            android:padding="3dp"
+            android:textColor="@color/white"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+</LinearLayout>

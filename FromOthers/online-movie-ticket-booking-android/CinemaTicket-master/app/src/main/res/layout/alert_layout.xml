@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/panel_background">
+<TextView
+    android:id="@+id/ask"
+    android:layout_width="0dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    android:paddingStart="15dp"
+    android:paddingEnd="15dp"
+    android:layout_height="wrap_content"
+    android:text="@string/alert_leaving"
+    android:gravity="center"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/comfirm"
+    android:textSize="14sp"
+    android:textColor="@color/setting_label_color"/>
+    <TextView
+        android:id="@+id/comfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toEndOf="@id/ask"
+        app:layout_constraintTop_toTopOf="@id/ask"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/ask"
+        android:text="@string/ok_i_know"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        android:gravity="center"
+        android:textColor="@color/FlatRed"
+        android:enabled="true" />
+</android.support.constraint.ConstraintLayout>

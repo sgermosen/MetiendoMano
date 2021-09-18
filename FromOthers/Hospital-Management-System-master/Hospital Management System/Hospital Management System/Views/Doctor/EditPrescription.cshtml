@@ -1,0 +1,185 @@
+﻿@model Hospital_Management_System.Models.Prescription
+
+@{
+    ViewBag.Title = "EditPrescription";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Prescription</li>
+        <li class="active">Edit Prescription</li>
+    </ol>
+</div>
+
+<h2>Edit Prescription</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.PatientId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MedicalTest1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MedicalTest1, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Test 1" } })
+                @Html.ValidationMessageFor(model => model.MedicalTest1, "", new { @class = "text-danger" })
+                <br />
+                @Html.EditorFor(model => model.MedicalTest2, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Test 2" } })
+                @Html.ValidationMessageFor(model => model.MedicalTest2, "", new { @class = "text-danger" })
+                <br />
+                @Html.EditorFor(model => model.MedicalTest3, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Test 3" } })
+                @Html.ValidationMessageFor(model => model.MedicalTest3, "", new { @class = "text-danger" })
+                <br />
+                @Html.EditorFor(model => model.MedicalTest4, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Test 4" } })
+                @Html.ValidationMessageFor(model => model.MedicalTest4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Medicine1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Medicine1, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Medicine 1" } })
+                @Html.ValidationMessageFor(model => model.Medicine1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Morning1, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(m => m.Morning1, new { @class = "radio-inline" }) @Html.Label("Morning")
+                @Html.CheckBoxFor(m => m.Afternoon1, new { @class = "radio-inline" })  @Html.Label("Afternoon")
+                @Html.CheckBoxFor(m => m.Evening1, new { @class = "radio-inline" })  @Html.Label("Evening")
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Medicine1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Medicine2, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Medicine 2" } })
+                @Html.ValidationMessageFor(model => model.Medicine2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Morning1, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(m => m.Morning2, new { @class = "radio-inline" }) @Html.Label("Morning")
+                @Html.CheckBoxFor(m => m.Afternoon2, new { @class = "radio-inline" })  @Html.Label("Afternoon")
+                @Html.CheckBoxFor(m => m.Evening2, new { @class = "radio-inline" })  @Html.Label("Evening")
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Medicine1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Medicine3, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Medicine 3" } })
+                @Html.ValidationMessageFor(model => model.Medicine3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Morning1, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(m => m.Morning3, new { @class = "radio-inline" }) @Html.Label("Morning")
+                @Html.CheckBoxFor(m => m.Afternoon3, new { @class = "radio-inline" })  @Html.Label("Afternoon")
+                @Html.CheckBoxFor(m => m.Evening3, new { @class = "radio-inline" })  @Html.Label("Evening")
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Medicine1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Medicine4, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Medicine 4" } })
+                @Html.ValidationMessageFor(model => model.Medicine4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Morning1, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(m => m.Morning4, new { @class = "radio-inline" }) @Html.Label("Morning")
+                @Html.CheckBoxFor(m => m.Afternoon4, new { @class = "radio-inline" })  @Html.Label("Afternoon")
+                @Html.CheckBoxFor(m => m.Evening4, new { @class = "radio-inline" })  @Html.Label("Evening")
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Medicine1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Medicine5, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Medicine 5" } })
+                @Html.ValidationMessageFor(model => model.Medicine5, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Morning1, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(m => m.Morning5, new { @class = "radio-inline" }) @Html.Label("Morning")
+                @Html.CheckBoxFor(m => m.Afternoon5, new { @class = "radio-inline" })  @Html.Label("Afternoon")
+                @Html.CheckBoxFor(m => m.Evening5, new { @class = "radio-inline" })  @Html.Label("Evening")
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Medicine1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Medicine6, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Medicine 6" } })
+                @Html.ValidationMessageFor(model => model.Medicine6, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Morning1, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(m => m.Morning6, new { @class = "radio-inline" }) @Html.Label("Morning")
+                @Html.CheckBoxFor(m => m.Afternoon6, new { @class = "radio-inline" })  @Html.Label("Afternoon")
+                @Html.CheckBoxFor(m => m.Evening6, new { @class = "radio-inline" })  @Html.Label("Evening")
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Medicine1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Medicine7, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Medicine 7" } })
+                @Html.ValidationMessageFor(model => model.Medicine7, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Morning1, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(m => m.Morning7, new { @class = "radio-inline" }) @Html.Label("Morning")
+                @Html.CheckBoxFor(m => m.Afternoon7, new { @class = "radio-inline" })  @Html.Label("Afternoon")
+                @Html.CheckBoxFor(m => m.Evening7, new { @class = "radio-inline" })  @Html.Label("Evening")
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CheckUpAfterDays, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CheckUpAfterDays, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CheckUpAfterDays, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "ListOfPrescription")
+</div>

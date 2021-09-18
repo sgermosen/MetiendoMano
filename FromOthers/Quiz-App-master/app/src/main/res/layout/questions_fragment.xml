@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back2">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:layout_margin="5dp"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="35sp"
+                android:id="@+id/question_count"
+                android:textColor="@color/white"
+                fontPath="fonts/airbnb.ttf"
+                android:text="3/4"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                fontPath="fonts/airbnb.ttf"
+                android:textColor="@color/white"
+                android:text="Questions"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:id="@+id/subject"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:id="@+id/exam_name"
+                fontPath="fonts/brownregular.ttf"
+                android:textColor="@color/white"
+                android:text="Data structure"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:orientation="vertical"
+            android:layout_below="@+id/subject"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            >
+            <WebView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/webview"
+                android:layout_alignParentBottom="true"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_margin="10dp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="35sp"
+                android:id="@+id/points"
+                android:textColor="@color/white"
+                fontPath="fonts/airbnb.ttf"
+                android:text="23"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                fontPath="fonts/airbnb.ttf"
+                android:text="Points"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/buttonslayout"
+        android:visibility="visible"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="what is the main purpos on system design?"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:id="@+id/question"
+            fontPath="fonts/brownregular.ttf"
+
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn1_layout"
+            android:visibility="visible"
+            >
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/emoticon2"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:elevation="10dp"
+                android:layout_marginRight="13dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wrong Answer"
+                android:elevation="10dp"
+                android:textSize="20sp"
+                android:id="@+id/text_btn1"
+                fontPath="fonts/brownregular.ttf"
+                android:layout_marginLeft="13dp"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/whatever"
+                android:id="@+id/btn1"
+                android:layout_margin="10dp"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn2_layout"
+
+            >
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/emoticon2"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:elevation="12dp"
+                android:layout_marginRight="13dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wrong Answer"
+                android:elevation="10dp"
+                android:textSize="20sp"
+                android:id="@+id/text_btn2"
+                fontPath="fonts/brownregular.ttf"
+                android:layout_marginLeft="13dp"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/whatever"
+                android:id="@+id/btn2"
+                android:layout_margin="10dp"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn3_layout"
+
+            >
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/emoticon2"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:elevation="12dp"
+                android:layout_marginRight="13dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Correct Answer"
+                android:elevation="10dp"
+                android:textSize="20sp"
+                android:id="@+id/text_btn3"
+                fontPath="fonts/brownregular.ttf"
+                android:layout_marginLeft="13dp"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/whatever"
+                android:id="@+id/btn3"
+                android:layout_margin="10dp"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn4_layout"
+
+            >
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/emoticon2"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:elevation="10dp"
+                android:layout_marginRight="13dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wrong Answer"
+                android:elevation="10dp"
+                android:textSize="20sp"
+                android:id="@+id/text_btn4"
+                fontPath="fonts/brownregular.ttf"
+                android:layout_marginLeft="13dp"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/whatever"
+                android:id="@+id/btn4"
+                android:layout_margin="10dp"
+                />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+    <include
+        layout="@layout/result_layout"
+        android:id="@+id/result_layout"
+        android:visibility="gone"
+        />
+
+
+</RelativeLayout>

@@ -1,0 +1,118 @@
+<resources>
+    <string name="app_name">Cinema Ticket</string>
+    <string name="server_client_id">675073510766-bv7vp3ou50rp085fdmm6nbqrgshfjtbh.apps.googleusercontent.com</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="team_name">Cinema Ticket</string>
+    <string name="username"><b>Tài khoản</b></string>
+    <string name="password"><b>Mật khẩu</b></string>
+
+    <string name="string_0">Bạn là ...</string>
+    <string name="admin_choice">Admin</string>
+    <string name="user_choice">Khách hàng</string>
+
+    <string name="slogan">Trải nghiệm rạp chiếu phim tốt nhất</string>
+    <string name="string_7">Nhớ tài khoản</string>
+    <string name="string_1">Quên mật khẩu?</string>
+    <string name="string_2">Chưa có tài khoản?</string>
+    <string name="string_3">Đăng ký</string>
+
+    <string name="user_sign_up">Tạo tài khoản</string>
+    <string name="admin_signup">Admin đăng ký</string>
+    <string name="full_name"><b>Họ tên đầy đủ</b></string>
+    <string name="id_work">ID làm việc</string>
+    <string name="email"><b>Thư điện tử</b></string>
+    <string name="retype_password"><b>Nhập lại mật khẩu</b></string>
+    <string name="string_4">Hoặc đăng nhập bằng ...</string>
+    <string name="string_5">Đã có tài khoản?</string>
+    <string name="string_6">Đăng nhập</string>
+    <string name="btn_create">Tạo tài khoản</string>
+    <string name="btn_sign_in">ĐĂNG NHẬP</string>
+    <string name="btn_sign_out">ĐĂNG XUẤT</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="terms_privacy">Khi đăng ký tôi đã xem xét và đồng ý với Điều khoản sử dụng và Chính sách bảo mật của Cinema Ticket.</string>
+
+    //Message
+    <string name="signin_success">Đăng nhập thành công</string>
+    <string name="signin_cancel">Đăng nhập bị tạm dừng</string>
+    <string name="signin_error">Đăng nhập thất bại</string>
+    <string name="signup_success">Đăng ký thành công</string>
+    <string name="is_updating">Đang cập nhật...</string>
+
+    //Error
+    <string name="fullname_empty">Họ tên không được trống</string>
+    <string name="email_empty">Email không được trống</string>
+    <string name="email_invalid">Email không hợp lệ</string>
+    <string name="password_empty">Mật khẩu không được trống</string>
+    <string name="password_length">"Mật khẩu phải dài ít nhất 6 ký tự"</string>
+    <string name="retype_empty">Nhập lại mật khẩu không được trống</string>
+    <string name="retype_match">Nhập lại và mật khẩu không khớp</string>
+    <string name="terms_confirm">Xin đọc và xác nhận điều khoản và chính sách</string>
+    <string name="mail_fail">Mail không được gửi đi vì một số lý do.</string>
+    <string name="profile_updated">Thông tin đã được cập nhật</string>
+
+    //Forgot Password
+    <string name="forgot_password">Vui lòng nhập địa chỉ email mà bạn đã tạo tài khoản. Chúng tôi sẽ gửi một liên kết để thiết lập lại mật khẩu. </string>
+    <string name="btn_send">GỬI ĐI</string>
+    <string name="mail_sent">Mail đã được gửi. Vui lòng kiểm tra mail để phục hồi mật khẩu.</string>
+
+    //User's Information (Profile Detail's Tab)
+    <string name="user_fullname">Họ tên</string>
+    <string name="user_email">Thư điện tử</string>
+    <string name="user_balance">Số dư</string>
+    <string name="user_birthday">Ngày sinh</string>
+    <string name="user_gender">Giới tính</string>
+    <string name="user_gender_male">Nam</string>
+    <string name="user_gender_female">Nữ</string>
+    <string name="user_gender_other">Khác</string>
+    <string name="user_phonenumber">Điện thoại</string>
+    <string name="user_address">Địa chỉ</string>
+    <string name="btn_save">LƯU</string>
+    <string name="confirm_dialog_title">Xác nhận</string>
+    <string name="confirm_dialog_description">Bạn có muốn lưu những thay đổi ?</string>
+    <string name="confirm_dialog_yes">CÓ</string>
+    <string name="confirm_dialog_cancel">HUỶ</string>
+
+    <string name="profile_detail">Thông tin tài khoản</string>
+    <string name="trending">Xu hướng</string>
+    <string name="cinema">Rạp chiếu phim</string>
+    <string name="my_profile">Cá nhân</string>
+    <string name="home">Home</string>
+    <string name="now_showing">Đang chiếu</string>
+    <string name="up_coming">Sắp chiếu</string>
+    <string name="book">Đặt vé</string>
+    <string name="book_now">Đặt ngay</string>
+    <string name="director_string">"Đạo diễn: "</string>
+    <string name="cast_string">"Diễn viên: "</string>
+    <string name="sign_in_or_sign_up_to_do_more_work">Đăng nhập để thực hiện nhiều hơn</string>
+    <string name="control_center_for_admin">Trung tâm quản lý (dành cho quản trị viên)</string>
+    <string name="dark_mode">Giao diện đen</string>
+    <string name="choose_movies_for_now_showing">Chọn phim đang chiếu</string>
+    <string name="choose_movies_for_up_coming">Chọn phim sắp chiếu</string>
+    <string name="loading">Đang gửi…</string>
+    <string name="load_live">Cập nhật dữ liệu…</string>
+    <string name="save_change">LƯU THAY ĐỔI</string>
+    <string name="add_new_movie">Thêm phim mới</string>
+    <string name="all_movies">Tất cả phim</string>
+    <string name="alert_leaving">Dữ liệu bạn vừa nhập sẽ bị xóa sau khi rời đi !</string>
+    <string name="ok_i_know">Ừ, tôi biết mà</string>
+    <string name="auto_id">" ( ID tự động )"</string>
+    <string name="address_string">"Địa chỉ: "</string>
+    <string name="hotline_string">"SĐT: "</string>
+    <string name="choose_cinemas_for_showing">Chọn Rạp</string>
+    <string name="creating_new_id">Đang tạo ID mới …</string>
+    <string name="fail_to_create_id">Không thê tạo ID mới, hãy tải lại trang để thử lại</string>
+    <string name="sending_data">Gửi dữ liệu …</string>
+    <string name="choose_feature_movies">Chọn phim Feature</string>
+    <string name="choose_up_coming_movies">Chọn phim sắp chiếu</string>
+    <string name="choose_now_showing_movies">Chọn phim đang chiếu</string>
+    <string name="exist_movie_alert">Sử dụng ID đã tồn tại sẽ cập nhật lại phim sở hữu ID đó</string>
+    <string name="all_cinemas">Tất cả rạp</string>
+    <string name="choose_showing_cinemas">Chọn rạp cho Tab rạp</string>
+    <string name="add_new_cinema">Thêm mới rạp</string>
+    <string name="cinema_management">Quản lý rạp</string>
+    <string name="detail">Chi tiết</string>
+    <string name="booking">Đặt vé</string>
+    <string name="exist_cinema_alert">Sử dụng ID của một rạp đã tồn tại sẽ thay thế rạp</string>
+</resources>

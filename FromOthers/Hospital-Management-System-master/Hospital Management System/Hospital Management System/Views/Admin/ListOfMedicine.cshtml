@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Hospital_Management_System.Models.Medicine>
+
+@{
+    ViewBag.Title = "ListOfMedicine";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Ambulance</li>
+        <li class="active">List of Medicine</li>
+    </ol>
+</div>
+
+<h2>List Of Medicine</h2>
+
+<p>
+    @Html.ActionLink("Add Medicine", "AddMedicine", null, new { @class = "btn btn-primary" })
+</p>
+<table id="table_id" class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a href="@Url.Action("EditMedicine", new {id = item.Id})" class="fa fa-pencil-square-o" style="font-size: 19px"></a> |
+                    <a href="@Url.Action("DeleteMedicine", new {id = item.Id})" class="fa fa-trash" style="font-size: 19px; color: red"></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#table_id").dataTable();
+        });
+    </script>
+}

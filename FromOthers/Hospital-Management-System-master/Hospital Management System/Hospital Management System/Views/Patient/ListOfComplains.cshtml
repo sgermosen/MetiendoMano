@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Hospital_Management_System.Models.Complaint>
+
+@{
+    ViewBag.Title = "ListOfComplains";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Complaint</li>
+        <li class="active">List Of Complains</li>
+    </ol>
+</div>
+
+<h2>List Of Complains</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddComplain", null, new { @class = "btn btn-primary" })
+</p>
+<table id="table_id" class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Complain)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reply)
+        </th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Complain)
+                </td>
+                <td>
+                    @if (item.Reply != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Reply)
+                    }
+                    else
+                    {
+                        @("No Reply")
+                    }
+                </td>
+                <td>
+                    @if (item.Reply != null)
+                    {
+                        <a href="@Url.Action("EditComplain", new {id = item.Id})" class="fa fa-pencil-square-o" style="font-size: 19px;pointer-events: none; color: lightgray;"></a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("EditComplain", new {id = item.Id})" class="fa fa-pencil-square-o" style="font-size: 19px"></a>
+                    } 
+                    | <a href="@Url.Action("DeleteComplain", new {id = item.Id})" class="fa fa-trash" style="font-size: 19px; color: red"></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#table_id").dataTable();
+        });
+    </script>
+}

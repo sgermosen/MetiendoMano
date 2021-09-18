@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/line_bottom"
+    android:paddingBottom="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<ImageView
+    android:id="@+id/minus"
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:srcCompat="@drawable/minus"
+    android:paddingEnd="16dp"
+    android:tint="@color/FlatRed"
+    android:paddingStart="16dp" />
+    <ImageView
+        android:id="@+id/add"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/minus"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:tint="@color/FlatGreen"/>
+    <EditText
+        android:id="@+id/date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:background="@android:color/transparent"
+        android:hint="DD/MM/YYYY"
+        android:maxLines="1"
+        android:paddingStart="10dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="15dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="15dp"
+        android:singleLine="true"
+        android:textColor="@color/setting_label_color"
+        android:textColorHint="#DDDDDD"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@id/add"
+        app:layout_constraintStart_toStartOf="parent" />
+    <LinearLayout
+        android:id="@+id/time_parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@id/date"
+        app:layout_constraintStart_toStartOf="@id/date"
+        app:layout_constraintTop_toBottomOf="@id/date">
+        <!--include layout="@layout/item_detail_show_time"/-->
+    </LinearLayout>
+    <TextView
+        android:id="@+id/add_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/time_parent"
+        android:text="Add time"
+        android:padding="12dp"
+        android:textSize="15sp"
+        app:layout_goneMarginTop="0dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:background="@drawable/background_item_choose_movie"
+        app:layout_constraintStart_toStartOf="@id/date"
+        app:layout_constraintEnd_toEndOf="@id/date"
+        android:textColor="@color/FlatOrange"/>
+</android.support.constraint.ConstraintLayout>

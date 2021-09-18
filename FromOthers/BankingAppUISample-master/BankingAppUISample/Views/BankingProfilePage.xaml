@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:BankingAppUISample"
+             x:Class="BankingAppUISample.Views.BankingProfilePage">
+    <ContentPage.BindingContext>
+        <local:ViewModels.BankingProfileViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="#fbfaff">
+
+                <!-- 1. Profile Picture-->
+                 <Grid>
+                     <Grid.RowDefinitions>
+                         <RowDefinition Height="400"/>
+                     </Grid.RowDefinitions>
+                     <Image Grid.Row="0" Source="SusanneRoll" VerticalOptions="Start" Aspect="AspectFill" Margin="0,-45,0,0"/>
+                     <Label Grid.Row="0" VerticalOptions="End" Padding="20,20,20,50">
+                       <Label.FormattedText>
+                            <FormattedString>
+                               <Span Text="Marie Brown &#10;" FontSize="25" FontAttributes="Bold" ForegroundColor="White" />
+                               <Span Text="ID 1234567" FontSize="17" ForegroundColor="White" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label> 
+                 </Grid>
+
+                <!-- 2. Contact information frame--> 
+               <Frame CornerRadius="20" Margin="0,-50,0,0" BackgroundColor="#fbfaff" HasShadow="False" HeightRequest="19"/>
+
+                <!-- It will contain blocks: 3, 4 and 5 --> 
+                    <Grid Margin="30,-20,30,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/> 
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                             <RowDefinition Height="Auto"/>
+                             <RowDefinition Height="Auto"/>
+                             <RowDefinition Height="Auto"/>
+                             <RowDefinition Height="210"/>
+                             <RowDefinition Height="Auto"/>
+                             <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                         <!-- 3. Your balance -->
+                        <Label Grid.Row="0" Grid.Column="0" Text="Your balance" TextColor="Silver"/>
+                        <Label Grid.Row="1" Grid.Column="0" Text="$ 6,750.00" FontAttributes="Bold" FontSize="30"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="..." HorizontalOptions="End" />
+
+                        <!-- 4. Cards-->
+                        <Label Grid.Row="2" Grid.Column="0" Text="CARDS" TextColor="Silver" Margin="0,20,0,0"/>
+                        <CollectionView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"              
+                                    ItemsSource="{Binding cards}"
+                                    VerticalOptions="Start"  
+                                    ItemsLayout="HorizontalList">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout WidthRequest="320">
+                                                <Image Source="{Binding CardImage}" Margin="0,0,15,0"/>
+
+                                                <Grid Margin="25,-150,0,0">
+                                                  <Grid.ColumnDefinitions>
+                                                      <ColumnDefinition Width="Auto"/>
+                                                      <ColumnDefinition Width="Auto"/>
+                                                      <ColumnDefinition Width="Auto"/>
+                                                      <ColumnDefinition Width="Auto"/>
+                                                  </Grid.ColumnDefinitions>
+                                                  <Grid.RowDefinitions>
+                                                      <RowDefinition Height="*"/>
+                                                      <RowDefinition Height="*"/>
+                                                      <RowDefinition Height="*"/>
+                                                  </Grid.RowDefinitions>
+
+                                                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding CardBussinessCategory}" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="18"/>
+                                                    <Label Grid.Row="1" Grid.Column="0" Text="****" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="30" />
+                                                    <Label Grid.Row="1" Grid.Column="1" Text="****" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="30" />
+                                                    <Label Grid.Row="1" Grid.Column="2" Text="****" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="30" />
+                                                    <Label Grid.Row="1" Grid.Column="3" Text="{Binding CardNumber}" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="20" />
+                                                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CardType}" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="20" />
+                                                    <Image Grid.Row="2" Grid.Column="2" Source="{Binding CardType}" />
+                                                    <Label Grid.Row="2" Grid.Column="3" Text="{Binding CardExpirationDate}" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="20"/>
+
+                                                </Grid>
+
+                                            </StackLayout>
+                                       </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                        </CollectionView>
+                   
+                     <!-- 5. History-->
+                    <Label Grid.Row="4" Grid.Column="0" Text="HISTORY" TextColor="Silver"/>
+                    <Image Grid.Row="4" Grid.Column="1" Source="Refresh" HorizontalOptions="End" WidthRequest="20"/>
+                     <CollectionView Grid.Row="5"
+                            Margin="0,23,0,0"
+                            Grid.ColumnSpan="2"
+                            BackgroundColor="#fbfaff"
+                            ItemsSource="{Binding history}"
+                            VerticalOptions="Center"
+                            HeightRequest="240">
+                            <CollectionView.ItemTemplate> 
+                               <DataTemplate> 
+                                    <Grid BackgroundColor="White">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" /> 
+                                        </Grid.RowDefinitions> 
+                                       <Grid.ColumnDefinitions>
+                                           <ColumnDefinition Width="Auto"/>
+                                           <ColumnDefinition Width="Auto"/>
+                                           <ColumnDefinition Width="*"/>
+                                       </Grid.ColumnDefinitions>
+                                       <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Source="{Binding Picture}" WidthRequest="80" HorizontalOptions="Start"/>
+                                       <Label Grid.Column="1" Grid.Row="0" Text="{Binding Name}" Padding="20,0,0,0" HorizontalOptions="Start"/>
+                                       <Label Grid.Column="1" Grid.Row="1" Text="{Binding Price}" Padding="20,0,0,0" HorizontalOptions="Start" TextColor="Red" FontAttributes="Bold"/>
+                                       <Label Grid.Column="2" Grid.Row="0" Text="Date" HorizontalOptions="End"/>
+                                       <Label Grid.Column="2" Grid.Row="1" Text="{Binding Date}" HorizontalOptions="End" TextColor="Silver"/> 
+                                    </Grid> 
+                                </DataTemplate>
+                                 </CollectionView.ItemTemplate>
+                     </CollectionView>
+                </Grid> 
+                 
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

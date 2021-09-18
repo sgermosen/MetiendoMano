@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:Formula1;assembly=Formula1"
+            xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="Formula1.App">
+	<Application.Resources>
+
+        <ResourceDictionary>
+		<!-- Application resource dictionary -->
+
+            <!--  colors  -->
+            <Color x:Key="PrimaryThemeColor">#9E4368</Color>
+            <Color x:Key="PrimaryTextColor">#444444</Color>
+            <Color x:Key="SecondaryTextColor">#809AAF</Color>
+            <Color x:Key="ImageHeaderTextColor">White</Color>
+            <Color x:Key="SeperatorColor">#F1F2F6</Color>
+
+            <!--  font families  -->
+            <OnPlatform x:Key="RegularFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS">HelveticaNeue</On>
+                <On Platform="Android">sans-serif</On>
+            </OnPlatform>
+
+            <OnPlatform x:Key="LightFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS">HelveticaNeue-Light</On>
+                <On Platform="Android">sans-serif-light</On>
+            </OnPlatform>
+
+            <OnPlatform x:Key="MediumFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS">HelveticaNeue-Medium</On>
+                <On Platform="Android">sans-serif-medium</On>
+            </OnPlatform>
+
+            <!--  font sizes  -->
+            <x:Double x:Key="PageHeaderFontSize">30</x:Double>
+            <x:Double x:Key="TitleFontSize">20</x:Double>
+            <x:Double x:Key="SubTitleFontSize">18</x:Double>
+            <x:Double x:Key="BodyFontSize">14</x:Double>
+            
+<!--            <x:Double x:Key="StatsCaptionFontSize">16</x:Double>-->
+<!--            <x:Double x:Key="BodyFontSize">14</x:Double>-->
+<!--            <x:Double x:Key="TableFontSize">12</x:Double>-->
+<!--            <x:Double x:Key="PageSubHeaderFontSize">20</x:Double>-->
+
+
+            <Style x:Key="PointsLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryThemeColor}"/>
+                <Setter Property="FontFamily" Value="{StaticResource MediumFontFamily}" />
+                <Setter Property="FontSize" Value="{StaticResource TitleFontSize}" />
+                <Setter Property="HorizontalOptions" Value="End" />
+            </Style>
+
+            <Style x:Key="DriverNameLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource MediumFontFamily}" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource TitleFontSize}" />
+            </Style>
+
+            <Style x:Key="TeamNameLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}"/>
+                <Setter Property="FontFamily" Value="{StaticResource LightFontFamily}" />
+                <Setter Property="FontSize" Value="{StaticResource SubTitleFontSize}" />
+                <Setter Property="Margin" Value="0,-3,0,0"/>
+            </Style>
+
+            <Style x:Key="RaceNameLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource MediumFontFamily}" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource SubTitleFontSize}" />
+            </Style>
+
+            <Style x:Key="RaceTrackLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}"/>
+                <Setter Property="FontFamily" Value="{StaticResource LightFontFamily}" />
+                <Setter Property="FontSize" Value="{StaticResource BodyFontSize}" />
+                <Setter Property="Margin" Value="0,-3,0,0"/>
+            </Style>
+
+
+            <Style x:Key="ProfileNameLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource MediumFontFamily}" />
+                <Setter Property="FontSize" Value="{StaticResource PageHeaderFontSize}" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="ProfileTagLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource RegularFontFamily}" />
+                <Setter Property="FontSize" Value="{StaticResource SubTitleFontSize}" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="StatsNumberLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryThemeColor}" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontFamily" Value="{StaticResource LightFontFamily}" />
+                <Setter Property="FontSize" Value="{StaticResource PageHeaderFontSize}" />
+            </Style>
+
+            <Style x:Key="StatsCaptionLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="Margin" Value="0,-5,0,0" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontFamily" Value="{StaticResource LightFontFamily}" />
+                <Setter Property="FontSize" Value="{StaticResource BodyFontSize}" />
+            </Style>
+
+            <Style x:Key="ImageHeaderLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource ImageHeaderTextColor}"/>
+                <Setter Property="FontFamily" Value="{StaticResource MediumFontFamily}" />
+                <Setter Property="FontSize" Value="{StaticResource PageHeaderFontSize}" />
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="DriverCircleImage" TargetType="controls:CircleImage">
+                <Setter Property="WidthRequest" Value="50"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="Aspect" Value="AspectFill"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="0,0,10,0"/>
+            </Style>
+
+            <Style x:Key="DriverCircleImageProfile" TargetType="controls:CircleImage">
+                <Setter Property="WidthRequest" Value="100"/>
+                <Setter Property="HeightRequest" Value="100"/>
+                <Setter Property="Aspect" Value="AspectFill"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="BorderColor" Value="White"/>
+                <Setter Property="BorderThickness" Value="5"/>
+            </Style>
+
+
+            <Style x:Key="FlagImage" TargetType="Image">
+                <Setter Property="WidthRequest" Value="30"/>
+                <Setter Property="HeightRequest" Value="15"/>
+                <Setter Property="Aspect" Value="AspectFit"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+            </Style>
+
+            <Style x:Key="MainBodyLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource LightFontFamily}" />
+                <Setter Property="FontSize" Value="{StaticResource BodyFontSize}" />
+                
+            </Style>
+
+
+
+            <Style x:Key="TableValueLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryThemeColor}"/>
+                <Setter Property="FontFamily" Value="{StaticResource MediumFontFamily}" />
+                <Setter Property="FontSize" Value="{StaticResource BodyFontSize}" />
+                <Setter Property="HorizontalTextAlignment" Value="End"/>
+                <Setter Property="LineBreakMode" Value="WordWrap"/>
+            </Style>
+
+            <Style x:Key="TableTextLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource MediumFontFamily}" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource BodyFontSize}" />
+            </Style>
+
+            <Style x:Key="TimeLineDateLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryThemeColor}"/>
+                <Setter Property="FontFamily" Value="{StaticResource MediumFontFamily}" />
+                <Setter Property="FontSize" Value="{StaticResource SubTitleFontSize}" />
+            </Style>
+
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

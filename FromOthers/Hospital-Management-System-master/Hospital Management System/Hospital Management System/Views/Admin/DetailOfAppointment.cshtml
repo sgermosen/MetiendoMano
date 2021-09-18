@@ -1,0 +1,84 @@
+﻿@model Hospital_Management_System.Models.Appointment
+
+@{
+    ViewBag.Title = "DetailOfAppointment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Appointment</li>
+        <li class="active">Appointment Detail</li>
+    </ol>
+</div>
+
+<h2>Appointment Detail</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Patient Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doctor.FullName)
+        </dd>
+
+        <dt>
+            Doctor Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppointmentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppointmentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Problem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Problem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @if (Model.Status)
+            {
+                @("Active")
+            }
+            else
+            {
+                @("Inactive")
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditAppointment", new { id = Model.Id }) |
+    @if (Model.Status)
+    {
+        @Html.ActionLink("Back to List", "ListOfAppointments")
+    }
+    else
+    {
+        @Html.ActionLink("Back to List", "PendingAppointments")
+    }
+</p>

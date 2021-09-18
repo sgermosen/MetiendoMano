@@ -1,0 +1,91 @@
+<resources>
+    <string name="app_name">E Bill</string>
+    <string name="unpaid_bills_title">Unpaid Bills</string>
+    <string name="paid_bills_title">Paid Bills</string>
+    <string name="setup_password_activity_title">Setup Password</string>
+    <string name="new_bill_customer_activity_title">Enter customer details</string>
+    <string name="new_bill_activity_title">Enter items</string>
+    <string name="action_create_new_bill">New bill</string>
+    <string name="action_show_unpaid_bills">Show unpaid bills</string>
+    <string name="action_show_paid_bills">Show paid bills</string>
+    <string name="setup_new_password">Create new password :</string>
+    <string name="setup_new_password_hint">New password</string>
+    <string name="setup_confirm_password">Confirm password :</string>
+    <string name="setup_confirm_password_hint">Re-enter password</string>
+    <string name="setup_password_error">Error: Passwords do not matched!</string>
+    <string name="setup_password_set">Setup successful!</string>
+
+    <string-array name="tax_slab_list_array">
+        <item>28%</item>
+        <item>18%</item>
+        <item>12%</item>
+        <item>5%</item>
+    </string-array>
+
+    <string name="quantity_tv">Quantity</string>
+    <string name="final_price_tv">Selling price</string>
+    <string name="final_price_hint">Price per item</string>
+    <string name="tax_slab_tv">Tax Slab</string>
+    <string name="add_to_bill_btn_label">Add item to bill</string>
+    <string name="finish_btn_label">Finish</string>
+    <string name="customer_name_label">Customer Name</string>
+    <string name="phone_number_label">Phone number</string>
+    <string name="add_customer_next_label">Next</string>
+    <string name="action_discard_label">Discard</string>
+    <string name="enter_customer_name_error">Please enter the customer name!</string>
+    <string name="invalid_phone_number_error">Enter complete 10-digit phone number!</string>
+    <string name="enter_final_price_error">Enter selling price!</string>
+    <string name="item_added_success">Added</string>
+    <string name="serial_number_label">S No</string>
+    <string name="price_label">Price</string>
+    <string name="qty_label">Qty</string>
+    <string name="rate_label">Rate</string>
+    <string name="taxable_value_label">Taxable Value</string>
+    <string name="cgst_label">CGST</string>
+    <string name="sgst_label">SGST</string>
+    <string name="inr">\u20B9</string>
+    <string name="action_mark_as_paid_label">Mark as paid</string>
+    <string name="mark_as_paid_success">Bill paid!</string>
+    <string name="marked_as_paid_already">Already paid!</string>
+    <string name="total_amount_before_tax_label">Total Amount Before Tax</string>
+    <string name="total_cgst_label">Add: CGST</string>
+    <string name="total_sgst_label">Add: SGST</string>
+    <string name="total_gst_label">Total Tax Amount: GST</string>
+    <string name="total_amount_label">Total Amount After Tax</string>
+    <string name="enter_password_dialog_hint">Enter your password!</string>
+    <string name="enter_password_dialog_ok">OK</string>
+    <string name="enter_password_dialog_cancel">Cancel</string>
+    <string name="invalid_password_error">Passwords do not match!</string>
+    <string name="action_call_customer_label">Call</string>
+    <string name="no_phone_number_error">Phone number not specified!</string>
+    <string name="add_item_to_bill_error">ADD item to bill before finishing!</string>
+    <string name="action_delete_bill_label">Delete</string>
+    <string name="delete_bill_success">Bill deleted!</string>
+    <string name="delete_bill_error">Error in deleting bill!</string>
+    <string name="no_operation_specified_error">No operation specified!</string>
+    <string name="item_tv">Item</string>
+    <string name="item_hint">Item description</string>
+    <string name="action_add_more_items_label">Add more items</string>
+    <string name="action_edit_bill_item_label">Edit</string>
+    <string name="done_edit_item_btn_label">Done</string>
+    <string name="action_save_to_pdf_label">Save to PDF</string>
+    <string name="item_label">Item Name</string>
+    <string name="action_save_pdf_file_label">Save</string>
+    <string name="pdf_header_tax_invoice">Tax Invoice</string>
+    <string name="pdf_header_contact">8053562005</string>
+    <string name="total_label">Total</string>
+    <string name="invoice_date_label">Invoice Date</string>
+    <string name="tnc">Terms and Conditions :</string>
+    <string name="tnc1">1. Goods once sold cannot be taken back.</string>
+    <string name="tnc2">2. All subject to Sonepat Jurisdiction.</string>
+    <string name="enoe"><![CDATA[E. & O.E.]]></string>
+    <string name="certifying_particulars_true">Certified that the particulars given above are true and correct.</string>
+    <string name="for_authorised_signatory">For AJAY TANEJA</string>
+    <string name="setup_business_label">Enter business name :</string>
+    <string name="setup_business_hint">Eg. ABC Retail</string>
+    <string name="setup_business_address_label">Enter business address :</string>
+    <string name="setup_business_contact_label">Enter contact number :</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

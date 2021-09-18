@@ -1,0 +1,235 @@
+@import "nib"
+
+@keyframes spin
+  from
+    transform rotate(0deg)
+  to
+    transform rotate(360deg)
+
+ placeholder()
+  ::-webkit-input-placeholder
+    {block}
+  :-moz-placeholder
+    {block}
+  ::-moz-placeholder
+    {block}
+  :-ms-input-placeholder
+    {block}
+
+text-glow()
+  text-shadow 0 0 arguments
+
+box-glow()
+  box-shadow 0 0 arguments
+
+// Page
+page-font = sans-serif
+page-background-color = darken(white, 90%)
+
+progress-bubble($color, $amount)
+  // Progress Bar
+  progress-primary-color = $color
+  progress-size = 250px
+  progress-border-size = 5px
+  progress-inner-border-size = 5px
+  progress-inner-size = progress-size - (progress-border-size + progress-inner-border-size)
+  progress-inner-border = progress-inner-border-size solid page-background-color
+
+  progress-alpha = 50%
+  progress-level-change-speed = 1s
+  progress-swish-speed = 10s
+  progress-percent-color = darken(progress-primary-color, 40%)
+
+  progress-percent-glow = 10px darken(progress-percent-color, 25%)
+  progress-box-glow = 20px darken(progress-percent-color, 25%)
+  progress-liquid-glow = 20px darken(progress-percent-color, 5%)
+
+  progress-glare-background = rgba(255, 255, 255, 0.15)
+  progress-level = (100% - $amount)
+  
+  .progress
+    +cache('.progress')
+      position relative
+      border-radius 50%
+
+    +cache('.progress' + progress-size)
+      width progress-size
+      height progress-size
+    
+    +cache('.progress' + progress-border-size + " " + progress-primary-color)
+      border progress-border-size solid progress-primary-color
+    
+    +cache('.progress' + progress-box-glow)
+      box-glow progress-box-glow
+    
+    +cache('.progress' + progress-level-change-speed)
+      transition all progress-level-change-speed ease
+      
+    .inner
+      +cache('.progress .inner')
+        position absolute
+        overflow hidden
+        z-index 2
+        border-radius 50%
+        
+      +cache('.progress .inner' + progress-inner-size)
+        width progress-inner-size
+        height progress-inner-size
+
+      +cache('.progress .inner' + progress-inner-border)
+        border progress-inner-border
+        
+      +cache('.progress .inner' + progress-level-change-speed)
+        transition all progress-level-change-speed ease
+
+      .water
+        +cache('.progress .inner .water')
+          position absolute
+          z-index 1
+          width 200%
+          height 200%
+          left -50%
+          border-radius 40%
+          animation-iteration-count infinite
+          animation-timing-function linear
+          animation-name spin
+        
+        +cache('.progress .inner .water' + progress-level)
+          top progress-level
+        
+        +cache('.progress .inner .water' + progress-primary-color + " " + progress-alph)
+          background alpha(progress-primary-color, progress-alpha)
+        
+        +cache('.progress .inner .water' + progress-level-change-speed)
+          transition all progress-level-change-speed ease
+        
+        +cache('.progress .inner .water' + progress-swish-speed)
+          animation-duration progress-swish-speed
+        
+        +cache('.progress .inner .water' + progress-liquid-glow)
+          box-glow progress-liquid-glow
+
+      .glare
+        +cache('.progress .inner .glare')
+          position absolute
+          top -120%
+          left -120%
+          z-index 5
+          width 200%
+          height 200%
+          transform rotate(45deg)
+          border-radius 50%
+        
+        +cache('.progress .inner .glare' + progress-glare-background)
+          background-color progress-glare-background
+        
+        +cache('.progress .inner .glare' + progress-level-change-speed)
+          transition all progress-level-change-speed ease
+
+      .percent
+        +cache('.progress .inner .percent')
+          position absolute
+          top 0
+          left 0
+          width 100%
+          height 100%
+          font-weight bold
+          text-align center
+          
+        +cache('.progress .inner .percent' + progress-inner-size)
+          line-height progress-inner-size
+          font-size (progress-inner-size / 2.6px)
+        
+        +cache('.progress .inner .percent' + progress-percent-color)
+          color progress-percent-color
+        
+        +cache('.progress .inner .percent' + progress-percent-glow)
+          text-glow progress-percent-glow
+        
+        +cache('.progress .inner .percent' + progress-level-change-speed)
+          transition all progress-level-change-speed ease
+
+*
+  box-sizing border-box
+
+html, body
+  height 100%
+
+body
+  background-color page-background-color
+  font-family page-font
+  font-size 15px
+  color darken(white, 20%)
+
+input[type="text"]
+  background-color transparent
+  margin-top 30px
+  border 0
+  border-bottom solid 1px lighten(blue, 50%)
+  text-align center
+  font-size 20px
+  color lighten(rgb(50, 118, 237), 15%)
+  text-glow 3px lighten(rgb(50, 118, 237), 15%)
+  width 45px
+  display inline-block
+  
+input:focus
+  outline 0
+  border-bottom dashed 1px lighten(red, 50%)
+
+input::selection
+  color page-background-color
+  background-color lighten(lightblue, 30%)
+
++placeholder()
+  color lighten(rgb(50, 118, 237), 35%)
+  text-glow 3px lighten(rgb(50, 118, 237), 35%)
+
+.wrapper
+  display flex
+  align-items center
+  justify-content center
+  flex-direction column
+  height 100%
+
+.green
+  margin-top 15px
+  progress-bubble(rgb(83, 252, 83), 75%)
+
+.red
+  margin-top 15px
+  progress-bubble(rgb(237, 59, 59), 25%)
+
+.orange
+  margin-top 15px
+  progress-bubble(rgb(240, 124, 62), 50%)
+
+#copyright
+  margin-top 25px
+  background-color transparent
+  font-size 14px
+  color darken(white, 30%)
+  text-align center
+  
+  div
+    margin-bottom 10px
+  
+  a
+  a:link
+    color gray
+    text-decoration none
+    border-bottom 1px solid gray
+    padding-bottom 2px
+
+  a:active
+    color darken(white, 30%)
+  
+  a:hover
+    color darken(white, 30%)
+    border-bottom 1px solid darken(white, 30%)
+    padding-bottom 4px
+
+.instructions
+  display inline-block
+  margin 5px 0
+  font-size 16px

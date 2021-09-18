@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ldt.cinematicket.ui.main.book.BookingFragment"
+    android:background="@android:color/black">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/black">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="?attr/homeAsUpIndicator">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Detail"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"/>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+         >
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_detail"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        app:cardBackgroundColor="@color/panel_background"
+        app:cardCornerRadius="10dp"
+        app:cardPreventCornerOverlap = "false"
+        app:cardElevation="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        >
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="117dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+               />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Madagascar 2"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/next"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/genre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Cartoon / Adventure"
+                android:textColor="@color/text_not_focus"
+                app:layout_constraintEnd_toStartOf="@+id/next"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toBottomOf="@+id/title" />
+
+            <TextView
+                android:id="@+id/duration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="VN | 89 min"
+                android:textColor="@color/text_not_focus"
+
+                app:layout_constraintEnd_toStartOf="@+id/next"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toBottomOf="@+id/genre" />
+
+            <ImageView
+                android:id="@+id/star"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="8dp"
+
+                app:layout_constraintBottom_toBottomOf="@+id/rate"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toTopOf="@+id/rate"
+                app:srcCompat="@drawable/icon_star" />
+
+            <TextView
+                android:id="@+id/rate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="4.5"
+                android:textColor="#FF0B19"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/image"
+                app:layout_constraintEnd_toStartOf="@+id/next"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/star"
+                app:layout_constraintTop_toBottomOf="@+id/duration"
+                app:layout_constraintVertical_bias="0.6" />
+
+            <ImageView
+                android:id="@+id/next"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.57"
+                android:src="@drawable/icons8_right"
+                android:padding="4dp"
+                android:alpha="0.7"/>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+ <LinearLayout
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal"
+     android:layout_marginTop="15dp"
+     android:layout_marginLeft="30dp">
+     <TextView
+         android:layout_width="60dp"
+         android:gravity="center"
+         android:layout_height="25dp"
+         android:text="26.09"
+         android:textColor="@android:color/white"
+         android:textSize="16sp"/>
+     <TextView
+         android:layout_width="60dp"
+         android:gravity="center"
+         android:layout_height="25dp"
+         android:text="27.09"
+         android:textColor="@color/text_not_focus"
+         android:textSize="14sp"/>
+
+     <TextView
+         android:layout_width="60dp"
+         android:layout_height="25dp"
+         android:gravity="center"
+         android:text="29.09"
+         android:textColor="@color/text_not_focus"
+         android:textSize="14sp" />
+     <TextView
+         android:layout_width="60dp"
+         android:gravity="center"
+         android:layout_height="25dp"
+         android:text="30.09"
+         android:textColor="@color/text_not_focus"
+         android:textSize="14sp"/>
+     <TextView
+         android:layout_width="60dp"
+         android:gravity="center"
+         android:layout_height="25dp"
+         android:text="01.10"
+         android:textSize="14sp"/>
+     <TextView
+         android:layout_width="60dp"
+         android:gravity="center"
+         android:layout_height="25dp"
+         android:text="02.10"
+         android:textColor="@color/text_not_focus"
+         android:textSize="14sp"/>
+ </LinearLayout>
+    <View
+        android:layout_width="30dp"
+        android:layout_height="2dp"
+        android:layout_marginLeft="43dp"
+        android:background="#FF0B19" />
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_detail2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/panel_background"
+        app:cardCornerRadius="10dp"
+        app:cardPreventCornerOverlap = "false"
+        app:cardElevation="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="CGV Thủ Đức"
+            android:textColor="@color/focus_color"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:src="@drawable/minus_vector"
+            android:alpha="0.6"
+            android:padding="5dp"/>
+        <LinearLayout
+            android:layout_marginTop="43dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginBottom="13dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="18dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:background="@drawable/rounded_corner_without_border_dark">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2D Phụ đề Tiếng Việt"
+                android:textSize="15sp"
+                android:paddingLeft="5dp"
+                android:textColor="#eee"
+                android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/show_time_textView"
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/round_ripple_drawable_dark"
+                android:gravity="center"
+                android:text="13:15"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/time_2"
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/round_ripple_drawable_dark"
+                android:gravity="center"
+                android:text="13:15"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/time_3"
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/round_ripple_drawable_dark"
+                android:gravity="center"
+                android:text="15:15"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/time_4"
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/round_ripple_drawable_dark"
+                android:gravity="center"
+                android:text="17:15"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/panel_background"
+        app:cardCornerRadius="10dp"
+        app:cardPreventCornerOverlap = "false"
+        app:cardElevation="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        >
+        <TextView
+            android:paddingLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:text="CGV Quận 8"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/menu_view"
+            android:layout_marginRight="5dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right|center_vertical"
+            android:src="@drawable/plus"
+            android:alpha="0.5"
+            android:padding="7dp"/>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/panel_background"
+        app:cardCornerRadius="10dp"
+        app:cardPreventCornerOverlap = "false"
+        app:cardElevation="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        >
+        <TextView
+            android:paddingLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:text="CGV Bình Thạnh"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+        <ImageView
+            android:layout_marginRight="5dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right|center_vertical"
+            android:src="@drawable/plus"
+            android:alpha="0.5"
+            android:padding="7dp"/>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/panel_background"
+        app:cardCornerRadius="10dp"
+        app:cardPreventCornerOverlap = "false"
+        app:cardElevation="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        >
+        <TextView
+            android:paddingLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:text="CGV Dĩ An, Bình Dương"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+        <ImageView
+            android:layout_marginRight="5dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right|center_vertical"
+            android:src="@drawable/plus"
+            android:alpha="0.5"
+            android:padding="7dp"/>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/panel_background"
+        app:cardCornerRadius="10dp"
+        app:cardPreventCornerOverlap = "false"
+        app:cardElevation="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        >
+        <TextView
+            android:paddingLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:text="CGV Quận 2"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+        <ImageView
+            android:layout_marginRight="5dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right|center_vertical"
+            android:src="@drawable/plus"
+            android:alpha="0.5"
+            android:padding="7dp"/>
+    </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

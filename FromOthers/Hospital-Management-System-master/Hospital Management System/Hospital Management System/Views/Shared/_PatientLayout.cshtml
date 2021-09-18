@@ -1,0 +1,127 @@
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Patient | DashBoard</title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/css/datepicker3.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Content/datatables/css/datatables.bootstrap.css">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/Layout/resources/img/logo.jpg" />
+    <link href="~/Content/css/styles.css" rel="stylesheet">
+
+    <!--Custom Font-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><span>DashBoard</span>Patient</a>
+                <ul class="nav navbar-top-links navbar-right"></ul>
+            </div>
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+        <div class="profile-sidebar">
+            <div class="profile-userpic">
+                <img src="~/Content/img/Administrator.png" class="img-responsive" alt="">
+            </div>
+            <div class="profile-usertitle">
+                <div class="profile-usertitle-name">@User.Identity.Name</div>
+                <div class="profile-usertitle-status"><span class="indicator label-success"></span>Patient</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="divider"></div>
+        <ul class="nav menu">
+            <li class="active"><a href="@Url.Action("Index", "Patient")"><em class="fa fa-dashboard">&nbsp;</em> DashBoard</a></li>
+            <li>
+                <button class="collapsible"><em class="fa fa-user-o">&nbsp; &nbsp;</em>Profile</button>
+                <div style="width: 100% !important" class="children content">
+                    @Html.ActionLink("Update Profile", "UpdateProfile", "Patient", new {id = User.Identity.GetUserId()}, new {@class = "list-group-item", @style = "margin: 0px -20px; font-size: 13px"})
+                </div>
+            </li>
+            <li>
+                <button class="collapsible"><em class="fa fa-user-md">&nbsp; &nbsp;</em>Doctors</button>
+                <div style="width: 100% !important" class="children content">
+                    @Html.ActionLink("Available Doctors", "AvailableDoctors", "Patient", null, new { @class = "list-group-item", @style = "margin: 0px -20px; font-size: 13px" })
+                </div>
+            </li>
+            <li>
+                <button class="collapsible"><em class="fa fa-pencil-square-o">&nbsp; &nbsp;</em>Appointment</button>
+                <div style="width: 100% !important" class="children content">
+                    @Html.ActionLink("Request Appointment", "AddAppointment", "Patient", null, new { @class = "list-group-item", @style = "margin: 0px -20px; font-size: 13px" })
+                    @Html.ActionLink("Your Appointments", "ListOfAppointments", "Patient", null, new { @class = "list-group-item", @style = "margin: 0px -20px; font-size: 13px" })
+                </div>
+            </li>
+            <li>
+                <button class="collapsible"><em class="fa fa-telegram">&nbsp; &nbsp;</em>Complaint</button>
+                <div style="width: 100% !important" class="children content">
+                    @Html.ActionLink("Add Complain", "AddComplain", "Patient", null, new { @class = "list-group-item", @style = "margin: 0px -20px; font-size: 13px" })
+                    @Html.ActionLink("List of Complains", "ListOfComplains", "Patient", null, new { @class = "list-group-item", @style = "margin: 0px -20px; font-size: 13px" })
+                </div>
+            </li>
+            @Html.Partial("_LoginPartial")
+        </ul>
+    </div><!--/.sidebar-->
+
+    <div class="col-sm-7 col-sm-offset-3 col-lg-10 col-lg-offset-2 ">
+        @RenderBody()
+    </div>	<!--/.main-->
+
+    @Scripts.Render("~/bundles/lib")
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/chart.min.js"></script>
+    <script src="~/Content/js/chart-data.js"></script>
+    <script src="~/Content/js/easypiechart.js"></script>
+    <script src="~/Content/js/easypiechart-data.js"></script>
+    <script src="~/Content/js/bootstrap-datepicker.js"></script>
+    <script src="~/Content/js/custom.js"></script>
+    <!--Script for collapse-->
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click",
+                function () {
+                    this.classList.toggle("actives");
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+        }
+    </script>
+<script>
+    $('.count').each(function () {
+        $(this).prop('Counter', 0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 1500,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
+</script>
+    @RenderSection("scripts", required: false)
+
+</body>
+
+</html>
+

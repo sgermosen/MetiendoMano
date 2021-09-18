@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/uniq"
+        >
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/nav_home"
+            />
+        <item
+            android:id="@+id/nav_browse"
+            android:icon="@drawable/if_explore_326636"
+            android:title="@string/nav_browse" />
+        <item
+            android:id="@+id/nav_favourite"
+            android:icon="@drawable/if_heart_favourite_favorite_love_2203510"
+            android:title="@string/nav_favourite" />
+
+        <item
+            android:id="@+id/nav_notifications"
+            android:icon="@drawable/ic_notifications_black_24dp"
+            android:title="@string/nav_notifications" />
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/nav_settings" />
+        <item
+            android:id="@+id/rateus"
+            android:icon="@drawable/if_star_326703"
+            android:title="Rate Us"
+            />
+    </group>
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/uniq2"
+        >
+
+        <item
+            android:iconTint="@color/premium"
+            android:iconTintMode="src_in"
+            android:id="@+id/gopremium"
+            android:icon="@drawable/if_simpline_51_2305611"
+            android:title="Go Premium"
+            />
+    </group>
+    <item android:title="Other">
+        <menu>
+            <item
+            android:id="@+id/Terms_Conditions"
+            android:title="Terms &amp; Conditions" />
+            <item
+            android:id="@+id/nav_privacy_policy"
+            android:title="@string/privacy_policy" />
+            <item
+                android:id="@+id/nav_about_us"
+                android:title="@string/nav_about_us" />
+        </menu>
+    </item>
+    <group android:checkableBehavior="single"
+        android:id="@+id/uniq3"
+        >
+
+    <item
+        android:id="@+id/log_out"
+        android:title="@string/log_out"
+        android:icon="@drawable/if_log_out_2561461"
+        />
+    </group>
+
+</menu>

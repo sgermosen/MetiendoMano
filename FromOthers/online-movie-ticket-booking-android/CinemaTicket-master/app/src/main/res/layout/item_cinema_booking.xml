@@ -1,0 +1,67 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_detail2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/panel_background"
+    app:cardCornerRadius="10dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardElevation="8dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp">
+
+    <TextView
+        android:id="@+id/cinema_name"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="CGV Thủ Đức"
+        android:textColor="@color/focus_color"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/minus"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right"
+        app:srcCompat="@drawable/minus"
+        android:alpha="0.6"
+        android:padding="5dp"/>
+    <LinearLayout
+        android:id="@+id/expand"
+        android:layout_marginTop="43dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginBottom="13dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="6dp"
+        android:background="@drawable/round_support_touch">
+        <TextView
+            android:id="@+id/type_movie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2D Phụ đề Tiếng Việt"
+            android:textSize="15sp"
+            android:padding="5dp"
+            android:textColor="#eee"
+            android:textStyle="bold" />
+
+        <com.nex3z.flowlayout.FlowLayout
+            android:id="@+id/flow_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:flChildSpacing="auto"
+            app:flChildSpacingForLastRow="align"
+            app:flRowSpacing="8dp">
+        </com.nex3z.flowlayout.FlowLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

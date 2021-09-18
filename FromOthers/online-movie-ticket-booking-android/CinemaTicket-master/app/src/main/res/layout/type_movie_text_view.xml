@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/txt_showingType"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#2979FF"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp"
+    android:text="IMAX"
+    android:textColor="#FFF"
+    android:layout_marginStart="5dp"
+    android:layout_marginLeft="5dp"
+    app:layout_goneMarginStart="0dp"
+    app:layout_goneMarginLeft="0dp"
+    android:textSize="12sp" />

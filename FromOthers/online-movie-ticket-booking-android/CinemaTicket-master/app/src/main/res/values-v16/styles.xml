@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+
+        <item name="android:fontFamily">@font/sanfont</item>
+        <item name="fontFamily">@font/sanfont</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <item name="colorPrimary">@android:color/white</item>
+        <item name="colorAccent">#FF5676</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">false</item>
+        <!--item name="android:fontFamily">@font/hn</item-->
+        <!-- Status bar stuff. -->
+    </style>
+</resources>

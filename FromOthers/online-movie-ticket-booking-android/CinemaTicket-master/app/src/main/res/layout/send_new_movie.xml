@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/panel_background">
+    <ImageView
+        android:id="@+id/toggleButton"
+        android:layout_width="35dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/slide_up_down_icon_drawable"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close_black_24dp"
+        android:padding="12dp"
+        android:tint="@color/setting_label_color"/>
+    <com.tuyenmonkey.mkloader.MKLoader
+        android:id="@+id/loading"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        app:mk_type="Whirlpool"
+        app:mk_color="#aaffffff"
+        app:layout_constraintTop_toBottomOf="@id/toggleButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <com.ldt.cinematicket.ui.widget.SuccessTickView
+        android:id="@+id/success_tick_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/loading"
+        app:layout_constraintBottom_toBottomOf="@id/loading"
+        app:layout_constraintStart_toStartOf="@id/loading"
+        app:layout_constraintEnd_toEndOf="@id/loading"
+        android:visibility="gone"/>
+    <TextView
+        android:id="@+id/sending_text"
+        android:paddingTop="20dp"
+        android:paddingBottom="30dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loading"
+        android:text="@string/sending_data"
+        android:textColor="@color/FlatBlue"
+        android:gravity="center"
+        android:textStyle="bold" />
+</android.support.constraint.ConstraintLayout>

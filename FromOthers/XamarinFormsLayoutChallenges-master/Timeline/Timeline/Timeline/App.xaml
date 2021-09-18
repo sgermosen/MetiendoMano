@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="Timeline.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Application.Resources>
+
+        <!--  Application resource dictionary  -->
+        <ResourceDictionary>
+            <!--  colors  -->
+            <!--<Color x:Key="HeaderTextColor">#585858</Color>
+            <Color x:Key="BodyTextColor">#C3C3C3</Color>-->
+
+            <Color x:Key="TimelineColor">#E4B6C3</Color>
+            <Color x:Key="HeaderTextColor">#3C3C3C</Color>
+            <Color x:Key="BodyTextColor">#869EAC</Color>
+            <Color x:Key="TimeColor">#A64C79</Color>
+
+            <!--  font families  -->
+            <OnPlatform
+                x:Key="RegularFontFamily"
+                x:TypeArguments="x:String"
+                Android="sans-serif"
+                iOS="HelveticaNeue" />
+            <OnPlatform
+                x:Key="LightFontFamily"
+                x:TypeArguments="x:String"
+                Android="sans-serif-light"
+                iOS="HelveticaNeue-Light" />
+            <OnPlatform
+                x:Key="MediumFontFamily"
+                x:TypeArguments="x:String"
+                Android="sans-serif-medium"
+                iOS="HelveticaNeue-Medium" />
+
+            <!--  fonts  -->
+            <Font
+                x:Key="HeaderFont"
+                FontFamily="{StaticResource MediumFontFamily}"
+                FontSize="30" />
+            <Font
+                x:Key="SubHeaderFont"
+                FontFamily="{StaticResource MediumFontFamily}"
+                FontSize="18" />
+            <Font
+                x:Key="TitleFont"
+                FontFamily="{StaticResource MediumFontFamily}"
+                FontSize="20" />
+            <Font
+                x:Key="BodyFont"
+                FontFamily="{StaticResource RegularFontFamily}"
+                FontSize="18" />
+
+
+            <!--  styles  -->
+            <Style x:Key="PageHeaderLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource HeaderTextColor}" />
+                <Setter Property="Font" Value="{StaticResource HeaderFont}" />
+            </Style>
+
+            <Style x:Key="SubHeaderLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BodyTextColor}" />
+                <Setter Property="Font" Value="{StaticResource SubHeaderFont}" />
+            </Style>
+
+            <Style x:Key="ClassTimeLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TimeColor}" />
+                <Setter Property="Font" Value="{StaticResource TitleFont}" />
+            </Style>
+
+            <Style x:Key="ClassNameLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource HeaderTextColor}" />
+                <Setter Property="Font" Value="{StaticResource TitleFont}" />
+            </Style>
+
+            <Style x:Key="ClassInstructorLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BodyTextColor}" />
+                <Setter Property="Font" Value="{StaticResource BodyFont}" />
+            </Style>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

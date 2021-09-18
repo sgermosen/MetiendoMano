@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_mark_as_paid"
+        android:orderInCategory="1"
+        android:title="@string/action_mark_as_paid_label"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_call_customer"
+        android:orderInCategory="2"
+        android:title="@string/action_call_customer_label"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_delete_bill"
+        android:orderInCategory="3"
+        android:title="@string/action_delete_bill_label"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_add_more_items"
+        android:orderInCategory="4"
+        android:title="@string/action_add_more_items_label"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_save_to_pdf"
+        android:orderInCategory="5"
+        android:title="@string/action_save_to_pdf_label"
+        app:showAsAction="never" />
+</menu>

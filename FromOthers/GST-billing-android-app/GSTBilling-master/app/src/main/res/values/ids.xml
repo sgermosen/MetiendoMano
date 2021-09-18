@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="bill_detail_id" />
+    <item type="id" name="bill_detail_customer_name" />
+    <item type="id" name="bill_detail_phone_number" />
+
+    <item type="id" name="bill_edit_id" />
+    <item type="id" name="bill_edit_item_description" />
+    <item type="id" name="bill_edit_final_price" />
+    <item type="id" name="bill_edit_quantity" />
+</resources>

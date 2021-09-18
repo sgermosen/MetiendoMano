@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.floyd.ludogame">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Game" />
+        <activity android:name=".PlayerSelect" />
+        <activity
+            android:name=".GameOver"
+            android:label="@string/title_activity_game_over" />
+        <activity
+            android:name=".GameOverRed"
+            android:label="@string/title_activity_game_over_red" />
+        <activity
+            android:name=".GameOverGreen"
+            android:label="@string/title_activity_game_over_green" />
+        <activity
+            android:name=".GameOverBlue"
+            android:label="@string/title_activity_game_over_blue" />
+        <activity
+            android:name=".GameOverYellow"
+            android:label="@string/title_activity_game_over_yellow"></activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/gray_quiz">
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/quizs"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/login_layout"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="@drawable/shape3"
+            android:rotationX="180"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                >
+                <EditText
+                    android:id="@+id/login_cardnumber"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:hint="رقم الكارنيه"
+                    android:inputType="number"
+                    android:theme="@style/MyEditTextTheme"
+                    android:textColor="#fff"
+                    fontPath="fonts/GE_SS_Two_Bold.otf"
+                    android:textColorHint="#fff"
+                    />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/if_icons_email_1564504"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="30dp"
+                >
+
+                <EditText
+                    android:id="@+id/login_password"
+                    android:layout_width="220dp"
+                    android:inputType="textPassword"
+                    android:theme="@style/MyEditTextTheme"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    android:imeOptions="actionDone"
+                    android:hint="كلمة المرور"
+                    fontPath="fonts/GE_SS_Two_Bold.otf"
+                    android:textColor="#fff"
+                    android:textColorHint="#fff" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/if_icons_password_1564520"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+
+                >
+
+                <Button
+                    android:id="@+id/login_btn"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/btn"
+                    android:backgroundTint="#0008fc"
+                    android:elevation="10dp"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:text="تسجيل الدخول"
+                    fontPath="fonts/GE_SS_Two_Bold.otf"
+                    android:textColor="#fff" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="هل نسيت كلمة الباسورد"
+                    android:textColor="#b2ffffff"
+                    android:layout_gravity="bottom"
+                    android:textSize="10sp"
+                    android:layout_margin="10dp"
+                    android:gravity="bottom"
+                    fontPath="fonts/GE_SS_Two_Bold.otf"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:visibility="visible"
+        android:id="@+id/social"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="5dp"
+            android:textSize="20dp"
+            android:id="@+id/register"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="Register"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="5dp"
+            android:textSize="20dp"
+            android:id="@+id/later"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="@string/Login_later"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/policy"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#ffffff"
+                android:id="@+id/terms"
+                fontPath="fonts/DK Magical Brush.otf"
+                android:text="@string/Login_policy" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#0645AD"
+                android:layout_marginLeft="3dp"
+                android:id="@+id/terms2"
+                fontPath="fonts/DK Magical Brush.otf"
+                android:text="@string/Login_policy2" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

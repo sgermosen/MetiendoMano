@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">MET Quiz</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_notifications">Notifications</string>
+    <string name="nav_favourite">Favourite</string>
+    <string name="nav_browse">Browse</string>
+    <string name="nav_home">Home</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="nav_about_us">About us</string>
+    <string name="log_out">Log out</string>
+    <string name="openDrawer">openDrawer</string>
+    <string name="closeDrawer">closeDrawer</string>
+
+    <string-array name="nav_item_activity_titles">
+        <item>Home</item>
+        <item>Browse</item>
+        <item>Favourite</item>
+        <item>Notifications</item>
+        <item>Settings</item>
+        <item>Questions</item>
+
+
+    </string-array>
+
+    <string name="price_format">$%1$s</string>
+    <string name="name_format">Product %1$s</string>
+
+    <string name="Login_later"> <u>Login later</u>  </string>
+    <string name="Login_policy">by continuing , you agree to accept our </string>
+    <string name="Login_policy2"> <u> policy</u>  </string>
+    <string name="action_mark_all_read">mark all read</string>
+    <string name="action_clear_all">Clear all</string>
+    <string name="ss"><font size="20">made by</font><font size="25"><b> Vacuum, Inc</b></font></string>
+    <string name="Terms_Conditions_title">Terms &amp;  Conditions</string>
+
+    <string name="copyright">copyright &#169; 2017 all rights reserved for <font size="16"><b> Vacuum, Inc</b></font></string>
+
+</resources>

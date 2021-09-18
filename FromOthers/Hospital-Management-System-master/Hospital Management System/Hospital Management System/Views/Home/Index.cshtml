@@ -1,0 +1,176 @@
+﻿@using System.Web.UI.WebControls
+@using Hospital_Management_System.Models
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<header id="Home">
+    <nav>
+        <div class="row">
+            <img src="~/Content/Layout/resources/img/logo-white.jpg" alt="HMS logo" class="logo">
+            <img src="~/Content/Layout/resources/img/logo.jpg" alt="HMS logo" class="logo-black">
+            <ul class="main-nav js-main-nav">
+                <li><a href="#Home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="@Url.Action("Register", "Account")">Register</a></li>
+                <li><a href="@Url.Action("Login", "Account")">Sign In</a></li>
+            </ul>
+            <a class="mobile-nav-icon js-mobile-nav-icon"><i class="ion-ios-menu"></i></a>
+        </div>
+    </nav>
+    <div class="hero-text-box">
+        <h1>Hospital Management<br> System.</h1>
+        <br>
+        <a class="btn btn-ghost js-scroll-to-start" href="#">Show me more</a>
+    </div>
+</header>
+
+<section class="section-features js-section-features" id="services">
+    <div class="row">
+        <h2>Services</h2>
+        <p class="long-copy">Hello, this is Hospital Management System. We have best services for our patients and manage them.</p>
+    </div>
+    <div class="row js-wp-1">
+        <div class="col span-1-of-4 box for-icons">
+            <i class="icon ion-md-medkit"></i>
+            <h3>Emergency Care</h3>
+            <p>Never cook again! We really mean that. Our subscription plans include up to 365 days/year coverage. You can also choose to order more flexibly if that's your style.</p>
+        </div>
+        <div class="col span-1-of-4 box for-icons">
+            <i class="icon ion-md-call"></i>
+            <h3>Call Center 24/7</h3>
+            <p>You're only twenty minutes away from your delicious and super healthy meals delivered right to your home. We work with the best chefs in each town to ensure that you're 100% happy.</p>
+        </div>
+        <div class="col span-1-of-4 box for-icons">
+            <i class="icon ion-md-car"></i>
+            <h3>Ambulance</h3>
+            <p>All our vegetables are fresh, organic and local. Animals are raised without added hormones or antibiotics. Good for your health, the environment, and it also tastes better!</p>
+        </div>
+        <div class="col span-1-of-4 box for-icons">
+            <i class="icon ion-md-checkmark-circle-outline"></i>
+            <h3>Appointment</h3>
+            <p>We don't limit your creativity, which means you can order whatever you feel like. You can also choose from our menu containing over 100 delicious meals. It's up to you!</p>
+        </div>
+    </div>
+</section>
+
+<section class="section-steps" id="about">
+    <div class="row">
+        <h2>About Us &mdash; Our Vision</h2>
+    </div>
+    <div class="row">
+        <div class="col span-1-of-2 step-box">
+            <img src="~/Content/Layout/resources/img/app-iPhone.png" alt="Omnifood app on iphone" class="app-screen js-wp-2">
+        </div>
+        <div class="col span-1-of-2 step-box">
+            <div class="works-step">
+                <div>1</div>
+                <p>Hopital Management System (HMS) is open to all patients every day and provides fundamental medical care and cutting-edge medicine.</p>
+            </div>
+            <div class="works-step">
+                <div>2</div>
+                <p>We use our academic knowledge to treat a wide range of health issues, taking a personal touch and utilizing highly specialized and up-to-date research.</p>
+            </div>
+            <div class="works-step">
+                <div>3</div>
+                <p>
+                    We will innovate and define the future of health care for generations
+                    and will be the consumer's first choice for health care.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-cities" id="cities">
+    <div class="row">
+        <h2>We're currently in these cities</h2>
+    </div>
+    <div class="row js-wp-3">
+        <div class="col span-1-of-4 box">
+            <img src="~/Content/Layout/resources/img/Lahore.jpg" alt="lisbon">
+            <h3>Lahore</h3>
+            <div class="city-feature">
+                <i class="icon ion-logo-facebook small-icons"></i>
+                <a href="#">HMS_Lahore</a>
+            </div>
+        </div>
+        <div class="col span-1-of-4 box">
+            <img src="~/Content/Layout/resources/img/Gujranwala.jpg" alt="lisbon">
+            <h3>Gujranwala</h3>
+            <div class="city-feature">
+                <i class="icon ion-logo-facebook small-icons"></i>
+                <a href="#">HMS_Gujranwala</a>
+            </div>
+        </div>
+        <div class="col span-1-of-4 box">
+            <img src="~/Content/Layout/resources/img/Faislabad.jpg" alt="lisbon">
+            <h3>Faislabad</h3>
+            <div class="city-feature">
+                <i class="icon ion-logo-facebook small-icons"></i>
+                <a href="#">HMS_Faislabad</a>
+            </div>
+        </div>
+        <div class="col span-1-of-4 box">
+            <img src="~/Content/Layout/resources/img/Multan.png" alt="lisbon">
+            <h3>Multan</h3>
+            <div class="city-feature">
+                <i class="icon ion-logo-facebook small-icons"></i>
+                <a href="#">HMS_Multan</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-testimonials" id="reviews">
+    <div class="row">
+        <h2>Our patients can't live without us</h2>
+    </div>
+    <div class="row">
+        <div class="col span-1-of-3">
+            <blockquote>HMS is just awesome! I just launched a startup which leaves me with no time for Medicine, so Omnifood is a life-saver. Now that I got used to it</blockquote>
+            <cite><img src="~/Content/Layout/resources/img/customer-1.jpg" alt="first-customer">Alberto Duncan</cite>
+        </div>
+        <div class="col span-1-of-3">
+            <blockquote>HMS is just awesome! I just launched a startup which leaves me with no time for Medicine, so Omnifood is a life-saver. Now that I got used to it</blockquote>
+            <cite><img src="~/Content/Layout/resources/img/customer-2.jpg" alt="first-customer">Joana Silva</cite>
+        </div>
+        <div class="col span-1-of-3">
+            <blockquote>HMS is just awesome! I just launched a startup which leaves me with no time for Medicine, so Omnifood is a life-saver. Now that I got used to it</blockquote>
+            <cite><img src="~/Content/Layout/resources/img/customer-3.jpg" alt="first-customer">Milton Chapman</cite>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="row">
+        <div class="col span-1-of-2">
+            <ul class="footer-nav">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Press</a></li>
+                <li><a href="#">IOS App</a></li>
+                <li><a href="#">Andriod App</a></li>
+            </ul>
+        </div>
+        <div class="col span-1-of-2">
+            <ul class="social-links">
+                <li><a href="#"><i class="ion-logo-facebook"></i></a></li>
+                <li><a href="#"><i class="ion-logo-twitter"></i></a></li>
+                <li><a href="#"><i class="ion-logo-googleplus"></i></a></li>
+                <li><a href="#"><i class="ion-logo-instagram"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <p> Copyright &copy; @DateTime.Now.Year by HMS.All rights reserved.</p>
+    </div>
+</footer>
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Hospital_Management_System.Models.Doctor>
+
+@{
+    ViewBag.Title = "AvailableDoctors";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Doctor</li>
+        <li class="active">Available Doctor</li>
+    </ol>
+</div>
+
+<h2>Available Doctors</h2>
+
+<table id="table_id" class="table">
+    <thead>
+        <tr>
+
+            <th>
+                Name
+            </th>
+            <th>
+                Department
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Education)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Designation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Education)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    <a href="@Url.Action("DoctorDetail", new {id = item.Id})" class="fa fa-info-circle" style="font-size: 19px; color: lightblue"></a> |
+                    <a href="@Url.Action("DoctorSchedule", new {id = item.Id})" class="fa fa-calendar-check-o" style="font-size: 19px;"></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#table_id").dataTable();
+        });
+    </script>
+}

@@ -1,0 +1,85 @@
+﻿@model Hospital_Management_System.Models.Schedule
+
+@{
+    ViewBag.Title = "DoctorSchedule";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Doctor</li>
+        <li class="active">Doctor Schedule</li>
+    </ol>
+</div>
+
+<h2>Doctor Schedule</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Doctor.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doctor.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AvailableStartDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AvailableStartDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AvailableEndDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AvailableEndDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AvailableStartTime)
+        </dt>
+
+        <dd>
+            @Model.AvailableStartTime.ToShortTimeString()
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AvailableEndTime)
+        </dt>
+
+        <dd>
+            @Model.AvailableEndTime.ToShortTimeString()
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimePerPatient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimePerPatient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

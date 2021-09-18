@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "675073510766",
+    "firebase_url": "https://cinema-ticket-database.firebaseio.com",
+    "project_id": "cinema-ticket-database",
+    "storage_bucket": "cinema-ticket-database.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:675073510766:android:6315c09c716c2d08",
+        "android_client_info": {
+          "package_name": "com.ldt.cinematicket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "675073510766-b0e5copq1cu5itvnbu7feqhvj31kc8ma.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ldt.cinematicket",
+            "certificate_hash": "38852a9cf826391fc2889e904f91afe01670da10"
+          }
+        },
+        {
+          "client_id": "675073510766-bv7vp3ou50rp085fdmm6nbqrgshfjtbh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFAiTAKl1phtK-vVnJAaO7SwBTt54rZkk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "675073510766-bv7vp3ou50rp085fdmm6nbqrgshfjtbh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

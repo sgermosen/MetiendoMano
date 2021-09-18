@@ -1,0 +1,78 @@
+<?php
+include('main.php');
+
+
+?>
+        <html>
+		
+			<head>
+              
+		    <link rel="stylesheet" type="text/css" href="../../source/CSS/style.css">
+			<script type="text/javascript" src="jquery-1.12.3.js"></script>
+			<script type="text/javascript" src="studentClassCourse.js"></script>
+			<script src = "JS/login_logout.js"></script>
+			
+			
+				</head>
+		  <div class="header"><h1>School Management System</h1></div>
+			  <div class="divtopcorner">
+				    <img src="../../source/logo.jpg" height="150" width="150" alt="School Management System"/>
+				</div>
+			<br/><br/>
+				<ul>
+				    <li class="manulista" align="center">
+						    <a class ="menulista" href="index.php">Home</a>
+							
+								<a class ="menulista" href="deleterep.php">Delete report</a>
+								
+								
+								<div align="center">
+								<h4>Hi! <?php echo $check." ";?></h4>
+								    <a class ="menulista" href="logout.php" onmouseover="changemouseover(this);" onmouseout="changemouseout(this,'<?php echo ucfirst($loged_user_name);?>');"><?php echo "Logout";?></a>
+						    </div>
+						</li>
+				</ul>
+			  <hr/>
+		</html>
+		
+	 <form action="#" method="POST">
+			  <div align="center" >
+			 Select Report:<select id="msg" name="msg" onchange="ajaxRequestToGetMyCourse();">
+			 <?php  
+
+
+$classget = "SELECT  reportid,courseid,studentid,message FROM report where teacherid='$check'";
+$res= mysql_query($classget);
+
+while($cln=mysql_fetch_array($res))
+{
+ echo '<option value="',$cln['reportid'],'" >',$cln['reportid'].' '.$cln['courseid'].' '.$cln['studentid'].' '.$cln['message'],'</option>';
+   
+}
+
+
+?>
+
+</select><br /><br />
+
+</form>
+<input  class ="menulista" type ="submit" name="submit" value="delete" />
+
+<?php
+//print_r($_REQUEST);
+if(!empty($_POST['submit'])){
+$d=$_REQUEST['msg'];
+
+$sql="delete from report where reportid='$d'";
+$s=mysql_query($sql);
+if(!$s)
+{
+echo "failed!!!";
+}
+echo "succeed";
+}
+?>
+
+
+</div>
+

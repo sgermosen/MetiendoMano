@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/black"
+    android:clickable="true"
+    android:animateLayoutChanges="true"
+    android:focusable="true">
+    <ImageView
+        android:id="@+id/back_button"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:paddingTop="14dp"
+        android:layout_margin="10dp"
+        android:paddingBottom="14dp"
+        android:tint="@color/setting_label_color"
+        android:background="@drawable/round_support_touch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close_black_24dp" />
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/back_button"
+        android:paddingStart="65dp"
+        android:paddingEnd="65dp"
+        android:text="Add/Edit Show time"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:background="@drawable/round_support_touch"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/setting_label_color"/>
+    <ImageView
+        android:id="@+id/done_button"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:paddingTop="14dp"
+        android:layout_margin="10dp"
+        android:paddingBottom="14dp"
+        android:tint="@color/FlatGreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/round_support_touch"
+        app:srcCompat="@drawable/ic_done_black_24dp" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/back_button"
+        app:layout_constraintVertical_bias="0.0">
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toTopOf="@id/cinema_text"
+                    app:layout_constraintBottom_toBottomOf="@id/movie_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/background_item_choose_movie"/>
+                <TextView
+                    android:id="@+id/cinema_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cinema : "
+                    android:textStyle="bold"
+                    android:paddingTop="10dp"
+                    android:paddingStart="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/cinema_name"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    android:textSize="20sp"
+                    android:textColor="@color/setting_label_color"
+                    app:layout_constraintTop_toTopOf="parent"
+                   android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/cinema_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="This is Cinema Name"
+                    android:textSize="20sp"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/FlatOrange"
+                    android:paddingEnd="20dp"
+                    app:layout_constraintTop_toTopOf="@id/cinema_text"
+                    app:layout_constraintStart_toEndOf="@id/cinema_text"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+                <TextView
+                    android:id="@+id/movie_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Movie : "
+                    android:paddingStart="20dp"
+                    android:paddingBottom="20dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/setting_label_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/movie_name"
+                    app:layout_constraintTop_toBottomOf="@id/cinema_name"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/movie_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="This is movie name"
+                    android:textSize="20sp"
+                    android:paddingBottom="20dp"
+                    android:paddingEnd="20dp"
+                    android:layout_marginEnd="5dp"
+                    android:textColor="@color/FlatOrange"
+                    app:layout_constraintTop_toTopOf="@id/movie_text"
+                    app:layout_constraintStart_toEndOf="@id/movie_text"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+                <EditText
+                    android:id="@+id/id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:background="@drawable/line_bottom"
+                    app:layout_constraintTop_toBottomOf="@id/movie_name"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:hint="ID"
+                    android:layout_marginStart="30dp"/>
+            <LinearLayout
+                android:id="@+id/show_time_parent"
+                app:layout_constraintTop_toBottomOf="@id/id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+                <!--include layout="@layout/item_show_time"/-->
+            </LinearLayout>
+
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</android.support.constraint.ConstraintLayout>

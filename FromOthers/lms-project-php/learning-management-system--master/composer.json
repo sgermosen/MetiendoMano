@@ -1,0 +1,25 @@
+{
+    "require": {
+        "php":"~7.0@beta",
+        "ext-PDO": "*",
+        "ext-fileinfo":"*",
+        "ext-gettext": "*",
+        "ext-mbstring": "*",
+        "ext-json": "*",
+        "froala/wysiwyg-editor-php-sdk" : "*",
+        "phpmailer/phpmailer": "^5.2",
+        "league/oauth2-client": "^2.2",
+        "facebook/graph-sdk" : "~5.0"
+    },
+    "require-dev": {
+        "heroku/heroku-buildpack-php": "*"
+    },
+
+    "autoload":{
+        "classmap":[
+            "./"
+        ]
+
+
+    }
+}

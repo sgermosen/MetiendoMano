@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ldt.cinematicket.ui.widget.MotionLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent"
+    tools:context=".ui.main.book.ChooseSeat"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:paddingTop="50dp"
+    android:paddingBottom="50dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="25dp"
+        android:clickable="true"
+        android:focusable="true"
+>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Choose seats"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:alpha="0.7"
+                android:layout_gravity="center"
+                android:textColor="@android:color/white"/>
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.ldt.cinematicket.ui.widget.SeatPicker
+                android:id="@+id/seat_picker"
+                android:layout_width="370dp"
+                android:layout_height="370dp"
+                android:background="@android:color/transparent"
+                android:visibility="gone"/>
+
+
+            <com.tuyenmonkey.mkloader.MKLoader
+                android:id="@+id/mkloader"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:mk_type="Whirlpool"
+                app:mk_color="#aaffffff"
+                android:layout_gravity="center"
+            />
+            <Button
+                android:id="@+id/book"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Book now "
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_yellow_drawable"
+                android:textAllCaps="false"
+                android:layout_gravity="center_horizontal|bottom"
+                android:visibility="gone"/>
+        </FrameLayout>
+
+    </LinearLayout>
+</com.ldt.cinematicket.ui.widget.MotionLayout>

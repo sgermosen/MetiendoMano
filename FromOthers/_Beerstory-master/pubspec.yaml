@@ -1,0 +1,36 @@
+name: beerstory
+description: Save your favorite beers and find them back instantly !
+version: 0.1.2+3
+
+environment:
+  sdk: ">=2.2.2 <3.0.0"
+
+dependencies:
+  hive: ^1.4.1
+  hive_flutter: ^0.3.0
+  http: ^0.12.0
+  image_picker: ^0.6.4
+  intl: ^0.16.0
+  path_provider: ^1.6.5
+  flutter_svg: ^0.17.3
+  smooth_star_rating: ^1.0.4
+  url_launcher: ^5.4.2
+  flutter_barcode_scanner: ^0.1.7
+  ez_localization: ^0.2.1
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  hive_generator: ^0.7.0
+  build_runner: ^1.8.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/images/
+    - assets/languages/
+  fonts:
+    - family: BirdsOfParadise
+      fonts:
+        - asset: assets/fonts/BirdsOfParadise.ttf

@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/black"
+    android:clickable="true"
+    android:animateLayoutChanges="true"
+    android:focusable="true">
+    <ImageView
+        android:id="@+id/back_button"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:paddingTop="14dp"
+        android:layout_margin="10dp"
+        android:paddingBottom="14dp"
+        android:tint="@color/setting_label_color"
+        android:background="@drawable/round_support_touch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close_black_24dp" />
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/back_button"
+        android:paddingStart="65dp"
+        android:paddingEnd="65dp"
+        android:text="@string/add_new_cinema"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:background="@drawable/round_support_touch"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/setting_label_color"/>
+    <ImageView
+        android:id="@+id/done_button"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:paddingTop="14dp"
+        android:layout_margin="10dp"
+        android:paddingBottom="14dp"
+        android:tint="@color/setting_label_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/round_support_touch"
+        app:srcCompat="@drawable/ic_done_black_24dp" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/back_button"
+        app:layout_constraintVertical_bias="0.0">
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="50dp">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/photo"
+                    android:layout_height="wrap_content"
+                    android:layout_width="120dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="40dp"
+                    android:adjustViewBounds="true"
+                    android:background="#070707"
+                    android:minHeight="150dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_border_color="@color/HeavyBlue"
+                    app:riv_border_width="2dp"
+                    app:riv_corner_radius="4dp"
+                    app:riv_mutate_background="true"
+
+                    />
+
+                <com.tuyenmonkey.mkloader.MKLoader
+                    android:id="@+id/photo_loader"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:tint="@color/FlatBlue"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/photo"
+                    app:layout_constraintEnd_toEndOf="@id/photo"
+                    app:layout_constraintStart_toStartOf="@id/photo"
+                    app:layout_constraintTop_toTopOf="@id/photo"
+                    app:mk_type="ThreePulse"
+                    app:srcCompat="@drawable/ic_photo_black_24dp" />
+
+                <ImageView
+                    android:id="@+id/photo_empty_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@color/panel_background"
+                    android:tint="@color/FlatBlue"
+                    app:layout_constraintBottom_toBottomOf="@id/photo"
+                    app:layout_constraintEnd_toEndOf="@id/photo"
+                    app:layout_constraintStart_toStartOf="@id/photo"
+                    app:layout_constraintTop_toTopOf="@id/photo"
+                    app:srcCompat="@drawable/ic_photo_black_24dp" />
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/line_top"
+                    android:hint="Cinema's Name"
+                    android:maxLines="1"
+                    android:paddingStart="0dp"
+                    android:paddingLeft="0dp"
+                    android:paddingTop="15dp"
+                    android:paddingEnd="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="15dp"
+                    android:singleLine="true"
+                    android:textColor="#CCC"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/photo" />
+
+                <ImageView
+                    android:id="@+id/click_to_expand_option"
+                    android:layout_width="50dp"
+                    android:layout_height="0dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:rotation="180"
+                    android:tint="#888"
+                    app:layout_constraintBottom_toBottomOf="@id/name"
+                    app:layout_constraintEnd_toEndOf="@id/name"
+                    app:layout_constraintTop_toTopOf="@id/name"
+                    app:srcCompat="@drawable/ic_expand_more_black_24dp" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/option_panel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/black_rounded_big_alpha"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/name">
+
+                    <TextView
+                        android:id="@+id/option"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:paddingTop="10dp"
+                        android:text="Option"
+                        android:textColor="@color/FlatBlue"
+                        android:textSize="12dp"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/option_detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="15dp"
+                        android:text="Those fields are optional, you can add them later in the server"
+                        android:textColor="#444"
+                        android:textSize="11sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/option"
+                        app:layout_constraintTop_toBottomOf="@id/option" />
+
+                    <EditText
+                        android:id="@+id/ListOfMovies"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/line_top"
+                        android:hint="List of Movies's ID (Example: 1, 2, 3)"
+                        android:maxLines="1"
+                        android:paddingStart="0dp"
+                        android:paddingLeft="0dp"
+                        android:paddingTop="15dp"
+                        android:paddingEnd="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="15dp"
+                        android:singleLine="true"
+                        android:textColor="#CCC"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/option"
+                        app:layout_constraintTop_toBottomOf="@id/option_detail" />
+
+                    <EditText
+                        android:id="@+id/ListOfShowTimes"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/line_top"
+                        android:hint="List of ShowTimes's ID (Example: 7, 8, 9)"
+                        android:maxLines="1"
+                        android:paddingStart="0dp"
+                        android:paddingLeft="0dp"
+                        android:paddingTop="15dp"
+                        android:paddingEnd="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="15dp"
+                        android:singleLine="true"
+                        android:textColor="#CCC"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/option"
+                        app:layout_constraintTop_toBottomOf="@id/ListOfMovies" />
+                </android.support.constraint.ConstraintLayout>
+
+                <EditText
+                    android:id="@+id/image_url"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/line_top"
+                    android:hint="Image of Cinema URL"
+                    android:maxLines="1"
+                    android:paddingStart="0dp"
+                    android:paddingLeft="0dp"
+                    android:paddingTop="15dp"
+                    android:paddingEnd="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="15dp"
+                    android:singleLine="true"
+                    android:textColor="#CCC"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/option_panel" />
+
+                <EditText
+                    android:id="@+id/hotline"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/line_top"
+                    android:hint="Hotline"
+                    android:maxLines="1"
+                    android:paddingStart="0dp"
+                    android:paddingLeft="0dp"
+                    android:paddingTop="15dp"
+                    android:paddingEnd="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="15dp"
+                    android:singleLine="true"
+                    android:textColor="#CCC"
+                    android:textSize="15sp"
+                    android:inputType="phone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/name"
+                    app:layout_constraintTop_toBottomOf="@id/image_url" />
+
+                <EditText
+                    android:id="@+id/address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/line_top"
+                    android:hint="Address"
+                    android:maxLines="1"
+                    android:paddingStart="0dp"
+                    android:paddingLeft="0dp"
+                    android:paddingTop="15dp"
+                    android:paddingEnd="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="15dp"
+                    android:singleLine="true"
+                    android:textColor="#CCC"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/name"
+                    app:layout_constraintTop_toBottomOf="@id/hotline"
+                    app:layout_goneMarginTop="0dp" />
+
+                <EditText
+                    android:id="@+id/id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@android:color/transparent"
+                    android:hint="ID"
+                    android:inputType="none"
+                    android:maxLines="1"
+                    android:paddingTop="15dp"
+                    android:paddingEnd="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="15dp"
+                    android:singleLine="true"
+                    android:text="@string/creating_new_id"
+                    android:textColor="#CCC"
+                    android:textSize="15sp"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toStartOf="@id/auto_fill"
+                    app:layout_constraintStart_toStartOf="@id/image_url"
+                    app:layout_constraintTop_toBottomOf="@id/address" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@drawable/line_top"
+                    app:layout_constraintEnd_toEndOf="@id/auto_fill"
+                    app:layout_constraintStart_toStartOf="@id/id"
+                    app:layout_constraintTop_toTopOf="@id/id" />
+
+                <TextView
+                    android:id="@+id/id_detail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="6dp"
+                    android:selectAllOnFocus="false"
+                    android:text="@string/exist_cinema_alert"
+                    android:textColor="#444"
+                    android:textSize="11sp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@id/auto_fill"
+                    app:layout_constraintStart_toStartOf="@id/address"
+                    app:layout_constraintTop_toBottomOf="@id/address" />
+
+                <TextView
+                    android:id="@+id/auto_fill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/round_support_touch"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="Auto Fill Form"
+                    android:textColor="@color/FlatOrange"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/id"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/id" />
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</android.support.constraint.ConstraintLayout>

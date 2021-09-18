@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LudoGame</string>
+    <string name="title_activity_game_over">GameOver</string>
+    <string name="title_activity_game_over_red">GameOverRed</string>
+    <string name="title_activity_game_over_green">GameOverGreen</string>
+    <string name="title_activity_game_over_blue">GameOverBlue</string>
+    <string name="title_activity_game_over_yellow">GameOverYellow</string>
+</resources>

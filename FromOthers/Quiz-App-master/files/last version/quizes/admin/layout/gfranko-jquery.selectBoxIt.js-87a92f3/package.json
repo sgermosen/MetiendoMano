@@ -1,0 +1,37 @@
+{
+  "name": "jquery.selectBoxIt",
+  "title": "jquery Selectboxit",
+  "description": "A jQuery plugin that progressively enhances an HTML Select Box into a single option dropdown list. The dropdown list can be optionally styled with jQuery ThemeRoller and optionally animated with jQueryUI show/hide effects.",
+  "version": "3.8.1",
+  "homepage": "http://www.selectboxit.com",
+  "author": {
+    "name": "Greg Franko",
+    "email": "gfranko5@yahoo.com",
+    "url": "http://www.gregfranko.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gfranko/jQuery.selectBoxIt.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gfranko/jQuery.selectBoxIt.js/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.gregfranko.com/jQuery.selectBoxIt.js//blob/master/LICENSE-MIT"
+    }
+  ],
+  "devDependencies": {
+    "express": "3.x",
+    "grunt": "~0.4.1",
+    "grunt-contrib-concat": "~0.2.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-jshint": "~0.3.0",
+    "grunt-contrib-jasmine": "~0.4.2"
+  },
+  "scripts": {
+    "test": "grunt travis --verbose"
+  },
+  "keywords": ["jQuery", "jQueryUI", "Select Box Plugin", "Twitter Bootstrap", "Twitter Bootstrap Select Box"]
+}

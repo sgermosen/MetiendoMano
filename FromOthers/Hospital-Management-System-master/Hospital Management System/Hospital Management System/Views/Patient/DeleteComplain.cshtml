@@ -1,0 +1,34 @@
+﻿@model Hospital_Management_System.Models.Complaint
+
+@{
+    ViewBag.Title = "DeleteComplain";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Complaint</li>
+        <li class="active">Delete Complain</li>
+    </ol>
+</div>
+
+<h2>Delete Complain</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "ListOfComplains")
+        </div>
+    }
+</div>

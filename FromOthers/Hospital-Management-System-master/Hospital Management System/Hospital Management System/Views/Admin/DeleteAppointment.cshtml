@@ -1,0 +1,30 @@
+﻿@model Hospital_Management_System.Models.Appointment
+
+@{
+    ViewBag.Title = "DeleteAppointment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Delete Appointment</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @if (Model.Status)
+            {
+                @Html.ActionLink("Back to List", "ListOfAppointments")
+            }
+            else
+            {
+                @Html.ActionLink("Back to List", "PendingAppointments")
+            }
+        </div>
+    }
+</div>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="XamBookLibrary.Views.BookDetailPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             xmlns:panCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:rainbows="clr-namespace:Xamarin.Forms.DebugRainbows;assembly=Xamarin.Forms.DebugRainbows"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             rainbows:DebugRainbow.IsDebug="False">
+    <StackLayout VerticalOptions="FillAndExpand">
+        <StackLayout x:Name="header"
+                     Padding="20,30,20,30"
+                     Orientation="Horizontal"
+                     Spacing="20">
+            <Image Source="back" />
+            <Label Style="{StaticResource AuthorLabel}"
+                   Text="back"
+                   HorizontalOptions="FillAndExpand" />
+            <Image Source="search" HorizontalOptions="End" />
+            <Image Source="hamburger" HorizontalOptions="End" />
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Handle_Tapped" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+        <panCake:PancakeView x:Name="cakeDetail"
+                             Margin="0"
+                             Padding="50,50,0,0"
+                             BackgroundColor="#ffffff"
+                             CornerRadius="30,30,0,0"
+                             HasShadow="false"
+                             VerticalOptions="FillAndExpand">
+            <StackLayout Spacing="10" VerticalOptions="FillAndExpand">
+                <CollectionView Margin="0"
+                                HorizontalScrollBarVisibility="Never">
+                    <CollectionView.ItemsSource>
+                        <x:Array Type="{x:Type sys:String}">
+                            <sys:String>men_wo_women.jpeg</sys:String>
+                            <sys:String>plant.jpeg</sys:String>
+                            <sys:String>coffee.jpeg</sys:String>
+                        </x:Array>
+                    </CollectionView.ItemsSource>
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="20"
+                                           Orientation="Horizontal"
+                                           SnapPointsType="Mandatory"
+                                           SnapPointsAlignment="End" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Style="{StaticResource DetailCarousalFrame}">
+                                <Image Aspect="AspectFill" Source="{Binding .}" />
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Label Style="{StaticResource HeaderLabel}" Text="The Making of a Manager" />
+                <Label Style="{StaticResource AuthorLabel}" Text="Julie Zhuo" />
+                <Label Style="{StaticResource GenreLabel}" Text="Business" />
+                <Label Margin="20,10,20,0"
+                       FontAttributes="None"
+                       FontSize="14"
+                       LineHeight="1.5"
+                       Style="{StaticResource AuthorLabel}"
+                       Text="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source"
+                       VerticalOptions="FillAndExpand" />
+                <panCake:PancakeView Padding="35"
+                                     BackgroundColor="#99cbe4"
+                                     CornerRadius="60,0,0,0"
+                                     HorizontalOptions="End"
+                                     VerticalOptions="End">
+                    <Label Style="{StaticResource AuthorLabel}"
+                           Text="Checkout"
+                           TextColor="#ffffff"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                </panCake:PancakeView>
+            </StackLayout>
+        </panCake:PancakeView>
+    </StackLayout>
+</ContentPage>
