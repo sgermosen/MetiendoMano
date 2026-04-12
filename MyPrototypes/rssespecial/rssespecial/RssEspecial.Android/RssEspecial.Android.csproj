@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -99,7 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RssEspecial\RssEspecial.csproj">
-      <Project>{1ACA7B71-6A08-45AB-9CEE-EC019B4E9F7F}</Project>
+      <Project>{758318AF-3B44-49B2-815D-94ADB66D7470}</Project>
       <Name>RssEspecial</Name>
     </ProjectReference>
   </ItemGroup>

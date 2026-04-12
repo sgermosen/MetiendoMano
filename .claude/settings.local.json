@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git config:*)",
+      "Bash(awk '{print $1}')",
+      "Bash(git add:*)"
+    ]
+  }
+}
